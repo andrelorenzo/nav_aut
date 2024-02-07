@@ -38,6 +38,8 @@
     <xacro:property name="wheel_offset_y" value="0.166"/>
     <xacro:property name="wheel_offset_z" value="0.01"/>
 
+    <xacro:property name="max_steer" value="0.6458"/>
+
 	<!-- Base link -->  
   <link name="base_link">
   </link> 
@@ -71,11 +73,7 @@
         </xacro:inertial_box>
     </link>    
 
-    <gazebo reference="chasis">
-        <material> Gazebo/White</material>
-    </gazebo>
-
-    <!-- <gazebo reference="chassis"> 
+    <gazebo reference="chasis"> 
         <kp>1000000.0</kp>  
         <kd>0.1</kd> 
         <dampingFactor>0</dampingFactor> 
@@ -85,7 +83,7 @@
         <mu1 value="0.1"/> 
         <mu2 value="0.1"/> 
         <fdir1 value="0 0 0"/> 
-    </gazebo>  -->
+    </gazebo>
 
     <!--FRONT RIGHT WHEEL ROTATE--> 
 
@@ -94,8 +92,8 @@
         <child link="front_right_wheel_rotate"/> 
         <origin xyz="${front_rear_sep + (chasis_x - front_rear_sep)/2} -${wheel_sep/2 + wheel_thickness} 0" rpy="0 0 0" />  
 
-        <axis xyz="0 0 -1"/> 
-        <limit effort="100" velocity="1" lower="-1" upper="1"/> 
+        <axis xyz="0 0 1"/> 
+        <limit effort="100" velocity="1" lower="-${max_steer}" upper="${max_steer}"/> 
     </joint> 
 
     <link name="front_right_wheel_rotate">
@@ -120,18 +118,14 @@
 
 	</link>  
     
-    <gazebo reference="front_right_wheel_rotate">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-    
-    <!-- <gazebo reference="right_wheel_rotate"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/White</material> 
-    </gazebo> -->
+    <gazebo reference="front_right_wheel_rotate"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/Blue</material> 
+      </gazebo>
 
     <!--FRONT RIGHT WHEEL MOVE--> 
 
@@ -164,18 +158,15 @@
 
 	</link> 
 
-    <gazebo reference="front_right_wheel_move">
-        <material>Gazebo/Blue</material>
-    </gazebo>
 
-    <!-- <gazebo reference="right_wheel"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/Blue</material> 
-    </gazebo> -->
+    <gazebo reference="front_right_wheel_move"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/Blue</material> 
+    </gazebo>
 
     <!--FRONT LEFT WHEEL ROTATE--> 
     <joint name="front_left_wheel_rotate_joint" type="revolute"> 
@@ -184,7 +175,7 @@
         <origin xyz="${front_rear_sep + (chasis_x - front_rear_sep)/2} ${wheel_sep/2 + wheel_thickness} 0" rpy="0 0 0" />  
 
         <axis xyz="0 0 1"/> 
-        <limit effort="100" velocity="1" lower="-1" upper="1"/> 
+        <limit effort="100" velocity="1" lower="-${max_steer}" upper="${max_steer}"/> 
     </joint> 
 
     <link name="front_left_wheel_rotate">
@@ -209,18 +200,14 @@
 
 	</link>  
     
-    <gazebo reference="front_left_wheel_rotate">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-    
-    <!-- <gazebo reference="left_wheel_rotate"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/White</material> 
-    </gazebo> -->
+    <gazebo reference="front_left_wheel_rotate"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/Blue</material> 
+      </gazebo>
 
     <!--LEFT RIGHT WHEEL MOVE--> 
 
@@ -253,20 +240,15 @@
 
 	</link> 
 
-    <gazebo reference="front_left_wheel_move">
-        <material>Gazebo/Blue</material>
-    </gazebo>
+    <gazebo reference="front_left_wheel_move"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/White</material> 
+      </gazebo>
 
-    <!-- <gazebo reference="left_wheel"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/Blue</material> 
-    </gazebo> -->
-
-    <!-- HASTA AQUI -->
     <!--BACK RIGHT WHEEL--> 
 
     <joint name="back_right_wheel_joint" type="continuous"> 
@@ -275,7 +257,6 @@
         <origin xyz="${(chasis_x - front_rear_sep)/2} -${wheel_sep/2 + wheel_thickness} 0" rpy="${pi/2} 0 0" />  
 
         <axis xyz="0 0 -1"/> 
-        <limit effort="100" velocity="1" lower="-1" upper="1"/> 
     </joint> 
 
     <link name="back_right_wheel">
@@ -298,18 +279,14 @@
 
 	</link>  
     
-    <gazebo reference="back_right_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-    
-    <!-- <gazebo reference="right_wheel_rotate"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/White</material> 
-    </gazebo> -->
+    <gazebo reference="back_right_wheel"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/Blue</material> 
+      </gazebo>
 
     <!--BACK LEFT WHEEL--> 
     <joint name="back_left_wheel_joint" type="continuous"> 
@@ -318,7 +295,6 @@
         <origin xyz="${(chasis_x - front_rear_sep)/2} ${wheel_sep/2 + wheel_thickness} 0" rpy="-${pi/2} 0 0" />  
 
         <axis xyz="0 0 1"/> 
-        <limit effort="100" velocity="1" lower="-1" upper="1"/> 
     </joint> 
 
     <link name="back_left_wheel">
@@ -345,14 +321,14 @@
         <material>Gazebo/Blue</material>
     </gazebo>
     
-    <!-- <gazebo reference="left_wheel_rotate"> 
-    <mu1 value="2.0"/> 
-    <mu2 value="2.0"/> 
-    <kp  value="10000000.0" /> 
-    <kd  value="1.0" /> 
-    <fdir1 value="0 1 0"/> 
-    <material>Gazebo/White</material> 
-    </gazebo> -->
+    <gazebo reference="left_wheel_rear"> 
+        <mu1 value="2.0"/> 
+        <mu2 value="2.0"/> 
+        <kp  value="10000000.0" /> 
+        <kd  value="1.0" /> 
+        <fdir1 value="0 1 0"/> 
+        <material>Gazebo/Blue</material> 
+    </gazebo>
 	</robot>
 
 

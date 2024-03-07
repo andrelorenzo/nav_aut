@@ -24,25 +24,30 @@
         <color rgba="1 0 0 1"/>
     </material>
     <!-- PROPERTIES FOR SIZES -->
-    <xacro:property name="chasis_x" value="0.6"/>
-    <xacro:property name="chasis_y" value="0.3"/>
-    <xacro:property name="chasis_z" value="0.2"/>
-    <xacro:property name="chasis_mass" value="1.0"/>
+    <xacro:property name="chasis_x" value="0.94"/>
+    <xacro:property name="chasis_y" value="0.39"/>
+    <xacro:property name="chasis_z" value="0.28"/>
+    <xacro:property name="chasis_mass" value="50.0"/>
 
-    <xacro:property name="wheel_radius" value="0.05"/>
-    <xacro:property name="wheel_thickness" value="0.03"/>
-    <xacro:property name="wheel_sep" value="0.3"/>
-    <xacro:property name="front_rear_sep" value="0.5"/>
-    <xacro:property name="wheel_mass" value="0.05"/>
-    <xacro:property name="wheel_offset_x" value="0.226"/>
-    <xacro:property name="wheel_offset_y" value="0.166"/>
-    <xacro:property name="wheel_offset_z" value="0.01"/>
+    <xacro:property name="wheel_radius" value="0.155"/>
+    <xacro:property name="wheel_thickness" value="0.14"/>
+    <xacro:property name="wheel_sep" value="0.6"/>
+    <xacro:property name="front_rear_sep" value="0.65"/>
+    <xacro:property name="wheel_mass" value="0.5"/>
 
     <xacro:property name="max_steer" value="0.6458"/>
 
 	<!-- Base link -->  
-  <link name="base_link">
-  </link> 
+    <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </joint>
+
+    <link name="base_link">
+    </link> 
 
 	<!-- Chasis-->  
 	<joint name="chasis_joint" type="fixed">

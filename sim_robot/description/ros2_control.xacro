@@ -68,6 +68,7 @@
             <ros>
                 <remapping>ack_cont/odometry:=odom</remapping>
                 <remapping>ack_cont/tf_odometry:=tf</remapping> 
+                <remapping>ack_cont/reference_unstamped:=cmd_vel</remapping>
             </ros>
             <parameters>$(find sim_robot)/config/my_controllers.yaml</parameters>
             <parameters>$(find sim_robot)/config/gaz_ros2_ctl_use_sim.yaml</parameters>

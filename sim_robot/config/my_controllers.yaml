@@ -21,9 +21,9 @@ ack_cont:
     use_stamped_vel: false
     rear_wheels_names: [back_right_wheel_joint, back_left_wheel_joint]
     front_wheels_names: [front_right_wheel_rotate_joint,front_left_wheel_rotate_joint]
-    wheelbase: 0.5 #distance front to back wheels
-    front_wheel_track: 0.36 #distance between front wheels
-    rear_wheel_track: 0.36 #distance between back wheels
+    wheelbase: 0.65 #distance front to back wheels
+    front_wheel_track: 0.39 #distance between front wheels
+    rear_wheel_track: 0.39 #distance between back wheels
     # radius of both wheels back/front
-    front_wheels_radius: 0.05 
-    rear_wheels_radius: 0.05
+    front_wheels_radius: 0.155 
+    rear_wheels_radius: 0.155

@@ -18,15 +18,16 @@ def generate_launch_description():
     
     pkg_dir = get_package_share_directory("hunter_sim_pkg")
     rviz_file = os.path.join(pkg_dir, 'rviz', 'default_rviz1.rviz')
-    urdf = os.path.join(pkg_dir, 'description', 'hunter2.xacro')
     
-    xacro_file = os.path.join(pkg_dir,'description','simple_urdf','robot.urdf.xacro')
+    urdf_hunter_file = os.path.join(pkg_dir,'description','simple_urdf','robot.urdf.xacro')
+    sdf_hunter_file = os.path.join(pkg_dir,'models','model1','model.sdf')
+    with open(sdf_hunter_file, 'r') as infp:
+        robot_desc = infp.read()
+        
     
-    
-    coppelia_scene = os.path.join(pkg_dir,'scenes','ros2_mapirlab_hunter20.ttt')
-    launch_dir = os.path.join(pkg_dir,'launch')
+    launch_dir = os.path.join(pkg_dir,'launch') 
     gz_world_dir = os.path.join(pkg_dir, "scenes", "gazebo_world.world")
-    namespace = ""
+    namespace = "hunter20"
     
     
     
@@ -56,38 +57,20 @@ def generate_launch_description():
         arguments=['-d' + rviz_file],
         condition=IfCondition(use_rviz)
     )
+   
+    robot_description_config = Command(['xacro ', urdf_hunter_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
     
-    # Create variable with robot_description-> robot_state_publisher
-    robot_description = xacro.process_file(
-        os.path.join(pkg_dir, 'description','hunter2.xacro'),
-        mappings={'frame_ns': namespace}
-        )
-    robot_description = robot_description.toprettyxml(indent='  ')
-
-    robot_description_simple = Command(
-        ['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time]
-        )
-    
-    params = {'robot_description': robot_description_simple, 'use_sim_time': use_sim_time}
+    params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time}
     # Launch Robot State Publisher
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='both',
-        #parameters=[{'robot_description': robot_description}],
-        parameters=[params],
-        #arguments=[urdf],
+        
+        parameters=[params]
         )
-    
-    # coppelia = IncludeLaunchDescription(
-    #     XMLLaunchDescriptionSource(
-    #         os.path.join(
-    #             pkg_dir,'launch','coppelia_Sim.xml'
-    #         ),
-    #         condition=IfCondition(use_coppelia)
-    #     )
-    # )
+
     gz_server = ExecuteProcess(
         cmd=['gzserver', '-s', 'libgazebo_ros_init.so',
              '-s', 'libgazebo_ros_factory.so', gz_world_dir],
@@ -96,23 +79,29 @@ def generate_launch_description():
     gz_client= ExecuteProcess(
         cmd=['gzclient'],
         cwd=[launch_dir], output='both')
+
+     
     
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'hunter20',
-                                   '-z','10'],
-                        output='screen')  
+    spawn_entity = Node(
+            package='gazebo_ros', 
+            executable='spawn_entity.py',
+            arguments=['-entity', "hunter", 
+                        '-topic', 'robot_description',
+                        '-z', "10",],
+                        output='screen')
+     
+    ack_cont_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["ack_cont"]    
+    )
     
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_broad"]
     )
-    ack_cont_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["ack_cont"]    
-    )
+    
     
     ld = LaunchDescription()
     
@@ -121,16 +110,18 @@ def generate_launch_description():
     ld.add_action(declare_sim_time_cmd)
     ld.add_action(declare_ros2_control)
     
+    ld.add_action(rsp)
     #launch simulators
     ld.add_action(gz_server)
     ld.add_action(gz_client)
     
+    #launch Rviz
     ld.add_action(rviz)
-    ld.add_action(rsp)
     
+    #launch spawners
     ld.add_action(spawn_entity)
-    ld.add_action(joint_broad_spawner)
     ld.add_action(ack_cont_spawner)
+    ld.add_action(joint_broad_spawner)
     
     
     return ld

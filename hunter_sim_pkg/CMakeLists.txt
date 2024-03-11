@@ -31,6 +31,7 @@ install(DIRECTORY
   scenes
   mesh
   rviz
+  models
   DESTINATION share/${PROJECT_NAME}
 )
 

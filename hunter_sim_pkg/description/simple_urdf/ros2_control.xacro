@@ -50,8 +50,8 @@
             <ros>
                 <remapping>ack_cont/odometry:=odom</remapping>
                 <remapping>ack_cont/tf_odometry:=tf</remapping> 
-                <remapping>ack_cont/reference:=cmd_vel_stamped</remapping>
-                <!-- <remapping>ack_cont/reference_unstamped:=cmd_vel</remapping> -->
+                <!-- <remapping>ack_cont/reference:=cmd_vel_stamped</remapping> -->
+                <remapping>ack_cont/reference_unstamped:=cmd_vel</remapping>
             </ros>
             <parameters>$(find hunter_sim_pkg)/config/my_controllers.yaml</parameters>
             <parameters>$(find hunter_sim_pkg)/config/gaz_ros2_ctl_use_sim.yaml</parameters>

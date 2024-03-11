@@ -66,13 +66,6 @@ def generate_launch_description():
         ),
         condition=IfCondition(use_nav2_rviz),
     )
-    twist_stamper = Node(
-              package='twist_stamper',
-              executable='twist_stamper',
-              parameters=[{'use_sim_time': use_sim_time}],
-              remappings=[('/cmd_vel_in','/cmd_vel'),
-                          ('/cmd_vel_out','/cmd_vel_stamped')]
-           )
     
     ld = LaunchDescription()
 
@@ -83,5 +76,4 @@ def generate_launch_description():
     ld.add_action(localization)
     ld.add_action(navigation2)
     ld.add_action(rviz_nav2)
-    ld.add_action(twist_stamper)
     return ld

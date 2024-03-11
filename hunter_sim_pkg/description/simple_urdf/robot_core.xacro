@@ -46,7 +46,6 @@
 	<joint name="chasis_joint" type="fixed">
         <parent link="base_link"/> 
         <child link="chasis"/> 
-        <origin xyz="-${chasis_x/2} 0 0"/>
     </joint> 
 
     <link name="chasis"> 
@@ -66,9 +65,16 @@
         </geometry> 
         </collision> 
         
-        <xacro:inertial_box mass="${chasis_mass}" x="${chasis_x}" y="${chasis_y}" z="${chasis_z}">
-                <origin xyz="${chasis_x/2} 0 ${chasis_z/2}" rpy="0 0 0"/>
-        </xacro:inertial_box>
+        <inertial>
+            <mass value="21.02945169536679" />
+            <inertia
+              ixx="0.0332370959804736"
+              ixy="-1.013150489971E-06"
+              ixz="-0.00188859201421112"
+              iyy="0.111072002332437"
+              iyz="-5.13308150598312E-07"
+              izz="0.12660862809283" />
+          </inertial>
     </link>    
 
     <gazebo reference="chasis"> 
@@ -91,7 +97,11 @@
         <origin xyz="${front_rear_sep + (chasis_x - front_rear_sep)/2} -${wheel_sep/2 + wheel_thickness} 0" rpy="0 0 0" />  
 
         <axis xyz="0 0 1"/> 
-        <limit effort="100" velocity="1" lower="-${max_steer}" upper="${max_steer}"/> 
+        <limit
+      lower="-0.69"
+      upper="0.69"
+      effort="0"
+      velocity="0" />
     </joint> 
 
     <link name="front_right_wheel_rotate">
@@ -106,13 +116,21 @@
 		<collision> 
             <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
 		    <geometry> 
-                <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/> 
+                <sphere  radius="${wheel_radius}"/> 
             </geometry> 
 		</collision> 
 
-		<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
-        </xacro:inertial_cylinder>
+		<inertial>
+            <mass
+              value="7.696" />
+            <inertia
+              ixx="0.063704"
+              ixy="0"
+              ixz="0"
+              iyy="0.063704"
+              iyz="0"
+              izz="0.11068" />
+          </inertial>
 
 	</link>  
     
@@ -133,6 +151,7 @@
 
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" />  
         <axis xyz="0 0 -1" rpy="0 0 0" /> 
+        <dynamics damping="0.0" friction="15"/>
     </joint>
 
 	<link name="front_right_wheel_move"> 
@@ -146,13 +165,21 @@
 		
 		<collision> 
 		    <geometry> 
-                <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/> 
+                <sphere radius="${wheel_radius}"/> 
 		    </geometry> 
 		</collision>  
 
-        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-        </xacro:inertial_cylinder>
+        <inertial>
+            <mass
+              value="7.5613" />
+            <inertia
+              ixx="0.063626"
+              ixy="0"
+              ixz="0"
+              iyy="0.063626"
+              iyz="0"
+              izz="0.11054" />
+          </inertial>
 
 	</link> 
 
@@ -173,7 +200,11 @@
         <origin xyz="${front_rear_sep + (chasis_x - front_rear_sep)/2} ${wheel_sep/2 + wheel_thickness} 0" rpy="0 0 0" />  
 
         <axis xyz="0 0 1"/> 
-        <limit effort="100" velocity="1" lower="-${max_steer}" upper="${max_steer}"/> 
+        <limit
+        lower="-0.69"
+        upper="0.69"
+        effort="0"
+        velocity="0" />
     </joint> 
 
     <link name="front_left_wheel_rotate">
@@ -188,13 +219,20 @@
 		<collision> 
             <origin xyz="0 0 0" rpy="${-pi/2} 0 0" />
 		    <geometry> 
-                <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/> 
+                <sphere radius="${wheel_radius}"/> 
             </geometry> 
 		</collision> 
 
-		<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="${-pi/2} 0 0"/>
-        </xacro:inertial_cylinder>
+		<inertial>
+            <mass value="7.8526" />
+            <inertia
+              ixx="0.063827"
+              ixy="0"
+              ixz="0"
+              iyy="0.063827"
+              iyz="0"
+              izz="0.11091" />
+          </inertial>
 
 	</link>  
     
@@ -215,6 +253,7 @@
 
         <origin xyz="0 0 0" rpy="-${pi/2} 0 0" />  
         <axis xyz="0 0 1" rpy="0 0 0" /> 
+        <dynamics damping="0.0" friction="15"/>
     </joint>
 
 	<link name="front_left_wheel_move"> 
@@ -228,13 +267,21 @@
 		
 		<collision> 
 		    <geometry> 
-                <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/> 
+                <sphere radius="${wheel_radius}"/> 
 		    </geometry> 
 		</collision>  
 
-        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-        </xacro:inertial_cylinder>
+        <inertial>
+            <mass
+              value="7.7007" />
+            <inertia
+              ixx="0.063724"
+              ixy="0"
+              ixz="0"
+              iyy="0.063724"
+              iyz="0"
+              izz="0.11072" />
+          </inertial>
 
 	</link> 
 
@@ -253,7 +300,7 @@
         <parent link="chasis"/> 
         <child link="back_right_wheel"/> 
         <origin xyz="${(chasis_x - front_rear_sep)/2} -${wheel_sep/2 + wheel_thickness} 0" rpy="${pi/2} 0 0" />  
-
+        <dynamics damping="0.0" friction="15"/>
         <axis xyz="0 0 -1"/> 
     </joint> 
 
@@ -271,9 +318,17 @@
             </geometry> 
 		</collision> 
 
-		<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-        </xacro:inertial_cylinder>
+		<inertial>
+            <mass
+              value="7.7133" />
+            <inertia
+              ixx="0.06373"
+              ixy="0"
+              ixz="0"
+              iyy="0.06373"
+              iyz="0"
+              izz="0.11073" />
+          </inertial>
 
 	</link>  
     
@@ -291,7 +346,7 @@
         <parent link="chasis"/> 
         <child link="back_left_wheel"/> 
         <origin xyz="${(chasis_x - front_rear_sep)/2} ${wheel_sep/2 + wheel_thickness} 0" rpy="-${pi/2} 0 0" />  
-
+        <dynamics damping="0.0" friction="15"/>
         <axis xyz="0 0 1"/> 
     </joint> 
 
@@ -309,9 +364,17 @@
             </geometry> 
 		</collision> 
 
-		<xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-        </xacro:inertial_cylinder>
+		<inertial>
+            <mass
+              value="7.6692" />
+            <inertia
+              ixx="0.063699"
+              ixy="0"
+              ixz="0"
+              iyy="0.063699"
+              iyz="0"
+              izz="0.11067" />
+          </inertial>
 
 	</link>  
     

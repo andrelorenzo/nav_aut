@@ -1,0 +1,6 @@
+<?xml version="1.0"?> 
+<robot name="hunter_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="hunter_core.xacro"/>
+
+</robot>

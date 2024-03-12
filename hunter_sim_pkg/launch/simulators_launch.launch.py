@@ -20,9 +20,6 @@ def generate_launch_description():
     rviz_file = os.path.join(pkg_dir, 'rviz', 'default_rviz1.rviz')
     
     urdf_hunter_file = os.path.join(pkg_dir,'description','simple_urdf','robot.urdf.xacro')
-    sdf_hunter_file = os.path.join(pkg_dir,'models','model1','model.sdf')
-    with open(sdf_hunter_file, 'r') as infp:
-        robot_desc = infp.read()
         
     
     launch_dir = os.path.join(pkg_dir,'launch') 

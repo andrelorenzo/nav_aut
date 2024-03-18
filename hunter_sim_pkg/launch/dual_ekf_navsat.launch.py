@@ -13,7 +13,6 @@
 
 from launch import LaunchDescription
 from ament_index_python.packages import get_package_share_directory
-from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 import launch_ros.actions
 import os
@@ -55,26 +54,12 @@ def generate_launch_description():
                 output="screen",
                 parameters=[dual_params_file, {"use_sim_time": True}],
                 remappings=[
-                    ("imu/data", "imu/data"),
                     ("gps/fix", "gps/fix"),
                     ("gps/filtered", "gps/filtered"),
                     ("odometry/gps", "odometry/gps"),
                     ("odometry/filtered", "odometry/global"),
                 ],
             ),
-            launch_ros.actions.Node(
-                package="robot_localization",
-                executable="navsat_transform_node",
-                name="navsat_transform_goal",
-                output="screen",
-                parameters=[dual_params_file, {"use_sim_time": True}],
-                remappings=[
-                    ("imu/data", "imu/data"),
-                    ("gps/fix", "gps/goal_pose"),
-                    ("gps/filtered", "gps/goal_pose_filtered"),
-                    ("odometry/gps", "goal_pose"),
-                    ("odometry/filtered", "odometry/global"),
-                ],
-            ),
+
         ]
     )

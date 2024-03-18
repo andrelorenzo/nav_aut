@@ -4,16 +4,16 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument,ExecuteProcess
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.conditions import IfCondition
 from nav2_common.launch import RewrittenYaml
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    
+    pkg_name = "hunter_sim_pkg"
     bringup_dir = get_package_share_directory('nav2_bringup')
-    pkg_dir = get_package_share_directory("hunter_sim_pkg")
+    pkg_dir = get_package_share_directory(pkg_name)
     
     launch_dir = os.path.join(pkg_dir, 'launch')
     config_dir = os.path.join(pkg_dir, "config")
@@ -44,6 +44,14 @@ def generate_launch_description():
         }.items(),
     )
     
+    datum_params = os.path.join(pkg_dir,"config","datum_config.yaml")
+    datumgen = Node(
+        package=pkg_name,
+        executable="DatumGen",
+        output="log",
+        parameters=[datum_params]
+    )
+    
     localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(launch_dir, 'dual_ekf_navsat.launch.py')]),
     )
@@ -55,8 +63,7 @@ def generate_launch_description():
         launch_arguments={
             "use_sim_time": use_sim_time,
             "params_file": configured_params,
-            "autostart": "true",
-            "log_level": "warn",
+            "autostart": "True",
         }.items(),
     )
     
@@ -73,7 +80,8 @@ def generate_launch_description():
     ld.add_action(declare_rviz_nav2)
     
     ld.add_action(simulators)
-    ld.add_action(localization)
+    ld.add_action(datumgen)
+    #ld.add_action(localization)
     ld.add_action(navigation2)
     ld.add_action(rviz_nav2)
     return ld

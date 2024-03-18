@@ -3,13 +3,10 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, SetEnvironmentVariable, IncludeLaunchDescription,DeclareLaunchArgument
+from launch.actions import ExecuteProcess,DeclareLaunchArgument
 from launch_ros.actions import Node
-from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration,Command
 from launch.conditions import IfCondition
-import xacro
-from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
 
 def generate_launch_description():
     use_ros2_control = LaunchConfiguration('use_ros2_control')
@@ -50,9 +47,11 @@ def generate_launch_description():
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        output='screen',
+        output="screen",
         arguments=['-d' + rviz_file],
-        condition=IfCondition(use_rviz)
+        condition=IfCondition(use_rviz),
+        prefix=['xterm -e gdb -ex run --args']
+
     )
    
     robot_description_config = Command(['xacro ', urdf_hunter_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
@@ -63,7 +62,7 @@ def generate_launch_description():
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
-        output='both',
+        output="screen",
         
         parameters=[params]
         )
@@ -71,11 +70,14 @@ def generate_launch_description():
     gz_server = ExecuteProcess(
         cmd=['gzserver', '-s', 'libgazebo_ros_init.so',
              '-s', 'libgazebo_ros_factory.so', gz_world_dir],
-        cwd=[launch_dir], output='both')
+        cwd=[launch_dir], 
+        output="screen"
+        )
 
     gz_client= ExecuteProcess(
         cmd=['gzclient'],
-        cwd=[launch_dir], output='both')
+        cwd=[launch_dir], output="screen"
+        )
 
      
     
@@ -85,18 +87,21 @@ def generate_launch_description():
             arguments=['-entity', "hunter", 
                         '-topic', 'robot_description',
                         '-z', "10",],
-                        output='screen')
+                        output="screen"
+                        )
      
     ack_cont_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["ack_cont"]    
+        arguments=["ack_cont"],
+        output="screen"
     )
     
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_broad"]
+        arguments=["joint_broad"],
+        output="screen"
     )
     
     

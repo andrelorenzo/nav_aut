@@ -1,0 +1,6 @@
+DatumGen:
+  ros__parameters:            #TODOS LOS SUBS/PUBS SE APAGARAN PARA NO INTERFERIR CON OTROS NODOS!!!
+    odom_topic: /odom         #topic por el que se va a susbcribir a la odometria del robot (ruedas)
+    gps_topic: /gps/fix       #topic por el que recibe le mensaje NavSatFix de posicion GPS
+    cmd_vel_topic: /cmd_vel   #topic por donde enviara los comandos de velocidad
+    distance_to_move: 1

@@ -23,9 +23,11 @@ class datumGen: public rclcpp::Node
         //Subscribers
         rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr sub_odom;
         rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr sub_gps;
+        rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr sub_madgwick_imu;
 
         //Publishers
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_vel;
+        rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr pub_global_imu;
 
         //Server clients
         rclcpp::Client<robot_localization::srv::SetDatum>::SharedPtr client_datum;
@@ -34,17 +36,24 @@ class datumGen: public rclcpp::Node
         bool distance_reached;
         bool first_gps_received;
         bool control_flag;
+        bool datum_sended;
 
         //Variables
         geometry_msgs::msg::Twist cmd_vel;
         sensor_msgs::msg::NavSatFix gps1;
         sensor_msgs::msg::NavSatFix gps2;
         uint8_t distance_to_move;
+        float vel;
+        geographic_msgs::msg::GeoPose Datum;
+        sensor_msgs::msg::Imu imu_msg;
 
         //Methods
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);
         void gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
         void datumcallback(rclcpp::Client<robot_localization::srv::SetDatum>::SharedFuture future);
+        void madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg);
         void send_datum();
+        
+    
 };
 

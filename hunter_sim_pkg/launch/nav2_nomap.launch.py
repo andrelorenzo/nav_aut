@@ -4,11 +4,13 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, TimerAction, LogInfo,RegisterEventHandler
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.conditions import IfCondition
 from nav2_common.launch import RewrittenYaml
 from launch_ros.actions import Node
+from launch.event_handlers import (OnExecutionComplete, OnProcessExit,OnProcessIO, OnProcessStart, OnShutdown)
+
 
 def generate_launch_description():
     pkg_name = "hunter_sim_pkg"
@@ -54,6 +56,9 @@ def generate_launch_description():
     
     localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(launch_dir, 'dual_ekf_navsat.launch.py')]),
+        launch_arguments={
+            "use_sim_time" : use_sim_time,
+        }.items(),
     )
 
     navigation2 = IncludeLaunchDescription(
@@ -74,14 +79,12 @@ def generate_launch_description():
         condition=IfCondition(use_nav2_rviz),
     )
     
-    ld = LaunchDescription()
-
-    ld.add_action(declare_sim_time)
-    ld.add_action(declare_rviz_nav2)
+    return LaunchDescription([
+        declare_sim_time,
+        declare_rviz_nav2,
+        simulators,
+        localization,
+        navigation2,
+        rviz_nav2
+    ])
     
-    ld.add_action(simulators)
-    ld.add_action(datumgen)
-    #ld.add_action(localization)
-    ld.add_action(navigation2)
-    ld.add_action(rviz_nav2)
-    return ld

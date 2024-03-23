@@ -14,6 +14,7 @@
 from launch import LaunchDescription
 from ament_index_python.packages import get_package_share_directory
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 import launch_ros.actions
 import os
 import launch.actions
@@ -22,7 +23,7 @@ import launch.actions
 def generate_launch_description():
     package_dir = get_package_share_directory("hunter_sim_pkg")
     dual_params_file = os.path.join(package_dir, "config", "dual_ekf_navsat_params.yaml")
-
+    use_sim_time = LaunchConfiguration("use_sim_time")
     return LaunchDescription(
         [
             launch.actions.DeclareLaunchArgument(
@@ -31,12 +32,15 @@ def generate_launch_description():
             launch.actions.DeclareLaunchArgument(
                 "output_location", default_value="~/dual_ekf_navsat_example_debug.txt"
             ),
+            launch.actions.DeclareLaunchArgument(
+                "use_sim_time", default_value="true",description="Wehter to use simulation time"
+            ),
             launch_ros.actions.Node(
                 package="robot_localization",
                 executable="ekf_node",
                 name="ekf_filter_node_odom",
                 output="screen",
-                parameters=[dual_params_file, {"use_sim_time": True}],
+                parameters=[dual_params_file, {"use_sim_time": use_sim_time}],
                 remappings=[("odometry/filtered", "odometry/local")],
             ),
             launch_ros.actions.Node(
@@ -44,7 +48,7 @@ def generate_launch_description():
                 executable="ekf_node",
                 name="ekf_filter_node_map",
                 output="screen",
-                parameters=[dual_params_file, {"use_sim_time": True}],
+                parameters=[dual_params_file, {"use_sim_time": use_sim_time}],
                 remappings=[("odometry/filtered", "odometry/global")],
             ),
             launch_ros.actions.Node(
@@ -52,7 +56,7 @@ def generate_launch_description():
                 executable="navsat_transform_node",
                 name="navsat_transform",
                 output="screen",
-                parameters=[dual_params_file, {"use_sim_time": True}],
+                parameters=[dual_params_file, {"use_sim_time": use_sim_time}],
                 remappings=[
                     ("gps/fix", "gps/fix"),
                     ("gps/filtered", "gps/filtered"),

@@ -57,6 +57,7 @@ install(DIRECTORY
   mesh
   rviz
   models
+  urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

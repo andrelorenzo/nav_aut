@@ -13,6 +13,8 @@
   <test_depend>ament_lint_common</test_depend>
   
   <depend>robot_state_publisher</depend>
+  <depend>navigation2</depend>
+  <depend>robot_localization</depend>
   <depend>rviz</depend>
   <depend>joint_state_publisher_gui</depend>
   <depend>gazebo</depend>

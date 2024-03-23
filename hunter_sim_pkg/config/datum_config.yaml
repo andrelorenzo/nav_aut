@@ -1,6 +1,11 @@
 DatumGen:
-  ros__parameters:            #TODOS LOS SUBS/PUBS SE APAGARAN PARA NO INTERFERIR CON OTROS NODOS!!!
-    odom_topic: /odom         #topic por el que se va a susbcribir a la odometria del robot (ruedas)
-    gps_topic: /gps/fix       #topic por el que recibe le mensaje NavSatFix de posicion GPS
-    cmd_vel_topic: /cmd_vel   #topic por donde enviara los comandos de velocidad
-    distance_to_move: 1
+  ros__parameters:                    #ALL SUBS/PUBS ARE SHUTDOWN WHENEVER NOT NEEDED
+    odom_topic: /odom                 #topic where to receive wheel odometry
+    gps_topic: /gps/fix               #topic where to receive GPS coordinates in NavSatFix type
+    cmd_vel_topic: /cmd_vel           #topic where to send velocity commands
+    madgwick_imu_topic: /local_imu    #topic for receiving local IMU
+    global_imu_topic: /global_imu     #topic for sending global imu  = DATUM + imu_local
+    distance_to_move: 1               #recommended range: [1->5] m
+    speed: 0.5                        #speed in m/S
+    publish_global_imu: false         #Wheter to activate global IMU publishing
+

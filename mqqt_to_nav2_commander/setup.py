@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'send_poses = mqqt_to_nav2_commander.send_poses:main'
         ],
     },
 )

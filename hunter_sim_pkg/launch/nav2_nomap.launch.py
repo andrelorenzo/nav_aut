@@ -84,7 +84,9 @@ def generate_launch_description():
         declare_rviz_nav2,
         simulators,
         localization,
-        navigation2,
-        rviz_nav2
+        TimerAction(
+                        period=5.0,
+                        actions=[LogInfo(msg='Turtlesim started, spawning turtle'),navigation2,rviz_nav2]
+                    )
     ])
     

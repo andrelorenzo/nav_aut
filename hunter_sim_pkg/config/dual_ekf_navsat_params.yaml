@@ -18,9 +18,9 @@ ekf_filter_node_odom:
     world_frame: odom
 
     odom0: /odom
-    odom0_config: [true, true, false,
+    odom0_config: [false, false, false,
                   false, false, false,
-                  true,  true,  false,
+                  true,  true,  true,
                   false, false, true,
                   false, false, false]
 #        [x_pos   , y_pos    , z_pos,
@@ -30,7 +30,7 @@ ekf_filter_node_odom:
 #         x_accel , y_accel  , z_accel]
     odom0_queue_size: 10
     odom0_differential: false
-    odom0_relative: true      #for sensor to start at 0
+    odom0_relative: false      #for sensor to start at 0
     odom0_pose_rejection_threshold: 5.0
     odom0_twist_rejection_threshold: 1.0
 
@@ -38,8 +38,8 @@ ekf_filter_node_odom:
     imu0_config: [false, false, false,
                   true,  true,  true,
                   false, false, false,
-                  true,  true,  true,
-                  true,  true,  true]
+                  false,  false,  false,
+                  false,  false,  false]
     imu0_differential: false  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
     imu0_relative: false
     imu0_queue_size: 10
@@ -93,7 +93,7 @@ ekf_filter_node_odom:
 ekf_filter_node_map:
   ros__parameters:
     use_sim_time: true
-    frequency: 1.0
+    frequency: 30.0
     sensor_timeout: 0.1
     transform_timeout: 0.0
     two_d_mode: true  # Recommended to use 2d mode for nav2 in mostly planar environments
@@ -109,7 +109,7 @@ ekf_filter_node_map:
     odom0: /odom
     odom0_config: [false, false, false,
                   false, false, false,
-                  true,  true,  false,
+                  true,  true,  true,
                   false, false, true,
                   false, false, false]
     odom0_queue_size: 10
@@ -128,10 +128,10 @@ ekf_filter_node_map:
 
     imu0: /imu
     imu0_config: [false, false, false,
-                  true,  true,  true,
+                  false,  false,  true,
                   false, false, false,
-                  true,  true,  true,
-                  true,  true,  true]
+                  False,  false,  false,
+                  false,  false,  false]
     imu0_nodelay: false
     imu0_differential: false
     imu0_relative: false
@@ -183,6 +183,7 @@ navsat_transform:
     yaw_offset: 0.0
     zero_altitude: true
     broadcast_cartesian_transform: true
+    broadcast_cartesian_transform_as_parent_frame: true
     publish_filtered_gps: true
-    use_odometry_yaw: false
+    use_odometry_yaw: true
     wait_for_datum: false 

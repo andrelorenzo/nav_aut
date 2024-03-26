@@ -1,8 +1,5 @@
 #include "hunter_sim_pkg/datum_gen.hpp"
 
-#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
-#include "geometry_msgs/msg/quaternion.hpp"
-
 using std::placeholders::_1;
 using std::placeholders::_2;
 

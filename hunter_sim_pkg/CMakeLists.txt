@@ -16,6 +16,12 @@ find_package(geographic_msgs REQUIRED)
 find_package(robot_localization REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(jsoncpp REQUIRED)
+
+
+
+#for custom messages
+find_package(msg_srv_hunter REQUIRED)
 
 # for services
 find_package(rosidl_default_generators REQUIRED)
@@ -27,9 +33,11 @@ find_package(GeographicLib REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME} 
   "../robot_localization/srv/SetDatum.srv"
-  DEPENDENCIES robot_localization
+  "../msg_srv_hunter/msg/Marker.msg"
+  "../msg_srv_hunter/msg/Polygon.msg"
+  "../msg_srv_hunter/msg/Rectangle.msg"
+  DEPENDENCIES robot_localization msg_srv_hunter
 )
-
 
 include_directories(
   include
@@ -37,16 +45,21 @@ include_directories(
 #Add executable for Nodes
 add_executable(coppelia_simulator src/run_coppelia_simulator.cpp)
 add_executable(DatumGen src/datum_gen.cpp)
+add_executable(String2Ros src/String2ros.cpp)
 #Add dependencies for nodes
 ament_target_dependencies(coppelia_simulator rclcpp)
 ament_target_dependencies(DatumGen rclcpp nav_msgs sensor_msgs tf2_geometry_msgs std_msgs geometry_msgs robot_localization)
-
+ament_target_dependencies(String2Ros rclcpp std_msgs sensor_msgs nav_msgs msg_srv_hunter geometry_msgs jsoncpp robot_localization)
 
 target_link_libraries(
   DatumGen
   ${GeographicLib_LIBRARIES}
 )
 
+target_link_libraries(String2Ros 
+  jsoncpp 
+  ${GeographicLib_LIBRARIES}
+  )
 
 #install directories of pkg
 install(DIRECTORY 
@@ -63,16 +76,16 @@ install(DIRECTORY
 
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
 target_link_libraries(DatumGen "${cpp_typesupport_target}")
+target_link_libraries(String2Ros "${cpp_typesupport_target}")
 
 
 #install route to executables
 install(TARGETS
   coppelia_simulator
   DatumGen
+  String2Ros
   DESTINATION lib/${PROJECT_NAME}
 )
-
-add_compile_options(-g)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

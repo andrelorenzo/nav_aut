@@ -9,7 +9,7 @@ datumGen::datumGen(): Node("DatumGen")
 {
   //Custom quality of service
   auto qos = rclcpp::SensorDataQoS().reliability(rmw_qos_reliability_policy_t::RMW_QOS_POLICY_RELIABILITY_RELIABLE);
-
+  
   //Declaration of parameters
   this->declare_parameter("odom_topic","/odom");
   this->declare_parameter("gps_topic","/gps/fix");
@@ -18,7 +18,7 @@ datumGen::datumGen(): Node("DatumGen")
   this->declare_parameter("madgwick_imu_topic","/madgwick_imu");
   this->declare_parameter("distance_to_move",1);
   this->declare_parameter("speed",0.5);
-  this->declare_parameter("publish_gloab_imu",false);
+  this->declare_parameter("publish_global_imu",false);
 
   const std::string odom_topic = this->get_parameter("odom_topic").as_string();
   const std::string gps_topic = this->get_parameter("gps_topic").as_string();
@@ -27,7 +27,7 @@ datumGen::datumGen(): Node("DatumGen")
   const std::string madgwick_imu_topic = this->get_parameter("madgwick_imu_topic").as_string();
   const int distance2move = this->get_parameter("distance_to_move").as_int();
   const double speed = this->get_parameter("speed").as_double();
-  const bool publish_imu = this->get_parameter("publish_gloab_imu").as_bool();
+  const bool publish_imu = this->get_parameter("publish_global_imu").as_bool();
 
   //Subscribers
       //datumGen
@@ -47,8 +47,8 @@ datumGen::datumGen(): Node("DatumGen")
   //Global correction
   if(publish_imu){
   sub_madgwick_imu = this->create_subscription<sensor_msgs::msg::Imu>(
-          madgwick_imu_topic, qos, std::bind(&datumGen::madgwickImuCallback, this, _1));
-  pub_global_imu = this->create_publisher<sensor_msgs::msg::Imu>(global_imu_topic,qos);
+          madgwick_imu_topic, 5, std::bind(&datumGen::madgwickImuCallback, this, _1));
+  pub_global_imu = this->create_publisher<sensor_msgs::msg::Imu>(global_imu_topic,5);
   }
 
   //Variable initialization
@@ -123,8 +123,7 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
   if(datum_sended)
   {
     //  Header with the same frame and the actual time
-    imu_msg.header.frame_id = msg->header.frame_id;
-    imu_msg.header.stamp = this->now();
+    imu_msg.header = msg->header;
 
     // We set the other fields to the same value in acceleration and velocity
     imu_msg.angular_velocity.x = msg->angular_velocity.x;
@@ -136,9 +135,9 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration.z = msg->linear_acceleration.z;
 
     // For now we create the covariance matrix as a constant
-    imu_msg.orientation_covariance = {0.1,0.0,0.0,
-                                      0.0,0.1,0.0,
-                                      0.0,0.0,0.1};
+    imu_msg.orientation_covariance = {0.0,0.0,0.0,
+                                      0.0,0.0,0.0,
+                                      0.0,0.0,0.0};
 
     imu_msg.angular_velocity_covariance[0] = msg->angular_velocity_covariance[0];
     imu_msg.angular_velocity_covariance[4] = msg->angular_velocity_covariance[4];
@@ -150,16 +149,28 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
 
 
     // To create a global IMU, we add de value of de Datum (aka. Initial global orientation + the local orientation)
-    geometry_msgs::msg::Quaternion q_msg;
-    q_msg.x = Datum.orientation.x + msg->orientation.x;
-    q_msg.y = Datum.orientation.y + msg->orientation.y;
-    q_msg.z = Datum.orientation.z + msg->orientation.z;
-    q_msg.w = Datum.orientation.w + msg->orientation.w; 
-    tf2::Quaternion q;
-    tf2::fromMsg(q_msg,q);
-    q.normalize();
-    imu_msg.orientation = tf2::toMsg(q);    
+    tf2::Quaternion q_msg(
+        msg->orientation.x,
+        msg->orientation.y,
+        msg->orientation.z,
+        msg->orientation.w);
+    tf2::Matrix3x3 m_msg(q_msg);
+    double roll, pitch, yaw_msg;
+    m_msg.getRPY(roll, pitch, yaw_msg);
 
+    tf2::Quaternion q_datum(
+        Datum.orientation.x,
+        Datum.orientation.y,
+        Datum.orientation.z,
+        Datum.orientation.w);
+    tf2::Matrix3x3 m_datum(q_datum);
+    double yaw_datum;
+    m_datum.getRPY(roll, pitch, yaw_datum);
+    
+    tf2::Quaternion q;
+    q.setRPY(0,0,(yaw_datum + yaw_msg));
+    q.normalize();
+    imu_msg.orientation = tf2::toMsg(q);  
     pub_global_imu->publish(imu_msg);
   }
 }
@@ -180,7 +191,7 @@ void datumGen::send_datum()
   double theta = atan2(Y,X);
 
   // Bearing 0º is East and goes anticlockwise in [0, 2pi], 360 - (angle + 90) == 270 - angle
-  double bearing = (2* M_PI/3) - fmod((theta + 2*M_PI),(2*M_PI));
+  double bearing = angleWrap((M_PI/2) - fmod((theta + (2*M_PI)),(2*M_PI)));
   
   //transform to quaternion
   tf2::Quaternion q;
@@ -224,6 +235,13 @@ void datumGen::datumcallback(rclcpp::Client<robot_localization::srv::SetDatum>::
   datum_sended = true;
 }
 
+double datumGen::angleWrap(double angle)
+{
+  if (angle < 0){return ((2*M_PI) - abs(angle));}
+  else if (angle > 360){return (angle - (2*M_PI));}
+  else {return angle;}
+}
+
 int main ( int argc, char * argv[] )
 {
     // init ROS2 node
@@ -233,7 +251,7 @@ int main ( int argc, char * argv[] )
     auto node = std::make_shared<datumGen>();
 
     // run at 1Hz
-    rclcpp::Rate loop_rate(5);
+    rclcpp::Rate loop_rate(60);
     while (rclcpp::ok())
     {
         rclcpp::spin_some(node);    // attend subscriptions and srv request

@@ -9,7 +9,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.conditions import IfCondition
 from nav2_common.launch import RewrittenYaml
 from launch_ros.actions import Node
-from launch.event_handlers import (OnExecutionComplete, OnProcessExit,OnProcessIO, OnProcessStart, OnShutdown)
 
 
 def generate_launch_description():
@@ -50,7 +49,7 @@ def generate_launch_description():
     datumgen = Node(
         package=pkg_name,
         executable="DatumGen",
-        output="log",
+        output="screen",
         parameters=[datum_params]
     )
     

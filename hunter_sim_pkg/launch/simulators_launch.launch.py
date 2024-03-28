@@ -3,13 +3,14 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess,DeclareLaunchArgument,SetEnvironmentVariable
+from launch.actions import ExecuteProcess,DeclareLaunchArgument,SetEnvironmentVariable,IncludeLaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration,Command
 from launch.conditions import IfCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+
 
 def generate_launch_description():
-    use_ros2_control = LaunchConfiguration('use_ros2_control')
     use_rviz = LaunchConfiguration('use_rviz')
     use_sim_time = LaunchConfiguration('use_sim_time')
     
@@ -54,10 +55,6 @@ def generate_launch_description():
         default_value='true',
         description='Whether to use simulation time')
     
-    declare_ros2_control = DeclareLaunchArgument(
-        'use_ros2_control',
-        default_value='true',
-        description='Whether to use ros2_control')
     
     
     
@@ -66,14 +63,14 @@ def generate_launch_description():
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        output="screen",
         arguments=['-d' + rviz_file],
+        output="screen",
         condition=IfCondition(use_rviz),
+        prefix="terminator -x"
     )
+
    
-    robot_description_config = Command(['xacro ', urdf_hunter_file, ' use_ros2_control:=', use_ros2_control, ' sim_mode:=', use_sim_time])
-    
-    
+    robot_description_config = Command(['xacro ', urdf_hunter_file, ' sim_mode:=', use_sim_time])
     # robot_description_config for hunter and robot_description_turtlebot for turtlebot
     params = {'robot_description': robot_description_turtlebot, 'use_sim_time': use_sim_time}
     # Launch Robot State Publisher
@@ -82,20 +79,33 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output="screen",
-        parameters=[params]
+        parameters=[params],
         )
 
+    gazebo_params = os.path.join(pkg_dir,"config","extra_gazebo_params.yaml")
     gz_server = ExecuteProcess(
         cmd=['gzserver', '-s', 'libgazebo_ros_init.so',
-             '-s', 'libgazebo_ros_factory.so', gz_world_dir],
+             '-s', 'libgazebo_ros_factory.so',gz_world_dir,"--ros-args params_file:= ",gazebo_params],
         cwd=[launch_dir], 
-        output="screen"
+        output="screen",
+        condition = IfCondition(use_sim_time)
         )
 
     gz_client= ExecuteProcess(
         cmd=['gzclient'],
-        cwd=[launch_dir], output="screen"
+        cwd=[launch_dir], output="log",
+        condition = IfCondition(use_sim_time),
         )
+    # gazebo = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         os.path.join(get_package_share_directory("gazebo_ros"), "launch", "gazebo.launch.py")
+    #     ),
+    #     launch_arguments={
+    #         "world": gz_world_dir,
+    #         'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params
+    #     }.items(),
+    #     condition = IfCondition(use_sim_time)
+    # )
 
      
     
@@ -130,7 +140,6 @@ def generate_launch_description():
     ld.add_action(set_tb3_model_cmd)
     ld.add_action(declare_rviz_cmd)
     ld.add_action(declare_sim_time_cmd)
-    ld.add_action(declare_ros2_control)
     
     ld.add_action(rsp)
     #launch simulators

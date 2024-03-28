@@ -3,9 +3,9 @@ DatumGen:
     odom_topic: /odom                 #topic where to receive wheel odometry
     gps_topic: /gps/fix               #topic where to receive GPS coordinates in NavSatFix type
     cmd_vel_topic: /cmd_vel           #topic where to send velocity commands
-    madgwick_imu_topic: /local_imu    #topic for receiving local IMU
-    global_imu_topic: /global_imu     #topic for sending global imu  = DATUM + imu_local
+    madgwick_imu_topic: /imu_global    #topic for receiving local IMU
+    global_imu_topic: /odometry_imu     #topic for sending global imu  = DATUM + imu_local
     distance_to_move: 1               #recommended range: [1->5] m
     speed: 0.5                        #speed in m/S
-    publish_global_imu: false         #Wheter to activate global IMU publishing
+    publish_global_imu: true         #Wheter to activate global IMU publishing
 

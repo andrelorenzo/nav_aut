@@ -53,6 +53,7 @@ class datumGen: public rclcpp::Node
         void datumcallback(rclcpp::Client<robot_localization::srv::SetDatum>::SharedFuture future);
         void madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg);
         void send_datum();
+        double angleWrap(double angle);
 
         
         

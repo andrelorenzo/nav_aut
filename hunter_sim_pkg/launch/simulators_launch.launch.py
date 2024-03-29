@@ -82,20 +82,25 @@ def generate_launch_description():
         parameters=[params],
         )
 
-    gazebo_params = os.path.join(pkg_dir,"config","extra_gazebo_params.yaml")
-    gz_server = ExecuteProcess(
-        cmd=['gzserver', '-s', 'libgazebo_ros_init.so',
-             '-s', 'libgazebo_ros_factory.so',gz_world_dir,"--ros-args params_file:= ",gazebo_params],
-        cwd=[launch_dir], 
-        output="screen",
-        condition = IfCondition(use_sim_time)
-        )
+    gazebo_params = os.path.join(pkg_dir,"config","gazebo_params.yaml")
+    gazebo = ExecuteProcess( 
+    cmd=['gazebo', gz_world_dir, '-s', 'libgazebo_ros_init.so',  
+    '-s', 'libgazebo_ros_factory.so', '--ros-args', '--params-file', gazebo_params], 
+    output='screen', 
+    )
+    # gz_server = ExecuteProcess(
+    #     cmd=['gzserver', '-s', 'libgazebo_ros_init.so',
+    #          '-s', 'libgazebo_ros_factory.so',gz_world_dir," params_file:= ",gazebo_params],
+    #     cwd=[launch_dir], 
+    #     output="screen",
+    #     condition = IfCondition(use_sim_time)
+    #     )
 
-    gz_client= ExecuteProcess(
-        cmd=['gzclient'],
-        cwd=[launch_dir], output="log",
-        condition = IfCondition(use_sim_time),
-        )
+    # gz_client= ExecuteProcess(
+    #     cmd=['gzclient'],
+    #     cwd=[launch_dir], output="log",
+    #     condition = IfCondition(use_sim_time),
+    #     )
     # gazebo = IncludeLaunchDescription(
     #     PythonLaunchDescriptionSource(
     #         os.path.join(get_package_share_directory("gazebo_ros"), "launch", "gazebo.launch.py")
@@ -143,8 +148,8 @@ def generate_launch_description():
     
     ld.add_action(rsp)
     #launch simulators
-    ld.add_action(gz_server)
-    ld.add_action(gz_client)
+    ld.add_action(gazebo)
+    # ld.add_action(gz_client)
     
     #launch Rviz
     ld.add_action(rviz)

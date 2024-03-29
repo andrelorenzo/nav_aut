@@ -24,3 +24,4 @@ mqtt_client:
         follow:
           ros_topic: /web/follow
           primitive: true
+

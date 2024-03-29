@@ -73,30 +73,37 @@ def generate_launch_description():
     )
     
     #A node to receive Mqtt petitions and remaps to std_msgs::msg::String topic
-    # mqtt_params = os.path.join(get_package_share_directory("mqtt_client"),"config","mqtt_config.yaml")
-    mqtt_client = IncludeLaunchDescription(
-        XMLLaunchDescriptionSource(
-            os.path.join(get_package_share_directory("mqtt_client"),"launch","standalone.launch.ros2.xml")
-        )
+    mqtt_params = os.path.join(get_package_share_directory("mqtt_client"),"config","mqtt_config.yaml")
+    mqtt_client = Node(
+        package="mqtt_client",
+        executable="mqtt_client",
+        name="mqtt_client",
+        output="screen",
+        arguments=["--params-file:= ",mqtt_params]
     )
+    # mqtt_client = IncludeLaunchDescription(
+    #     XMLLaunchDescriptionSource(
+    #         os.path.join(get_package_share_directory("mqtt_client"),"launch","standalone.launch.ros2.xml")
+    #     )
+    # )
     
-    #Custom node, that receives the Strings from de mqtt bridge, calculates the apropiate goal / goal_array and sends it to the commander
-    #Also provides to the broker with the actual position of the robot
+    #Custom node, that receives the Strings from de mqtt bridge, calculates the apropiate goal / goal_array and sends it to the commander,
+    #also provides to the broker with the actual position of the robot
     String2ros = Node(
-        package=pkg_dir,
+        package=pkg_name,
         executable="String2Ros",
         name="String2Ros"
     )
     
-    #Custom node, that receives either a goal petitions sends a GoToPose petitions to Nav2, a goal_array and sends it to Waypointsfollower
-    # or a follow me order where sends a GoToPose petitions but changing the Behaviour tree used
+    #Custom node, that receives either a goal petitions and send, a GoToPose petitions to Nav2, a goal_array and sends it to Waypointsfollower
+    # or a follow me order where it sends  a GoToPose petitions but with a different Behaviour tree (BT)
     nav2_commander = Node(
         package="mqqt_to_nav2_commander",
         executable="send_poses",
         name="nav2_commander"
     )
     
-    #   Nav2 Bringup with custom configuration, using Smac Hybrid A* as planner and MPPI as controller, prepared for ackerman model
+    #   Nav2 Bringup with custom configuration, using Smac Hybrid A* as planner and MPPI as controller, prepared for ackerman model (REEDS-SHEEP)
     configured_params = RewrittenYaml(
         source_file=nav2_params, root_key="", param_rewrites="", convert_types=True) 
     navigation2 = IncludeLaunchDescription(
@@ -107,6 +114,7 @@ def generate_launch_description():
             "use_sim_time": use_sim_time,
             "params_file": configured_params,
             "autostart": "True",
+            "log_level":"warn"
         }.items(),
         condition=IfCondition(use_nav2),
     )
@@ -132,7 +140,7 @@ def generate_launch_description():
     #   4º timer to be launch, 5 second = Just to not saturate with initialization of nodes (can be bring down or eliminate)
     interfaces_mqqt_timer = TimerAction(
                         period=5.0,
-                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),mqtt_client,String2ros,nav2_commander,navigation2_timer]
+                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),navigation2_timer]
     )
     #   3º timer to be launch, 10 seconds = datumGen makes the robot move, IT is very important that when localization is launch
     #   the robot is completly stoped in its final position, otherwise will be inconsistencies in position/ orientation

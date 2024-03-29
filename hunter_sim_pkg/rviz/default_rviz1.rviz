@@ -69,56 +69,65 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_left_wheel:
+        base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        back_right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        chasis:
+          Value: true
+        base_scan:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_wheel_move:
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_left_wheel_rotate:
+        camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        caster_back_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_wheel_move:
+        caster_back_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_wheel_rotate:
+        gps_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        gps_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         imu_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        wheel_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
           Value: true
-        laser_frame:
+        wheel_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -157,25 +166,39 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        back_left_wheel:
-          Value: true
-        back_right_wheel:
+        base_footprint:
           Value: true
         base_link:
           Value: true
-        chasis:
+        base_scan:
           Value: true
-        front_left_wheel_rotate:
+        camera_depth_frame:
           Value: true
-        front_right_wheel_rotate:
+        camera_depth_optical_frame:
           Value: true
-        gps_frame:
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
+        caster_back_left_link:
+          Value: true
+        caster_back_right_link:
+          Value: true
+        gps_link:
           Value: true
         imu_link:
           Value: true
-        laser_frame:
+        map:
           Value: true
         odom:
+          Value: true
+        utm:
+          Value: true
+        wheel_left_link:
+          Value: true
+        wheel_right_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -183,23 +206,34 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
+        map:
+          {}
         odom:
-          base_link:
-            chasis:
-              back_left_wheel:
+          base_footprint:
+            base_link:
+              base_scan:
                 {}
-              back_right_wheel:
+              camera_link:
+                camera_depth_frame:
+                  camera_depth_optical_frame:
+                    {}
+                camera_rgb_frame:
+                  camera_rgb_optical_frame:
+                    {}
+              caster_back_left_link:
                 {}
-              front_left_wheel_rotate:
+              caster_back_right_link:
                 {}
-              front_right_wheel_rotate:
-                {}
-              gps_frame:
+              gps_link:
                 {}
               imu_link:
                 {}
-              laser_frame:
+              wheel_left_link:
                 {}
+              wheel_right_link:
+                {}
+        utm:
+          {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -239,7 +273,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -282,25 +316,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 33.67173385620117
+      Distance: 5.497016906738281
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.009548813104629517
-        Y: -0.121631920337677
-        Z: 0.7110340595245361
+        X: 0.13456206023693085
+        Y: -0.11822177469730377
+        Z: 0.6041161417961121
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.595399022102356
+      Pitch: 1.4103989601135254
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9803982377052307
+      Yaw: 1.3053981065750122
     Saved: ~
 Window Geometry:
   Displays:

@@ -12,6 +12,8 @@
 #include "geometry_msgs/msg/pose_array.hpp"
 #include <robot_localization/srv/from_ll.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include "area_path_gen.hpp"
 #include <math.h>
 
 class String2ros: public rclcpp::Node
@@ -42,7 +44,10 @@ class String2ros: public rclcpp::Node
         std_msgs::msg::String json;
         msg_srv_hunter::msg::Marker cord_past;
         msg_srv_hunter::msg::Marker cord;
- 
+        AreaPathGenerator path_generator;
+        float step;
+        float error;
+
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);
         void posCallback(const std_msgs::msg::String::SharedPtr msg);
         void fromllCallback(rclcpp::Client<robot_localization::srv::FromLL>::SharedFuture future);

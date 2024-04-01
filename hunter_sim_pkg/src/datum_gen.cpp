@@ -123,8 +123,7 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
   if(datum_sended)
   {
     //  Header with the same frame and the actual time
-    imu_msg.header.stamp.sec = this->get_clock()->now().seconds();
-    imu_msg.header.stamp.nanosec = this->get_clock()->now().nanoseconds();
+    imu_msg.header.stamp = msg->header.stamp;
     imu_msg.header.frame_id = msg->header.frame_id;
 
     // We set the other fields to the same value in acceleration and velocity
@@ -137,9 +136,9 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration.z = msg->linear_acceleration.z;
 
     // For now we create the covariance matrix as a constant
-    imu_msg.orientation_covariance = {0.001,0.0,0.0,
-                                      0.0,0.001,0.0,
-                                      0.0,0.0,0.001};
+    imu_msg.orientation_covariance = {DBL_MAX,0.0,0.0,
+                                      0.0,DBL_MAX,0.0,
+                                      0.0,0.0,DBL_MAX};
 
     imu_msg.angular_velocity_covariance[0] = msg->angular_velocity_covariance[0];
     imu_msg.angular_velocity_covariance[4] = msg->angular_velocity_covariance[4];
@@ -159,18 +158,18 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     tf2::Matrix3x3 m_msg(q_msg);
     double roll, pitch, yaw_msg;
     m_msg.getRPY(roll, pitch, yaw_msg);
-    tf2::Quaternion q_datum(
-        Datum.orientation.x,
-        Datum.orientation.y,
-        Datum.orientation.z,
-        Datum.orientation.w);
-    tf2::Matrix3x3 m_datum(q_datum);
-    double yaw_datum;
-    m_datum.getRPY(roll, pitch, yaw_datum);
-    double yaw_trimed = angleWrap(fmod((yaw_msg+yaw_datum) + (2*M_PI) ,(2*M_PI)));
-    RCLCPP_DEBUG(this->get_logger(), "Datum: %.6f and IMU_OR: %.6f and the sum: %.6f",yaw_datum* (180/M_PI),yaw_msg* (180/M_PI), (yaw_trimed)* (180/M_PI));
+    // tf2::Quaternion q_datum(
+    //     Datum.orientation.x,
+    //     Datum.orientation.y,
+    //     Datum.orientation.z,
+    //     Datum.orientation.w);
+    // tf2::Matrix3x3 m_datum(q_datum);
+    // double yaw_datum;
+    // m_datum.getRPY(roll, pitch, yaw_datum);
+    // double yaw_trimed = angleWrap(fmod(yaw_msg + (2*M_PI) ,(2*M_PI)));
+    // RCLCPP_DEBUG(this->get_logger(), "IMU_OR: %.6f and the sum: %.6f",yaw_msg* (180/M_PI), (yaw_trimed)* (180/M_PI));
     tf2::Quaternion q;
-    q.setRPY(0,0,(yaw_trimed));
+    q.setRPY(0,0,(yaw_msg));
     q.normalize();
     imu_msg.orientation = tf2::toMsg(q);  
     pub_global_imu->publish(imu_msg);

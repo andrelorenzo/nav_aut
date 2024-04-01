@@ -1,0 +1,12 @@
+String2Ros:
+  ros__parameters:
+    odom_topic: "/odometry/local"             # odometry where to receive the information
+    web_goal_topic: "/web/desired_pos"        # where to revceive goal pose from the MQTT bridge
+    gps_topic: "/gps/fix"                     # where to receive gps coordinates
+    single_goal_topic: "/mqtt/goal"           # where to send goal, for the commander to call Nav2
+    multiple_goals_topic: "/mqtt/goal_array"  # where to send multiple goals (Waypoint follower)
+    publish_to_web_pose: "/web/gt"            # where to send robot pose to the MQTT bridge, only if send_pose_to_web = true 
+    timer_to_web_send: 5                      # time in seconds at what rate the pose is send to the MQTT bridge (too low will stop the web)
+    send_pose_to_web: false                   # wheteher to send the robot pose to the MQTT bridge
+    error_to_send_actualizaton: 0.00001       # if the difference in poses is grater than this we send it to the MQTT server (too many petitions will lag the web)
+    step_area: 8.0                            # what distance to create the paths in meters, 8 meters = generate points 8 meters apart

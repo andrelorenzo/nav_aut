@@ -20,6 +20,7 @@ find_package(jsoncpp REQUIRED)
 
 
 
+
 #for custom messages
 find_package(msg_srv_hunter REQUIRED)
 
@@ -49,7 +50,7 @@ add_executable(String2Ros src/String2ros.cpp)
 #Add dependencies for nodes
 ament_target_dependencies(coppelia_simulator rclcpp)
 ament_target_dependencies(DatumGen rclcpp nav_msgs sensor_msgs tf2_geometry_msgs std_msgs geometry_msgs robot_localization)
-ament_target_dependencies(String2Ros rclcpp std_msgs sensor_msgs nav_msgs msg_srv_hunter geometry_msgs jsoncpp robot_localization)
+ament_target_dependencies(String2Ros rclcpp std_msgs sensor_msgs nav_msgs tf2_geometry_msgs msg_srv_hunter geometry_msgs jsoncpp robot_localization)
 
 target_link_libraries(
   DatumGen

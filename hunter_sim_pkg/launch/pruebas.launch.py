@@ -89,10 +89,14 @@ def generate_launch_description():
     
     #Custom node, that receives the Strings from de mqtt bridge, calculates the apropiate goal / goal_array and sends it to the commander,
     #also provides to the broker with the actual position of the robot
-    String2ros = Node(
+    string2ros_params = os.path.join(pkg_dir,"config","string2ros_config.yaml")
+    
+    string2ros = Node(
         package=pkg_name,
         executable="String2Ros",
-        name="String2Ros"
+        name="String2Ros",
+        output="screen",
+        parameters=[string2ros_params]
     )
     
     #Custom node, that receives either a goal petitions and send, a GoToPose petitions to Nav2, a goal_array and sends it to Waypointsfollower

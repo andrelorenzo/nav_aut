@@ -12,6 +12,7 @@ def generate_launch_description():
         package=pkg_name,
         executable="DatumGen",
         output="screen",
+        name="Datumgen"
         parameters=[datum_params]
     )
 

@@ -11,7 +11,7 @@
 #include "geometry_msgs/msg/quaternion.hpp"
 #include <string>
 #include <math.h>
-
+#include <float.h>
 
 class datumGen: public rclcpp::Node
 {
@@ -53,10 +53,7 @@ class datumGen: public rclcpp::Node
         void datumcallback(rclcpp::Client<robot_localization::srv::SetDatum>::SharedFuture future);
         void madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg);
         void send_datum();
-        double angleWrap(double angle);
-
-        
-        
+        double angleWrap(double angle);   
     
 };
 

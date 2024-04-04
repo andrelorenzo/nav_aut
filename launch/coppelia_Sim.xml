@@ -1,0 +1,16 @@
+<launch>
+  <node pkg="tfg_pkg" exec="coppelia_simulator" name="coppelia_simulator" output="screen">
+    # SIMULATOR PARAMETERS
+    <param name="coppelia_root_dir" value="~/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04" />
+    <param name="coppelia_scene_path" value="$(find-pkg-share tfg_pkg)/scenes/ros2_mapirlab_hunter20.ttt" />
+    <param name="coppelia_headless" value="False" />
+    
+    # SCENE PARAMETERS
+    <param name="num_beacons" value="7" />      # number of beacons to generate (range-bearing)
+    <param name="show_laser" value="False" />   # show laser on Coppelia simulation (CPU intense)
+    <param name="tf_gt" value="False" />        # publish over TF the map->base_link transf (groundt-truth pose)
+    <param name="tf_odom" value="True" />       # publish over TF the odom->base_link transf (odom)
+    <param name="var_v" value="0.01" />         # noise in linear velocity commands
+    <param name="var_w" value="0.01" />         # noise in angular velocity commands
+  </node>
+</launch>

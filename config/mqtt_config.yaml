@@ -1,0 +1,27 @@
+mqtt_client:
+  ros__parameters:
+    broker:
+      host: 192.168.1.128
+      port: 1883
+      user: "ros"
+      pass: "ros2324"
+    client:
+      id: ros123
+    bridge:
+      ros2mqtt:
+        ros_topics: 
+          - /web/gt
+        /web/gt:
+          mqtt_topic: position
+          primitive: true
+      mqtt2ros:
+        mqtt_topics: 
+          - desired_pos
+          - follow
+        desired_pos:
+          ros_topic: /web/desired_pos
+          primitive: true
+        follow:
+          ros_topic: /web/follow
+          primitive: true
+

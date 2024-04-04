@@ -1,0 +1,12 @@
+DatumGen:
+  ros__parameters:                    #ALL SUBS/PUBS ARE SHUTDOWN WHENEVER NOT NEEDED
+    odom_topic: /hunter/odom                 #topic where to receive wheel odometry
+    gps_topic: /hunter/fix               #topic where to receive GPS coordinates in NavSatFix type
+    cmd_vel_topic: /cmd_vel           #topic where to send velocity commands
+    madgwick_imu_topic: /imu_complementary  #topic for receiving local IMU
+    global_imu_topic: /odometry_imu     #topic for sending global imu  = DATUM + imu_local
+    distance_to_move: 2               #recommended range: [1->5] m
+    speed: 0.8                        #speed in m/S
+    publish_global_imu: true         #Wheter to activate global IMU publishing
+    debug: true
+

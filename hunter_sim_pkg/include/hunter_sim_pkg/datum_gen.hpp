@@ -46,6 +46,7 @@ class datumGen: public rclcpp::Node
         float vel;
         geographic_msgs::msg::GeoPose Datum;
         sensor_msgs::msg::Imu imu_msg;
+        nav_msgs::msg::Odometry robot_pose;
         
         //Methods
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);

@@ -63,8 +63,8 @@ datumGen::datumGen(): Node("DatumGen")
                                           0.0,0.0,0.0,
                                           0.0,0.0,0.0};
   imu_msg.linear_acceleration_covariance = {0.0,0.0,0.0,
-                                              0.0,0.0,0.0,
-                                              0.0,0.0,0.0};
+                                            0.0,0.0,0.0,
+                                            0.0,0.0,0.0};
 }
 
 datumGen::~datumGen(){
@@ -73,6 +73,7 @@ datumGen::~datumGen(){
 
 void datumGen::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
+  robot_pose = msg;
   if(first_gps_received && !distance_reached)
   {
     //When the first GPS is received, we start moving forward
@@ -132,7 +133,7 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.angular_velocity.z = msg->angular_velocity.z;
 
     imu_msg.linear_acceleration.x = msg->linear_acceleration.x;
-    imu_msg.linear_acceleration.y = msg->linear_acceleration.y;
+    imu_msg.linear_acceleration.y = 0;
     imu_msg.linear_acceleration.z = msg->linear_acceleration.z;
 
     // For now we create the covariance matrix as a constant
@@ -148,8 +149,11 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration_covariance[4] = msg->linear_acceleration_covariance[4];
     imu_msg.linear_acceleration_covariance[8] = msg->linear_acceleration_covariance[8];
 
+    if(robot_pose.twist.twist.linear.x < 0.1 && robot_pose.twist.twist.angular.z < 0.1)
+    {
+      imu_msg.angular_velocity.z = 0;
+    }
 
-    // To create a global IMU, we add de value of de Datum (aka. Initial global orientation + the local orientation)
     tf2::Quaternion q_msg(
         msg->orientation.x,
         msg->orientation.y,
@@ -158,16 +162,6 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     tf2::Matrix3x3 m_msg(q_msg);
     double roll, pitch, yaw_msg;
     m_msg.getRPY(roll, pitch, yaw_msg);
-    // tf2::Quaternion q_datum(
-    //     Datum.orientation.x,
-    //     Datum.orientation.y,
-    //     Datum.orientation.z,
-    //     Datum.orientation.w);
-    // tf2::Matrix3x3 m_datum(q_datum);
-    // double yaw_datum;
-    // m_datum.getRPY(roll, pitch, yaw_datum);
-    // double yaw_trimed = angleWrap(fmod(yaw_msg + (2*M_PI) ,(2*M_PI)));
-    // RCLCPP_DEBUG(this->get_logger(), "IMU_OR: %.6f and the sum: %.6f",yaw_msg* (180/M_PI), (yaw_trimed)* (180/M_PI));
     tf2::Quaternion q;
     q.setRPY(0,0,(yaw_msg));
     q.normalize();

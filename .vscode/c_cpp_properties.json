@@ -1,0 +1,44 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/andrelorent/TFG_Hunter20_ws/install/urg_node/include/**",
+        "/home/andrelorent/TFG_Hunter20_ws/install/urg_node_msgs/include/**",
+        "/home/andrelorent/TFG_Hunter20_ws/install/urg_c/include/**",
+        "/home/andrelorent/cypr_ws/install/turtlesim/include/**",
+        "/home/andrelorent/cypr_ws/install/localization/include/**",
+        "/home/andrelorent/dev_ws/install/web_video_server/include/**",
+        "/home/andrelorent/dev_ws/install/turtlebot3_fake_node/include/**",
+        "/home/andrelorent/dev_ws/install/turtlebot3_msgs/include/**",
+        "/home/andrelorent/dev_ws/install/turtlebot3_gazebo/include/**",
+        "/home/andrelorent/dev_ws/install/dynamixel_sdk_custom_interfaces/include/**",
+        "/home/andrelorent/dev_ws/install/dynamixel_sdk/include/**",
+        "/home/andrelorent/tfg_ws/install/hunter_sim_pkg/include/**",
+        "/home/andrelorent/tfg_ws/install/robot_localization/include/**",
+        "/home/andrelorent/tfg_ws/install/nav2_straightline_planner/include/**",
+        "/home/andrelorent/tfg_ws/install/msg_srv_hunter/include/**",
+        "/home/andrelorent/tfg_ws/install/mqtt_client_interfaces/include/**",
+        "/home/andrelorent/tfg_ws/install/imu_filter_madgwick/include/**",
+        "/home/andrelorent/tfg_ws/install/imu_complementary_filter/include/**",
+        "/home/andrelorent/coppelia_ws/install/coppelia_ros2_pkg/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/andrelorent/tfg_ws/src/hunter_sim_pkg/include/**",
+        "/home/andrelorent/tfg_ws/src/imu_tools/imu_complementary_filter/include/**",
+        "/home/andrelorent/tfg_ws/src/imu_tools/imu_filter_madgwick/include/**",
+        "/home/andrelorent/tfg_ws/src/mqtt_client/mqtt_client/include/**",
+        "/home/andrelorent/tfg_ws/src/robot_localization/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

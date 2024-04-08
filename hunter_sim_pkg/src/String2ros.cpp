@@ -54,7 +54,7 @@ String2ros::~String2ros(){}
 
 void String2ros::publishMessage()
 {
-    
+    this->timer_->cancel();
     if(abs(cord.lat - cord_past.lat) > error || abs(cord.lng - cord_past.lng) > error)
     {
     pub_gt_web->publish(json);

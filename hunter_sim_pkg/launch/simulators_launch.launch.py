@@ -44,6 +44,7 @@ def generate_launch_description():
     set_tb3_model_cmd = SetEnvironmentVariable("TURTLEBOT3_MODEL", "waffle")
     ############################################
     ############################################
+    ############################################
     
     declare_rviz_cmd = DeclareLaunchArgument(
         'use_rviz',

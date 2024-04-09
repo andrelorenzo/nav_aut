@@ -1,9 +1,12 @@
 [submodule "imu_tools/"]
-	url = https://github.com/CCNYRoboticsLab/imu_tools.git -b humble
+	url = https://github.com/CCNYRoboticsLab/imu_tools.git
 	path = imu_tools
+	branch = humble
 [submodule "mqtt_client/"]
-	url = https://github.com/ika-rwth-aachen/mqtt_client.git -b main
+	url = https://github.com/ika-rwth-aachen/mqtt_client.git
 	path = mqtt_client
+	branch = main
 [submodule "robot_localization/"]
-	url = https://github.com/cra-ros-pkg/robot_localization.git -b humble-devel
+	url = https://github.com/cra-ros-pkg/robot_localization.git
 	path = robot_localization
+	branch = humble-devel

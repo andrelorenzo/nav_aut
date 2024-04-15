@@ -18,7 +18,9 @@
   <depend>rviz</depend>
   <depend>joint_state_publisher_gui</depend>
   <depend>gazebo</depend>
-
+  <depend>rclcpp_action</depend>
+  <depend>nav2_msgs</depend>
+  
   <build_depend>msg_srv_hunter</build_depend>
   <exec_depend>msg_srv_hunter</exec_depend>
 

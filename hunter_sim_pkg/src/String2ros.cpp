@@ -54,10 +54,10 @@ String2ros::~String2ros(){}
 
 void String2ros::publishMessage()
 {
-    this->timer_->cancel();
+    // this->timer_->cancel();
+    pub_gt_web->publish(json);
     if(abs(cord.lat - cord_past.lat) > error || abs(cord.lng - cord_past.lng) > error)
     {
-    pub_gt_web->publish(json);
     cord_past = cord;
     RCLCPP_INFO(this->get_logger(), "%s",json.data.c_str());
     }
@@ -99,12 +99,15 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
         marker.lng = obj["lng"].asDouble();
         RCLCPP_DEBUG(this->get_logger(), "[lat: %.4f, lng: %.4f]",marker.lat,marker.lng);
         send_request(marker);
+        RCLCPP_INFO(this->get_logger(), "[x: %.4f, y: %.4f]",map_point.x,map_point.y);
+
         double dx = map_point.x - robot_pose.pose.position.x;
         double dy = map_point.y - robot_pose.pose.position.y;
         double d = sqrt((dx*dx) + (dy*dy));
-        goal_pose_array={};
+        goal_pose_array ={};
         if(d < step)
         {
+            goal_pose = {};
             double angle = atan2(dy,dx);
             tf2::Quaternion q;
             q.setRPY(0,0,(angle));
@@ -129,10 +132,12 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
         geometry_msgs::msg::PoseArray poligon;
 
         send_request(rectangle.ne);
+
         geometry_msgs::msg::Pose aux_ne;
         aux_ne.position = map_point;
 
         send_request(rectangle.sw);
+    
         geometry_msgs::msg::Pose aux_sw;
         aux_sw.position = map_point;
 
@@ -168,6 +173,7 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
             poly.markers[i].lat = vector[i]["lat"].asDouble();
             poly.markers[i].lng = vector[i]["lng"].asDouble();
             send_request(poly.markers[i]);
+
             aux.position = map_point;
             poligon.poses.push_back(aux);
             RCLCPP_DEBUG(this->get_logger(),"[%.8f, %.8f]",poly.markers[i].lat,poly.markers[i].lng);
@@ -199,14 +205,17 @@ void String2ros::send_request(msg_srv_hunter::msg::Marker marker)
     RCLCPP_DEBUG(this->get_logger(), "service AVAILABLE, making request....");
 
     // If everything is okay we Send the async request
-    client_ll->async_send_request(request, std::bind(&String2ros::fromllCallback, this, _1));
+    auto response = client_ll->async_send_request(request);
+    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),response,std::chrono::seconds(5)) 
+        == rclcpp::FutureReturnCode::SUCCESS)
+        {
+            map_point = response.get()->map_point;
+            RCLCPP_INFO(this->get_logger(), "[%f, %f]", map_point.x,map_point.y);
+        }
+
 
 }
 
-void String2ros::fromllCallback(rclcpp::Client<robot_localization::srv::FromLL>::SharedFuture future)
-{
-    map_point = future.get()->map_point;
-}
 
 int main ( int argc, char * argv[] )
 {
@@ -216,7 +225,7 @@ int main ( int argc, char * argv[] )
     // Create object from our string2ros class
     auto node = std::make_shared<String2ros>();
     // run at 1Hz
-    rclcpp::Rate loop_rate(10);
+    rclcpp::Rate loop_rate(30);
     while (rclcpp::ok())
     {
         rclcpp::spin_some(node);    // attend subscriptions and srv request

@@ -10,3 +10,6 @@
 	url = https://github.com/cra-ros-pkg/robot_localization.git
 	path = robot_localization
 	branch = humble-devel
+[submodule "ros2_xsens_mti_driver"]
+	path = ros2_xsens_mti_driver
+	url = https://github.com/DEMCON/ros2_xsens_mti_driver.git

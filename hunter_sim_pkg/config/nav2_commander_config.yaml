@@ -1,0 +1,5 @@
+Nav2Commander:
+  ros_parameters:
+    single_goal_topic: /commander/goal
+    array_goals_topic: /commander/goal_array
+    follow_flag_topic: /web/follow

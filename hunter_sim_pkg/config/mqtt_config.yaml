@@ -1,7 +1,7 @@
 mqtt_client:
   ros__parameters:
     broker:
-      host: 192.168.1.128
+      host: mapir.ddns.net
       port: 1883
       user: "ros"
       pass: "ros2324"

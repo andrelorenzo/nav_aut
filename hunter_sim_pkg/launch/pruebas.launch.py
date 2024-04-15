@@ -79,7 +79,7 @@ def generate_launch_description():
         executable="mqtt_client",
         name="mqtt_client",
         output="screen",
-        arguments=["--params-file:= ",mqtt_params]
+        parameters=[mqtt_params]
     )
     # mqtt_client = IncludeLaunchDescription(
     #     XMLLaunchDescriptionSource(
@@ -96,15 +96,19 @@ def generate_launch_description():
         executable="String2Ros",
         name="String2Ros",
         output="screen",
-        parameters=[string2ros_params]
+        parameters=[string2ros_params],
     )
     
     #Custom node, that receives either a goal petitions and send, a GoToPose petitions to Nav2, a goal_array and sends it to Waypointsfollower
     # or a follow me order where it sends  a GoToPose petitions but with a different Behaviour tree (BT)
+    commander_params = os.path.join(pkg_dir,"config","nav2_commander_config.yaml")
     nav2_commander = Node(
-        package="mqqt_to_nav2_commander",
-        executable="send_poses",
-        name="nav2_commander"
+        package=pkg_name,
+        executable="Nav2Commander",
+        name="nav2Commander",
+        parameters=[commander_params],
+        prefix="terminator -x"
+
     )
     
     #   Nav2 Bringup with custom configuration, using Smac Hybrid A* as planner and MPPI as controller, prepared for ackerman model (REEDS-SHEEP)

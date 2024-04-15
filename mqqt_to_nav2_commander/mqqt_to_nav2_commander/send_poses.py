@@ -2,7 +2,6 @@
 import rclpy
 from rclpy.node import Node
 from nav2_simple_commander.robot_navigator import BasicNavigator,TaskResult
-from nav2_gps_waypoint_follower_demo.utils.gps_utils import latLonYaw2Geopose
 from geometry_msgs.msg import PoseArray, PoseStamped
 from rclpy.duration import Duration
 from std_msgs.msg import Bool
@@ -17,9 +16,9 @@ class InteractiveGpsWpCommander(Node):
         super().__init__(node_name="gps_wp_commander")
         self.navigator = BasicNavigator("basic_navigator")
         self.mqtt_single_point_sub = self.create_subscription(
-            PoseStamped, "/mqtt/goal", self.gps_point_callback, 1)
+            PoseStamped, "/commander/goal", self.gps_point_callback, 1)
         self.mqtt_array_pose_sub = self.create_subscription(
-            PoseArray, "/mqtt/goal_array", self.gps_point_array_callback, 1)
+            PoseArray, "/commander/goal_array", self.gps_point_array_callback, 1)
         self.mqtt_array_pose_sub = self.create_subscription(
             Bool, "/web/follow", self.follow_callback, 1)
         self.update_goal_pub = self.create_publisher(

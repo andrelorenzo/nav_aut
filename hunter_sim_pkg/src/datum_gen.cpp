@@ -73,7 +73,8 @@ datumGen::~datumGen(){
 
 void datumGen::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
-  robot_pose = msg;
+  robot_pose.pose = msg->pose;
+  robot_pose.twist = msg->twist;
   if(first_gps_received && !distance_reached)
   {
     //When the first GPS is received, we start moving forward
@@ -137,9 +138,9 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration.z = msg->linear_acceleration.z;
 
     // For now we create the covariance matrix as a constant
-    imu_msg.orientation_covariance = {DBL_MAX,0.0,0.0,
-                                      0.0,DBL_MAX,0.0,
-                                      0.0,0.0,DBL_MAX};
+    imu_msg.orientation_covariance = {0.01,0.0,0.0,
+                                      0.0,0.01,0.0,
+                                      0.0,0.0,0.01};
 
     imu_msg.angular_velocity_covariance[0] = msg->angular_velocity_covariance[0];
     imu_msg.angular_velocity_covariance[4] = msg->angular_velocity_covariance[4];
@@ -149,10 +150,10 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration_covariance[4] = msg->linear_acceleration_covariance[4];
     imu_msg.linear_acceleration_covariance[8] = msg->linear_acceleration_covariance[8];
 
-    if(robot_pose.twist.twist.linear.x < 0.1 && robot_pose.twist.twist.angular.z < 0.1)
-    {
-      imu_msg.angular_velocity.z = 0;
-    }
+    // if(robot_pose.twist.twist.linear.x < 0.1 && robot_pose.twist.twist.angular.z < 0.1)
+    // {
+    //   imu_msg.angular_velocity.z = 0;
+    // }
 
     tf2::Quaternion q_msg(
         msg->orientation.x,

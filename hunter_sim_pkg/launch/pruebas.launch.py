@@ -148,7 +148,7 @@ def generate_launch_description():
     #   4º timer to be launch, 5 second = Just to not saturate with initialization of nodes (can be bring down or eliminate)
     interfaces_mqqt_timer = TimerAction(
                         period=5.0,
-                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),navigation2_timer]
+                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),string2ros,nav2_commander,navigation2_timer]
     )
     #   3º timer to be launch, 10 seconds = datumGen makes the robot move, IT is very important that when localization is launch
     #   the robot is completly stoped in its final position, otherwise will be inconsistencies in position/ orientation

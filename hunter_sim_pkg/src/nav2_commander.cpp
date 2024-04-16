@@ -57,7 +57,7 @@ void nav2commander::single_callback(const geometry_msgs::msg::PoseStamped::Share
         control = true; 
 
         auto goal_msg = Nav2Pose::Goal();
-        goal_msg.behavior_tree = "~/tfg_ws/src/hunter_sim_pkg/config/follow_dynamic_waypoint.xml";
+        goal_msg.behavior_tree = "/home/andrelorent/tfg_ws/src/hunter_sim_pkg/config/follow_dynamic_waypoint.xml";
         goal_msg.pose.header.stamp = now();
         goal_msg.pose.header.frame_id = "map";
         goal_msg.pose.pose.position = msg->pose.position;
@@ -87,7 +87,7 @@ void nav2commander::single_callback(const geometry_msgs::msg::PoseStamped::Share
         goal_msg.pose.pose.orientation = msg->pose.orientation;
 
 
-        RCLCPP_INFO(this->get_logger(), "Sending Go to pose petition to [x: %.4f,y: %.4f]",goal_msg.pose.pose.position.x,goal_msg.pose.pose.position.y);
+        RCLCPP_INFO(this->get_logger(), "GoToPose petition to [x: %.4f,y: %.4f]",goal_msg.pose.pose.position.x,goal_msg.pose.pose.position.y);
 
         auto goal_handle_future = navigate_to_pose_client_ptr_->async_send_goal(
             goal_msg, send_goal_options);
@@ -125,7 +125,7 @@ void nav2commander::feedback_nav2pose_callback(
     GoalHandleNavigateToPose::SharedPtr,
     const std::shared_ptr<const Nav2Pose::Feedback> feedback)
 {
-    if(int(feedback->distance_remaining) % 1 == 0){
+    if(fmod(feedback->distance_remaining,1.0) == 0){
     RCLCPP_INFO(get_logger(), "Distance remaininf = %f",
       feedback->distance_remaining);
     }
@@ -154,7 +154,7 @@ void nav2commander::feedback_wayFollow_callback(
     GoalHandleFollowWaypoint::SharedPtr,
     const std::shared_ptr<const Followaypoint::Feedback> feedback)
 {
-    int waypoint = 1;
+    static int waypoint = 1;
     if(waypoint != feedback->current_waypoint + 1){
     RCLCPP_INFO(get_logger(), "executing waypoint:  %i",
       feedback->current_waypoint + 1);

@@ -47,14 +47,15 @@ class String2ros: public rclcpp::Node
         msg_srv_hunter::msg::Marker cord;
         AreaPathGenerator path_generator;
         geometry_msgs::msg::Point map_point;
+        rclcpp::CallbackGroup::SharedPtr client_cb_group_;
         float step;
         float error;
+
 
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);
         void posCallback(const std_msgs::msg::String::SharedPtr msg);
         void send_request(msg_srv_hunter::msg::Marker marker);
         void gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
-        // void fromllCallback(rclcpp::Client<robot_localization::srv::FromLL>::SharedFuture future);
         void publishMessage();
 
 

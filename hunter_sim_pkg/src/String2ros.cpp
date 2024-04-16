@@ -29,7 +29,7 @@ String2ros::String2ros(): Node("string2ros")
     this->declare_parameter("error_to_send_actualizaton",0.00001);
     const double error = this->get_parameter("error_to_send_actualizaton").as_double();
 
-
+    client_cb_group_ = this->create_callback_group(rclcpp::CallbackGroupType::Reentrant );
     sub_odom = this->create_subscription<nav_msgs::msg::Odometry>(
             odom_topic,10,std::bind(&String2ros::odomCallback,this,_1));
 
@@ -41,7 +41,7 @@ String2ros::String2ros(): Node("string2ros")
 
     pub_goal = this->create_publisher<geometry_msgs::msg::PoseStamped>(single_goal_topic, 10);
     pub_goal_array = this->create_publisher<geometry_msgs::msg::PoseArray>(multiple_goal_topic, 10);
-    client_ll = this->create_client<robot_localization::srv::FromLL>("fromLL");
+    client_ll = this->create_client<robot_localization::srv::FromLL>("fromLL",rmw_qos_profile_services_default,client_cb_group_);
 
     if(send_pose_to_web){
         pub_gt_web = this->create_publisher<std_msgs::msg::String>(publish_web_topic, 10);
@@ -99,7 +99,6 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
         marker.lng = obj["lng"].asDouble();
         RCLCPP_DEBUG(this->get_logger(), "[lat: %.4f, lng: %.4f]",marker.lat,marker.lng);
         send_request(marker);
-        RCLCPP_INFO(this->get_logger(), "[x: %.4f, y: %.4f]",map_point.x,map_point.y);
 
         double dx = map_point.x - robot_pose.pose.position.x;
         double dy = map_point.y - robot_pose.pose.position.y;
@@ -125,63 +124,67 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
 
     }else if(tipo == "rectangle")
     {
-        rectangle.ne.lat = obj["latne"].asDouble();
-        rectangle.ne.lng = obj["lngne"].asDouble();
-        rectangle.sw.lat = obj["latsw"].asDouble();
-        rectangle.sw.lng = obj["lngsw"].asDouble();
-        geometry_msgs::msg::PoseArray poligon;
-
-        send_request(rectangle.ne);
-
-        geometry_msgs::msg::Pose aux_ne;
-        aux_ne.position = map_point;
-
-        send_request(rectangle.sw);
-    
-        geometry_msgs::msg::Pose aux_sw;
-        aux_sw.position = map_point;
-
-        geometry_msgs::msg::Pose aux_nw;
-        aux_nw.position.x = aux_sw.position.x;
-        aux_nw.position.y = aux_ne.position.y;
-
-        geometry_msgs::msg::Pose aux_se;
-        aux_se.position.x = aux_ne.position.x;
-        aux_se.position.y = aux_sw.position.y;
-        poligon.poses.push_back(aux_nw);
-        poligon.poses.push_back(aux_ne);
-        poligon.poses.push_back(aux_se);
-        poligon.poses.push_back(aux_sw);
-
-        geometry_msgs::msg::PoseArray path = path_generator.get_area_path(poligon,step);
-        path.header.stamp = robot_pose.header.stamp;
-        path.header.frame_id = "map";
-        pub_goal_array->publish(path);
-
-        RCLCPP_DEBUG(this->get_logger(), "[ne:%.4f, %.4f;sw:%.4f,%.4f]",rectangle.ne.lat,rectangle.ne.lng,rectangle.sw.lat,rectangle.sw.lng);
-
+        RCLCPP_INFO(this->get_logger(), "Received an Area of type RECTANGLE, not working at the moment");
     }else if(tipo == "polygon")
     {
-        geometry_msgs::msg::PoseArray poligon;
+        RCLCPP_INFO(this->get_logger(), "Received an Area of type POLYGON, not working at the moment");
+    }else if(tipo == "line"){
+        geometry_msgs::msg::PoseArray line;
         poly.length = obj["length"].asUInt();
-        Json::Value vector = obj["polygon"];
-        RCLCPP_DEBUG(this->get_logger(),"%i",poly.length);
-
-        for(u_int8_t i=0;i<poly.length;i++)
+        Json::Value vector = obj["line"];
+        for(u_int8_t i = 0; i < poly.length - 1; i++)
         {
             geometry_msgs::msg::Pose aux;
             poly.markers[i].lat = vector[i]["lat"].asDouble();
             poly.markers[i].lng = vector[i]["lng"].asDouble();
-            send_request(poly.markers[i]);
 
+            send_request(poly.markers[i]);
             aux.position = map_point;
-            poligon.poses.push_back(aux);
-            RCLCPP_DEBUG(this->get_logger(),"[%.8f, %.8f]",poly.markers[i].lat,poly.markers[i].lng);
+            line.poses.push_back(aux);
         }
-        geometry_msgs::msg::PoseArray path = path_generator.get_area_path(poligon,step);
-        path.header.stamp = robot_pose.header.stamp;
-        path.header.frame_id = "map";
-        pub_goal_array->publish(path);
+        double dx = line.poses[0].position.x - robot_pose.pose.position.x;
+        double dy = line.poses[0].position.y - robot_pose.pose.position.y;
+        double d = sqrt((dx*dx) + (dy*dy));
+        goal_pose_array={};
+        geometry_msgs::msg::Pose aux;
+        if(d < step)
+        {
+            double angle = atan2(dy,dx);
+            tf2::Quaternion q;
+            q.setRPY(0,0,angle);
+            q.normalize();
+            aux.orientation = tf2::toMsg(q);
+            aux.position = line.poses[0].position;
+            goal_pose_array.poses.push_back(aux);
+        }else{
+            goal_pose_array = path_generator.get_intermediate(robot_pose.pose.position,line.poses[0].position,step);
+        }
+        for(u_int8_t i = 0; i < line.poses.size() - 1; i++)
+        {
+            double dx = line.poses[i+1].position.x - line.poses[i].position.x;
+            double dy = line.poses[i+1].position.y - line.poses[i].position.y;
+            double d = sqrt((dx*dx) + (dy*dy));
+            if(d < step)
+            {
+                double angle = atan2(dy,dx);
+                tf2::Quaternion q;
+                q.setRPY(0,0,angle);
+                q.normalize();
+                aux.orientation = tf2::toMsg(q);
+                aux.position = line.poses[i].position;
+                goal_pose_array.poses.push_back(aux);
+            }else{
+                geometry_msgs::msg::PoseArray array_aux;
+                array_aux = path_generator.get_intermediate(line.poses[i].position,line.poses[i+1].position,step);
+                for(geometry_msgs::msg::Pose p : array_aux.poses)
+                {
+                    goal_pose_array.poses.push_back(p);
+                }
+            }
+        }
+        
+        goal_pose_array.header.stamp = robot_pose.header.stamp;
+        pub_goal_array->publish(goal_pose_array);
 
     }else{
         RCLCPP_ERROR(this->get_logger(), "Type not defined, or none coordinates in the message");
@@ -206,13 +209,15 @@ void String2ros::send_request(msg_srv_hunter::msg::Marker marker)
 
     // If everything is okay we Send the async request
     auto response = client_ll->async_send_request(request);
-    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),response,std::chrono::seconds(5)) 
-        == rclcpp::FutureReturnCode::SUCCESS)
+  
+    if (response.wait_for(3s) != std::future_status::ready)
         {
-            map_point = response.get()->map_point;
-            RCLCPP_INFO(this->get_logger(), "[%f, %f]", map_point.x,map_point.y);
+            RCLCPP_ERROR(this->get_logger(), "Failed to receive service response");
+            return;
         }
 
+    map_point = response.get()->map_point;
+    RCLCPP_INFO(this->get_logger(), "[%f, %f] hola",map_point.x,map_point.y);
 
 }
 
@@ -224,11 +229,13 @@ int main ( int argc, char * argv[] )
     
     // Create object from our string2ros class
     auto node = std::make_shared<String2ros>();
+    rclcpp::executors::MultiThreadedExecutor executor;
+    executor.add_node(node);
     // run at 1Hz
     rclcpp::Rate loop_rate(30);
     while (rclcpp::ok())
     {
-        rclcpp::spin_some(node);    // attend subscriptions and srv request
+        executor.spin();    // attend subscriptions and srv request
         loop_rate.sleep();          // sleep till next step time
     }
 

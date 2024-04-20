@@ -1,0 +1,67 @@
+DatumGen:
+  ros__parameters:
+    #ALL SUBS/PUBS ARE SHUTDOWN WHENEVER NOT NEEDED       
+    odom_topic: /odom                       # Topic where to receive wheel odometry (for hunter = /hunter/odom)
+    gps_topic: /gps/fix                     # Topic where to receive GPS coordinates in NavSatFix type (for hunter = /hunter/fix)
+    cmd_vel_topic: /cmd_vel                 # Topic where to send velocity commands (for hunter = /cmd_vel)
+    madgwick_imu_topic: /imu_global         # Topic for receiving local IMU from complementary filter (must be the same as that one)
+    global_imu_topic: /odometry_imu         # Topic for sending local orientation = complementary output modified (must be equal to one entry in the ekfs)
+    distance_to_move: 2                     # Recommended range: [ 1 -> 5 ] m
+    speed: 0.8                              # Speed in m/S
+    publish_global_imu: false               # Wheter to activate global IMU publishing
+    modified_gps_topic: /gps/modified       # Where to send filtered gps by NavSatStaus (must be equal to gps/fix remap inn dual_ekf_navsat_params.yaml)
+
+mqtt_client:
+  ros__parameters:
+    broker:
+      host: mapir.ddns.net
+      port: 1883
+      user: ros
+      pass: ros2324
+    client:
+      id: ros123
+    bridge:
+      ros2mqtt:
+        ros_topics:
+        # This topic is where to publish the actual robot_position to be able to see it in the web page 
+          - /web/gt
+        /web/gt:
+          mqtt_topic: position
+          primitive: true
+      mqtt2ros:
+        mqtt_topics:
+          - desired_pos
+          - follow
+        desired_pos:
+          # /web/desired_pos is publish by the web and subscribe by String2ros Node to be converted to a valid path for Nav2
+          ros_topic:  /web/desired_pos
+          primitive: true
+        follow:
+          # /web/follow is a flag to know when to start treating /web/desired_pos as follow_me commands
+          ros_topic: /web/follow
+          primitive: true
+
+String2Ros:
+  ros__parameters:
+    odom_topic: /odometry/local                     # odometry where to receive the information
+    web_goal_topic: /web/desired_pos                # where to revceive goal pose from the MQTT bridge
+    gps_topic: /gps/modified                        # where to receive gps coordinates
+    single_goal_topic: /commander/goal              # where to send goal, for the Nav2commander node to call Nav2
+    multiple_goals_topic: /commander/goal_array     # where to send multiple goals (Waypoint follower) to the Nav2commander node
+    publish_to_web_pose: /web/gt                    # where to send robot pose to the MQTT bridge, only if send_pose_to_web = true 
+    timer_to_web_send: 5                            # time in seconds at what rate the pose is send to the MQTT bridge (too low will crash the web)
+    send_pose_to_web: false                         # wether to send the robot pose to the MQTT bridge
+    error_to_send_actualizaton: 0.00001             # if the difference in poses is grater than this we send it to the MQTT server (too many petitions will lag the web)
+    step_area: 8.0                                  # what distance to create the paths in meters, 8 meters = generate points 8 meters apart
+
+Nav2Commander:
+  ros__parameters:
+    single_goal_topic: /commander/goal
+    array_goals_topic: /commander/goal_array
+    follow_flag_topic: /web/follow
+
+# this only matters when using sim_time as sometimes the gazebo clock doesn't let the ekfs to go at the desired frecuency
+# this parameter MUST NOT be change
+gazebo:
+  ros__parameters:
+    publish_rate: 400.0

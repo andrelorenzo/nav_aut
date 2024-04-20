@@ -51,7 +51,6 @@ class String2ros: public rclcpp::Node
         float step;
         float error;
 
-
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);
         void posCallback(const std_msgs::msg::String::SharedPtr msg);
         void send_request(msg_srv_hunter::msg::Marker marker);

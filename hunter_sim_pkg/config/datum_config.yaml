@@ -8,4 +8,5 @@ DatumGen:
     distance_to_move: 1               #recommended range: [1->5] m
     speed: 0.5                        #speed in m/S
     publish_global_imu: true         #Wheter to activate global IMU publishing
+    modified_gps_topic: /gps/modified
 

@@ -21,11 +21,13 @@ def generate_launch_description():
     madgick_launch = os.path.join(madgick_dir,"launch","complementary_filter.launch.py")
     nav2_params = os.path.join(pkg_dir,"config", "nav2_no_map.yaml")
     bringup_dir = get_package_share_directory('nav2_bringup')
-
+    
+    general_params_file = os.path.join(pkg_dir,"config","nodes_params.yaml")
     #########################################################################################################################################
                                                         ######Launch parameters######
     use_nav2 = LaunchConfiguration('use_nav2')
     use_sim_time = LaunchConfiguration('use_sim_time')
+    use_comp_filter = LaunchConfiguration('use_comp_filter')
     
                                                     ######Parameters Declarations######
     declare_nav2_cmd = DeclareLaunchArgument(
@@ -36,6 +38,10 @@ def generate_launch_description():
         'use_sim_time',
         default_value='true',
         description='Whether to use simulation time, if true we start Gazebo')
+    declare_comp_filter = DeclareLaunchArgument(
+        'use_comp_filter',
+        default_value='true',
+        description='Whether to use complementary filter')
     ##########################################################################################################################################
     
     #Start simulators (Rviz, Gazebo), including robot_state_publisher, if sim_time = true, we start Gazebo
@@ -49,7 +55,8 @@ def generate_launch_description():
     
     #Get a Local Orientation from an Imu that doesn't have it (calculated from accelerometer and gyroscope)
     madwick_filter = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([madgick_launch])
+        PythonLaunchDescriptionSource([madgick_launch]),
+        condition=IfCondition(use_comp_filter)
     )
     
     #Start Localization, launching two Extended Kalman filter and a NavSat transform node, IMPORTANT!! (Check sim_time or wont work at all)
@@ -63,23 +70,25 @@ def generate_launch_description():
 
     #Custom node,Datum Generator, as we dont have a Magnetomter we need the offset respect to ENU system ( East = 0º and ANTICLOCKWISE)
     #Datum Generator also provides, if set in params_file, an IMU message with the sum of the madgick filter + Datum
-    datum_params = os.path.join(pkg_dir,"config","datum_config.yaml")
+    #datum_params = os.path.join(pkg_dir,"config","datum_config.yaml")
     datumgen = Node(
         package=pkg_name,
         executable="DatumGen",
         output="screen",
-        parameters=[datum_params],
+        parameters=[general_params_file],
         prefix="terminator -x"
     )
     
-    #A node to receive Mqtt petitions and remaps to std_msgs::msg::String topic
-    mqtt_params = os.path.join(get_package_share_directory("mqtt_client"),"config","mqtt_config.yaml")
+    # A node to receive Mqtt petitions and remaps to std_msgs::msg::String topic
+    # mqtt_params = os.path.join(get_package_share_directory("mqtt_client"),"config","mqtt_config.yaml")
     mqtt_client = Node(
         package="mqtt_client",
         executable="mqtt_client",
         name="mqtt_client",
         output="screen",
-        parameters=[mqtt_params]
+        parameters=[general_params_file],
+        prefix="terminator -x"
+
     )
     # mqtt_client = IncludeLaunchDescription(
     #     XMLLaunchDescriptionSource(
@@ -89,24 +98,25 @@ def generate_launch_description():
     
     #Custom node, that receives the Strings from de mqtt bridge, calculates the apropiate goal / goal_array and sends it to the commander,
     #also provides to the broker with the actual position of the robot
-    string2ros_params = os.path.join(pkg_dir,"config","string2ros_config.yaml")
-    
+    #string2ros_params = os.path.join(pkg_dir,"config","string2ros_config.yaml")
     string2ros = Node(
         package=pkg_name,
         executable="String2Ros",
         name="String2Ros",
         output="screen",
-        parameters=[string2ros_params],
+        parameters=[general_params_file],
+        prefix="terminator -x"
+
     )
     
     #Custom node, that receives either a goal petitions and send, a GoToPose petitions to Nav2, a goal_array and sends it to Waypointsfollower
     # or a follow me order where it sends  a GoToPose petitions but with a different Behaviour tree (BT)
-    commander_params = os.path.join(pkg_dir,"config","nav2_commander_config.yaml")
+    #commander_params = os.path.join(pkg_dir,"config","nav2_commander_config.yaml")
     nav2_commander = Node(
         package=pkg_name,
         executable="Nav2Commander",
         name="nav2Commander",
-        parameters=[commander_params],
+        parameters=[general_params_file],
         prefix="terminator -x"
 
     )
@@ -122,7 +132,7 @@ def generate_launch_description():
             "use_sim_time": use_sim_time,
             "params_file": configured_params,
             "autostart": "True",
-            "log_level":"warn"
+            "log_level":"error"
         }.items(),
         condition=IfCondition(use_nav2),
     )
@@ -148,7 +158,7 @@ def generate_launch_description():
     #   4º timer to be launch, 5 second = Just to not saturate with initialization of nodes (can be bring down or eliminate)
     interfaces_mqqt_timer = TimerAction(
                         period=5.0,
-                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),string2ros,nav2_commander,navigation2_timer]
+                        actions=[LogInfo(msg=' MQTT, STRING2ROS AND COMMANDER STARTING...'),mqtt_client,string2ros,nav2_commander,navigation2_timer]
     )
     #   3º timer to be launch, 10 seconds = datumGen makes the robot move, IT is very important that when localization is launch
     #   the robot is completly stoped in its final position, otherwise will be inconsistencies in position/ orientation
@@ -174,6 +184,7 @@ def generate_launch_description():
 
     ld.add_action(declare_nav2_cmd)
     ld.add_action(declare_sim_time_cmd)
+    ld.add_action(declare_comp_filter)
     
     ld.add_action(simulators)
     ld.add_action(madgick_timer)

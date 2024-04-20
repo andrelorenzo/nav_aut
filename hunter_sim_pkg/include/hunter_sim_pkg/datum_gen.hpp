@@ -28,6 +28,7 @@ class datumGen: public rclcpp::Node
         //Publishers
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_vel;
         rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr pub_global_imu;
+        rclcpp::Publisher<sensor_msgs::msg::NavSatFix>::SharedPtr pub_modified_gps;
 
         //Server clients
         rclcpp::Client<robot_localization::srv::SetDatum>::SharedPtr client_datum;
@@ -37,6 +38,7 @@ class datumGen: public rclcpp::Node
         bool first_gps_received;
         bool control_flag;
         bool datum_sended;
+        bool publish_imu;
 
         //Variables
         geometry_msgs::msg::Twist cmd_vel;

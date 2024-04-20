@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>xsens_ros2</name>
+  <version>4.0.2</version>
+  <description>Ros2 driver for MTi 3th generation IMU sensor</description>
+  <maintainer email="andrelorenzotorres@gmail.com">Andre Lorenzo Torres</maintainer>
+  <license>todo</license>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>tf_transformations</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>rosgraph_msgs</depend>
+
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

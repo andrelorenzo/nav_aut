@@ -52,7 +52,7 @@ def generate_launch_description():
                 output="screen",
                 parameters=[dual_params_file, {"use_sim_time": use_sim_time}],
                 remappings=[
-                    ("gps/fix", "gps/fix"),
+                    ("gps/fix", "gps/modified"),
                     ("gps/filtered", "gps/filtered"),
                     ("odometry/gps", "odometry/gps"),
                     ("odometry/filtered", "odometry/global"),

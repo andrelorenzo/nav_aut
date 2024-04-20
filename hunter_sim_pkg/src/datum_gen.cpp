@@ -19,16 +19,18 @@ datumGen::datumGen(): Node("DatumGen")
   this->declare_parameter("distance_to_move",1);
   this->declare_parameter("speed",0.5);
   this->declare_parameter("publish_global_imu",false);
+  this->declare_parameter("modified_gps_topic","/gps/modified");
 
   const std::string odom_topic = this->get_parameter("odom_topic").as_string();
   const std::string gps_topic = this->get_parameter("gps_topic").as_string();
   const std::string vel_topic = this->get_parameter("cmd_vel_topic").as_string();
   const std::string global_imu_topic = this->get_parameter("global_imu_topic").as_string();
   const std::string madgwick_imu_topic = this->get_parameter("madgwick_imu_topic").as_string();
+  const std::string modified_gps_topic = this->get_parameter("modified_gps_topic").as_string();
   const int distance2move = this->get_parameter("distance_to_move").as_int();
   const double speed = this->get_parameter("speed").as_double();
-  const bool publish_imu = this->get_parameter("publish_global_imu").as_bool();
-
+  const bool pub_imu = this->get_parameter("publish_global_imu").as_bool();
+  publish_imu = pub_imu;
   //Subscribers
       //datumGen
   sub_odom = this->create_subscription<nav_msgs::msg::Odometry>(
@@ -39,6 +41,7 @@ datumGen::datumGen(): Node("DatumGen")
   //Publishers
       //datumGen
   pub_vel = this->create_publisher<geometry_msgs::msg::Twist>(vel_topic, qos);
+  pub_modified_gps = this->create_publisher<sensor_msgs::msg::NavSatFix>(modified_gps_topic,qos);
 
   //Client Servers
   client_datum = this->create_client<robot_localization::srv::SetDatum>("datum");
@@ -107,16 +110,22 @@ void datumGen::gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg)
       control_flag = false;
     }else
     {
-      //When the robot_reaches the required distance we keep the second GPS coordinate, shutdown every sub/pub adn prepare de datum sender
+      //When the robot_reaches the required distance we keep the second GPS coordinate, shutdown every sub/pub & prepare de datum sender
       gps2.latitude = msg->latitude;
       gps2.longitude = msg->longitude;
       RCLCPP_INFO_STREAM(this->get_logger(),"Second GPS adquire [lat:" << gps2.latitude <<", lng:"<< gps2.longitude<<"]");
       RCLCPP_DEBUG(this->get_logger(), "Setting up datum...%.2f",(gps2.latitude - gps1.latitude));
+      if(!publish_imu){
+        sub_odom.reset();
+      }
       pub_vel.reset();
-      sub_odom.reset();
-      sub_gps.reset();
       send_datum();
     }
+  }
+  sensor_msgs::msg::NavSatFix raw_gps = *msg;
+  if(raw_gps.status.status >= 2 || (raw_gps.position_covariance[0] <= 0.2 && raw_gps.position_covariance[4] <= 0.2))
+  {
+    pub_modified_gps->publish(raw_gps);
   }
 }
 
@@ -252,7 +261,7 @@ int main ( int argc, char * argv[] )
     auto node = std::make_shared<datumGen>();
 
     // run at 1Hz
-    rclcpp::Rate loop_rate(80);
+    rclcpp::Rate loop_rate(60);
     while (rclcpp::ok())
     {
         rclcpp::spin_some(node);    // attend subscriptions and srv request

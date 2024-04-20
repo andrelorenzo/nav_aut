@@ -1,0 +1,18 @@
+mtnode:
+  ros__parameters:
+    verbose: False
+    use_sim_time: False
+    # Serial device
+    port: /dev/ttyUSB0
+    baudrate: 115200
+
+    # 0 => Quaternion output
+    # 1 => Euler ouput
+    # 2 => Rotation Matrix ouput
+    outputMode: 0
+
+    pub_magnetometer: true
+    pub_rpy: true
+
+    imu_topic: /mti/imu
+    mag_topic: /mti/mag

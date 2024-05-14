@@ -49,7 +49,9 @@ class datumGen: public rclcpp::Node
         geographic_msgs::msg::GeoPose Datum;
         sensor_msgs::msg::Imu imu_msg;
         nav_msgs::msg::Odometry robot_pose;
-        
+        std::vector<sensor_msgs::msg::NavSatFix> hist_gps;
+        std::vector<float> hist_wz;
+        std::vector<geometry_msgs::msg::Point> hist_xy;
         //Methods
         void odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg);
         void gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg);

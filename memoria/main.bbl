@@ -1,0 +1,527 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{IFR23}{article}{}
+      \name{author}{1}{}{%
+        {{hash=44a001326b9459f20031d2ea28f25aba}{%
+           family={IFR},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{44a001326b9459f20031d2ea28f25aba}
+      \strng{fullhash}{44a001326b9459f20031d2ea28f25aba}
+      \strng{bibnamehash}{44a001326b9459f20031d2ea28f25aba}
+      \strng{authorbibnamehash}{44a001326b9459f20031d2ea28f25aba}
+      \strng{authornamehash}{44a001326b9459f20031d2ea28f25aba}
+      \strng{authorfullhash}{44a001326b9459f20031d2ea28f25aba}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IFR Press Room}
+      \field{number}{2}
+      \field{title}{World Robotics 2023 Report}
+      \field{volume}{2}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://ifr.org/ifr-press-releases/news/world-robotics-2023-report-asia-ahead-of-europe-and-the-americas
+      \endverb
+      \verb{url}
+      \verb https://ifr.org/ifr-press-releases/news/world-robotics-2023-report-asia-ahead-of-europe-and-the-americas
+      \endverb
+    \endentry
+    \entry{Rolan20}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4909bb9a5fdcc48d2d442a0d0a902697}{%
+           family={Rolan\bibnamedelima Bacilio},
+           familyi={R\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={et\bibnamedelima al.},
+           giveni={e\bibinitperiod\bibinitdelim a\bibinitperiod},
+           suffix={Anota},
+           suffixi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \strng{fullhash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \strng{bibnamehash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \strng{authorbibnamehash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \strng{authornamehash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \strng{authorfullhash}{4909bb9a5fdcc48d2d442a0d0a902697}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{number}{1}
+      \field{title}{Localización de un robot móvil mediante el filtro de Kalman extendido y el simulador Gazebo}
+      \field{volume}{1}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://rcs.cic.ipn.mx/2020_149_8/Localizacion%20de%20un%20robot%20movil%20mediante%20el%20filtro%20de%20Kalman%20extendido%20y%20el%20simulador%20Gazebo.pdf
+      \endverb
+      \verb{url}
+      \verb https://rcs.cic.ipn.mx/2020_149_8/Localizacion%20de%20un%20robot%20movil%20mediante%20el%20filtro%20de%20Kalman%20extendido%20y%20el%20simulador%20Gazebo.pdf
+      \endverb
+    \endentry
+    \entry{nasa24}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=1f99771bc3e23e6097509a331544ab65}{%
+           family={NASA},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{fullhash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{bibnamehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{authorbibnamehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{authornamehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{authorfullhash}{1f99771bc3e23e6097509a331544ab65}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Mars 2020: Perseverance Rover}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://science.nasa.gov/mission/mars-2020-perseverance/
+      \endverb
+      \verb{url}
+      \verb https://science.nasa.gov/mission/mars-2020-perseverance/
+      \endverb
+    \endentry
+    \entry{robotnik24}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4519bfe9e0e565514f379be1a4c89e2b}{%
+           family={S.L.},
+           familyi={S\bibinitperiod},
+           given={Robotnik},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \strng{fullhash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \strng{bibnamehash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \strng{authorbibnamehash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \strng{authornamehash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \strng{authorfullhash}{4519bfe9e0e565514f379be1a4c89e2b}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Manipuladores Móviles}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://robotnik.eu/es/productos/manipuladores-moviles/
+      \endverb
+      \verb{url}
+      \verb https://robotnik.eu/es/productos/manipuladores-moviles/
+      \endverb
+    \endentry
+    \entry{holland2003first}{article}{}
+      \name{author}{1}{}{%
+        {{hash=227b380654da7542d042735b3b9271dc}{%
+           family={Holland},
+           familyi={H\bibinitperiod},
+           given={Owen},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{227b380654da7542d042735b3b9271dc}
+      \strng{fullhash}{227b380654da7542d042735b3b9271dc}
+      \strng{bibnamehash}{227b380654da7542d042735b3b9271dc}
+      \strng{authorbibnamehash}{227b380654da7542d042735b3b9271dc}
+      \strng{authornamehash}{227b380654da7542d042735b3b9271dc}
+      \strng{authorfullhash}{227b380654da7542d042735b3b9271dc}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Robotica}
+      \field{number}{4}
+      \field{title}{The first biologically inspired robots}
+      \field{volume}{21}
+      \field{year}{2003}
+      \field{pages}{351\bibrangedash 363}
+      \range{pages}{13}
+      \verb{urlraw}
+      \verb https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/holland02first.pdf
+      \endverb
+      \verb{url}
+      \verb https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/holland02first.pdf
+      \endverb
+    \endentry
+    \entry{ernst80}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9e1a2ed2c32ed38e6538b751157e6b43}{%
+           family={Sánchez},
+           familyi={S\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \strng{fullhash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \strng{bibnamehash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \strng{authorbibnamehash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \strng{authornamehash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \strng{authorfullhash}{9e1a2ed2c32ed38e6538b751157e6b43}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Ernst Dickmanns, el desconocido padre alemán de los coches inteligentes}
+      \field{year}{1980}
+      \verb{urlraw}
+      \verb https://www.eldiario.es/hojaderouter/tecnologia/ernst-dickmanns-vehiculo-autonomo-inteligente_1_5858992.html
+      \endverb
+      \verb{url}
+      \verb https://www.eldiario.es/hojaderouter/tecnologia/ernst-dickmanns-vehiculo-autonomo-inteligente_1_5858992.html
+      \endverb
+    \endentry
+    \entry{DARPA20}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ad921d60486366258809553a3db49a4a}{%
+           family={unknown},
+           familyi={u\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad921d60486366258809553a3db49a4a}
+      \strng{fullhash}{ad921d60486366258809553a3db49a4a}
+      \strng{bibnamehash}{ad921d60486366258809553a3db49a4a}
+      \strng{authorbibnamehash}{ad921d60486366258809553a3db49a4a}
+      \strng{authornamehash}{ad921d60486366258809553a3db49a4a}
+      \strng{authorfullhash}{ad921d60486366258809553a3db49a4a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{A Brief History of Automated Driving — Part One: The Driverless Car Era Began 100 Years Ago}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://www.apex.ai/post/a-brief-history-of-automated-driving-part-two-research-and-development
+      \endverb
+      \verb{url}
+      \verb https://www.apex.ai/post/a-brief-history-of-automated-driving-part-two-research-and-development
+      \endverb
+    \endentry
+    \entry{audirs715}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a08116f03a6fa00e85d61d002aa1d80c}{%
+           family={Quadis},
+           familyi={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \strng{fullhash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \strng{bibnamehash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \strng{authorbibnamehash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \strng{authornamehash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \strng{authorfullhash}{a08116f03a6fa00e85d61d002aa1d80c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{El Audi RS7 autónomo}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://www.quadis.es/articulos/el-audi-rs7-autonomo/131746
+      \endverb
+      \verb{url}
+      \verb https://www.quadis.es/articulos/el-audi-rs7-autonomo/131746
+      \endverb
+    \endentry
+    \entry{waymo24}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a8175549933a04225faf89553732efb7}{%
+           family={LLC},
+           familyi={L\bibinitperiod},
+           given={Waymo},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{a8175549933a04225faf89553732efb7}
+      \strng{fullhash}{a8175549933a04225faf89553732efb7}
+      \strng{bibnamehash}{a8175549933a04225faf89553732efb7}
+      \strng{authorbibnamehash}{a8175549933a04225faf89553732efb7}
+      \strng{authornamehash}{a8175549933a04225faf89553732efb7}
+      \strng{authorfullhash}{a8175549933a04225faf89553732efb7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Taxis autónomos}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://waymo.com/intl/es/
+      \endverb
+      \verb{url}
+      \verb https://waymo.com/intl/es/
+      \endverb
+    \endentry
+    \entry{ros2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=f18d5e8a3e5c396598bce76d5b06c461}{%
+           family={ROS2:HUMBLE},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \strng{fullhash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \strng{bibnamehash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \strng{authorbibnamehash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \strng{authornamehash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \strng{authorfullhash}{f18d5e8a3e5c396598bce76d5b06c461}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{ROS2: Documentation}
+      \field{year}{2007}
+      \verb{urlraw}
+      \verb https://docs.ros.org/en/humble/index.html
+      \endverb
+      \verb{url}
+      \verb https://docs.ros.org/en/humble/index.html
+      \endverb
+    \endentry
+    \entry{nav2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5971b74cfb82601684b9b3d38b108be7}{%
+           family={Nav2},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{5971b74cfb82601684b9b3d38b108be7}
+      \strng{fullhash}{5971b74cfb82601684b9b3d38b108be7}
+      \strng{bibnamehash}{5971b74cfb82601684b9b3d38b108be7}
+      \strng{authorbibnamehash}{5971b74cfb82601684b9b3d38b108be7}
+      \strng{authornamehash}{5971b74cfb82601684b9b3d38b108be7}
+      \strng{authorfullhash}{5971b74cfb82601684b9b3d38b108be7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Nav2 Stack documentation}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://docs.nav2.org/getting_started/index.html
+      \endverb
+      \verb{url}
+      \verb https://docs.nav2.org/getting_started/index.html
+      \endverb
+    \endentry
+    \entry{sun2023path}{article}{}
+      \name{author}{7}{}{%
+        {{hash=caa395b1d2703760ca178c2cfefa4276}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Junkai},
+           giveni={J\bibinitperiod}}}%
+        {{hash=951ff1db75fe1e92960e9950bd524751}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Zezhou},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=57cf8a4df07cf225eff490fcb3dd53ce}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Pengfei},
+           giveni={P\bibinitperiod}}}%
+        {{hash=97396b63631c7b5155fe9e624a564950}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Bin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=ef97bc6656c10b74a60e62ebcfa63b2b}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Yaobing},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=733e3732b7e3ce5cf2b04cf5e9bd9cf1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Tianyi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=48b0c8a3aef71fb6c4b98ea1538ef986}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Chuliang},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI}%
+      }
+      \strng{namehash}{98464ff4d6b1423003dd2c7c5457995a}
+      \strng{fullhash}{5e7396a7f07f811539516e6ebaa406ef}
+      \strng{bibnamehash}{98464ff4d6b1423003dd2c7c5457995a}
+      \strng{authorbibnamehash}{98464ff4d6b1423003dd2c7c5457995a}
+      \strng{authornamehash}{98464ff4d6b1423003dd2c7c5457995a}
+      \strng{authorfullhash}{5e7396a7f07f811539516e6ebaa406ef}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Symmetry}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{number}{5}
+      \field{title}{Path Planning Algorithm for a Wheel-Legged Robot Based on the Theta* and Timed Elastic Band Algorithms}
+      \field{volume}{15}
+      \field{year}{2023}
+      \field{pages}{1091}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2073-8994/15/5/1091
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2073-8994/15/5/1091
+      \endverb
+    \endentry
+    \entry{colledanchise2018behavior}{book}{}
+      \name{author}{2}{}{%
+        {{hash=db7c35906ea6fb15b4ad802938cde9b5}{%
+           family={Colledanchise},
+           familyi={C\bibinitperiod},
+           given={Michele},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ebd3acb81e2d857e368ec17c18bec591}{%
+           family={Ögren},
+           familyi={Ö\bibinitperiod},
+           given={Petter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \strng{fullhash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \strng{bibnamehash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \strng{authorbibnamehash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \strng{authornamehash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \strng{authorfullhash}{a7ac798c3a7f5340156bccfc5c9a4bdf}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Behavior trees in robotics and AI: An introduction}
+      \field{year}{2018}
+    \endentry
+    \entry{wikiLuenberg}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Pagina Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{Observador de Luenberger}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://es.wikipedia.org/wiki/Observador_de_Luenberger
+      \endverb
+      \verb{url}
+      \verb https://es.wikipedia.org/wiki/Observador_de_Luenberger
+      \endverb
+    \endentry
+    \entry{rigatos2007extended}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3a375684a1c53fa94c5092805c4aeefa}{%
+           family={Rigatos},
+           familyi={R\bibinitperiod},
+           given={Gerasimos},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6b531377db84c344e874998a9080b9e1}{%
+           family={Tzafestas},
+           familyi={T\bibinitperiod},
+           given={Spyros},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{77c657b660a916c92ec6f670738680c6}
+      \strng{fullhash}{77c657b660a916c92ec6f670738680c6}
+      \strng{bibnamehash}{77c657b660a916c92ec6f670738680c6}
+      \strng{authorbibnamehash}{77c657b660a916c92ec6f670738680c6}
+      \strng{authornamehash}{77c657b660a916c92ec6f670738680c6}
+      \strng{authorfullhash}{77c657b660a916c92ec6f670738680c6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical and computer modelling of dynamical systems}
+      \field{number}{3}
+      \field{title}{Extended Kalman filtering for fuzzy modelling and multi-sensor fusion}
+      \field{volume}{13}
+      \field{year}{2007}
+      \field{pages}{251\bibrangedash 266}
+      \range{pages}{16}
+    \endentry
+    \entry{errorAbbe23}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ed6813ad854994f2f5f40a0f8cb46b9b}{%
+           family={Prieto},
+           familyi={P\bibinitperiod},
+           given={Dr.\bibnamedelimi Emilio},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \strng{fullhash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \strng{bibnamehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \strng{authorbibnamehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \strng{authornamehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \strng{authorfullhash}{ed6813ad854994f2f5f40a0f8cb46b9b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
+      \field{title}{…es el error de Abbe?}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.e-medida.es/numero-8/es-el-error-de-abbe/
+      \endverb
+      \verb{url}
+      \verb https://www.e-medida.es/numero-8/es-el-error-de-abbe/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

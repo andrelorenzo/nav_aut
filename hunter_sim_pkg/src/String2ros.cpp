@@ -103,10 +103,10 @@ void String2ros::posCallback(const std_msgs::msg::String::SharedPtr msg)
         double dx = map_point.x - robot_pose.pose.position.x;
         double dy = map_point.y - robot_pose.pose.position.y;
         double d = sqrt((dx*dx) + (dy*dy));
-        goal_pose_array ={};
+        goal_pose_array.poses = {};
         if(d < step)
         {
-            goal_pose = {};
+            goal_pose.pose = {};
             double angle = atan2(dy,dx);
             tf2::Quaternion q;
             q.setRPY(0,0,(angle));

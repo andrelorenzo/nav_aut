@@ -26,7 +26,7 @@ ekf_filter_node_odom:
 
     imu0: imu
     imu0_config: [false, false, false,
-                  false,  false,  false,
+                  false,  false,  true,
                   false, false, false,
                   false,  false,  true,
                   true,  false,  true]
@@ -35,6 +35,7 @@ ekf_filter_node_odom:
     imu0_relative: false
     imu0_queue_size: 10
     imu0_remove_gravitational_acceleration: true
+
 
     use_control: false
 
@@ -110,15 +111,17 @@ ekf_filter_node_map:
 
     imu0: imu
     imu0_config: [false, false, false,
-                  false,  false,  false,
+                  false,  false,  true,
                   false, false, false,
                   false,  false,  true,
                   true,  false,  true]
-    imu0_nodelay: true
+    imu0_nodelay: false
     imu0_differential: false
     imu0_relative: false
     imu0_queue_size: 10
     imu0_remove_gravitational_acceleration: true
+
+
 
     use_control: false
 
@@ -156,12 +159,12 @@ ekf_filter_node_map:
 
 navsat_transform:
   ros__parameters:
-    frequency: 30.0
+    frequency: 10.0
     delay: 3.0
     magnetic_declination_radians:  0.0611 # for malaga
     yaw_offset: 0.0
     zero_altitude: true
     broadcast_utm_transform: true
     publish_filtered_gps: true
-    use_odometry_yaw: true
+    use_odometry_yaw: false
     wait_for_datum: true 

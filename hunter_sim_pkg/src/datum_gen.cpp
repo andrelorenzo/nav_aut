@@ -78,21 +78,24 @@ void datumGen::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
   robot_pose.pose = msg->pose;
   robot_pose.twist = msg->twist;
-  if(first_gps_received && !distance_reached)
-  {
-    //When the first GPS is received, we start moving forward
-    cmd_vel.linear.x = vel;
-    RCLCPP_INFO(this->get_logger(), "Moving forward, %.2f meters left......[%.2f m/s]",(1-(msg->pose.pose.position.x)),cmd_vel.linear.x);
-  }else
-  {
-    cmd_vel.linear.x = 0;
-  }
-  pub_vel->publish(cmd_vel);
-  if(msg->pose.pose.position.x >= distance_to_move)
-  {
-    //When the required distance is reached, we are able to get the second GPS coordinate
-    RCLCPP_DEBUG(this->get_logger(), "%.2i meter(s) reached, shutting down subscriber/publisher and getting second GPS",distance_to_move);
-    distance_reached = true;
+
+  if(!datum_sended){
+    if(first_gps_received && !distance_reached)
+    {
+      //When the first GPS is received, we start moving forward
+      cmd_vel.linear.x = vel;
+      RCLCPP_INFO(this->get_logger(), "Moving forward, %.2f meters left......[%.2f m/s]",(distance_to_move-(msg->pose.pose.position.x)),cmd_vel.linear.x);
+    }else
+    {
+      cmd_vel.linear.x = 0;
+    }
+    pub_vel->publish(cmd_vel);
+    if(msg->pose.pose.position.x >= distance_to_move)
+    {
+      //When the required distance is reached, we are able to get the second GPS coordinate
+      RCLCPP_DEBUG(this->get_logger(), "%.2i meter(s) reached, shutting down subscriber/publisher and getting second GPS",distance_to_move);
+      distance_reached = true;
+    }
   }
 }
 
@@ -123,8 +126,31 @@ void datumGen::gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg)
     }
   }
   sensor_msgs::msg::NavSatFix raw_gps = *msg;
-  if(raw_gps.status.status >= 2 || (raw_gps.position_covariance[0] <= 0.2 && raw_gps.position_covariance[4] <= 0.2))
+  if(raw_gps.status.status >= 2 && (raw_gps.position_covariance[0] <= 0.2 && raw_gps.position_covariance[4] <= 0.2))
   {
+    hist_wz.push_back(robot_pose.twist.angular.z);
+    hist_gps.push_back(raw_gps);
+    geometry_msgs::msg::Point p = robot_pose.pose.pose.position;
+    hist_xy.push_back(p)
+
+    if(hist_gps.size() => (5 + 3) * distance_to_move){
+      hist_gps.erase(hist_gps.begin());
+      hist_wz.erase(hist_wz.begin());
+      hist_xy.erase(hist_xy.begin());
+      double dx = hist_xy.back().x - hist_xy.front().x;
+      double dy = hist_xy.back().y - hist_xy.front().y;
+      double d = sqrt(dx*dx + dy*dy);
+      int suma = 0;
+      for (auto it = hist_wz.begin(); it != hist_wz.end(); ++it) {
+          suma += abs(*it);
+      }
+
+      if(suma <= 0.1 && d >= distance_to_move){
+        gps1 = hist_gps[0];
+        gps2 = hist_gps[hist_gps.size()-1];
+        send_datum();
+      }
+    }
     pub_modified_gps->publish(raw_gps);
   }
 }
@@ -159,23 +185,12 @@ void datumGen::madgwickImuCallback(const sensor_msgs::msg::Imu::SharedPtr msg)
     imu_msg.linear_acceleration_covariance[4] = msg->linear_acceleration_covariance[4];
     imu_msg.linear_acceleration_covariance[8] = msg->linear_acceleration_covariance[8];
 
-    // if(robot_pose.twist.twist.linear.x < 0.1 && robot_pose.twist.twist.angular.z < 0.1)
-    // {
-    //   imu_msg.angular_velocity.z = 0;
-    // }
-
-    tf2::Quaternion q_msg(
-        msg->orientation.x,
-        msg->orientation.y,
-        msg->orientation.z,
-        msg->orientation.w);
-    tf2::Matrix3x3 m_msg(q_msg);
-    double roll, pitch, yaw_msg;
-    m_msg.getRPY(roll, pitch, yaw_msg);
-    tf2::Quaternion q;
-    q.setRPY(0,0,(yaw_msg));
-    q.normalize();
-    imu_msg.orientation = tf2::toMsg(q);  
+    if(robot_pose.twist.twist.linear.x < 0.1 && robot_pose.twist.twist.angular.z < 0.1)
+    {
+      imu_msg.angular_velocity.z = 0;
+      imu_msg.linear_acceleration.x = 0;
+    }
+    imu_msg.orientation = msg->orientation;
     pub_global_imu->publish(imu_msg);
   }
 }

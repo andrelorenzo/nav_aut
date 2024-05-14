@@ -1,0 +1,89 @@
+\documentclass[12pt, a4paper]{book}
+
+% Core packages
+\input{packages/core.tex}
+\input{packages/extra.tex}
+
+% Load variables
+\input{datos.tex}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\input{pages/01-etiqueta.tex}
+
+\newpage\null\thispagestyle{empty}\newpage
+\newpage\null\thispagestyle{empty}\newpage
+
+\thispagestyle{empty}
+\input{pages/02-portada.tex}
+
+\newpage\null\thispagestyle{empty}\newpage
+
+\ifdef{\addacknowledgments}{
+    \pagenumbering{roman}
+    \thispagestyle{onlyfooter}
+    \setcounter{page}{1}
+    \input{pages/03-agradecimientos.tex}
+    
+    \newpage\null\thispagestyle{empty}\newpage
+    
+    \thispagestyle{onlyfooter}
+    \setcounter{page}{2}
+    \input{pages/04-resumen.tex}
+    
+    \newpage\null\thispagestyle{empty}\newpage
+    
+    \setcounter{page}{3}
+    \pagenumbering{arabic}
+    \renewcommand{\contentsname}{Índice de contenidos}
+}{
+    \thispagestyle{empty}
+    \input{pages/04-resumen.tex}
+    
+    \newpage\null\thispagestyle{empty}\newpage
+    
+    \setcounter{page}{2}
+    \pagenumbering{arabic}
+    \renewcommand{\contentsname}{Índice de contenidos}
+}
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+\newpage\null\thispagestyle{empty}\newpage
+\cleardoublepage
+
+\ifdef{\configpar}{
+    \setlength{\parindent}{10px}
+}{}
+
+\setcounter{page}{1}
+\input{pages/05-cuerpo.tex}
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Bibliografía}
+\label{chapter:references}
+\printbibliography
+
+\ifdef{\addappendix}{
+    \cleardoublepage
+    \thispagestyle{empty}
+    
+    \vspace*{\fill}
+    \begin{center}
+        {\huge Apéndices}
+    \end{center}
+    \vspace*{\fill}
+    
+    \appendix
+    
+    \begin{appendices}
+        \input{pages/06-anexos.tex}
+    \end{appendices}
+}{}
+
+
+\end{document}

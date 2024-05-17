@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  17 MAY 2024 20:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  17 MAY 2024 23:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1442,43 +1442,82 @@ File: images/smoother_params.png Graphic file (type png)
 <use images/smoother_params.png>
 Package pdftex.def Info: images/smoother_params.png  used on input line 1152.
 (pdftex.def)             Requested size: 227.62206pt x 86.03795pt.
-LaTeX Info: Redefining \. on input line 1168.
-LaTeX Info: Redefining \% on input line 1168.
+LaTeX Info: Redefining \. on input line 1169.
+LaTeX Info: Redefining \% on input line 1169.
  [36 <./images/dubin_test.png> <./images/reed_sheep_test.png> <./images/smoother_params.png>]
-LaTeX Info: Redefining \. on input line 1173.
-LaTeX Info: Redefining \% on input line 1173.
- [37] [38
+<images/poner_foto.png, id=528, 385.44pt x 385.44pt>
+File: images/poner_foto.png Graphic file (type png)
+<use images/poner_foto.png>
+Package pdftex.def Info: images/poner_foto.png  used on input line 1172.
+(pdftex.def)             Requested size: 227.62206pt x 227.61935pt.
+File: images/poner_foto.png Graphic file (type png)
+<use images/poner_foto.png>
+Package pdftex.def Info: images/poner_foto.png  used on input line 1184.
+(pdftex.def)             Requested size: 227.62206pt x 227.61935pt.
 
-]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1188.
+LaTeX Info: Redefining \% on input line 1188.
+ [37 <./images/poner_foto.png>]
+<images/velocity_smoother_params.png, id=538, 355.3275pt x 278.03876pt>
+File: images/velocity_smoother_params.png Graphic file (type png)
+<use images/velocity_smoother_params.png>
+Package pdftex.def Info: images/velocity_smoother_params.png  used on input line 1197.
+(pdftex.def)             Requested size: 227.62206pt x 178.11389pt.
+LaTeX Info: Redefining \. on input line 1207.
+LaTeX Info: Redefining \% on input line 1207.
+ [38 <./images/velocity_smoother_params.png>]
+File: images/poner_foto.png Graphic file (type png)
+<use images/poner_foto.png>
+Package pdftex.def Info: images/poner_foto.png  used on input line 1217.
+(pdftex.def)             Requested size: 227.62206pt x 227.61935pt.
+
+Overfull \hbox (10.37074pt too wide) in paragraph at lines 1227--1230
+[]\OT1/cmr/m/n/12 En el ca-so de re-ci-bir un men-sa-je por \OT1/cmr/m/it/12 /com-man-der/goal \OT1/cmr/m/n/12 te-ne-mos 2 op-cio-nes o el \OT1/cmr/m/it/12 /web/follow
+ []
+
+LaTeX Info: Redefining \. on input line 1234.
+LaTeX Info: Redefining \% on input line 1234.
+[39]
+<images/dynamic_object_bt.png, id=553, 786.94pt x 341.275pt>
+File: images/dynamic_object_bt.png Graphic file (type png)
+<use images/dynamic_object_bt.png>
+Package pdftex.def Info: images/dynamic_object_bt.png  used on input line 1237.
+(pdftex.def)             Requested size: 227.62206pt x 98.71204pt.
+LaTeX Info: Redefining \. on input line 1244.
+LaTeX Info: Redefining \% on input line 1244.
+ [40 <./images/dynamic_object_bt.png>]
 Cap\'{\i }tulo 4.
-[39
+[41
 
-] [40
+
+] [42
 
 ]
 Cap\'{\i }tulo 5.
-[41] [42
+[43] [44
 
 ]
 Cap\'{\i }tulo 6.
-) [43] [44
+) [45] [46
 
 ]
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 69.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [45
+) [47
 
 ]
 LaTeX Info: Redefining \. on input line 86.
 LaTeX Info: Redefining \% on input line 86.
- [46] (./pages/06-anexos.tex [47
+ [48] (./pages/06-anexos.tex [49
 
-] [48
+] [50
 
 ]
 Ap\'{e}ndice A.
-) [49] (./main.aux
+) [51] (./main.aux
 LaTeX Info: Redefining \sptext on input line 27.
 LaTeX Info: Redefining \. on input line 27.
 LaTeX Info: Redefining \% on input line 27.
@@ -1488,18 +1527,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36205 strings out of 480112
- 713087 string characters out of 5892632
- 1444567 words of memory out of 5000000
- 53398 multiletter control sequences out of 15000+600000
+ 36238 strings out of 480112
+ 713937 string characters out of 5892632
+ 1445166 words of memory out of 5000000
+ 53421 multiletter control sequences out of 15000+600000
  476025 words of font info for 51 fonts, out of 8000000 for 9000
  85 hyphenation exceptions out of 8191
  89i,13n,83p,1170b,2232s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/andrelorent/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on main.pdf (62 pages, 10246621 bytes).
+Output written on main.pdf (64 pages, 10328810 bytes).
 PDF statistics:
- 858 PDF objects out of 1000 (max. 8388607)
- 674 compressed objects within 7 object streams
- 161 named destinations out of 1000 (max. 500000)
- 573 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 883 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 588 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -37,10 +37,10 @@
 \contentsline {subsubsection}{Planner server}{34}{figure.caption.32}%
 \contentsline {subsubsection}{Smoother server}{36}{figure.caption.37}%
 \contentsline {subsection}{\numberline {3.5.3}Mapas de coste}{36}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Plugins}{37}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}Nav2 commander}{37}{subsection.3.5.5}%
-\contentsline {chapter}{\numberline {4}Pruebas y resultados}{39}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{41}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{43}{chapter.6}%
-\contentsline {chapter}{Bibliografía}{45}{chapter.6}%
-\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{49}{appendix.1.Alph1}%
+\contentsline {subsection}{\numberline {3.5.4}Plugins}{38}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Nav2 commander}{39}{subsection.3.5.5}%
+\contentsline {chapter}{\numberline {4}Pruebas y resultados}{41}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{45}{chapter.6}%
+\contentsline {chapter}{Bibliografía}{47}{chapter.6}%
+\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{51}{appendix.1.Alph1}%

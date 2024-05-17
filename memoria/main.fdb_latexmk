@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1715969566 "main.bcf" "main.bbl" "main" 1715969809
-  "main.bcf" 1715969809 108445 6b88a8115c6209a4d9b6286cff716c5d "pdflatex"
+["biber main"] 1715979958 "main.bcf" "main.bbl" "main" 1715980090
+  "main.bcf" 1715980090 108445 6b88a8115c6209a4d9b6286cff716c5d "pdflatex"
   "references.bib" 1715967214 5123 ff3e2698d9c7cff83897f4e2ab5928f0 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1715969805 "/home/andrelorent/tfg_ws/src/memoria/main.tex" "main.pdf" "main" 1715969809
+["pdflatex"] 1715980084 "/home/andrelorent/tfg_ws/src/memoria/main.tex" "main.pdf" "main" 1715980090
   "/etc/texmf/web2c/texmf.cnf" 1714840814 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/andrelorent/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1714843210 14040 3b98ba5bdebd3105484d565e6ecc159f ""
   "/home/andrelorent/tfg_ws/src/memoria/main.tex" 1715631032 1715 d1df1c6d2e88047ee58316920726b010 ""
@@ -240,6 +240,7 @@
   "images/datasheet_mti.png" 1715880069 146230 a7a3a7057d26df9954c736fe16535363 ""
   "images/dijstra.png" 1715966166 978862 7d4dc83c713fc7d83e8e7af3b0d46e42 ""
   "images/dubin_test.png" 1715967566 9092 a8260670f9190238975dedd9fdb27e6f ""
+  "images/dynamic_object_bt.png" 1715977260 70749 b231a2d22b936ed2b593330deb83a0b8 ""
   "images/europe_utm.png" 1714927300 224029 08f637d37ff9c8e5ccdf4b888c9acace ""
   "images/furgoneta_ernst_dickens.jpeg" 1714842152 62961 75c29347e33d28e1c355c67be92ba822 ""
   "images/hunter_datasheet.png" 1715878896 100994 33a4c1685da9309ff3003a67a09ff34b ""
@@ -257,6 +258,7 @@
   "images/osuter_datasheet.png" 1715878868 133932 7aefc3756e9b9e149d1c0b9f0189dd1e ""
   "images/ouster_hunter.jpeg" 1714854990 277177 b32af580ae4981e738de17817e113b28 ""
   "images/planificadores_table.png" 1715965091 136411 399b34db85783e0c78aa91f45c310b40 ""
+  "images/poner_foto.png" 1714856302 12221 17da30d3f93b9cea6dee45e7c187663e ""
   "images/pure_pursuit_teoria.png" 1715962898 7665 0820cfbd60167f405d494a352c526c33 ""
   "images/reach_datasheet.png" 1715878893 83844 27a8d9d0708740c3774b5dcf86360200 ""
   "images/reach_rs2.jpeg" 1714855123 235307 b8d8f254a1007cb7173a993291e65d22 ""
@@ -266,20 +268,21 @@
   "images/rtk_arquitecture.png" 1714842167 10244 5317eb99bf775007a52004f6ec901bad ""
   "images/smoother_params.png" 1715967986 17840 2f70c8a1790756703a2b226c0e487c48 ""
   "images/tortugas_william_grey.jpg" 1714842162 35581 56e118532acc26a5ad8e4f53b2a46e76 ""
+  "images/velocity_smoother_params.png" 1715974326 27399 8d19c3ae29644fcfd3060c8aa4c6c4fc ""
   "images/wgs84.png" 1714926518 26451 497a11c5b5205405010ff3509ebd512c ""
   "images/xsens.jpeg" 1714855207 162507 8a13816517a7a419daee9e1398702b5a ""
-  "main.aux" 1715969809 38703 2b79a2eebc4ca7545224cf3ebee9508a "pdflatex"
-  "main.bbl" 1715969566 22658 6955f878d9dc8ecc27e7da225d01a203 "biber main"
-  "main.run.xml" 1715969809 2368 a1c481e747b27b76f408ac21c41df95b "pdflatex"
+  "main.aux" 1715980090 40547 9143cc44db5f2a3d7fa955b695b9084c "pdflatex"
+  "main.bbl" 1715979959 22658 6955f878d9dc8ecc27e7da225d01a203 "biber main"
+  "main.run.xml" 1715980090 2368 a1c481e747b27b76f408ac21c41df95b "pdflatex"
   "main.tex" 1715631032 1715 d1df1c6d2e88047ee58316920726b010 ""
-  "main.toc" 1715969809 3865 d96cbc2e5e220bff65a9a6c7d8ab0a05 "pdflatex"
+  "main.toc" 1715980090 3865 8da69eb2b1946a7e3b2cb79db5a59f08 "pdflatex"
   "packages/core.tex" 1715625700 1385 2772b1ad254bf27931dba74abb077954 ""
   "packages/extra.tex" 1715878287 262 d12f20d07c93a1d493b92e00f15423d5 ""
   "pages/01-etiqueta.tex" 1714840104 498 7b5899a86010c690f47edf079eee18eb ""
   "pages/02-portada.tex" 1714840127 706 083d7a0092abf4aa76731fa72d25f61d ""
   "pages/03-agradecimientos.tex" 1715270908 743 033023cef15bef5e7cfa58180d34adee ""
   "pages/04-resumen.tex" 1715692295 2863 b6be62dcb7a25eb440462fd463920f01 ""
-  "pages/05-cuerpo.tex" 1715969803 84184 a677c22a156e2c54da9d1181560a6160 ""
+  "pages/05-cuerpo.tex" 1715980084 92076 c87cbacd03dc441870a28ce01a4efdc1 ""
   "pages/06-anexos.tex" 1714912380 54 b7b059ae76a3e67145d19dc87c42bfdd ""
   (generated)
   "main.aux"

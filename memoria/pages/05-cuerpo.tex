@@ -342,8 +342,8 @@ memoria RAM de 16MB y una memoria ROM SSD de 512GB, un procesador Ryzen 5 3550H 
 \subsection{Lidar 3D Ouster}
 En primer lugar contamos con un LIDAR 3D de la marca OUSTER, \textbf{figura \ref{fig:ouster_hunter}}, en concreto el 
 modelo de medio alcance, con un rango que se comprende entre los 0.8 y los 120 metros, esta preparado para exteriores con una visera 
-protectora y es capaz de barrer áreas en 360º horizontalmente y 33.2º verticalmente, es un modelo de altas prestaciones, funciona a 
-100Hz y tiene una resolución de 1.2 cm,todos estos datos se pueden observar también en la\textbf{figura \ref{fig:datasheet_ouster}}, 
+protectora y es capaz de barrer áreas en 360º horizontalmente y 45º verticalmente, es un modelo de altas prestaciones, funciona a 
+100Hz y tiene una resolución de 2 cm de media ya que depende de la distancia ,todos estos datos se pueden observar también en la\textbf{figura \ref{fig:datasheet_ouster}}, 
 para la implementación con ROS2 también se uso el driver oficial de la empresa. 
 
 \begin{figure}[h]
@@ -925,7 +925,7 @@ a los tipos de nodos que existen y sus características de funcionamiento. Estos
     \begin{itemize}
         \item \textit{Pipeline}, este ''llamará'' sus nodos ''hijo'' uno por uno de izquierda a derecha esperando a que cada nodo devuelva \textit{Failure} o \textit{Success}, este nodo solo devolverá \textit{Success} cuando todos sus nodos devuelvan \textit{Success}, en el caso de que un nodo devuelva \textit{Failure} este parará su comportamiento y devolverá \textit{Failure}.
         \item \textit{Recovery}, este es un nodo de control propio del stack, tendrá exclusivamente 2 nodos ''hijo'' como se puede observar en la \textbf{figura \ref{fig:bt_recovery}} y solo devolverá \textit{Success} si el primer nodo lo devuelve en caso de que el primer nodo devuelva \textit{Failure} ''llamará'' al segundo nodo y volverá a intentar ''llamar'' al primero en un bucle hasta el primer nodo devuelva \textit{Success} o se hallan ejecutado un nº determinado de intentos estipulados en el parámetros \textit{number\_of\_retries}.
-        \item \textit{Round Robin}, este nodo funciona en opisición a \textit{Pipeline} donde ''llamará'' en bucle a todos los nodos de izquierda a derecha hasta que alguno de ellos devuelva \textit{Success}, donde el también devolverá \textins*{Success} sin importar el resto de nodos ''hijo''.
+        \item \textit{Round Robin}, este nodo funciona en oposición a \textit{Pipeline} donde ''llamará'' en bucle a todos los nodos de izquierda a derecha hasta que alguno de ellos devuelva \textit{Success}, donde el también devolverá \textins*{Success} sin importar el resto de nodos ''hijo''.
     \end{itemize}
 \end{itemize}
 
@@ -976,7 +976,7 @@ usados cuando el robot se queda ''atascado'' y por último el \textit{Smoother s
 Posteriormente existen 2 mapas de coste, uno local y otro global, el local se encarga de almacenar la información en un entorno reducido y sirve 
 para que el controlador haga uso de una buena evitación de obstáculos  y el global para que el planificador genere una trayectoria evitando los obstáculos ya conocidos a más largo alcance.
 
-Finalmente se utilizan 2 plugins externos a la estructura interna de Nav2, \textit{Velocity smoother} que suaviza los comandos de velocidad para generar movimientos continuos y 
+Finalmente se utilizan 2 plugins externos a la estructura de Nav2, \textit{Velocity smoother} que suaviza los comandos de velocidad para generar movimientos continuos y 
 \textit{Waypoint follower} que proporciona la funcionalidad de navegar un array de poses aunque estás estén a mayor distancia del alcance que tiene 
 el mapa global, llamando al algoritmo de navegación cada vez que llega al anterior, cabe mencionar que las poses deben tener una separación máxima igual al 
 alcance del mapa global para que así Nav2 encuentre siempre un camino.
@@ -1112,7 +1112,7 @@ por el creador del algoritmo, Steve Macenski~\cite{steve_mc} las cuales se refle
 
 \begin{table}[h!]
     \centering
-    \caption{Parámetros}
+    \caption{Parámetros de configuración para las penalizaciones del planificador}
     \begin{tabular}{|l|c|}
         \hline
         Penalizaciones     & Rango      \\ \hline
@@ -1161,18 +1161,114 @@ un mapa del entorno estático mapeado \textit{a priori}, tarea imposible para re
 de proceder, la que se decidió llevar a cabo de eliminar la capa \textit{estática} en la configuración de los mapas de coste. Estos mapas guardan la 
 información sobre los obstáculos actuales y los obstáculos que se han visto a lo largo de la navegación para así poder evitarlos de manera local (evasión de obstáculos) y 
 de manera global (generación de una trayectoria que tenga en cuanta esos obstáculos), el mapa de costes local existe en el sistema de referencia de \textit{odom} y se ejecuta 
-a una frecuencia más alta (5 Hz en nuestro caso ) y consta de 2 capas, la primera es una capa ''persistente'' en el tiempo, \textit{voxel}, con la información del Lidar que crea zonas de obstáculos por 
+a una frecuencia más alta (5 Hz en nuestro caso ) y consta de 2 capas, la primera es una capa ''persistente'' en el tiempo, \textit{voxel}, con la información del Lidar 3D, creando así zonas de obstáculos por 
 las que el robot no puede navegar y otra capa no persistente, \textit{inflation}, que infla estos obstáculos de manera exponential creando zonas 
-de peligro por donde el robot no debe pasar o debe pasar muy despacio para así evitar choques laterales a causa de la forma del robot. 
-Este mapa como se puede observar en la \textbf{figura } es un cuadrado de lado igual a 10 m.
+de peligro por donde el robot no debe pasar o debe pasar muy despacio para así evitar choques laterales a causa de la forma del robot, \textbf{figura \ref{fig:mapa_local}}, este 
+mapa lo crearemos con un lado igual a 10 m y añadiremos un parámetro con las medidas exteriores del robot, esto es un rectángulo para que el controlador tenga en consideración 
+la forma del vehículo.
 
- \subsection{Plugins}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/poner_foto.png}
+    \caption{TODAVIA NO SE SI PONER EL ARCHIVO DE CONFIGURACIÓN O UNA IMAGEN DE RVIZ}
+    \label{fig:mapa_local}
+\end{figure}
+
+Para el mapa global crearemos otra instancia idéntica pero con un lado igual a 50 m, el sistema de referencia de este mapa sera \textit{map} y cambiaremos 
+la capa de \textit{voxel} por \textit{Obstacle} que será idéntica a la anterior pero esta será una capa 2D, se 
+suscribirá a el topic de \textit{ouster/scan} ya que para el mapa global no necesitamos tanta información del Lidar así como tampoco tanta precisión para el 
+cálculo de la trayectoria según las dimensiones del vehículo por lo que asumiremos que el robot es circular para este mapa de costes, \textbf{figura \ref{fig:mapa_global}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/poner_foto.png}
+    \caption{TODAVIA NO SE SI PONER EL ARCHIVO DE CONFIGURACIÓN O UNA IMAGEN DE RVIZ}
+    \label{fig:mapa_global}
+\end{figure}
+
+\subsection{Plugins}
+Los plugins que hemos usado son dos, el primero un suavizador final de velocidad donde hemos escogido controlar la velocidad en bucle cerrado de control y 
+hemos seleccionado los rangos de velocidad y aceleración que queremos usar en nuestra aplicación, estos están expresados por 4 vectores como se 
+puede apreciar en \textbf{figura \ref{fig:suavizado_vel}} donde los valores se refieren a \begin{math}[\dot{X},\dot{Y},\dot{\theta_{z}}]\end{math} 
+ y \begin{math}[\ddot{X}, \ddot{Y}, \ddot{\theta_{z}}] \end{math} respectivamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/velocity_smoother_params.png}
+    \caption{Archivo de configuración para el plugin de suavizado de velocidades}
+    \label{fig:suavizado_vel}
+\end{figure}
+
+En el caso de el plugin de \textit{waypoint follower} tenemos solo un par de parámetros, seleccionar que queremos hacer en cada \textit{waypoint} o 
+objetivo (estos pueden esperar a recibir un mensaje por un topic, sacar una foto o pararse durante un tiempo), nosotros hemos escogido pararse y hemos seleccionado 0s de 
+duración para que se cree una trayectoria continua, este plugin nos ofrece la posibilidad de mandar objetivos que están más lejos que el rango del 
+mapa de costes global enviándole un array de poses que estén distanciadas en el espacio menos que el rango del mapa de costes global, esto es ya 
+que este plugin controla el envío del siguiente objetivo del array conforme llega al anterior.
 
 \subsection{Nav2 commander}
+Como ya hemos comentado en la sección de procesamiento de mensajes necesitamos un procesamiento de las peticiones, estás se podrían clasificar en 3 situaciones, la primera 
+donde la distancia al marcador está a menor distancia de el rango de el mapa de costes global, en ese caso el procedimiento era sencillo, simplemente publicamos las pose por el topic 
+\textit{/commander/goal} que es de tipo \textit{/geometry\_msgs/Pose}, si el objetivo esta a más distancia entonces debemos calcular los puntos intermedios como podemos observar en la 
+\textbf{figura \ref{fig:puntos_intermedios}}, en este otro caso publicaremos por el topic \textit{/commander/goal\_array} de tipo \textit{/geometry\_msgs/PoseArray}.
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/poner_foto.png}
+    \caption{Ejemplo de cálculo de puntos intermedios}
+    \label{fig:puntos_intermedios}
+\end{figure}
+
+Nav2 commander es el último nodo realizado para este proyecto y es el encargado de suscribirse a los 2 topics mencionados anteriormente 
+además de otro topic de tipo \textit{/std\_msgs/Bool} llamado \textit{/web/follow} que será \textit{true} cuando el modo ''follow me'' este activo. En 
+el caso de recibir un mensaje por el topic \textit{/commander/goal\_array} este se comanda al plugin de \textit{Waypoint follower} por medio de 
+una petición de su servidor de acción correspondiente.
+
+En el caso de recibir un mensaje por \textit{/commander/goal} tenemos 2 opciones o el \textit{/web/follow} esta en \textit{false}, donde simplemente 
+se hará una petición al servicio propio de Nav2 para navegación punto a punto o que este a \textit{true} donde se deberá hacer uso del mismo servidor pero 
+indicando un árbol de comportamiento específico para esta tarea como se observa en la \textbf{figura \ref{fig:follow_me}}.
+
+Este árbol indicará a Nav2 que debe hacer el procedimiento estándar para ir a un punto pero recortando el trayecto 1m para así quedarse siempre a una distancia de la persona, también para hacer más dinámica 
+la búsqueda de el objetivo las actualizaciones de el objetivo se actualizarán por el topic \textit{/goal\_update} del tipo \textit{/geometry\_msgs/PoseStamped}, por tanto 
+para el caso en el que esto suceda los nuevos objetivos enviados por la aplicación web se publicarán por este topic.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/dynamic_object_bt.png}
+    \caption{Programación en xml del árbol de comportamiento para seguimiento dinámico de una persona (''follow me'')}
+    \label{fig:follow_me}
+\end{figure}
+
+Hay que resaltar que aunque el algoritmo del ''follow me'' ha sido probado y funciona, este es altamente dependiente de la precisión del GPS 
+empleado y ya que los dispositivos móviles tienen una precisión bastante baja, el resultado obtenido no es bueno.
 \cleardoublepage
 \chapter{Pruebas y resultados}
 
 \chapter{Conclusiones}
+Durante el presente proyecto se ha desarrollado una interfaz de control que cumple con los objetivos propuestos, es funcional y fácil de usar, 
+se ha implementado el envió y procesamiento de todas las posibles funcionalidades propuestas.
+
+Se han desarrollado algoritmos de adaptación tanto de sensores como para la mejora de la localización con buenos resultados en la fiabilidad del sistema, donde el cálculo 
+de la orientación por medio del movimiento del robot a resultado de tener una precisión más que aceptable.
+
+En cuento a la localización se ha conseguido mantener una buena precisión a lo largo de un tiempo y una distancia considerable, habiéndola probado durante más de 1 hora 
+y recorriendo algo más de 1 km, habiendo comprobado también
+que esta es fiable incluso bajo pérdidas momentáneas de la señal RTK del GPS o incluso de la propia señal GPS durante varios segundos.
+
+La navegación ha resultado también bastante fiable consiguiendo que realize cambios de dirección con la aparición de obstáculos dinámicos y sea capaz de 
+llegar a su objetivo con un error menor a unas decenas de centímetros.
+
+Este sistema ha sido desarrollado de manera ampliable y sobre todo para que sea utilizado en los futuros proyectos del departamento, 
+siendo este proyecto una solución completa y robusta para ello.
 
 \chapter{Futuras líneas de trabajo}
+
+Este proyecto presenta aunque aceptable para el alcance de el trabajo, una carencia en localización para ser un vehículo de exteriores, 
+una vía de trabajo que considero mejoraría enormemente este tema sería la caracterización de los sensores IMU, consiguiendo así unos 
+valores precisos de varianza para cada estado del sistema, dado que estas han sido impuestas de manera fija y escogidas con poco 
+razonamiento teórico.
+
+Otro campo que consideró mejoraría este proyecto sería el desarrollo de los comentados \textit{behavior} o comportamientos específicos para 
+el modelo Ackermann ya que actualmente los únicos que existen son \textit{Wait} y \textit{Back up} y aunque suficientes para conseguir una navegación buena,
+la creación de un comportamiento que retroceda de manera más ''inteligente'' ayudaría en gran medida a la fluidez del sistema.
+

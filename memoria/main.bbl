@@ -40,12 +40,6 @@
       \field{title}{World Robotics 2023 Report}
       \field{volume}{2}
       \field{year}{2023}
-      \verb{urlraw}
-      \verb https://ifr.org/ifr-press-releases/news/world-robotics-2023-report-asia-ahead-of-europe-and-the-americas
-      \endverb
-      \verb{url}
-      \verb https://ifr.org/ifr-press-releases/news/world-robotics-2023-report-asia-ahead-of-europe-and-the-americas
-      \endverb
     \endentry
     \entry{Rolan20}{article}{}
       \name{author}{1}{}{%
@@ -67,17 +61,10 @@
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
       \field{number}{1}
       \field{title}{Localización de un robot móvil mediante el filtro de Kalman extendido y el simulador Gazebo}
       \field{volume}{1}
       \field{year}{2020}
-      \verb{urlraw}
-      \verb https://rcs.cic.ipn.mx/2020_149_8/Localizacion%20de%20un%20robot%20movil%20mediante%20el%20filtro%20de%20Kalman%20extendido%20y%20el%20simulador%20Gazebo.pdf
-      \endverb
-      \verb{url}
-      \verb https://rcs.cic.ipn.mx/2020_149_8/Localizacion%20de%20un%20robot%20movil%20mediante%20el%20filtro%20de%20Kalman%20extendido%20y%20el%20simulador%20Gazebo.pdf
-      \endverb
     \endentry
     \entry{nasa24}{misc}{}
       \name{author}{1}{}{%
@@ -163,12 +150,6 @@
       \field{year}{2003}
       \field{pages}{351\bibrangedash 363}
       \range{pages}{13}
-      \verb{urlraw}
-      \verb https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/holland02first.pdf
-      \endverb
-      \verb{url}
-      \verb https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/holland02first.pdf
-      \endverb
     \endentry
     \entry{ernst80}{misc}{}
       \name{author}{1}{}{%
@@ -388,19 +369,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Symmetry}
-      \field{note}{Fecha de Acceso: 12 de marzo de 2024}
       \field{number}{5}
       \field{title}{Path Planning Algorithm for a Wheel-Legged Robot Based on the Theta* and Timed Elastic Band Algorithms}
       \field{volume}{15}
       \field{year}{2023}
       \field{pages}{1091}
       \range{pages}{1}
-      \verb{urlraw}
-      \verb https://www.mdpi.com/2073-8994/15/5/1091
-      \endverb
-      \verb{url}
-      \verb https://www.mdpi.com/2073-8994/15/5/1091
-      \endverb
     \endentry
     \entry{colledanchise2018behavior}{book}{}
       \name{author}{2}{}{%
@@ -519,6 +493,75 @@
       \endverb
       \verb{url}
       \verb https://www.e-medida.es/numero-8/es-el-error-de-abbe/
+      \endverb
+    \endentry
+    \entry{dolgov2008practical}{article}{}
+      \name{author}{4}{}{%
+        {{hash=65e8d6cda2636f6f35dc4a17e63649d4}{%
+           family={Dolgov},
+           familyi={D\bibinitperiod},
+           given={Dmitri},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5112ea130eadef0764fce0145b8b9f91}{%
+           family={Thrun},
+           familyi={T\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=67d13fe110c028d272a9291dff505b23}{%
+           family={Montemerlo},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4d20f0c0cb583117558cdb16b3faa730}{%
+           family={Diebel},
+           familyi={D\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{44cf5d25ea6040226bc477b81bb099db}
+      \strng{fullhash}{5d0a102ec2972a756508e2f9ccf1acc5}
+      \strng{bibnamehash}{44cf5d25ea6040226bc477b81bb099db}
+      \strng{authorbibnamehash}{44cf5d25ea6040226bc477b81bb099db}
+      \strng{authornamehash}{44cf5d25ea6040226bc477b81bb099db}
+      \strng{authorfullhash}{5d0a102ec2972a756508e2f9ccf1acc5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Ann Arbor}
+      \field{number}{48105}
+      \field{title}{Practical search techniques in path planning for autonomous driving}
+      \field{volume}{1001}
+      \field{year}{2008}
+      \field{pages}{18\bibrangedash 80}
+      \range{pages}{63}
+    \endentry
+    \entry{steve_mc}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=32de857faf63cd1f724ac8acd558e91b}{%
+           family={Macenski},
+           familyi={M\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{32de857faf63cd1f724ac8acd558e91b}
+      \strng{fullhash}{32de857faf63cd1f724ac8acd558e91b}
+      \strng{bibnamehash}{32de857faf63cd1f724ac8acd558e91b}
+      \strng{authorbibnamehash}{32de857faf63cd1f724ac8acd558e91b}
+      \strng{authornamehash}{32de857faf63cd1f724ac8acd558e91b}
+      \strng{authorfullhash}{32de857faf63cd1f724ac8acd558e91b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Git hub}
+      \field{title}{Smac Planner}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
+      \endverb
+      \verb{url}
+      \verb https://github.com/ros-navigation/navigation2/tree/main/nav2_smac_planner
       \endverb
     \endentry
   \enddatalist

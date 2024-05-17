@@ -316,7 +316,16 @@ modelo Hunter V2.0, un robot móvil tipo \textbf{Ackermann} ultra resistente dis
 a baja velocidad, sus dimensiones son 980 x 745x 380mm, tiene una carga máxima de 150 kg y una velocidad máxima de 1.5 m/s, un radio 
 de giro mínimo de 1.6 m y una autonomía de 22 km. El robot incluye con un software para el cálculo de la cinemática inversa, la publicación de 
 la odometría de los \textit{encoders} de las ruedas por el topic \textit{/hunter/odom} y la suscripción de un mensaje tipo \textit{sensor\_msgs/Twist} 
-para comandar velocidades angulares y lineales por el topic \textit{cmd\_vel} y se comunica al ordenador de abordo mediante \textbf{Bus CAN}.
+para comandar velocidades angulares y lineales por el topic \textit{cmd\_vel} y se comunica al ordenador de abordo mediante \textbf{Bus CAN}. 
+En la \textbf{figura \ref{fig:datasheet_hunter}} se puede observar las especificaciones del vehículo completas.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/hunter_datasheet.png}
+    \caption{Hoja de datos de la base del vehículo}
+    \label{fig:datasheet_hunter}
+\end{figure}
 
 \begin{figure}[h]
     \centering
@@ -333,10 +342,18 @@ memoria RAM de 16MB y una memoria ROM SSD de 512GB, un procesador Ryzen 5 3550H 
 \subsection{Lidar 3D Ouster}
 En primer lugar contamos con un LIDAR 3D de la marca OUSTER, \textbf{figura \ref{fig:ouster_hunter}}, en concreto el 
 modelo de medio alcance, con un rango que se comprende entre los 0.8 y los 120 metros, esta preparado para exteriores con una visera 
-protectora y es capaz de barrer áreas en 360º horizontalmente y 33.2º verticalmente, es un modelos de altas prestaciones, funciona a 
-100Hz y tiene una resolución de 1.2 cm, para la implementación con ROS2 también se uso un driver oficial ofrecido por la propia empresa. 
+protectora y es capaz de barrer áreas en 360º horizontalmente y 33.2º verticalmente, es un modelo de altas prestaciones, funciona a 
+100Hz y tiene una resolución de 1.2 cm,todos estos datos se pueden observar también en la\textbf{figura \ref{fig:datasheet_ouster}}, 
+para la implementación con ROS2 también se uso el driver oficial de la empresa. 
 
 \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/osuter_datasheet.png}
+    \caption{Hoja de datos del Ouster OS1-32-U}
+    \label{fig:datasheet_ouster}
+\end{figure}
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/ouster_hunter.jpeg}
     \caption{Ouster montado en la torre}
@@ -348,7 +365,28 @@ decir que esta unidad de medición inercial fue la única usada durante el 90\% 
 buena localización a causa no tener 9 ejes de libertad y de no ser de muy alta gama, de todas formas como se explica más adelante se 
 consiguió una buena orientación usando este dispositivo. Fue colocado en la torre del robot para máxima visibilidad del LIDAR.
 
-En cuanto al esquema de comunicación con el software, el driver usado publica entre varios mensajes de datos los siguientes.
+En las \textbf{figuras \ref{fig:lidar_2d_pruebas} y \ref{fig:lidar_3d_pruebas}} podemos las pruebas que se hicieron con el vehículo en el recinto 
+de la universidad donde para el mismo sitio se puede ver la diferencia entre las dos salidas del sensor.
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/lidar3d_2.png}
+    \caption{Salida de Lidar 3D en el recinto de la facultad de Telecomunicaciones}
+    \label{fig:lidar_2d_pruebas}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/lidar2d.png}
+    \caption{Salida de Lidar 2D en el recinto de la facultad de Telecomunicaciones}
+    \label{fig:lidar_3d_pruebas}
+  \end{minipage}
+\end{figure}
+En cuanto al esquema de comunicación con el software, el driver usado publica los siguientes mensajes de datos entre varios que no interesan.
 \begin{itemize}
     \item Lidar 2D, un mensaje de tipo \textit{sensor\_msgs/LaserScan} por el topic \textit{/ouster/scan}
     \item Lidar 3D, un mensaje de tipo \textit{sensor\_msgs/PointCLoud} por el topic \textit{/ouster/points}
@@ -356,6 +394,14 @@ En cuanto al esquema de comunicación con el software, el driver usado publica e
 \end{itemize}
 
 \subsection{GPS RTK Reach RS2+}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/reach_rs2.jpeg}
+    \caption{GPS Reach RS2+}
+    \label{fig:reach_rs2}
+\end{figure}
 
 El GPS utilizado fue un GPS Reach RS2+, \textbf{figura \ref{fig:reach_rs2}}, con tecnología RTK basado en el protocolo NTRIP para la 
 corrección de posicionamiento, este GPS funciona usando el protocolo NMEA, un protocolo extremadamente robusto utilizado en el sector marino, 
@@ -366,38 +412,75 @@ para su conexionado se pueden usar varios métodos, como Wifi o radio pero en es
 minimizar las interferencias y pérdidas de señal. Para la comunicación tenemos un solo mensaje de interés, este es de tipo \textit{sensor\_msgs/NavSatFix} 
 y se publica por el topic \textit{/hunter/fix}.
 
-\begin{figure}[h]
+Como se puede ver en la \textbf{figura \ref{fig:datasheet_reach}} podría parecer que este dispositivo tiene una IMU pero está inaccesible para 
+el usuario.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{images/reach_rs2.jpeg}
-    \caption{GPS Reach RS2+}
-    \label{fig:reach_rs2}
+    \includegraphics[width=0.4\textwidth]{images/reach_datasheet.png}
+    \caption{Hoja de datos del GPS Reach RS2+}
+    \label{fig:datasheet_reach}
 \end{figure}
 
-\subsection{IMU Xsens MTi-3th}
 
-El último sensor usado es una IMU de 9 ejes de libertad de la marca Xsens (hoy en día conocida por Movella), 
-\textbf{figura \ref{fig:xsens_imu}}, este sensor no se iba a implementar ya que no se tenía conocimiento de su existencia en el 
-departamento, es un modelo con una antigüedad de 13 años, lo que dificultó enormemente su implementación con ROS2, los drivers 
-disponibles o no daban soporte a modelos tan antiguos o los que si lo daban estaban diseñados para la primera versión de ROS, a causa de 
-esto el driver tuvo que ser reescrito desde cero y por tanto forma parte de este proyecto, y esta incorporado en el repositorio de GitHub 
-ya comentado.  
-\begin{figure}[h]
+
+\subsection{IMU Xsens MTi-3th}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/xsens.jpeg}
+    \includegraphics[width=0.3\textwidth]{images/xsens.jpeg}
     \caption{Xsens 3th gen MTI}
     \label{fig:xsens_imu}
 \end{figure}
+El último sensor usado es una IMU de 9 ejes de libertad de la marca Xsens (hoy en día conocida por Movella), 
+\textbf{figura \ref{fig:xsens_imu}}, este sensor no se iba a implementar ya que no se tenía conocimiento de su existencia en el 
+departamento, es un modelo con una antigüedad de 13 años como se puede ver en la \textbf{figura \ref{fig:xsens_datasheet}}, lo que dificultó enormemente su implementación con ROS2, los drivers 
+disponibles o no daban soporte a modelos tan antiguos o los que si lo daban estaban diseñados para la primera versión de ROS, a causa de 
+esto el driver tuvo que ser reescrito desde cero y por tanto forma parte de este proyecto, y esta incorporado en el repositorio de GitHub 
+ya comentado.  
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/datasheet_mti.png}
+    \caption{Hoja de datos de la IMU MTi-3th}
+    \label{fig:xsens_datasheet}
+\end{figure}
+En las \textbf{figuras \ref{fig:mti_velocidad_orientacion} y \ref{fig:mti_aceleraciones}} podemos observar el comportamiento de por un lado 
+la orientación y la velocidad angular en el eje z donde podemos comprobar una salida bastante estable y por otro lado el comportamiento 
+de las aceleraciones, en este caso extremadamente ruidoso, también aquí podemos comprobar que la IMU está en el sistema de referencia correcto 
+ya que \begin{math}\ddot{Z}\end{math} debe ser positiva y tener de media un valor de aproximadamente 9.81 m/s² que es exactamente lo que vemos. En cuanto a la 
+señal ruidosa de aceleraciones veremos más adelante que no es un problema dado que para utilizar esta señal e localización la integraremos en el tiempo 
+y por tanto simplemente servirá como una redundancia en la odometría de la velocidad lineal.
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/mti_angular_orientation.png}
+    \caption{Variaciones de orientación y de velocidad angular en el eje z}
+    \label{fig:mti_velocidad_orientacion}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/mti_Acceleration.png}
+    \caption{Variaciones de aceleración lineal en el eje x y el eje z}
+    \label{fig:mti_aceleraciones}
+  \end{minipage}
+\end{figure}
+
+\newpage
+\subsection{Implementación del sistema sensorial en ROS2}
 
 Una vez montados he instalados todos los dispositivos se hicieron pruebas para valorar su efectividad real en el terreno y la configuración 
-de los parámetros adecuados para los drivers.
-
-ROS2 funciona con un sistema de descripción cinemática y dinámica escrito en archivos URDF (Unified Robot Description Format),en concreto en 
+de los parámetros adecuados para los drivers. ROS2 funciona con un sistema de descripción cinemática y dinámica escrito en archivos URDF (Unified Robot Description Format),en concreto en 
 el lenguaje \textbf{xml} y describe las transformaciones que existen entre los distintos componentes del robot, funciona como un árbol de 
 transformaciones donde el elemento base sería el chasis, que según la \textbf{REP 105} (ROS Enhancement Proposal), el nombre para este 
-elemento debe ser "\textit{base\_link}", está REP describe en detalle las convenciones respecto a nombres para todo el framework de ROS. 
+elemento debe ser ''\textit{base\_link}'', está REP describe en detalle las convenciones respecto a nombres para todo el framework de ROS. 
 
 Las transformaciones pueden ser de 2 tipos, estáticas o dinámicas, las estáticas las compondrían las transformaciones fijas entre los 
-sensores y el "\textit{base\_link}" y las dinámicas las transformaciones que pueden variar en el tiempo, como el cambio de pose desde 
+sensores y el ''\textit{base\_link}'' y las dinámicas las transformaciones que pueden variar en el tiempo, como el cambio de pose desde 
 un instante inicial al actual, el cual según la \textbf{REP 105} , se le llama \textit{odom}, que viene de odometría en inglés, otro 
 ejemplo sería la transformación entre un mapa fijo definido a priori y la posición actual del robot. Estos 2 flujos de datos son publicados 
 por los \textit{topics} \textit{/tf\_static} y \textit{/tf}, respectivamente, para la creación del árbol estático de transformaciones, se 
@@ -411,14 +494,14 @@ los paquetes usados, robot\_localization del cual hablaremos más en profundidad
 En la  \textbf{figura\ref{fig:arbol_urdf}}, podemos observar el árbol completo del robot, desde las transformaciones dinámicas, 
 (map, odom, utm) hasta las estáticas (base\_footprint, base\_link, gps\_frame, etc...)
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/arbol_transformaciones_hunter.jpg}
     \caption{Árbol de transformaciones}
     \label{fig:arbol_urdf}
 \end{figure}
 
-
+\newpage
 \section{Interfaz de usuario}
 
 Para la creación de la interfaz de usuario se decidió usar React, una biblioteca de Javascript de código abierto para la creación de 
@@ -463,9 +546,6 @@ comentar que se ha implementado también el envío de areas tanto rectangulares 
 funcionalidad no se ha llegado a implementar por no ser de interés para el propósito real de este robot, en los objetivos se estableció 
 una interfaz ampliable y fácilmente actualizable.
 
-\usetikzlibrary{arrows.meta, positioning}
-
-
 
 La funcionalidad interna tanto de MQTT como de ROS2 es en base a \textit{topics} o temas por los que se transporta la información, estos 
 mensajes forman una cadena desde que se envían en la web hasta que se reciben en el ROS2.
@@ -482,15 +562,10 @@ y la transformamos a un mensaje útil par nosotros en nuestro entorno de desarro
 debemos convertirlos a un string o sino nuestro receptor no los entenderá, este es un nodo, (MQTT Bridge), que se conecta con el broker 
 que le digamos, se subscribe a los topics que queremos y los transforma a un tipo que ROS2 entiende, este es también un string pero propio 
 de ROS2, por lo  tanto para obtener la información que necesitamos debemos parsear ese mensaje transformándolo de un string de vuelta a una 
-tupla de coordenadas o a un string de tuplas de coordenadas, para ello se creo un nodo que recibe la información del nodo MQTT Bridge 
-lo \textit{parsea} haciendo uso de la librería \textit{jsoncpp}, para ello primero leemos el campo que nos indica que tipo de mensaje es, es 
-decir si es un marcador o es un conjunto de ellos, seguidamente lo guardamos en una variable con un tipo de dato personalizado, para los 
-marcadores el tipo de datos contiene un campo para longitud y otro para latitud y para las lineas contiene array de marcadores y un entero 
-para indicar el tamaño, de esta manera se hace más sencillo el procesamiento de los mismos.
-
+tupla de coordenadas o a un string de tuplas de coordenadas.
 \begin{figure}[h]
 \begin{center}
-\begin{tikzpicture}[scale=1.4, node distance=2.5cm,>=Latex, mynode/.style={draw, rectangle, rounded corners=5pt}]
+\begin{tikzpicture}[scale=1, node distance=2.5cm,>=Latex, mynode/.style={draw, rectangle, rounded corners=5pt}]
     % Definir nodos
     \node [mynode] (webserver) {WEB};
     \node [mynode, right=of webserver] (mqttbroker) {MQTT BROKER};
@@ -517,6 +592,14 @@ para indicar el tamaño, de esta manera se hace más sencillo el procesamiento d
 \label{fig:esquema_flujo_datos}
 \end{figure}
 
+\newpage
+Para ello se creo un nodo que recibe la información del nodo MQTT Bridge, 
+lo \textit{parsea} haciendo uso de la librería \textit{jsoncpp}, para ello primero leemos el campo que nos indica que tipo de mensaje es, es 
+decir si es un marcador o es un conjunto de ellos, seguidamente lo guardamos en una variable con un tipo de dato personalizado, para los 
+marcadores el tipo de datos contiene un campo para longitud y otro para latitud y para las lineas contiene array de marcadores y un entero 
+para indicar el tamaño, de esta manera se hace más sencillo el procesamiento de los mismos.
+
+
 
 \section{Procesamiento de los mensajes MQTT a ROS2}
 Por razones que se entenderán más avanzado el capitulo debemos procesar estos datos aún más, primero haciendo uso de un servicio de ROS2 
@@ -524,8 +607,8 @@ implementado por el paquete de robot\_localization, este transforma las coordena
 centrado en el punto de inicio y después debemos comprobar la distancia desde la posición actual del robot al punto que queremos ir, 
 esto es debido a como funciona Nav2, si la distancia es menor a un valor dictado por los parámetros de Nav2 podemos enviarlo directamente 
 al siguiente nodo, de no ser así generamos puntos equiespaciados desde la posición del robot hasta el objetivo y enviamos ese \textit{array} 
-de posiciones, también cabe destacar que debemos generar una orientación deseada, cosa que la web no nos proporciona, para ello simplemente 
-calculamos el ángulo que existe entre la posición del robot y la objetivo, para el caso de tener varios objetivos contiguos, es decir una 
+de posiciones, también cabe destacar que debemos generar una orientación deseada, cosa que la web no nos proporciona.
+Para ello simplemente calculamos el ángulo que existe entre la posición del robot y la objetivo, para el caso de tener varios objetivos contiguos, es decir una 
 ruta o camino hacemos este mismo algoritmo por cada par de puntos. El pseudo código se proporciona en el \textbf{algoritmo \ref{objetivos}}.
 
 \begin{algorithm}[H]
@@ -727,8 +810,7 @@ filtros funcionan con matrices de 15 variables para cada fuente de odometría  ,
 $[ X,Y,Z,\theta_{x},\theta_{y},\theta_{z},\dot{X},\dot{Y},\dot{Z},\dot{\theta_{x}},\dot{\theta_{y}},\dot{\theta_{z}},\ddot{X},\ddot{Y},\ddot{Z} ]$,
 pero ya que tomaremos que estamos trabajando en 2 dimensiones (por ser un robot terrestre y Ackermann hay mucho movimientos que podemos 
 ignorar), de esta manera las variables que tenemos que tener en cuenta serian: 
-$[ X,Y,\theta_{z},\dot{X},\dot{Y},\dot{\theta_{z}},\ddot{X},\ddot{Y}]$. Pero se puede ir más, allá primero con el pensamiento lógico en 
-cuanto al hardware, no todos los dispositivos nos proporcionan todas estas variables y eso está bien no lo necesitamos, sino que para que 
+$[ X,Y,\theta_{z},\dot{X},\dot{Y},\dot{\theta_{z}},\ddot{X},\ddot{Y}]$. Pero se puede ir más allá, primero con el hardware, no todos los dispositivos nos proporcionan todas estas variables y eso está bien no lo necesitamos, sino que para que 
 el filtro funcione correctamente y no empiece a oscilar descontroladamente (comúnmente llamado ''explotar''), necesitamos que que entre 
 todas las fuentes
 tengamos las variables necesarias, estás variarán mucho según cada situación, como los sensores de los que se dispongan, su precisión, el 
@@ -766,11 +848,12 @@ a parte de tener como salida una publicador de un mensaje tipo \textit{nav\_msgs
 proporciona la transformación de \textit{/odom} a \textit{/base\_link} dejándonos así un paso más cerca de conseguir todo el árbol de 
 transformaciones como se puede visualizar en la \textbf{figura \ref{fig:arbol_urdf}}.
 
-Posteriormente se introdujo el segundo filtro de Kalman al que 
 
 Una vez comprobado en el terreno que el filtro funcionaba, se introduce una segunda instancia del filtro de Kalman, esta será nombrada como 
 \textit{ekf\_global} y su salida solo será usada para realimentar al nodo de \textbf{NavSatTransform} como se ve en la 
-\textbf{figura \ref{fig:esquema_localizacion}}
+\textbf{figura \ref{fig:esquema_localizacion}}, esta instancia tendrá las mismas entradas que el otro ekf pero con el añadido de la posición del GPS 
+proporcionada mediante el mensaje de odometría proveniente de la transformación del nodo navsat transform y por otro lado este filtro publicará 
+también la transformación \textit{/map} a \textit{/odom} consiguiendo así un árbol de transformaciones completo.
 
 
 \begin{figure}[h]
@@ -819,9 +902,275 @@ Con estos tendríamos solucionado el problema de la localización y así se podr
 de navegación.
 
 \section{Navegación Autónoma haciendo uso de Nav2}
- \cleardoublepage
+
+El stack de navegación de ROS2 esta diseñado principalmente para interiores donde ha sido probado y testado, este funciona en base a unas estructuras 
+lógicas llamadas \textit{behavior trees} \cite{colledanchise2018behavior} estas estructuras son muy versátiles por su manera de funcionar resulta muy 
+sencillo modificar y ampliar el comportamiento del stack de navegación, los árboles de comportamiento están formados por nodos, formalmente llamados, 
+nodos internos (o de control) y nodos ''hoja'' (o de ejecución), para entender el funcionamiento debemos usar la terminología de nodo padre y nodo hijo. 
+Los nodos de control tienen al menos un nodo ''hijo'' y gráficamente como se puede ver en la \textbf{figura \ref{fig:bt_sencillo}}  estos aparecen por debajo de 
+los nodos ''padre''.
+
+\subsection{Conceptos básicos de Nav2}
+\subsubsection{Árboles de comportamiento}
+Un Árbol de comportamiento empieza su ejecución desde el nodo ''raiz'' y genera una señal que se propaga por sus nodos ''hijo'' a una frecuencia dada 
+esta señal se conoce como \textit{tick}, cuando un nodo recibe un \textit{tick} este puede devolver \textit{Running} y esta bajo una ejecución, 
+\textit{Success} si la ejecución ha resultado satisfactoria o \textit{Failure} si ha resultado en fallo, conocidos estos conceptos podemos pasar 
+a los tipos de nodos que existen y sus características de funcionamiento. Estos se agrupan en 4 categorías que se exponen a continuación.
+
+\begin{itemize}
+    \item Acción: Estos nodos como su nombre indica ejecutan acciones determinadas sobre el stack de navegación o sobre el robot en cuestión, estas acciones pueden ser desde borrar la memoria interna de mapas de coste hasta hacer que el robot retroceda para recalcular su ruta.
+    \item Condición: Estos nodos se usan para decidir si ejecutar una acción o otra, se podría ver como condicionales \textit{if{} else{}} en programación, algunos ejemplos pueden ser detectar cuando se ha llegado al objetivo o si detectar si el objetivo ha cambiado.
+    \item Decoradores: Estos nodos modifican ciertos comportamientos internos de la lógica, como puede ser cambiar la frecuencia de ejecución de una determinada sección o forzar al actualización del objetivo.
+    \item Control, Los nodos de control son los más importantes ya que proporcionan bucles y condicionales específicos para generar algoritmos, estos son 3 para el caso de Nav2:
+    \begin{itemize}
+        \item \textit{Pipeline}, este ''llamará'' sus nodos ''hijo'' uno por uno de izquierda a derecha esperando a que cada nodo devuelva \textit{Failure} o \textit{Success}, este nodo solo devolverá \textit{Success} cuando todos sus nodos devuelvan \textit{Success}, en el caso de que un nodo devuelva \textit{Failure} este parará su comportamiento y devolverá \textit{Failure}.
+        \item \textit{Recovery}, este es un nodo de control propio del stack, tendrá exclusivamente 2 nodos ''hijo'' como se puede observar en la \textbf{figura \ref{fig:bt_recovery}} y solo devolverá \textit{Success} si el primer nodo lo devuelve en caso de que el primer nodo devuelva \textit{Failure} ''llamará'' al segundo nodo y volverá a intentar ''llamar'' al primero en un bucle hasta el primer nodo devuelva \textit{Success} o se hallan ejecutado un nº determinado de intentos estipulados en el parámetros \textit{number\_of\_retries}.
+        \item \textit{Round Robin}, este nodo funciona en opisición a \textit{Pipeline} donde ''llamará'' en bucle a todos los nodos de izquierda a derecha hasta que alguno de ellos devuelva \textit{Success}, donde el también devolverá \textins*{Success} sin importar el resto de nodos ''hijo''.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/bt_sencillo.png}
+    \caption{Estructura de un Árbol de comportamiento básico (Pipeline) \cite{nav2}}
+    \label{fig:bt_sencillo}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/recovery_bt.png}
+    \caption{Estructura del nodo de control ''Recovery''}
+    \label{fig:bt_recovery}
+  \end{minipage}
+\end{figure}
+\newpage
+
+\subsubsection{Servidores de acción}
+
+Otro concepto clave del stack son los servidores de acción o \textit{action servers} de ROS2, este concepto es fundamental para entender como funciona 
+Nav2, estos ''servidores de acción'' cuentan con un \textit{cliente} que hace la petición y con un \textit{servidor} que la realiza y la \textbf{controla}, que es 
+justo con lo que se diferencian de los servicios de ROS2, en los servicios de acción el servidor proporciona un flujo constante de mensajes sobre el \textit{feedback} 
+durante el proceso de ejecución y además tienen la capacidad de ser cancelados en cualquier momento, como se puede ver el la \textbf{figura \ref{fig:servicios_accion}} estos servidores 
+generan 3 flujos de datos, el primero un servicio de petición que asegura la llegada de información al servidor, un topic de feedback que devuelve la información durante el proceso y 
+un tercero con un servicio de resultado que devuelve el resultado final de ejecución.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/action_server.png}
+    \caption{Estructura interna de un servicio de acción o \textit{action server} \cite{ros2}}
+    \label{fig:servicios_accion}
+\end{figure}
+
+\subsubsection{Estructura para el control de navegación}
+
+En Nav2 todas las funcionalidades están implementadas en forma de servidores de acción y funcionan con una lógica descrita en un árbol de 
+comportamiento totalmente modificable.
+
+Estos servidores son 5 \ref{fig:nav2_arch}, \textit{Navigator server} que es el encargado de ''leer'' el árbol de comportamiento proporcionado por el usuario y ejecutar las 
+diferentes acciones, \textit{Controller server} donde se configura el controlador o ''planificador local'', \textit{Planner server} para configurar 
+el planificador o ''planificador global'', \textit{Behavior server} para la selección y configuración de los comportamientos de recuperación 
+usados cuando el robot se queda ''atascado'' y por último el \textit{Smoother server} para procesar el camino generado y suavizarlo.
+
+Posteriormente existen 2 mapas de coste, uno local y otro global, el local se encarga de almacenar la información en un entorno reducido y sirve 
+para que el controlador haga uso de una buena evitación de obstáculos  y el global para que el planificador genere una trayectoria evitando los obstáculos ya conocidos a más largo alcance.
+
+Finalmente se utilizan 2 plugins externos a la estructura interna de Nav2, \textit{Velocity smoother} que suaviza los comandos de velocidad para generar movimientos continuos y 
+\textit{Waypoint follower} que proporciona la funcionalidad de navegar un array de poses aunque estás estén a mayor distancia del alcance que tiene 
+el mapa global, llamando al algoritmo de navegación cada vez que llega al anterior, cabe mencionar que las poses deben tener una separación máxima igual al 
+alcance del mapa global para que así Nav2 encuentre siempre un camino.
 
 
+\subsection{Servidores}
+\subsubsection{Navigator server}
+Para nuestro caso proporcionaremos un árbol que contiene la lógica para la navegación punto a punto, en la \textbf{figura \ref{fig:bt_ToPose}} observamos un ejemplo proporcionado por 
+los creadores del stack para la navegación punto a punto y en  \textbf{figura \ref{fig:bt_ToPose_script}} vemos el mismo ejemplo escrito y modificado en xml para ser usado en 
+el proyecto.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/bt_ToPose_wrec_rep.png}
+    \caption{Esquema de navegación punto a punto}
+    \label{fig:bt_ToPose}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/bt_ToPose_script.png}
+    \caption{Código del árbol de comportamiento para la navegación punto a punto}
+    \label{fig:bt_ToPose_script}
+  \end{minipage}
+\end{figure}
+
+La funcionalidad básica de esta lógica esta descrita en 2 sub arboles divididos por un nodo de control de tipo ''recovery'', la primera parte intenta navegar 
+y la segunda intenta salir de situaciones donde la navegación se imposibilita como esquinas o la aparición de obstáculos dinámicos, en la primera parte 
+''computa'' el camino con ayuda de el ''planificador'' y si lo consigue calcular lo sigue con ayuda del controlador, en caso de que no pueda calcularlo o seguirlo 
+se procede a borrar el mapa de coste global o local respectivamente.
+
+En el caso de que esto falle se procede al sub árbol de recuperación que incorpora en nuestro caso 2 comportamientos para intentar salir de esa situación de imposibilidad de acción, 
+primero borra los 2 mapas de coste y posteriormente con ayuda de nodo del tipo ''Round Robin'' procede a realizar una parada de 5 segundos (en el caso de que sea una persona andando soluciona el problema de manera rápida) y 
+después se mueve hacia atrás 0.15 m, este procedimiento lo intenta 6 veces hasta que se cancela por completo la acción de navegación.
+
+\subsubsection{Behavior server}
+Como se ha comentado este servidor cuenta con la posibilidad de configuración de varios comportamientos en caso de que se necesite una recuperación, 
+los que se han usado en el presente proyecto son \textit{Clear costmap} que borra el mapa de coste que se seleccione, este comportamiento es 
+muy útil cuando aparecen obstáculos dinámicos como podría ser una persona que pasa andando delante del vehículo, ya que borrando el mapa 
+de costes forzamos a recalcularlo y evitamos tener que retroceder para encontrar otro camino,el comportamiento de \textit{Wait} hace detenerse al vehículo 
+por un determinado tiempo, esto como el anterior proporciona una solución más segura para el caso de obstáculos en movimiento, el último comportamiento 
+es \textit{Back up} que simplemente hace al robot dar marcha atrás y así conseguir más espacio para recalcular la trayectoria.
+
+\subsubsection{Controller server}
+
+
+
+Como ya se ha comentado en esta memoria, el el ''planificador local'' es llamado controlador y es el encargado de hacer que el robot se mueva 
+y de que si aparecen obstáculos en el camino sean dinámicos o no los esquive de manera segura, para la configuración de este servidor se han escogido dos plugins 
+que controlan el progreso hacia el objetivo y que detectan la llegada al mismo y también se ha escogido un algoritmo para el propio controlador 
+que sea compatible con un robot Ackerman, esto quiere decir que tenga en consideración en radio mínimo de giro y por otro lado que sea rápido, Nav2 
+nos proporciona varias implementaciones para controladores como se puede ver en la \textbf{figura \ref{fig:controllers_tabla}}. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Controllers_tabla.png}
+    \caption{Tabla de controladores disponibles para Nav2 \cite{nav2}}
+    \label{fig:controllers_tabla}
+\end{figure}
+Lo primero que se hizo fue 
+seleccionar los controladores que fuesen compatibles con nuestro robot, estos son \textbf{TEB, Regulated Pure Pursuit y MPPI}, después de una exhaustiva investigación 
+se llegó a la decisión de probar el MPPI (Model Predictive Path Integral) por su gran versatilidad en cuanto configuración, este es un modelo predictivo y una variante del algoritmo \textbf{MPC}, este algoritmo 
+es mayoritariamente usado en robots que funcionan a gran velocidad ya que predice la posición del robot en un ''futuro'', al probarlo lo que se descartó por dos 
+razones, la primera fue la gran cantidad de parámetros que necesitan para su configuración dado que se observaron ciertas situaciones en las que no era fiable usarlo, la predicción 
+de estados funciona muy bien para casos donde no hay obstáculos o estos se avistan a gran distancia pero en el proyecto resultaba poco fiable por lo tanto, la segunda razón 
+es que este algoritmo necesita de una capacidad de cálculo muy grande y se decidió que no compensaba para las muchas funcionalidades que este posee y las pocas 
+que se usaban en el robot. Por tanto se probó la segunda opción, el algoritmo \textbf{Regulated Pure Pursuit}, una solución mucho más simple pero 
+que daba solución al problema de manera estable, este algoritmo funciona siguiendo \textit{objetivos} virtuales, 
+\textbf{figura \ref{fig:pure_pursui_teoria}}, pertenecientes a el trayecto a seguir que se van desplazando conforme el robot se acerca, 
+manteniendo un distancia o \textit{look ahead} que puede ser fija o recalculada dinámicamente. En la 
+\textbf{figura \ref{fig:rpp_configuracion}} se pueden observar los parámetros escogidos para el algoritmo donde entre ellos se encuentran 
+los parámetros típicos de configuración como el \textit{lookahead\_distance} o el radio de giro para las ''incorporaciones'' al trayecto.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/pure_pursuit_teoria.png}
+    \caption{Funcionamiento del algoritmo Pure pursuit}
+    \label{fig:pure_pursui_teoria}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/rpp_configuration.png}
+    \caption{Archivo de configuración del algoritmo RPP}
+    \label{fig:rpp_configuracion}
+\end{figure}
+
+\subsubsection{Planner server} 
+Para escoger el planificador global se realizo de manera idéntica al controlador, según la \textbf{figura \ref{fig:planificadores_tabla}} podemos ver las únicas opciones que tenemos son 
+\textbf{Smac Planner Hybrid y Smac Planner Lattice}, se procedió a investigar sobre estos algoritmos y la actual implementación de ellos en Nav2, en este caso se escogió 
+el \textbf{Smac Planner Hybrid} ya la sencilla razón que este algoritmo esta especialmente diseñado para robots de tipo Ackermann y por tanto tiene la opción de habilitar 
+la implementación de modelo Reeds-Sheepp, este modelo a diferencia de su opuesto (Dubin) toma en consideración a la hora de generar 
+un trayecto la posibilidad de ir marcha atrás lo cual parecía interesante, el Smac Hybrid es una versión modificada 
+del conocido \textbf{A*}, un algoritmo de búsqueda recursiva~\cite{dolgov2008practical} que a su vez esta basado en el algoritmo Dijkstra junto con una matriz 
+\textit{heurística} para conseguir una solución con mayor rapidez y menor número de búsquedas o iteraciones como se puede ver en las 
+\textbf{figuras \ref{fig:dijstra} y \ref{fig:a_star}}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/planificadores_table.png}
+    \caption{Tabla de planificadores disponibles para Nav2}
+    \label{fig:planificadores_tabla}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/dijstra.png}
+    \caption{Ejemplo de búsqueda del algoritmo Dijkstra}
+    \label{fig:dijstra}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/a_star.png}
+    \caption{Ejemplo de búsqueda del algoritmo A*}
+    \label{fig:a_star}
+  \end{minipage}
+\end{figure}
+
+Este algoritmo cuenta con múltiples configuraciones como la ya comentada selección del modelo \textit{Dubin o Reeds-Sheepp}, radio mínimo de giro 
+o la selección de las diferentes penalizaciones para los comportamientos del algoritmo como se puede observar en la \textbf{figura \ref{fig:configuracion_planner}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/configuracion_planner.png}
+    \caption{Archivo de configuración para el planificador Smac Hybrid}
+    \label{fig:configuracion_planner}
+\end{figure}
+
+La selección de estos parámetros ha sido escogida en base a pruebas realizadas con el robot y con la ayuda de las recomendaciones dadas 
+por el creador del algoritmo, Steve Macenski~\cite{steve_mc} las cuales se reflejan en \ref{tab:parametros_planificador_steve}
+
+\begin{table}[h!]
+    \centering
+    \caption{Parámetros}
+    \begin{tabular}{|l|c|}
+        \hline
+        Penalizaciones     & Rango      \\ \hline
+        Penalización de coste          & 1.7 - 6.0  \\ \hline
+        Penalización de giro  & 1.0 - 1.3  \\ \hline
+        Penalización de cambio de trayectoria        & 0.0 - 0.3  \\ \hline
+        Penalización de marcha atrás       & 1.3 - 5.0  \\ \hline
+    \end{tabular}
+    \label{tab:parametros_planificador_steve}
+\end{table}
+
+A modo de comparación de los dos métodos, en las \textbf{figuras \ref{fig:dubin} y \ref{fig:reedshep}} se puede observar como generan el trayecto cada una de las configuraciones
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/dubin_test.png}
+    \caption{Ejemplo generación de camino para el algoritmo Smac Hybrid configurado con el modelo ''Dubin'' para la simulación del proyecto}
+    \label{fig:dubin}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/reed_sheep_test.png}
+    \caption{Ejemplo generación de camino para el algoritmo Smac Hybrid configurado con el modelo ''Reeds-Sheepp'' para la simulación del proyecto}
+    \label{fig:reedshep}
+  \end{minipage}
+\end{figure}
+
+
+\subsubsection{Smoother server}
+Este servidor esta encargado de suavizar el camino que genera el planificador antes de mandarlo al controlador, así como su implementación es muy necesaria,  
+su configuración es muy básica, para sus parámetros escogimos un nodo de suavizado con sus parámetros por defecto como se ve en la \textbf{figura ~\ref{fig:parametros_smoother_server}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/smoother_params.png}
+    \caption{Archivo de configuración para el suavizador de trayectorias}
+    \label{fig:parametros_smoother_server}
+\end{figure}
+
+\subsection{Mapas de coste}
+Como ya se ha comentado, otra parte importante de la configuración son los mapas de coste donde aquí reside uno de los problemas principales 
+a la hora de que Nav2 funcione en exteriores y es que en una configuración normal uno de los requerimientos básicos para funcionar es proporcionar 
+un mapa del entorno estático mapeado \textit{a priori}, tarea imposible para realizar en exteriores. Para solucionar este problema existen múltiples maneras 
+de proceder, la que se decidió llevar a cabo de eliminar la capa \textit{estática} en la configuración de los mapas de coste. Estos mapas guardan la 
+información sobre los obstáculos actuales y los obstáculos que se han visto a lo largo de la navegación para así poder evitarlos de manera local (evasión de obstáculos) y 
+de manera global (generación de una trayectoria que tenga en cuanta esos obstáculos), el mapa de costes local existe en el sistema de referencia de \textit{odom} y se ejecuta 
+a una frecuencia más alta (5 Hz en nuestro caso ) y consta de 2 capas, la primera es una capa ''persistente'' en el tiempo, \textit{voxel}, con la información del Lidar que crea zonas de obstáculos por 
+las que el robot no puede navegar y otra capa no persistente, \textit{inflation}, que infla estos obstáculos de manera exponential creando zonas 
+de peligro por donde el robot no debe pasar o debe pasar muy despacio para así evitar choques laterales a causa de la forma del robot. 
+Este mapa como se puede observar en la \textbf{figura } es un cuadrado de lado igual a 10 m.
+
+ \subsection{Plugins}
+
+\subsection{Nav2 commander}
+
+\cleardoublepage
 \chapter{Pruebas y resultados}
 
 \chapter{Conclusiones}

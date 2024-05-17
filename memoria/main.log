@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  17 MAY 2024 23:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  17 MAY 2024 23:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1045,7 +1045,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has b
 l.74 \chapter
              {Estado del arte} [4]
 Cap\'{\i }tulo 2.
-<images/tortugas_william_grey.jpg, id=170, 244.9953pt x 137.67435pt>
+<images/tortugas_william_grey.jpg, id=179, 244.9953pt x 137.67435pt>
 File: images/tortugas_william_grey.jpg Graphic file (type jpg)
 <use images/tortugas_william_grey.jpg>
 Package pdftex.def Info: images/tortugas_william_grey.jpg  used on input line 89.
@@ -1055,7 +1055,7 @@ Overfull \hbox (0.17491pt too wide) in paragraph at lines 95--99
 []\OT1/cmr/m/n/12 Otro hi-to im-por-tan-te en es-te cam-po fue el de-sa-rro-llo de la fur-go-ne-ta aut^^Sono-ma Mercedes-
  []
 
-<images/furgoneta_ernst_dickens.jpeg, id=172, 677.53125pt x 508.14844pt>
+<images/furgoneta_ernst_dickens.jpeg, id=181, 677.53125pt x 508.14844pt>
 File: images/furgoneta_ernst_dickens.jpeg Graphic file (type jpg)
 <use images/furgoneta_ernst_dickens.jpeg>
 Package pdftex.def Info: images/furgoneta_ernst_dickens.jpeg  used on input line 102.
@@ -1075,7 +1075,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 133.
 LaTeX Info: Redefining \% on input line 133.
  [6 <./images/furgoneta_ernst_dickens.jpeg>]
-<images/nav2_architecture.png, id=201, 963.6pt x 602.25pt>
+<images/nav2_architecture.png, id=209, 963.6pt x 602.25pt>
 File: images/nav2_architecture.png Graphic file (type png)
 <use images/nav2_architecture.png>
 Package pdftex.def Info: images/nav2_architecture.png  used on input line 154.
@@ -1093,7 +1093,7 @@ LaTeX Info: Redefining \% on input line 181.
 LaTeX Info: Redefining \. on input line 218.
 LaTeX Info: Redefining \% on input line 218.
  [9]
-<images/lidar_explicacion.png, id=234, 461.47406pt x 256.70906pt>
+<images/lidar_explicacion.png, id=242, 461.47406pt x 256.70906pt>
 File: images/lidar_explicacion.png Graphic file (type png)
 <use images/lidar_explicacion.png>
 Package pdftex.def Info: images/lidar_explicacion.png  used on input line 260.
@@ -1105,7 +1105,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Info: Redefining \. on input line 268.
 LaTeX Info: Redefining \% on input line 268.
 [10]
-<images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png, id=251, 853.1875pt x 398.48875pt>
+<images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png, id=259, 853.1875pt x 398.48875pt>
 File: images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png Graphic file (type png)
 <use images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png>
 Package pdftex.def Info: images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png  used on input line 275.
@@ -1113,7 +1113,7 @@ Package pdftex.def Info: images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-
 LaTeX Info: Redefining \. on input line 279.
 LaTeX Info: Redefining \% on input line 279.
  [11 <./images/lidar_explicacion.png> <./images/Pointcloud-from-Ouster-lidar-Copyright-C-Ouster-4.png>]
-<images/rtk_arquitecture.png, id=258, 381.425pt x 269.005pt>
+<images/rtk_arquitecture.png, id=266, 381.425pt x 269.005pt>
 File: images/rtk_arquitecture.png Graphic file (type png)
 <use images/rtk_arquitecture.png>
 Package pdftex.def Info: images/rtk_arquitecture.png  used on input line 296.
@@ -1122,12 +1122,12 @@ LaTeX Info: Redefining \. on input line 308.
 LaTeX Info: Redefining \% on input line 308.
  [12 <./images/rtk_arquitecture.png>]
 Cap\'{\i }tulo 3.
-<images/hunter_datasheet.png, id=270, 735.74875pt x 698.61pt>
+<images/hunter_datasheet.png, id=278, 735.74875pt x 698.61pt>
 File: images/hunter_datasheet.png Graphic file (type png)
 <use images/hunter_datasheet.png>
 Package pdftex.def Info: images/hunter_datasheet.png  used on input line 325.
 (pdftex.def)             Requested size: 227.62206pt x 216.1298pt.
-<images/hunter_v2.jpeg, id=272, 1606.0pt x 1204.5pt>
+<images/hunter_v2.jpeg, id=280, 1606.0pt x 1204.5pt>
 File: images/hunter_v2.jpeg Graphic file (type jpg)
 <use images/hunter_v2.jpeg>
 Package pdftex.def Info: images/hunter_v2.jpeg  used on input line 332.
@@ -1139,12 +1139,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
  <./images/hunter_datasheet.png>]
-<images/osuter_datasheet.png, id=282, 1220.56pt x 666.49pt>
+<images/osuter_datasheet.png, id=290, 1220.56pt x 666.49pt>
 File: images/osuter_datasheet.png Graphic file (type png)
 <use images/osuter_datasheet.png>
 Package pdftex.def Info: images/osuter_datasheet.png  used on input line 351.
 (pdftex.def)             Requested size: 227.62206pt x 124.28519pt.
-<images/ouster_hunter.jpeg, id=283, 1204.5pt x 1606.0pt>
+<images/ouster_hunter.jpeg, id=291, 1204.5pt x 1606.0pt>
 File: images/ouster_hunter.jpeg Graphic file (type jpg)
 <use images/ouster_hunter.jpeg>
 Package pdftex.def Info: images/ouster_hunter.jpeg  used on input line 358.
@@ -1155,12 +1155,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 362.
 LaTeX Info: Redefining \% on input line 362.
  [14 <./images/hunter_v2.jpeg> <./images/osuter_datasheet.png>]
-<images/lidar3d_2.png, id=293, 1788.6825pt x 820.06375pt>
+<images/lidar3d_2.png, id=301, 1788.6825pt x 820.06375pt>
 File: images/lidar3d_2.png Graphic file (type png)
 <use images/lidar3d_2.png>
 Package pdftex.def Info: images/lidar3d_2.png  used on input line 377.
 (pdftex.def)             Requested size: 204.85846pt x 93.91118pt.
-<images/lidar2d.png, id=294, 1788.6825pt x 820.06375pt>
+<images/lidar2d.png, id=302, 1788.6825pt x 820.06375pt>
 File: images/lidar2d.png Graphic file (type png)
 <use images/lidar2d.png>
 Package pdftex.def Info: images/lidar2d.png  used on input line 384.
@@ -1168,12 +1168,12 @@ Package pdftex.def Info: images/lidar2d.png  used on input line 384.
 LaTeX Info: Redefining \. on input line 393.
 LaTeX Info: Redefining \% on input line 393.
  [15 <./images/ouster_hunter.jpeg> <./images/lidar3d_2.png> <./images/lidar2d.png>]
-<images/reach_rs2.jpeg, id=302, 1204.5pt x 1606.0pt>
+<images/reach_rs2.jpeg, id=310, 1204.5pt x 1606.0pt>
 File: images/reach_rs2.jpeg Graphic file (type jpg)
 <use images/reach_rs2.jpeg>
 Package pdftex.def Info: images/reach_rs2.jpeg  used on input line 401.
 (pdftex.def)             Requested size: 182.09486pt x 242.77654pt.
-<images/reach_datasheet.png, id=305, 735.74875pt x 698.61pt>
+<images/reach_datasheet.png, id=313, 735.74875pt x 698.61pt>
 File: images/reach_datasheet.png Graphic file (type png)
 <use images/reach_datasheet.png>
 Package pdftex.def Info: images/reach_datasheet.png  used on input line 420.
@@ -1184,12 +1184,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 424.
 LaTeX Info: Redefining \% on input line 424.
  [16 <./images/reach_rs2.jpeg>]
-<images/xsens.jpeg, id=312, 1204.5pt x 1606.0pt>
+<images/xsens.jpeg, id=321, 1204.5pt x 1606.0pt>
 File: images/xsens.jpeg Graphic file (type jpg)
 <use images/xsens.jpeg>
 Package pdftex.def Info: images/xsens.jpeg  used on input line 430.
 (pdftex.def)             Requested size: 136.57462pt x 182.10078pt.
-<images/datasheet_mti.png, id=315, 525.965pt x 328.22626pt>
+<images/datasheet_mti.png, id=324, 525.965pt x 328.22626pt>
 File: images/datasheet_mti.png Graphic file (type png)
 <use images/datasheet_mti.png>
 Package pdftex.def Info: images/datasheet_mti.png  used on input line 444.
@@ -1200,12 +1200,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 448.
 LaTeX Info: Redefining \% on input line 448.
  [17 <./images/reach_datasheet.png> <./images/xsens.jpeg>]
-<images/mti_angular_orientation.png, id=326, 1310.9778pt x 603.4545pt>
+<images/mti_angular_orientation.png, id=334, 1310.9778pt x 603.4545pt>
 File: images/mti_angular_orientation.png Graphic file (type png)
 <use images/mti_angular_orientation.png>
 Package pdftex.def Info: images/mti_angular_orientation.png  used on input line 460.
 (pdftex.def)             Requested size: 204.85846pt x 94.28952pt.
-<images/mti_Acceleration.png, id=327, 1310.9778pt x 603.4545pt>
+<images/mti_Acceleration.png, id=335, 1310.9778pt x 603.4545pt>
 File: images/mti_Acceleration.png Graphic file (type png)
 <use images/mti_Acceleration.png>
 Package pdftex.def Info: images/mti_Acceleration.png  used on input line 467.
@@ -1213,7 +1213,7 @@ Package pdftex.def Info: images/mti_Acceleration.png  used on input line 467.
 LaTeX Info: Redefining \. on input line 473.
 LaTeX Info: Redefining \% on input line 473.
  [18 <./images/datasheet_mti.png> <./images/mti_angular_orientation.png> <./images/mti_Acceleration.png>]
-<images/arbol_transformaciones_hunter.jpg, id=338, 973.7178pt x 966.9726pt>
+<images/arbol_transformaciones_hunter.jpg, id=346, 973.7178pt x 966.9726pt>
 File: images/arbol_transformaciones_hunter.jpg Graphic file (type jpg)
 <use images/arbol_transformaciones_hunter.jpg>
 Package pdftex.def Info: images/arbol_transformaciones_hunter.jpg  used on input line 499.
@@ -1227,12 +1227,12 @@ LaTeX Info: Redefining \% on input line 503.
 LaTeX Info: Redefining \. on input line 504.
 LaTeX Info: Redefining \% on input line 504.
  [20 <./images/arbol_transformaciones_hunter.jpg>]
-<images/interfaz_1.png, id=354, 1385.92781pt x 749.80125pt>
+<images/interfaz_1.png, id=362, 1385.92781pt x 749.80125pt>
 File: images/interfaz_1.png Graphic file (type png)
 <use images/interfaz_1.png>
 Package pdftex.def Info: images/interfaz_1.png  used on input line 527.
 (pdftex.def)             Requested size: 204.85846pt x 110.82927pt.
-<images/interfaz_2.png, id=355, 1385.92781pt x 749.80125pt>
+<images/interfaz_2.png, id=363, 1385.92781pt x 749.80125pt>
 File: images/interfaz_2.png Graphic file (type png)
 <use images/interfaz_2.png>
 Package pdftex.def Info: images/interfaz_2.png  used on input line 534.
@@ -1251,7 +1251,7 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 LaTeX Info: Redefining \. on input line 644.
 LaTeX Info: Redefining \% on input line 644.
  [23]
-<images/wgs84.png, id=377, 326.21875pt x 314.17375pt>
+<images/wgs84.png, id=385, 326.21875pt x 314.17375pt>
 File: images/wgs84.png Graphic file (type png)
 <use images/wgs84.png>
 Package pdftex.def Info: images/wgs84.png  used on input line 667.
@@ -1259,12 +1259,12 @@ Package pdftex.def Info: images/wgs84.png  used on input line 667.
 LaTeX Info: Redefining \. on input line 677.
 LaTeX Info: Redefining \% on input line 677.
  [24 <./images/wgs84.png>]
-<images/europe_utm.png, id=386, 963.6pt x 1043.9pt>
+<images/europe_utm.png, id=394, 963.6pt x 1043.9pt>
 File: images/europe_utm.png Graphic file (type png)
 <use images/europe_utm.png>
 Package pdftex.def Info: images/europe_utm.png  used on input line 680.
 (pdftex.def)             Requested size: 227.62206pt x 246.59082pt.
-<images/navsat_transform.png, id=388, 650.9118pt x 476.5002pt>
+<images/navsat_transform.png, id=396, 650.9118pt x 476.5002pt>
 File: images/navsat_transform.png Graphic file (type png)
 <use images/navsat_transform.png>
 Package pdftex.def Info: images/navsat_transform.png  used on input line 698.
@@ -1342,12 +1342,12 @@ Overfull \hbox (32.7637pt too wide) in paragraph at lines 889--890
 LaTeX Info: Redefining \. on input line 912.
 LaTeX Info: Redefining \% on input line 912.
 [29]
-<images/bt_sencillo.png, id=433, 481.8pt x 271.0125pt>
+<images/bt_sencillo.png, id=441, 481.8pt x 271.0125pt>
 File: images/bt_sencillo.png Graphic file (type png)
 <use images/bt_sencillo.png>
 Package pdftex.def Info: images/bt_sencillo.png  used on input line 936.
 (pdftex.def)             Requested size: 204.85846pt x 115.23047pt.
-<images/recovery_bt.png, id=436, 481.8pt x 271.0125pt>
+<images/recovery_bt.png, id=444, 481.8pt x 271.0125pt>
 File: images/recovery_bt.png Graphic file (type png)
 <use images/recovery_bt.png>
 Package pdftex.def Info: images/recovery_bt.png  used on input line 943.
@@ -1355,7 +1355,7 @@ Package pdftex.def Info: images/recovery_bt.png  used on input line 943.
 LaTeX Info: Redefining \. on input line 948.
 LaTeX Info: Redefining \% on input line 948.
  [30]
-<images/action_server.png, id=443, 852.18375pt x 499.8675pt>
+<images/action_server.png, id=451, 852.18375pt x 499.8675pt>
 File: images/action_server.png Graphic file (type png)
 <use images/action_server.png>
 Package pdftex.def Info: images/action_server.png  used on input line 961.
@@ -1363,12 +1363,12 @@ Package pdftex.def Info: images/action_server.png  used on input line 961.
 LaTeX Info: Redefining \. on input line 976.
 LaTeX Info: Redefining \% on input line 976.
  [31 <./images/bt_sencillo.png> <./images/recovery_bt.png> <./images/action_server.png>]
-<images/bt_ToPose_wrec_rep.png, id=458, 1715.40875pt x 691.58376pt>
+<images/bt_ToPose_wrec_rep.png, id=466, 1715.40875pt x 691.58376pt>
 File: images/bt_ToPose_wrec_rep.png Graphic file (type png)
 <use images/bt_ToPose_wrec_rep.png>
 Package pdftex.def Info: images/bt_ToPose_wrec_rep.png  used on input line 995.
 (pdftex.def)             Requested size: 204.85846pt x 82.58546pt.
-<images/bt_ToPose_script.png, id=459, 1117.17375pt x 567.11874pt>
+<images/bt_ToPose_script.png, id=467, 1117.17375pt x 567.11874pt>
 File: images/bt_ToPose_script.png Graphic file (type png)
 <use images/bt_ToPose_script.png>
 Package pdftex.def Info: images/bt_ToPose_script.png  used on input line 1002.
@@ -1376,12 +1376,12 @@ Package pdftex.def Info: images/bt_ToPose_script.png  used on input line 1002.
 LaTeX Info: Redefining \. on input line 1024.
 LaTeX Info: Redefining \% on input line 1024.
  [32 <./images/bt_ToPose_wrec_rep.png> <./images/bt_ToPose_script.png>]
-<images/Controllers_tabla.png, id=467, 1005.7575pt x 497.86pt>
+<images/Controllers_tabla.png, id=475, 1005.7575pt x 497.86pt>
 File: images/Controllers_tabla.png Graphic file (type png)
 <use images/Controllers_tabla.png>
 Package pdftex.def Info: images/Controllers_tabla.png  used on input line 1036.
 (pdftex.def)             Requested size: 227.62206pt x 112.67458pt.
-<images/pure_pursuit_teoria.png, id=472, 435.87843pt x 142.28156pt>
+<images/pure_pursuit_teoria.png, id=480, 435.87843pt x 142.28156pt>
 File: images/pure_pursuit_teoria.png Graphic file (type png)
 <use images/pure_pursuit_teoria.png>
 Package pdftex.def Info: images/pure_pursuit_teoria.png  used on input line 1055.
@@ -1389,12 +1389,12 @@ Package pdftex.def Info: images/pure_pursuit_teoria.png  used on input line 1055
 LaTeX Info: Redefining \. on input line 1059.
 LaTeX Info: Redefining \% on input line 1059.
  [33 <./images/Controllers_tabla.png>]
-<images/rpp_configuration.png, id=479, 735.74875pt x 426.59375pt>
+<images/rpp_configuration.png, id=487, 735.74875pt x 426.59375pt>
 File: images/rpp_configuration.png Graphic file (type png)
 <use images/rpp_configuration.png>
 Package pdftex.def Info: images/rpp_configuration.png  used on input line 1062.
 (pdftex.def)             Requested size: 227.62206pt x 131.9758pt.
-<images/planificadores_table.png, id=484, 981.6675pt x 574.145pt>
+<images/planificadores_table.png, id=492, 981.6675pt x 574.145pt>
 File: images/planificadores_table.png Graphic file (type png)
 <use images/planificadores_table.png>
 Package pdftex.def Info: images/planificadores_table.png  used on input line 1078.
@@ -1405,17 +1405,17 @@ Underfull \vbox (badness 4229) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 1082.
 LaTeX Info: Redefining \% on input line 1082.
  [34 <./images/pure_pursuit_teoria.png> <./images/rpp_configuration.png>]
-<images/dijstra.png, id=495, 1050.92625pt x 607.26875pt>
+<images/dijstra.png, id=503, 1050.92625pt x 607.26875pt>
 File: images/dijstra.png Graphic file (type png)
 <use images/dijstra.png>
 Package pdftex.def Info: images/dijstra.png  used on input line 1087.
 (pdftex.def)             Requested size: 204.85846pt x 118.37523pt.
-<images/a_star.png, id=496, 981.6675pt x 574.145pt>
+<images/a_star.png, id=504, 981.6675pt x 574.145pt>
 File: images/a_star.png Graphic file (type png)
 <use images/a_star.png>
 Package pdftex.def Info: images/a_star.png  used on input line 1094.
 (pdftex.def)             Requested size: 204.85846pt x 119.81181pt.
-<images/configuracion_planner.png, id=498, 467.7475pt x 626.34pt>
+<images/configuracion_planner.png, id=506, 467.7475pt x 626.34pt>
 File: images/configuracion_planner.png Graphic file (type png)
 <use images/configuracion_planner.png>
 Package pdftex.def Info: images/configuracion_planner.png  used on input line 1105.
@@ -1424,12 +1424,12 @@ Package pdftex.def Info: images/configuracion_planner.png  used on input line 11
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/dubin_test.png, id=503, 530.98375pt x 323.2075pt>
+<images/dubin_test.png, id=511, 530.98375pt x 323.2075pt>
 File: images/dubin_test.png Graphic file (type png)
 <use images/dubin_test.png>
 Package pdftex.def Info: images/dubin_test.png  used on input line 1132.
 (pdftex.def)             Requested size: 204.85846pt x 124.69911pt.
-<images/reed_sheep_test.png, id=504, 530.98375pt x 323.2075pt>
+<images/reed_sheep_test.png, id=512, 530.98375pt x 323.2075pt>
 File: images/reed_sheep_test.png Graphic file (type png)
 <use images/reed_sheep_test.png>
 Package pdftex.def Info: images/reed_sheep_test.png  used on input line 1139.
@@ -1437,7 +1437,7 @@ Package pdftex.def Info: images/reed_sheep_test.png  used on input line 1139.
 LaTeX Info: Redefining \. on input line 1144.
 LaTeX Info: Redefining \% on input line 1144.
 [35 <./images/planificadores_table.png> <./images/dijstra.png> <./images/a_star.png> <./images/configuracion_planner.png>]
-<images/smoother_params.png, id=517, 419.5675pt x 158.5925pt>
+<images/smoother_params.png, id=525, 419.5675pt x 158.5925pt>
 File: images/smoother_params.png Graphic file (type png)
 <use images/smoother_params.png>
 Package pdftex.def Info: images/smoother_params.png  used on input line 1152.
@@ -1445,7 +1445,7 @@ Package pdftex.def Info: images/smoother_params.png  used on input line 1152.
 LaTeX Info: Redefining \. on input line 1169.
 LaTeX Info: Redefining \% on input line 1169.
  [36 <./images/dubin_test.png> <./images/reed_sheep_test.png> <./images/smoother_params.png>]
-<images/poner_foto.png, id=528, 385.44pt x 385.44pt>
+<images/poner_foto.png, id=536, 385.44pt x 385.44pt>
 File: images/poner_foto.png Graphic file (type png)
 <use images/poner_foto.png>
 Package pdftex.def Info: images/poner_foto.png  used on input line 1172.
@@ -1460,7 +1460,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 1188.
 LaTeX Info: Redefining \% on input line 1188.
  [37 <./images/poner_foto.png>]
-<images/velocity_smoother_params.png, id=538, 355.3275pt x 278.03876pt>
+<images/velocity_smoother_params.png, id=546, 355.3275pt x 278.03876pt>
 File: images/velocity_smoother_params.png Graphic file (type png)
 <use images/velocity_smoother_params.png>
 Package pdftex.def Info: images/velocity_smoother_params.png  used on input line 1197.
@@ -1480,7 +1480,7 @@ Overfull \hbox (10.37074pt too wide) in paragraph at lines 1227--1230
 LaTeX Info: Redefining \. on input line 1234.
 LaTeX Info: Redefining \% on input line 1234.
 [39]
-<images/dynamic_object_bt.png, id=553, 786.94pt x 341.275pt>
+<images/dynamic_object_bt.png, id=561, 786.94pt x 341.275pt>
 File: images/dynamic_object_bt.png Graphic file (type png)
 <use images/dynamic_object_bt.png>
 Package pdftex.def Info: images/dynamic_object_bt.png  used on input line 1237.
@@ -1527,18 +1527,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36238 strings out of 480112
- 713937 string characters out of 5892632
+ 36246 strings out of 480112
+ 714005 string characters out of 5892632
  1445166 words of memory out of 5000000
- 53421 multiletter control sequences out of 15000+600000
+ 53425 multiletter control sequences out of 15000+600000
  476025 words of font info for 51 fonts, out of 8000000 for 9000
  85 hyphenation exceptions out of 8191
  89i,13n,83p,1170b,2232s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/andrelorent/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on main.pdf (64 pages, 10328810 bytes).
+Output written on main.pdf (64 pages, 10330283 bytes).
 PDF statistics:
- 883 PDF objects out of 1000 (max. 8388607)
- 691 compressed objects within 7 object streams
- 168 named destinations out of 1000 (max. 500000)
- 588 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 905 PDF objects out of 1000 (max. 8388607)
+ 712 compressed objects within 8 object streams
+ 172 named destinations out of 1000 (max. 500000)
+ 620 words of extra memory for PDF output out of 10000 (max. 10000000)
 

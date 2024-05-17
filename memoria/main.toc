@@ -40,6 +40,10 @@
 \contentsline {subsection}{\numberline {3.5.4}Plugins}{38}{subsection.3.5.4}%
 \contentsline {subsection}{\numberline {3.5.5}Nav2 commander}{39}{subsection.3.5.5}%
 \contentsline {chapter}{\numberline {4}Pruebas y resultados}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pruebas de precisión para el sistema sensorial}{41}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Pruebas de funcionamiento en los algoritmos de adaptación}{41}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{41}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Pruebas de navegación}{41}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{45}{chapter.6}%
 \contentsline {chapter}{Bibliografía}{47}{chapter.6}%

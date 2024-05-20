@@ -1462,6 +1462,8 @@ camino creado con la herramienta de linea de la API de google maps.
   \end{minipage}
 \end{figure}
 
+\newpage
+
 \section{Pruebas de precisión en la localización}
 
 Lo que en este apartado se quiere demostrar es la capacidad que tiene el sistema de localización para mantener una precisión aceptable a lo 
@@ -1494,7 +1496,7 @@ crezca de manera muy lenta.
     \label{fig:localizacion_2imu}
   \end{minipage}
 \end{figure}
-
+\newpage
 \section{Pruebas de navegación autónoma}
 
 Para comprobar finalmente que se logró una navegación cumpliendo con los objetivos propuestos se desarrollaron 4 escenarios en los que se cubren todas 
@@ -1502,36 +1504,172 @@ las posibilidades de navegación.
 \begin{itemize}
   \item Navegación punto a punto.
 \end{itemize}
-A continuación en las \textbf{figuras \ref{} y \ref{}} se puede aprecian varios frames del movimiento real del robot para una naegación punto a punto, como referencia este se movió alrededor de 10 metros. En 
-las \textbf{figuras \ref{} y \ref{}} se comprueba el mismo movimiento ilustrado en Rviz junto al lado del comando pedido por la página web.
+A continuación en las \textbf{figuras \ref{fig:frame1_nav_punto_punto} y \ref{fig:frame2_nav_punto_punto}} se puede aprecian varios frames del movimiento real del robot para una naegación punto a punto, como referencia este se movió alrededor de 10 metros. En 
+las \textbf{figuras \ref{fig:navegacion_punto_punto_web} y \ref{fig:navegacion_punto_punto_rviz}} se comprueba el mismo movimiento ilustrado en Rviz junto al lado del comando pedido por la página web.
 
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Comando de navegación para un objetivo.}
+    \label{fig:navegacion_punto_punto_web}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Representación de navegación punto a punto en Rviz.}
+    \label{fig:navegacion_punto_punto_rviz}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en la posición de inicio.}
+    \label{fig:frame1_nav_punto_punto}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en la posición final.}
+    \label{fig:frame2_nav_punto_punto}
+  \end{minipage}
+\end{figure}
+\newpage
 \begin{itemize}
   \item Navegación de trayecto complejo.
 \end{itemize}
-Para probar una navegación más compleja se comando un trayecto con múltiples objetivos consecutivos, igualmente en las \textbf{figuras \ref{} y \ref{}} se observan distintos frames 
-del video grabado durante las pruebas realizando este trayecto y en las \textbf{figuras \ref{} y \ref{}} se observa de nuevo la odometría en Rviz junto con el comando de navegación enviado por la 
+Para probar una navegación más compleja se comando un trayecto con múltiples objetivos consecutivos, igualmente en las \textbf{figuras \ref{fig:frame1_nav_compleja} y \ref{fig:frame2_nav_compleja}} se observan distintos frames 
+del video grabado durante las pruebas realizando este trayecto y en las \textbf{figuras \ref{fig:navegacion_cuadrado_web} y \ref{fig:navegacion_cuadrado_rviz}} se observa de nuevo la odometría en Rviz junto con el comando de navegación enviado por la 
 aplicación web.
 
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Comando de navegación para un cuadrado.}
+    \label{fig:navegacion_cuadrado_web}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Representación de navegación compleja en Rviz.}
+    \label{fig:navegacion_cuadrado_rviz}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en la posición de inicio.}
+    \label{fig:frame1_nav_compleja}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en una posición de cambio entre objetivos.}
+    \label{fig:frame2_nav_compleja}
+  \end{minipage}
+\end{figure}
+\newpage
 \begin{itemize}
   \item Navegación de largo trayecto.
 \end{itemize}
 En esta prueba el concepto que se quiere demostrar es la capacidad que tiene el sistema de localización en conjunto con el de navegación para mantener un 
 buen conocimiento de la posición y orientación del robot, es decir, que al cabo de un trayecto largo con múltiples objetivos consecutivos la odometría no haya ''derivado'' en 
 exceso y llegue al objetivo con precisión.
-Igualmente que para las otras pruebas observamos en las \textbf{figuras \ref{} y \ref{}} partes del video y en las \textbf{figuras \ref{} y \ref{}} se observa 
+Igualmente que para las otras pruebas observamos en las \textbf{figuras \ref{fig:frame1_nav_largo} y \ref{fig:frame2_nav_largo}} partes del video y en las \textbf{figuras \ref{fig:navegacion_largo_web} y \ref{fig:navegacion_largo_rviz}} se observa 
 la representación de la odometría en Rviz junto con el camino propuesto por el usuario mediante la página web.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Comando de navegación para un largo trayecto.}
+    \label{fig:navegacion_largo_web}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Representación de navegación de largo trayecto en Rviz.}
+    \label{fig:navegacion_largo_rviz}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en la posición de inicio.}
+    \label{fig:frame1_nav_largo}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot en la posición final.}
+    \label{fig:frame2_nav_largo}
+  \end{minipage}
+\end{figure}
+
+\newpage
 \begin{itemize}
   \item Navegación con evitación dinámica de obstáculos.
 \end{itemize}
-
 Por último se quiere demostrar que el robot es capaz de navegar de manera autónoma evitando obstáculos dinámicos en su camino, para ello se procedió a comandar al robot moverse 
 a un objetivo arbitrario y para simular un obstáculo se paso por delante del robot primero andando sin detenerse muy lentamente y después parándose en su camino.
-Este comportamiento se puede observar en los frames del video (\textbf{figuras \ref{}, \ref{} y \ref{}}) y también en la representación de Rviz (\textbf{figuras \ref{} y \ref{}}).
+Este comportamiento se puede observar en los frames del video (\textbf{figuras \ref{fig:frame1_dinamica} y \ref{fig:frame2_dinamica}}) y también en la representación de Rviz (\textbf{figuras \ref{fig:navegacion_dinamica_web} y \ref{fig:navegacion_dinamica_rviz}}).
 
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Comando de navegación con evitación dinámica de obstáculos.}
+    \label{fig:navegacion_dinamica_web}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Representación de navegación con evitación dinámica de obstáculos en Rviz.}
+    \label{fig:navegacion_dinamica_rviz}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot esquivando el primer obstáculo.}
+    \label{fig:frame1_dinamica}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{frame de video con el robot esquivando el segundo obstáculo.}
+    \label{fig:frame2_dinamica}
+  \end{minipage}
+\end{figure}
 
 Como se ha podido comprobar el vehículo autónomo consigue llegar a todos los objetivos de manera precisa y segura completando así todas las pruebas con éxito y por tanto 
 cumpliendo todos los objetivos propuestos en este trabajo.
- 
+
 \chapter{Conclusiones}
 Durante el presente proyecto se ha desarrollado una interfaz de control que cumple con los objetivos propuestos, es funcional y fácil de usar, 
 se ha implementado el envió y procesamiento de todas las posibles funcionalidades propuestas.

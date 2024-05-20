@@ -43,9 +43,9 @@
 \contentsline {chapter}{\numberline {4}Pruebas y resultados}{43}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Pruebas de precisión para el sistema sensorial}{43}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Pruebas de funcionamiento de los algoritmos de adaptación}{45}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{46}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Pruebas de navegación autónoma}{48}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{51}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{53}{chapter.6}%
-\contentsline {chapter}{Bibliografía}{55}{chapter.6}%
-\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{59}{appendix.1.Alph1}%
+\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{48}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Pruebas de navegación autónoma}{49}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{53}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{55}{chapter.6}%
+\contentsline {chapter}{Bibliografía}{57}{chapter.6}%
+\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{61}{appendix.1.Alph1}%

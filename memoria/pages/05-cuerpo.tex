@@ -7,8 +7,8 @@
 La navegación autónoma de vehículos ha emergido como uno de los desafíos más apasionantes y complejos en el campo de la robótica. 
 Con la creciente demanda en este ámbito, se han desarrollado múltiples empresas con proyectos que intentan ofrecer soluciones a un 
 problema tan interesante como es la posibilidad de que un robot móvil se desplace autónomamente trazando un recorrido o ruta establecida. 
-Según la \cite{IFR23} existe un 5\% de crecimiento en el volumen anual de ventas de robots industriales y así como hace unos años este crecimiento 
-sería principalmente de manipuladores cada vez más la robótica móvil busca su camino en la industria dando soluciones super versátiles y de muy fácil 
+Según\cite{IFR23} existe un 5\% de crecimiento en el volumen anual de ventas de robots industriales y así como hace unos años este crecimiento 
+sería principalmente de manipuladores cada vez más es la robótica móvil la que encuentra su camino en la industria dando soluciones super versátiles y de muy fácil 
 implementación para tareas que antes requerían espacios enormes, donde ahora un robot móvil de bajas dimensiones puede soportar cargas muy grandes 
 y ser implementado en la producción sin necesidad de modificar el entorno lo más mínimo. 
 
@@ -24,9 +24,9 @@ en un entorno con tantas fuentes de ruido e interferencias.
 
 Por estas razones cada vez más equipos de investigación se centran en conseguir nuevas formas de mejorar y de estandarizar las soluciones 
 que existen, desde robots de rescate, militares o vehículos para uso personal, y aunque existen multitud de formas de afrontar este 
-problema, existe un amplio margen de mejora. Por nuestra parte, en el presente trabajo se ha tomado especial atención a la parte de localización,
-adaptando metodologías de estimación como el filtro extendido de Kalman,\Cite{Rolan20}, dado que este presenta múltiples complicaciones a la hora de
- realizarlo en exteriores como ya se ha comentado, también se han implementado algoritmos que intentan mejorar los errores producidos por los sensores y
+problema, existe un amplio margen de mejora. En el presente trabajo se ha tomado especial atención a la parte de localización,
+adaptando metodologías de estimación como el filtro extendido de Kalman~\Cite{Rolan20}, dado que la localización presenta múltiples complicaciones a la hora de
+ ser realizada en exteriores, también se han implementado algoritmos que intentan mejorar los errores producidos por los sensores y
 finalmente algoritmos de planificación de trayectorias que se adecuen bien con el modelo del robot (Ackermann).
 
 \newpage
@@ -80,7 +80,7 @@ posibilidades en diversos campos, desde la exploración espacial como el rover p
 industrial con los manipuladores móviles de Robotnik~\Cite{robotnik24}.
 
 Uno de los puntos de partida fundamentales en la historia de la robótica autónoma fue el trabajo realizado por el neurofisiólogo británico 
-William Grey Walter en la década de 1940~\cite{holland2003first}. Walter diseñó y construyó los "robots tortuga", pequeños dispositivos 
+William Grey Walter en la década de 1940~\cite{holland2003first}. Walter diseñó y construyó los ''robots tortuga'', pequeños dispositivos 
 autónomos que demostraron comportamientos primitivos de evasión de obstáculos y búsqueda de energía, destacando la capacidad de los robots 
 para adaptarse y responder al entorno sin control humano directo.
 
@@ -114,14 +114,14 @@ complejo como pendientes, grandes rocas y vegetación.
 
 Pronto grandes empresas como Google, Audi o más adelante Tesla iniciaron una nueva revolución en el mundo de la conducción autónoma, 
 introduciendo los conceptos de \textit{machine learning} o \textit{deep learning} en sus vehículos como una nueva forma de toma de 
-decisiones, de esta manera los vehículos primero aprendían ellos solos a que hacer en cada situación en base a un entrenamiento previo, 
-esto dio lugar a una gran ventaja ya que en este campo la programación clásica era inviable por la gran cantidad de casos que existen.
+decisiones, de esta manera los vehículos primero aprendían por si mismos a que decisiones tomar en cada situación en base a un entrenamiento, 
+esto dio lugar a una gran ventaja ya que en este campo la programación clásica era inviable por la gran cantidad de posibilidades que existen.
 
 Audi comenzó esta travesía con su modelo RS7 autónomo~\cite{audirs715}, que recorrió a una velocidad de 240 km/h el circuito de Hockenheim en Alemania. 
 Siendo este 5 segundos más rápido que un un vehículo tripulado por un conductor profesional. A este le siguió Google con una flota de 25 
 vehículos autónomos que sin superar los 40 km/h recorrieron las calles de Mountain View, California.
 
-Más adelante salieron empresas como Waymo~\cite{waymo24}, que empezaron a desarrollar el concepto de un taxi autónomo~\cite{}, Tesla con sus vehículos que 
+Más adelante salieron empresas como Waymo~\cite{waymo24}, que empezaron a desarrollar el concepto de un taxi autónomo o Tesla con sus vehículos que 
 incorporan el conocido \textbf{Autopilot}, este utiliza una combinación de cámaras, radares y sensores para ofrecer características 
 avanzadas de asistencia al conductor, como el piloto automático adaptativo y la asistencia de cambio de carril.
 
@@ -134,18 +134,18 @@ común de sus usuarios~\cite{ros2}.
 ROS2 funciona en base a Nodos, programados en C++ o Python, estos comprenden los llamados paquetes y el conjunto de paquetes es un stack, 
 uno de los stacks más conocidos, usados y mejorados es el utilizado en este trabajo, Nav2 o Navigation2~\cite{nav2}~, que en ya su segunda 
 versión es la opción más utilizada para la creación de algoritmos de navegación autónoma.
-Este stack comprende todo lo necesario para crear un sistema robusto de navegación autónoma principalmente en interiores pero también para exteriores,
+Este stack comprende todo lo necesario para crear un sistema robusto de navegación autónoma, principalmente en interiores pero también para exteriores,
 comprende soporte para todo tipo de robots (Ackermann, Diferencial, Humanoide, Omni-direccional), aquí nos referiremos a los planificadores locales
 como ''controladores'' y a los planificadores globales como simplemente ''planificadores''. Nav2 cuenta con controladores muy rápidos y 
 sencillos como el DWB (Dynamic Window Approach) que funciona exclusivamente para robots que pueden girar \textit{in situ}, el TEB 
-(Time Elastic Band) o el famoso RPP (Regulated Pure Pursuit) que aunque sencillos ya nos permiten una configuración más avanzada y necesaria
-para nuestro caso como es el ángulo de giro mínimo, hasta otros mucho más complejos como el MPPI (Model Predictive Path Integral), un algoritmo 
+(Time Elastic Band) o el famoso RPP (Regulated Pure Pursuit) que aunque sencillos ya nos permiten una configuración más avanzada
+para el caso que aquí se presenta como es el radio de giro mínimo, hasta otros mucho más complejos como el MPPI (Model Predictive Path Integral), un algoritmo 
 muy complejo que usa un método de predicción en el tiempo para navegación de vehículos a grandes velocidades. Por otro lado tenemos los 
 planificadores donde tenemos varias versiones de 2 algoritmos también muy conocidos, el A* y el Theta*~\cite{sun2023path}.
 
 En su primera versión este stack usaba una máquina de estados finita como lógica de actuación, una solución muy bien estudiada por su antigüedad
 pero que su modificación para un problema concreto resultaba complicada, por ello en su nueva versión se utilizan los llamados 
-\textit{behavior trees}~\cite{colledanchise2018behavior}, unas estructuras de lógica muy versátiles y sobre todo extremadamente customizables, 
+\textit{behavior trees}~\cite{colledanchise2018behavior}, unas estructuras lógicas muy versátiles y sobre todo extremadamente customizables, 
 gracias a ello el stack de navegación permite una configuración absoluta de todos sus componentes, desde la creación de planificadores locales, globales, 
 plugins para añadir comportamientos, capas para los mapas de coste, suavizadores de trayectoria o incluso la creación o modificación de los 
 propios arboles de comportamiento.
@@ -159,11 +159,11 @@ propios arboles de comportamiento.
 \section{Localización}
 La localización se conoce como uno de los principales y más complejos problemas de la robótica móvil, este se basa en un concepto 
 muy sencillo, saber donde se encuentra el robot, una tarea que depende del entorno, de las condiciones y de los sensores disponibles 
-puede suponer un gran problema, por ello durante los años se han creado multiples técnicas de localización para intentar mitigar este 
+pudiendo así suponer un gran problema, por ello durante los años se han creado multiples técnicas de localización para intentar mitigar este 
 gran problema, aquí se exponen los principales métodos usados a día de hoy en robótica.
 
 \subsection{SLAM: Simultaneous Localization And Mapping}
-El SLAM, es un método utilizado en robótica y campos relacionados para que un agente móvil (como un robot) pueda construir un mapa de un 
+El método SLAM, es un método utilizado en robótica y campos relacionados para que un agente móvil (como un robot) pueda construir un mapa de un 
 entorno desconocido y al mismo tiempo determinar su propia posición respecto de ese mapa.
 
 El proceso comienza con una estimación inicial de la posición del robot y el mapa del entorno. Esta estimación puede ser rudimentaria y 
@@ -174,8 +174,8 @@ y recopila más datos, el mapa y la estimación de la posición se actualizan co
 entorno y la ubicación del agente. El algoritmo incluye técnicas avanzadas de fusión sensorial, estimación probabilística y optimización 
 para lograr una localización y un mapeo precisos
 
-Este método es uno de los más usados en navegación en interiores donde hay muchos objetos y referencias donde el algoritmo constantemente 
-puede "encontrarse", el principal problema recae cuando se intenta usar en exteriores donde suele haber pocas referencias o están mucho más 
+Este método es uno de los más usados en navegación en interiores donde hay muchos objetos y referencias para que este algoritmo pueda 
+''localizarse'', el principal problema recae cuando se intenta usar en exteriores donde suele haber pocas referencias o están mucho más 
 espaciadas, donde el ruido es mucho mayor y existen más fuentes y sobre todo donde la idea de mapear un entorno tan extenso se vuelve 
 inviable para la mayoría de situaciones.
 
@@ -205,8 +205,8 @@ medición donde en base a las estimaciones del estado y de las varianza se calcu
 que a diferencia de otros métodos~\cite{wikiLuenberg}, este tiene la ventaja de ser calculada dinámicamente en base a la información del error (matriz de covarianzas). 
 Finalmente se corrige la estimación y se repite el proceso.
 
-En el caso de sistemas dinámicos \textbf{no lineales} es posible usar una modificación del filtro conocida por ''FIltro extendido de Kalman''~\cite{rigatos2007extended}, donde 
-se linealiza en torno al estado actual y donde antes teníamos una matriz que relaciona el estado anterior con el actual ahora tenemos la función \textit{f} 
+En el caso de sistemas dinámicos \textbf{no lineales} es posible usar una modificación del filtro conocida por ''Filtro extendido de Kalman''~\cite{rigatos2007extended}, donde 
+se linealiza entorno al estado actual y donde antes teníamos una matriz que relaciona el estado anterior con el actual ahora tenemos la función \textit{f} 
 para la obtención de la predicción de estados y su \textit{Jacobiano} (\textbf{F}) para la predicción de varianzas~(\ref{eq:prediccion_estado} y \ref{eq:prediccion_covarianza}).
 
 Para la segunda etapa también tendremos otra función \textit{h} y su \textit{Jacobiano} (\textbf{H}) que representan la relación entre 
@@ -252,10 +252,10 @@ Donde :
 En los inicios de la robótica los principales sensores para la medición de distancias eran los sonares pero conforme la tecnología ha ido avanzando 
 cada vez más se han ido reemplazando por los sensores Lidar por su precisión y utilidad en gran cantidad de situaciones, 
 estos sensores son capaces de hacer un barrido horizontal de hasta 360º y algunos un barrido vertical, como el utilizado en este proyecto, 
-han sido utilizados tanto para detección de obstáculos, localización en el mundo como para el mapeado de entornos, son muy interesantes 
+han sido utilizados tanto para detección de obstáculos, localización en el mundo o incluso para el mapeado de entornos, son muy interesantes 
 por su buena relación entre rango y precisión, siendo algunos capaces de funcionar en exteriores de manera muy precisa.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/lidar_explicacion.png}
     \caption{Esquema teórico de funcionamiento de un Lidar 1D}
@@ -264,9 +264,9 @@ por su buena relación entre rango y precisión, siendo algunos capaces de funci
 
 Estos sensores son agrupados con el nombre de ''sensores de tiempo de vuelo'' y es que su funcionamiento se basa en eso precisamente. Están 
 dotados de un laser pulsado y un receptor junto con un sistema óptico de lentes y espejos~\ref{fig:lidar_explicacion}, el laser emite un rayo de luz concentrada que viaja 
-hasta el objeto a detectar, rebota en el y vuelve hasta ser detectado por el receptor del dispositivo, de esta manera sabiendo que la 
-velocidad de la luz es~$$c=299.792.458 m/s$$ podemos definir la distancia al objeto (\textbf{D}) como:~$$D = c * \Delta{t} / 2$$ si a esto 
-le añadimos un motor eléctrico que haga rotar todo el dispositivo a gran velocidad al rededor de un eje obtenemos un array de valores con 
+hasta el objeto a detectar, rebota en el y vuelve hasta ser detectado por el receptor del dispositivo, de esta manera conociendo que la 
+velocidad de la luz es \begin{math}c=299.792.458 m/s\end{math} podemos definir la distancia al objeto (\textbf{D}) como:~$$D = c * \Delta{t} / 2$$ si a esto 
+le añadimos un motor eléctrico que haga rotar todo el dispositivo a gran velocidad alrededor de un eje obtenemos un array de valores con 
 las distancias, es decir conseguimos un barrido del entorno~\ref{fig:lidar3d}.
 
 
@@ -281,15 +281,14 @@ las distancias, es decir conseguimos un barrido del entorno~\ref{fig:lidar3d}.
 \subsection{GPS}
 
 El GPS es una herramienta bien conocida, estudiada y utilizada por una gran variedad de sectores, y aunque es una tecnología que funciona 
-muy bien tiene sus problemas , necesita una vista clara del cielo, lo cual no siempre es posible, las frecuencias a las que trabajan estos 
-sensores suelen ser muy bajas, del orden de unos pocos hercios, lo cual dificulta mucho conseguir una odometría continua que es necesaria en 
+muy bien tiene sus limitaciones y problemas, necesita una vista clara del cielo, lo cual no siempre es posible, las frecuencias a las que trabajan estos 
+sensores suelen ser muy bajas, del orden de unos pocos hercios, lo que dificulta conseguir una odometría continua que es necesaria en 
 la mayoría de casos para una correcta navegación, la precisión tampoco suele ser muy buena y aunque hay tecnologías más avanzadas como los 
 GPS RTK (Real Time Kinematic), que mejora su error al añadir un protocolo de correcciones por medio de radio, modem o wifi en base a una 
-estación fija de la cual se conoce con gran exactitud sus coordenadas GPS, dándonos hasta una precisión de unos pocos centímetros, 
+estación fija de la que se conoce con gran exactitud sus coordenadas GPS, dándonos hasta una precisión de unos pocos centímetros, 
 normalmente es muy necesario usarlo en conjunto con otros sensores, sean varios GPS, IMUs o con técnicas más avanzadas de localización, 
-como el conocido SLAM (SImultaneous Localization and Mapping) o AMCL (Adaptative Montecarlo localization), la que se usa en del presente 
-proyecto es la fusión de fuentes de odometría basada en 2 filtros extendidos de Kalman (EKF), su implementación y características se 
-explicará más adelante.
+como el conocido SLAM (SImultaneous Localization and Mapping), AMCL (Adaptative Montecarlo localization) o la que se usa en del presente 
+proyecto que no es otra que la fusión de fuentes de odometría basada en 2 filtros extendidos de Kalman (EKF).
 
 \begin{figure}[h]
     \centering
@@ -299,9 +298,9 @@ explicará más adelante.
 \end{figure}
 \subsection{IMU}
 
-Las \textit{Inertial Motion Units} son un conjunto de sensores que normalmente puede ser de 2 tipos, de 6 ejes de libertad, 
-donde encontramos un giroscopio y un acelerómetro o de 9 ejes de libertad donde además se encuentra un magnetómetro, en base a 
-estos 2 o 3 sensores se puede calcular una orientación ya sea relativa al inicio del movimiento o absoluta respecto del norte magnético, 
+Las \textit{Inertial Motion Units} son un conjunto de sensores que normalmente pueden ser de 2 tipos, de 6 ejes de libertad (\textbf{DoF}), 
+donde encontramos un giroscopio y un acelerómetro o de 9 DoF donde además se encuentra un magnetómetro, en base a 
+estos 2 o 3 sensores se puede calcular una orientación ya sea relativa desde el inicio del movimiento o absoluta respecto del norte magnético, 
 estas unidades aunque son muy necesarias tienen una gran desventaja y es que son afectadas por un error acumulativo (error Abbe)~\cite{errorAbbe23}, agregando cambios a 
 la medición, lo que se conoce como deriva, esta deriva es muy perjudicial para conseguir una correcta localización por lo que al igual que 
 comentamos anteriormente la fusión con otros sensores o técnicas de localización resulta muy necesaria.
@@ -314,7 +313,7 @@ comentamos anteriormente la fusión con otros sensores o técnicas de localizaci
 EL robot esta montado sobre una plataforma móvil adquirida a la empresa \textbf{Agilex}, \textbf{figura \ref{fig:hunter}}, en concreto el 
 modelo Hunter V2.0, un robot móvil tipo \textbf{Ackermann} ultra resistente diseñado para cargas pesadas y escenarios de conducción precisos 
 a baja velocidad, sus dimensiones son 980 x 745x 380mm, tiene una carga máxima de 150 kg y una velocidad máxima de 1.5 m/s, un radio 
-de giro mínimo de 1.6 m y una autonomía de 22 km. El robot incluye con un software para el cálculo de la cinemática inversa, la publicación de 
+de giro mínimo de 1.6 m y una autonomía de 22 km. El robot incluye un software para el cálculo de la cinemática inversa, la publicación de 
 la odometría de los \textit{encoders} de las ruedas por el topic \textit{/hunter/odom} y la suscripción de un mensaje tipo \textit{sensor\_msgs/Twist} 
 para comandar velocidades angulares y lineales por el topic \textit{cmd\_vel} y se comunica al ordenador de abordo mediante \textbf{Bus CAN}. 
 En la \textbf{figura \ref{fig:datasheet_hunter}} se puede observar las especificaciones del vehículo completas.
@@ -343,7 +342,7 @@ memoria RAM de 16MB y una memoria ROM SSD de 512GB, un procesador Ryzen 5 3550H 
 En primer lugar contamos con un LIDAR 3D de la marca OUSTER, \textbf{figura \ref{fig:ouster_hunter}}, en concreto el 
 modelo de medio alcance, con un rango que se comprende entre los 0.8 y los 120 metros, esta preparado para exteriores con una visera 
 protectora y es capaz de barrer áreas en 360º horizontalmente y 45º verticalmente, es un modelo de altas prestaciones, funciona a 
-100Hz y tiene una resolución de 2 cm de media ya que depende de la distancia ,todos estos datos se pueden observar también en la\textbf{figura \ref{fig:datasheet_ouster}}, 
+100Hz y tiene una resolución de 2 cm de media ya que depende de la distancia, todos estos datos se pueden observar también en la~\textbf{figura \ref{fig:datasheet_ouster}}, 
 para la implementación con ROS2 también se uso el driver oficial de la empresa. 
 
 \begin{figure}[h]
@@ -360,12 +359,12 @@ para la implementación con ROS2 también se uso el driver oficial de la empresa
     \label{fig:ouster_hunter}
 \end{figure}
 
-A parte del sensor láser este también tiene incorporado una IMU de 6 ejes de libertad, 3 para un giroscopio y 3 para un acelerómetro, 
+A parte del sensor láser este también tiene incorporado una IMU de 6 DoF, 3 para un giroscopio y 3 para un acelerómetro, 
 decir que esta unidad de medición inercial fue la única usada durante el 90\% del proyecto lo cual dificulto mucho la obtención de una 
-buena localización a causa no tener 9 ejes de libertad y de no ser de muy alta gama, de todas formas como se explica más adelante se 
+buena localización a causa no tener 9 grados de libertad y de no ser de muy alta gama, de todas formas como se explica más adelante se 
 consiguió una buena orientación usando este dispositivo. Fue colocado en la torre del robot para máxima visibilidad del LIDAR.
 
-En las \textbf{figuras \ref{fig:lidar_2d_pruebas} y \ref{fig:lidar_3d_pruebas}} podemos las pruebas que se hicieron con el vehículo en el recinto 
+En las \textbf{figuras \ref{fig:lidar_2d_pruebas} y \ref{fig:lidar_3d_pruebas}} se observan las pruebas que se hicieron con el vehículo en el recinto 
 de la universidad donde para el mismo sitio se puede ver la diferencia entre las dos salidas del sensor.
 
 
@@ -386,10 +385,12 @@ de la universidad donde para el mismo sitio se puede ver la diferencia entre las
     \label{fig:lidar_3d_pruebas}
   \end{minipage}
 \end{figure}
-En cuanto al esquema de comunicación con el software, el driver usado publica los siguientes mensajes de datos entre varios que no interesan.
+\newpage
+
+En cuanto al esquema de comunicación con el software, el driver usado publica los siguientes mensajes de datos entre varios que no interesan en el   proyecto.
 \begin{itemize}
     \item Lidar 2D, un mensaje de tipo \textit{sensor\_msgs/LaserScan} por el topic \textit{/ouster/scan}
-    \item Lidar 3D, un mensaje de tipo \textit{sensor\_msgs/PointCLoud} por el topic \textit{/ouster/points}
+    \item Lidar 3D, un mensaje de tipo \textit{sensor\_msgs/PointCloud} por el topic \textit{/ouster/points}
     \item IMU, un mensaje de tipo \textit{sensor\_msgs/Imu} por el topic \textit{/ouster/imu}
 \end{itemize}
 
@@ -405,15 +406,12 @@ En cuanto al esquema de comunicación con el software, el driver usado publica l
 
 El GPS utilizado fue un GPS Reach RS2+, \textbf{figura \ref{fig:reach_rs2}}, con tecnología RTK basado en el protocolo NTRIP para la 
 corrección de posicionamiento, este GPS funciona usando el protocolo NMEA, un protocolo extremadamente robusto utilizado en el sector marino, 
-cuenta con una frecuencia máxima de 5Hz y una precisión de hasta 1 cm. Para su montaje se creo un soporte con un perfil de aluminio al cual 
+cuenta con una frecuencia máxima de 5Hz y una precisión de hasta 1 cm, \textbf{figura \ref{fig:datasheet_reach}}. Para su montaje se creo un soporte con un perfil de aluminio al cual 
 se le atornillo en propio sensor, de manera que tenga visión clara del cielo en todo momento y que a la vez no interfiera con la linea de 
-corte del LIDAR, su implementación en ROS2 también viene ampliamente documentada ya que el protocolo usado (NMEA), es muy conocido, 
+corte del LIDAR, su implementación en ROS2 también viene ampliamente documentada ya que el protocolo usado (NMEA) es muy conocido, 
 para su conexionado se pueden usar varios métodos, como Wifi o radio pero en este proyecto se implementó el serial por medio de USB para 
 minimizar las interferencias y pérdidas de señal. Para la comunicación tenemos un solo mensaje de interés, este es de tipo \textit{sensor\_msgs/NavSatFix} 
 y se publica por el topic \textit{/hunter/fix}.
-
-Como se puede ver en la \textbf{figura \ref{fig:datasheet_reach}} podría parecer que este dispositivo tiene una IMU pero está inaccesible para 
-el usuario.
 
 \begin{figure}[H]
     \centering
@@ -431,7 +429,7 @@ el usuario.
     \caption{Xsens 3th gen MTI}
     \label{fig:xsens_imu}
 \end{figure}
-El último sensor usado es una IMU de 9 ejes de libertad de la marca Xsens (hoy en día conocida por Movella), 
+El último sensor usado es una IMU de 9 DoF de la marca Xsens (hoy en día conocida por Movella), 
 \textbf{figura \ref{fig:xsens_imu}}, este sensor no se iba a implementar ya que no se tenía conocimiento de su existencia en el 
 departamento, es un modelo con una antigüedad de 13 años como se puede ver en la \textbf{figura \ref{fig:xsens_datasheet}}, lo que dificultó enormemente su implementación con ROS2, los drivers 
 disponibles o no daban soporte a modelos tan antiguos o los que si lo daban estaban diseñados para la primera versión de ROS, a causa de 
@@ -449,7 +447,7 @@ En las \textbf{figuras \ref{fig:mti_velocidad_orientacion} y \ref{fig:mti_aceler
 la orientación y la velocidad angular en el eje z donde podemos comprobar una salida bastante estable y por otro lado el comportamiento 
 de las aceleraciones, en este caso extremadamente ruidoso, también aquí podemos comprobar que la IMU está en el sistema de referencia correcto 
 ya que \begin{math}\ddot{Z}\end{math} debe ser positiva y tener de media un valor de aproximadamente 9.81 m/s² que es exactamente lo que vemos. En cuanto a la 
-señal ruidosa de aceleraciones veremos más adelante que no es un problema dado que para utilizar esta señal e localización la integraremos en el tiempo 
+señal ruidosa de aceleraciones veremos más adelante que no es un problema dado que para utilizar esta señal en localización la integraremos en el tiempo 
 y por tanto simplemente servirá como una redundancia en la odometría de la velocidad lineal.
 
 
@@ -473,15 +471,15 @@ y por tanto simplemente servirá como una redundancia en la odometría de la vel
 \newpage
 \subsection{Implementación del sistema sensorial en ROS2}
 
-Una vez montados he instalados todos los dispositivos se hicieron pruebas para valorar su efectividad real en el terreno y la configuración 
-de los parámetros adecuados para los drivers. ROS2 funciona con un sistema de descripción cinemática y dinámica escrito en archivos URDF (Unified Robot Description Format),en concreto en 
+Una vez montados e instalados todos los dispositivos se hicieron pruebas para valorar su efectividad real en el terreno y la configuración 
+de los parámetros adecuados para los drivers. ROS2 funciona con un sistema de descripción cinemática y dinámica escrito en archivos URDF (Unified Robot Description Format), en concreto en 
 el lenguaje \textbf{xml} y describe las transformaciones que existen entre los distintos componentes del robot, funciona como un árbol de 
-transformaciones donde el elemento base sería el chasis, que según la \textbf{REP 105} (ROS Enhancement Proposal), el nombre para este 
+transformaciones donde el elemento base sería el chasis, que según la \textbf{REP 105} (ROS Enhancement Proposal) el nombre para este 
 elemento debe ser ''\textit{base\_link}'', está REP describe en detalle las convenciones respecto a nombres para todo el framework de ROS. 
 
 Las transformaciones pueden ser de 2 tipos, estáticas o dinámicas, las estáticas las compondrían las transformaciones fijas entre los 
 sensores y el ''\textit{base\_link}'' y las dinámicas las transformaciones que pueden variar en el tiempo, como el cambio de pose desde 
-un instante inicial al actual, el cual según la \textbf{REP 105} , se le llama \textit{odom}, que viene de odometría en inglés, otro 
+un instante inicial al actual, el cual según la \textbf{REP 105} , se debe llamar \textit{odom}, que viene de odometría en inglés, otro 
 ejemplo sería la transformación entre un mapa fijo definido a priori y la posición actual del robot. Estos 2 flujos de datos son publicados 
 por los \textit{topics} \textit{/tf\_static} y \textit{/tf}, respectivamente, para la creación del árbol estático de transformaciones, se 
 miden las correspondientes distancias y se definen en un archivo xml como ya se ha comentado, finalmente se publican por los debidos topics, 
@@ -489,9 +487,9 @@ estos árboles de transformaciones pueden contener más información como el tip
 (fijo, de revolución acotada o de revolución continua), la geometría de los objetos y de sus colisión en el espacio o incluso de sus 
 inercias, estas características aunque inútiles para la implementación en un robot real son muy útiles para hacer simulaciones precisas 
 en motores de simulación como pueden ser Gazebo o Coppelia, (antiguo V-Rep), las transformaciones dinámicas las calcularemos con uno de 
-los paquetes usados, robot\_localization del cual hablaremos más en profundidad más adelante.
+los paquetes usados, robot\_localization del cual se hablará en profundidad más adelante.
 
-En la  \textbf{figura\ref{fig:arbol_urdf}}, podemos observar el árbol completo del robot, desde las transformaciones dinámicas, 
+En la  \textbf{figura\ref{fig:arbol_urdf}}, se peude observar el árbol completo del robot, desde las transformaciones dinámicas, 
 (map, odom, utm) hasta las estáticas (base\_footprint, base\_link, gps\_frame, etc...)
 
 \begin{figure}[H]
@@ -504,16 +502,16 @@ En la  \textbf{figura\ref{fig:arbol_urdf}}, podemos observar el árbol completo 
 \newpage
 \section{Interfaz de usuario}
 
-Para la creación de la interfaz de usuario se decidió usar React, una biblioteca de Javascript de código abierto para la creación de 
+Para la creación de la interfaz de usuario se decidió usar \textit{React}, una biblioteca de Javascript de código abierto para la creación de 
 interfaces de usuario, por ser una manera relativamente fácil de crear una interfaz web sin tener experiencia en este campo, para ello 
-y según los objetivos implementados se hizo uso de una API de google para poder obtener un mapa en la web junto con las herramientas, 
+y según los objetivos se hizo uso de una API de google para poder obtener un mapa en la web junto con las herramientas, 
 (número 1 de la \textbf{figura \ref{fig:interfaz_1}}), que esta API incluyen, estas son, la posibilidad de mover waypoints y obtener 
 las coordenadas GPS del mismo, establecer áreas, tanto rectángulos como polígonos o establecer polilíneas a modo de camino, como 
 protocolo de envío nos decantamos por MQTT, por ser un protocolo rápido y sencillo de implementar, el procedimiento de uso es el que 
 sigue, nada más conectarse al servidor la web permanece inactiva, no es posible el envío de datos hasta que el usuario ha pulsado el 
-botón de conexión, (número 2 de la \textbf{figura \ref{fig:interfaz_1}}),con el broker MQTT, esto esta hecho para cerciorarse de que 
+botón de conexión, (número 2 de la \textbf{figura \ref{fig:interfaz_1}}), con el broker MQTT, esto esta hecho para cerciorarse de que 
 la conexión con el servidor broker se ha establecido correctamente, seguidamente se puede observar como dos botones más se activan, 
-uno para publicar y otro para activar la funcionalidad del "follow\_me", (número 3 y 4 respectivamente en la 
+uno para publicar y otro para activar la funcionalidad del "follow me", (número 3 y 4 respectivamente en la 
 \textbf{ figura \ref{fig:interfaz_2}}), para indicar un waypoint al que ir se hace uso del marcador existente en pantalla 
 (3 en la \textbf{figura \ref{fig:interfaz_1}}) y para crear un camino formado por múltiples waypoints se hace uso de la paleta de 
 herramientas, (2 en la \textbf{figura \ref{fig:interfaz_2}}), para finalizar se hace uso del botón "publish", 
@@ -538,11 +536,11 @@ de mandarlo.
 \end{figure}
 
 La aplicación web funciona en un servidor privado montado en una Raspberry pi 3B+, como software de servidor se ha hecho uso de apache2, 
-un servicio de código abierto para implementación de HTTP/1.1 y Mosquito como broker MQTT, ambos instalados y configurados en la propia 
+un servicio de código abierto para implementación la implementación de servidores HTTP/1.1 y Mosquito como broker MQTT, ambos instalados y configurados en la propia 
 Raspberry, para la posibilidad de utilizar la pagina en cualquier sitio del mundo se ha hecho uso de un servicio de DNS dinámico (DDNS) 
 que permite a los usuarios asignar un nombre de dominio a una dirección IP dinámica, NO-ip en nuestro caso, de esta manera en cualquier 
-parte se puede abrir la aplicación \href{https://mapir.ddns.net}{aquí} y controlar el vehículo de manera muy visual e intuitiva, también 
-comentar que se ha implementado también el envío de areas tanto rectangulares como poligonales, esto ha sido ya que aunque esta 
+parte se puede abrir la aplicación y controlar el vehículo de manera muy visual e intuitiva, también 
+comentar que se ha implementado tanto el envío de areas rectangulares como poligonales, ya que aunque esta 
 funcionalidad no se ha llegado a implementar por no ser de interés para el propósito real de este robot, en los objetivos se estableció 
 una interfaz ampliable y fácilmente actualizable.
 
@@ -551,17 +549,17 @@ La funcionalidad interna tanto de MQTT como de ROS2 es en base a \textit{topics}
 mensajes forman una cadena desde que se envían en la web hasta que se reciben en el ROS2.
 
 Como se puede ver en el \textbf{esquema \ref{fig:esquema_flujo_datos}}, para ello hemos implementado 3 topics, el primero y más importante 
-es /desired\_pos por donde se envían las coordenadas del objetivo o objetivos es mensaje formateado en JSON contiene principalmente 2 
+es  \textit{/desired\_pos} por donde se envían las coordenadas del objetivo o objetivos, este mensaje formateado en JSON contiene principalmente 2 
 campos, el primero es el tipo que puede ser, ''marker'', ''line'', ''rectangle'', ''polygon'' o ''follow'' y el segundo campo contiene o 
-una tupla con la latitud y longitud del objetivo o un array de tuplas para los casos más complejos, el topic /follow es una \textit{flag}, 
-es decir un valor booleano para saber si estamos en modo follow\_me o no, el tercero es un mensaje al que se subscribe el servidor web con 
+una tupla con la latitud y longitud del objetivo o un array de tuplas para los casos más complejos, el topic \textit{/follow} es una \textit{flag}, 
+es decir un valor booleano para saber si está en modo follow\_me o no, el tercero es un mensaje al que se subscribe el servidor web con 
 la información de la posición actual del robot.
 
-Hemos hablado de la implementación de la interfaz y de su envío mediante un broker hasta el robot pero no de como recibimos esa información 
-y la transformamos a un mensaje útil par nosotros en nuestro entorno de desarrollo (ROS2), al enviar los mensajes formateados en JSON 
-debemos convertirlos a un string o sino nuestro receptor no los entenderá, este es un nodo, (MQTT Bridge), que se conecta con el broker 
-que le digamos, se subscribe a los topics que queremos y los transforma a un tipo que ROS2 entiende, este es también un string pero propio 
-de ROS2, por lo  tanto para obtener la información que necesitamos debemos parsear ese mensaje transformándolo de un string de vuelta a una 
+Hemos hablado de la implementación de la interfaz y de su envío mediante un broker hasta el robot pero no de como se recibe esa información 
+y la se transforma a un mensaje útil par el entorno de desarrollo usado (ROS2), al enviar los mensajes formateados en JSON 
+se deberán convertir en string o sino nuestro receptor no los entenderá, este es un nodo, (MQTT Bridge), que se conecta con el broker 
+que le digamos, se subscribe a los topics que se requieren y los transforma a un tipo de dato que ROS2 entiende, este es también un string pero propio 
+de ROS2, por lo  tanto para obtener la información que necesitamos se deberá \textit{parsear} ese mensaje transformándolo de un string de vuelta a una 
 tupla de coordenadas o a un string de tuplas de coordenadas.
 \begin{figure}[h]
 \begin{center}
@@ -593,8 +591,8 @@ tupla de coordenadas o a un string de tuplas de coordenadas.
 \end{figure}
 
 \newpage
-Para ello se creo un nodo que recibe la información del nodo MQTT Bridge, 
-lo \textit{parsea} haciendo uso de la librería \textit{jsoncpp}, para ello primero leemos el campo que nos indica que tipo de mensaje es, es 
+Para ello se creo un nodo que recibe la información del nodo MQTT Bridge y 
+lo \textit{parsea} haciendo uso de la librería \textit{jsoncpp}, primero se lee el campo que nos indica que tipo de mensaje es, es 
 decir si es un marcador o es un conjunto de ellos, seguidamente lo guardamos en una variable con un tipo de dato personalizado, para los 
 marcadores el tipo de datos contiene un campo para longitud y otro para latitud y para las lineas contiene array de marcadores y un entero 
 para indicar el tamaño, de esta manera se hace más sencillo el procesamiento de los mismos.
@@ -604,12 +602,12 @@ para indicar el tamaño, de esta manera se hace más sencillo el procesamiento d
 \section{Procesamiento de los mensajes MQTT a ROS2}
 Por razones que se entenderán más avanzado el capitulo debemos procesar estos datos aún más, primero haciendo uso de un servicio de ROS2 
 implementado por el paquete de robot\_localization, este transforma las coordenadas GPS expresadas en ángulos a un sistema cartesiano 
-centrado en el punto de inicio y después debemos comprobar la distancia desde la posición actual del robot al punto que queremos ir, 
-esto es debido a como funciona Nav2, si la distancia es menor a un valor dictado por los parámetros de Nav2 podemos enviarlo directamente 
-al siguiente nodo, de no ser así generamos puntos equiespaciados desde la posición del robot hasta el objetivo y enviamos ese \textit{array} 
-de posiciones, también cabe destacar que debemos generar una orientación deseada, cosa que la web no nos proporciona.
-Para ello simplemente calculamos el ángulo que existe entre la posición del robot y la objetivo, para el caso de tener varios objetivos contiguos, es decir una 
-ruta o camino hacemos este mismo algoritmo por cada par de puntos. El pseudo código se proporciona en el \textbf{algoritmo \ref{objetivos}}.
+centrado en el punto de inicio de movimiento del robot y después se deberá comprobar la distancia desde la posición actual del robot al punto que se quiere llegar, 
+esto es debido a la manera en la que Nav2 funciona, si la distancia es menor a un valor dictado por los parámetros de Nav2 se podrá enviar directamente 
+al siguiente nodo, de no ser así generamos puntos equiespaciados desde la posición del robot hasta el objetivo y posteriormente se enviará ese \textit{array} 
+de posiciones, también cabe destacar que se deberá generar la orientación deseada, cosa que la web no nos proporciona.
+Para ello simplemente se calculará el ángulo que existe entre la posición del robot y la de el objetivo, para el caso de tener varios objetivos contiguos, es decir una 
+ruta o camino se hace este mismo algoritmo por cada par de puntos. El pseudo código se proporciona en el \textbf{algoritmo \ref{objetivos}}.
 
 \begin{algorithm}[H]
   \caption{Procesamiento de objetivos}\label{objetivos}
@@ -640,27 +638,27 @@ ruta o camino hacemos este mismo algoritmo por cada par de puntos. El pseudo có
 \end{algorithm}
 
 Una vez procesada la información obtenida de la Web esta se publicará hacia otro nodo encargado de la lógica de control del paquete de 
-navegación, este indicará a NAV2 donde ir y como, pero antes de ello debemos conseguir una localización estable en el tiempo.
+navegación, este indicará a NAV2 donde ir y como, pero antes de ello se deberá conseguir una localización estable en el tiempo.
 
 \section{Localización y odometría}
 
 La localización en robótica es uno de los problemas más explorados dada su importancia, por ello esta parte posiblemente sea la más 
 importante del proyecto y la que mśa tiempo llevo conseguir.
 
-Para ello se investigaron las mejores maneras de conseguir una buena localización en exteriores, donde a diferencia de los espacios cerrados 
-esta tarea se vuelve un poco más compleja, existen métodos como SLAM o AMCL que funcionan muy bien en interiores pero cuando estas en un 
-ambiente tan cambiante y con tan pocas referencias a las que puedas calcular tu posición estas alternativas se vuelven totalmente 
-inútiles, principalmente tenemos 2 fuentes de odometría (IMU, Encoders de las ruedas) y 1 fuente de localización (GPS), existen múltiples 
+Primero se investigaron las mejores maneras de conseguir una buena localización en exteriores, donde a diferencia de los espacios cerrados 
+esta tarea se vuelve un poco más compleja, existen métodos como SLAM o AMCL que funcionan muy bien en interiores pero en 
+ambientes tan cambiantes y con tan pocas referencias fijas estas alternativas se vuelven totalmente 
+inservibles, principalmente tenemos 2 fuentes de odometría (IMU, Encoders de las ruedas) y 1 fuente de localización (GPS), existen múltiples 
 opciones para conseguir una buena localización con estos dispositivos 
-pero la que más usan los usuarios de ROS2 son sin duda los filtros de \textbf{Kalman} para fusionar múltiples fuentes de odometría 
+pero la más usada son sin duda los filtros de \textbf{Kalman} para fusionar múltiples fuentes de odometría 
  
 EL \textbf{GNSS} (Global Navigation Satellite System) es una tecnología que funciona en base a hacer una triangulación con los satélites que 
 estén a ''la vista'' en ese momento, normalmente esta 
-posición es calculada por medio del estándar \textbf{WGS84}, eel cual es el último estándar creado para este propósito hasta la fecha, a 
-diferencia de mucho de sus antecesores este tiene en consideración 
-que la tierra no es perfectamente esférica sino elíptica. En la \textbf{figura \ref{fig:wgs84}} podemos ver el modelo WGS84 y sus sistema 
-de referencia, este estaría en el cetro de la tierra 
-con su eje \textbf{Z} apuntando al Norte y su eje \textbf{X} apuntando al primer meridiano.
+posición es calculada por medio del estándar \textbf{WGS84}, siendo este el estándar más reciente creado para este propósito, a 
+diferencia de muchos de sus antecesores este modelo tiene en consideración 
+que la tierra es elíptica y no totalmente esférica. En la \textbf{figura \ref{fig:wgs84}} podemos ver el modelo WGS84 y sus sistema 
+de referencia, el cual encontraríamos en el cetro de la tierra 
+con su eje \textbf{z} apuntando al Norte y su eje \textbf{x} apuntando al primer meridiano.
 
 \begin{figure}[h]
     \centering
@@ -670,9 +668,9 @@ con su eje \textbf{Z} apuntando al Norte y su eje \textbf{X} apuntando al primer
 \end{figure}
 
 El principal problema de este sistema de referencia es que es bastante impráctico para la aplicación que aquí se discute, por ello 
-necesitamos una transformación a sistema cartesiano y para ello debemos hablar también del sistema de coordenadas plano \textbf{UTM} 
+necesitamos una transformación a un sistema cartesiano y para ello debemos hablar también del sistema de coordenadas plano \textbf{UTM} 
 (Universal Transverse Mercator), este es un sistema en base a la proyección de Mercator normal, pero en vez de hacerla tangente al Ecuador, 
-se la hace secante a un meridiano y esta formado por 60 zonas que dividen el globo entero.  en la \textbf{figura \ref{fig:utm_europa}} se 
+se la hace secante a un meridiano y esta formado por 60 zonas que dividen el globo entero. En la \textbf{figura \ref{fig:utm_europa}} se 
 pueden observar tanto la nomenclatura de cada zona como su disposición.
 
 \begin{figure}[h]
@@ -683,13 +681,13 @@ pueden observar tanto la nomenclatura de cada zona como su disposición.
 \end{figure}
 
 
-A diferencia de las coordenadas geográficas este sistema se expresa en metros lo cual ya da una ventaja en cuanto a nuestra aplicación pero 
-sigue habiendo el problema de que estas zonas son demasiado grandes por lo que también necesitamos calcular el \textit{offset} desde el 
+A diferencia de las coordenadas geográficas este sistema se expresa en metros lo que ya da una ventaja en cuanto a esta aplicación pero 
+sigue habiendo el problema de que estas zonas son demasiado grandes, por lo que también necesitamos calcular el \textit{offset} desde el 
 origen de una de estas zonas a donde se inicie el robot, nos referiremos a este offset como \textit{Datum}.
 
 Como podemos observar en la \textbf{figura \ref{fig:datum}} a parte de conocer la posición, necesitamos también el ángulo o \textit{bearing} 
 y la declinación magnética, esta última es la que menos nos importa ya que es un dato que es bastante constante en el tiempo y varía por 
-zona geográfica (varía alrededor de un 0,1\% al año), para el caso de málaga es de 0,061 rad.
+zona geográfica (varía alrededor de 0,035 radianes cada 100 años), para el caso de málaga es de 0,061 rad.
 
 
 
@@ -701,26 +699,26 @@ zona geográfica (varía alrededor de un 0,1\% al año), para el caso de málaga
 \end{figure}
 
 
-Para ello tenemos también un paquete (robot\_localization) que nos 
-ofrece una forma muy robusta de transformar los mensajes del GPS expresados en latitud y longitud (altitud la tomaremos igual a 0) a un 
-sistema de referencia cartesiano, este nodo será \textbf{navsat\_transform} y básicamente se subscribirá a 3 topics para calcular 
-el \textit{Datum} lo cual hará una sola vez y después en lo que se podría llamar el funcionamiento normal del nodo, publicara un mensaje 
+También se cuenta con un paquete (robot\_localization) que 
+ofrece una manera muy robusta de transformar los mensajes del GPS expresados en latitud y longitud (altitud se tomará igual a 0) a un 
+sistema de referencia cartesiano, el nodo para esta tarea será \textbf{navsat\_transform} y básicamente se subscribirá a 3 topics para calcular 
+el \textit{Datum} lo que hará una sola vez y después en lo que se podría llamar el funcionamiento normal del nodo, publicará un mensaje de tipo 
 \textit{nav\_msgs/Odometry} que será la transformación del GPS a coordenadas cartesianas. Para entender mejor el flujo de datos se incluye 
 un esquema en la \textbf{figura \ref{fig:esquema_navsat}} y una explicación de las 3 suscripciones que necesita para trabajar.
 
 \begin{itemize}
     \item un mensaje de \textit{sensor\_msgs/NavSatFix} con el mensaje proveniente del GPS, este será \textit{/hunter/fix}
     \item un mensaje de tipo \textit{nav\_msgs/Odometry} con la posición actual del robot y opcionalmente la orientación, está odometría 
-será la salida de uno de los filtros de Kalman que utilizaremos para una mayor robustez en el sistema, esta información es necesaria por 
+será la salida de uno de los filtros de Kalman que se utilizará para una mayor robustez en el sistema, esta información es necesaria por 
 si el primer mensaje de GPS llega después de que el robot haya empezado a moverse, este será \textit{/odometry/global}.
-    \item para este tercer mensaje lo que tenemos que proporcionar es la orientación global respecto al norte magnético y debe usarse la 
-convención ENU (East, North, Up), que estipula un sistema de referencia con el este siendo el eje \textbf{x} y el norte el eje \textbf{y} 
-como se puede observar en la \textbf{figura \ref{fig:wgs84}}, y para ello el nodo nos ofrece 4 maneras de hacerlo, la primera ya ha sido 
+    \item para este tercer mensaje se tiene que proporcionar la orientación global respecto al norte magnético y debe usarse la 
+convención ENU (East, North, Up), que estipula un sistema de referencia con el Este en el eje \textbf{x} y el Norte en el eje \textbf{y} 
+como se puede observar en la \textbf{figura \ref{fig:wgs84}}, y para ello el nodo ofrece 4 maneras de hacerlo, la primera ya ha sido 
 comentada y es usando la parte de orientación del primer mensaje de odometría y los otros 3 se listan a continuación.
         \begin{itemize}
             \item Una suscripción a un topic de tipo \textit{sensor\_msgs/Imu} con 9 grados de libertad, (ya que sin ellos no tenemos una 
 orientación global respecto al norte magnético).
-            \item Utilizar uno de los servicios que ofrece el paquete para que de manera externa calculemos ese datum y se lo enviemos, 
+            \item Utilizar uno de los servicios que ofrece el paquete para que de manera externa ese datum sea calculado y enviado, 
 este servicio es \textit{/datum}.
             \item Indicarlo manualmente por medio de un archivo de parámetros en formato \textit{YAML}.
         \end{itemize}
@@ -753,15 +751,15 @@ este servicio es \textit{/datum}.
 \end{center}
 \end{figure}
 
-Al comienzo del proyecto como ya se ha comentado no se disponía de una IMU con orientación global por lo que se desarrollo un nodo que 
-entre otras cosas calcula el ángulo respecto al norte magnético y lo transforma al sistema ENU antes de enviarlo por medio del servicio.
-Para realizar este cálculo primero el nodo se suscribe al topic \textit{/hunter/fix} para las coordenadas GPS y al topic 
-\textit{/hunter/odom} de tipo \textit{nav\_msgs/Odometry} para recibir información del movimiento del robot, también publicará por 
-\textit{/cmd\_vel} para poder hacer mover al robot. 
-Primero permanecemos a la espera de la llegada de un mensaje de GPS y guardamos estas coordenadas, posteriormente nos movemos una 
+Al comienzo del proyecto como ya se ha comentado no se disponía de una IMU con orientación global por lo que se desarrolló un nodo que 
+entre otras cosas calcula el ángulo respecto al norte magnético y lo transforma al sistema ENU antes de enviarlo por medio del servicio que \textit{robot\_localization} proporciona.
+Para realizar este cálculo primero el nodo se suscribe al topic \textit{/hunter/fix} para obtener las coordenadas GPS y al topic 
+\textit{/hunter/odom} de tipo \textit{nav\_msgs/Odometry} para recibir la información del movimiento del robot, también publicará por 
+\textit{/cmd\_vel} para hacer mover al robot. 
+Primero permanecemos a la espera de la llegada de un mensaje de GPS y guardamos estas coordenadas, posteriormente hacemos mover al vehículo una 
 determinada distancia hacia delante, es decir solo en el eje \textbf{x} que será 
-especificada por el usuario, y finalmente volveremos a esperar a otro mensaje del GPS. Por tanto para la posición tomaremos el segundo 
-dato de GPS y para el cálculo de la orientación global,denotada como bearing o azimut seguiremos las siguientes ecuaciones.
+especificada por el usuario, y finalmente volveremos a esperar a otro mensaje del GPS. Por tanto para la posición se tomará el segundo 
+dato de GPS y para el cálculo de la orientación global,denotada como bearing o azimut se seguirán las siguientes ecuaciones.
 
 
 \begin{equation}\label{eq:delta_longitud}
@@ -786,79 +784,68 @@ Donde:
     \item \(X\) es una componente del cálculo intermedio.
     \item \(Y\) es otra componente del cálculo intermedio.
     \item \({bearing}\) es el rumbo entre los dos puntos, medido en radianes.
-    \item \(\pi\) es la constante pi, aproximadamente 3.14159.
-
 \end{itemize}
 
-Fijándonos en la \textbf{ecuación \ref{eq:calculo_bearing}}, podemos observar que hacemos el modulo del angulo con 360º, esto es debido 
-a que la función atan2 devuelve un valor en el rango $[ \pi/2,\pi/2 ]$, y nosotros lo queremos en
-el rango $[0, 2\pi]$, también como hemos comentado el ángulo debe estar acorde al sistema ENU y por tanto le restamos $\pi/2$. Finalmente 
-lo enviamos al servicio y el nodo a partir de aquí comienza a funcionar.
+Fijándonos en la \textbf{ecuación \ref{eq:calculo_bearing}}, se puede observar el uso del modulo del angulo respecto a 360º, esto es debido 
+a que la función \textit{atan2} devuelve un valor en el rango $[ \pi/2,\pi/2 ]$, y en cambio se necesita en
+el rango $[0, 2\pi]$, también como se ha comentado este ángulo debe estar acorde al sistema ENU y por tanto se le resta $\pi/2$ para que esto se cumpla. Finalmente 
+se enviará al servicio y el nodo  \textit{navsat\_transform} a partir de aquí comienza a funcionar.
 
-Por último falta la configuración de los EKF, para esta implementación tomaremos también el mismo paquete que no ofrece la posibilidad de 
+Por último falta la configuración de los EKF, para esta implementación se tomará también el mismo paquete que nos ofrece la posibilidad de 
 configurarlos de una manera sencilla.
 
-El principal problema que se considera aquí es la diferencia entre la localización y la localización, donde la primera es muy rápida, 
+El principal problema que se considera aquí es la diferencia entre la odometría y la localización, donde la primera es muy rápida, 
 (más de 30 Hz) y precisa para intervalos de tiempo muy cortos, es decir \textit{deriva} mucho con el tiempo y por otro
 lado la localización proporcionada por el GPS que es muy lenta, discreta, da saltos discretos en el tiempo y por tanto no vale para usar en 
-intervalos cortos de tiempo pero es extremadamente precisa en intervalos muy largos, está es una fuente por definición no tiene
-\textit{deriva} en el tiempo, por tanto necesitamos de las dos para conseguir una buena localización.
+intervalos cortos de tiempo pero es extremadamente precisa, está es una fuente de posición que por definición no tiene
+\textit{deriva} en el tiempo, por tanto se necesitarán de las dos para conseguir una buena localización.
 
-Para ello empezaremos creando una instancia de un filtro de Kalman para las fuentes continuas (Odometrías), este lo llamaremos 
-\textit{ekf\_local} ya que lo usaremos para navegación y planificación de movimientos en el sistema de referencia \textit{/odom}, estos 
-filtros funcionan con matrices de 15 variables para cada fuente de odometría  , estás son: 
-$[ X,Y,Z,\theta_{x},\theta_{y},\theta_{z},\dot{X},\dot{Y},\dot{Z},\dot{\theta_{x}},\dot{\theta_{y}},\dot{\theta_{z}},\ddot{X},\ddot{Y},\ddot{Z} ]$,
-pero ya que tomaremos que estamos trabajando en 2 dimensiones (por ser un robot terrestre y Ackermann hay mucho movimientos que podemos 
-ignorar), de esta manera las variables que tenemos que tener en cuenta serian: 
-$[ X,Y,\theta_{z},\dot{X},\dot{Y},\dot{\theta_{z}},\ddot{X},\ddot{Y}]$. Pero se puede ir más allá, primero con el hardware, no todos los dispositivos nos proporcionan todas estas variables y eso está bien no lo necesitamos, sino que para que 
-el filtro funcione correctamente y no empiece a oscilar descontroladamente (comúnmente llamado ''explotar''), necesitamos que que entre 
+Para ello se empezará creando una instancia de un filtro de Kalman para las fuentes continuas (Odometrías), este se llamará 
+\textit{ekf\_local} ya que se usará para navegación y planificación de movimientos en el sistema de referencia \textit{/odom}, estos 
+filtros funcionan con matrices de 15 variables para cada fuente de odometría, estás son: 
+$$[ X,Y,Z,\theta_{x},\theta_{y},\theta_{z},\dot{X},\dot{Y},\dot{Z},\dot{\theta_{x}},\dot{\theta_{y}},\dot{\theta_{z}},\ddot{X},\ddot{Y},\ddot{Z} ]$$
+Se asumirá que se esta trabajando en 2 dimensiones (por ser un robot terrestre y Ackermann hay mucho movimientos que se pueden 
+ignorar), de esta manera las variables que se tiene que tener en cuenta serian: 
+$[ X,Y,\theta_{z},\dot{X},\dot{Y},\dot{\theta_{z}},\ddot{X},\ddot{Y}]$. Pero se puede ir más allá, primero con el hardware, no todos los dispositivos proporcionan todas estas variables, y eso está bien no se necesitan, sino que para que 
+el filtro funcione correctamente y no empiece a oscilar descontroladamente (comúnmente llamado ''explotar''), se requiere que entre 
 todas las fuentes
-tengamos las variables necesarias, estás variarán mucho según cada situación, como los sensores de los que se dispongan, su precisión, el 
+se disponga de las variables necesarias, estás variarán mucho según cada situación, como los sensores de los que se dispongan, su precisión, el 
 tipo del robot o incluso el entorno en el que el robot se mueva, esta tarea puede volverse sorprendentemente compleja
-y por ello se han desarrollado una seria de ''normas'' que nos indican que variables introducir y como. Estás normas son fruto de múltiples 
+y por ello se han desarrollado una seria de ''normas'' que indican que variables introducir y como. Estás normas son fruto de múltiples 
 fuentes de información como la documentación oficial del paquete usado y la charla sobre el mismo dada por su creador en la ROSCon 
 (ROS conference) del 2015, exhaustiva investigación por internet de múltiples usuarios y por último muchas horas de pruebas en el terreno 
 con el propio robot. Otro dato importante a resaltar es que estas 5 normas tiene una prioridad, esto quiere decir que si alguna se 
 contradice siempre debemos priorizar a la siguiente.  
 
 \begin{enumerate}
-    \item Siempre que podamos debemos introducir variables directamente medidas, esto significa que si por ejemplo tenemos un sensor que 
+    \item Siempre que se pueda se debe introducir variables directamente medidas, esto significa que si por ejemplo se posee un sensor que 
 mide la velocidad de las ruedas y en base a eso calcula su posición, una mejor práctica es introducir la velocidad.
-    \item Para que el filtro sea estable, mínimo necesitamos introducir una \textit{pose} completa, que para nuestro caso de robot Ackermann 
-sería, $[ X,Y,\theta_{z}]$, si eso no es posible entonces debemos proporcionar sus respectivas velocidades.
-    \item Si tenemos una fuente de velocidad lineal y posición, una mejor práctica es proporcionar la velocidad lineal y por otro lado si 
+    \item Para que el filtro sea estable, se necesita como mínimo introducir una \textit{pose} completa, que para el presente caso de robot tipo Ackermann 
+sería, $[ X,Y,\theta_{z}]$, si esto no es posible entonces se deberá proporcionar sus respectivas velocidades.
+    \item Si se tiene una fuente de velocidad lineal y posición, una mejor práctica es proporcionar la velocidad lineal y por otro lado si 
 esa fuente proporciona velocidad angular y orientación la mejor práctica es introducir la orientación.
     \item Las matrices de covarianza que incluyen los mensajes que proporcionamos al filtro son extremadamente importantes ya que indican 
-cuando usar una variable o cuando usar otra, nunca debemos introducir una variable donde su varianza no haya sido calculada o esta sea 0, 
-tampoco debemos introducir 2 fuentes de la misma variable (solo para el caso de orientación y posición) que tengan el mismo o muy parecido 
+cuando usar una variable o cuando usar otra, nunca se debe introducir una variable donde su varianza no haya sido calculada o esta sea 0, 
+tampoco se debe introducir 2 fuentes de la misma variable (solo para el caso de orientación y posición) que tengan el mismo o muy parecido 
 valor de varianza, ya que esto causará un rápido cambio entre los dos valores que puede llegar a una oscilación indeseada en la salida del 
 filtro.
-    \item Debemos analizar las restricciones de nuestro tipo de robot en particular, (Ackermann, diferencial, omnidireccional, etc...). 
-Para nuestro caso, Ackermann, sabemos que este no puede tener un cambio instantáneo en el eje \textbf{y} y por tanto $\dot{Y}$ siempre va 
-a ser 0, podríamos pensar que no debemos introducir esta variable pero esto no es así ya que introduciendo este valor le estamos 
-''indicando'' al filtro que este no se puede mover en esa dirección, también podríamos pensar lo mismo para $\ddot{Y}$, pero dado que los 
-valores de esta variable suelen venir de una IMU y sabiendo que estas normalmente proporcionan una cantidad de ruido demasiado grande la 
+    \item Se deberá analizar las restricciones de el tipo de robot usado en particular, (Ackermann, diferencial, omnidireccional, etc...). 
+Para el este caso, Ackermann, no puede tener un cambio instantáneo en el eje \textbf{y} y por tanto $\dot{Y}$ siempre va 
+a ser 0, podríamos pensar que no se debería introducir esta variable ya que resulta innecesaria, pero esto no es así ya que introduciendo este valor se le 
+''indica'' al filtro que este no se puede desplazar en la dirección \textbf{y}, el mismo planteamiento se podría hacer para para $\ddot{Y}$, pero dado que los 
+valores de esta variable suelen venir de una IMU y sabiendo que estas normalmente proporcionan una cantidad de ruido demasiado grande incluso al estar en parada la 
 mejor práctica en este caso en no proporcionarla.
 \end{enumerate}
 
 Dadas estas normas se llegó a la siguiente configuración. Para la odometría de las ruedas se introdujo 
 $[ \dot{X},\dot{Y},\dot{\theta_{z}} ]$ y para la IMU $[ \theta_{z},\dot{\theta_{z}},\ddot{X},\ddot{Z} ]$. De está manera no solo cumplimos 
 con todos los criterios mencionados sino que tenemos duplicidad en múltiples variables lo que hace al filtro mucho más robusto. Este filtro 
-a parte de tener como salida una publicador de un mensaje tipo \textit{nav\_msgs/Odometry} con las entradas fusionadas también nos 
-proporciona la transformación de \textit{/odom} a \textit{/base\_link} dejándonos así un paso más cerca de conseguir todo el árbol de 
+a parte de tener como salida un publicador de un mensaje tipo \textit{nav\_msgs/Odometry} con las entradas fusionadas también 
+proporciona la transformación de \textit{/odom} a \textit{/base\_link} quedando así un paso más cerca de conseguir todo el árbol de 
 transformaciones como se puede visualizar en la \textbf{figura \ref{fig:arbol_urdf}}.
-
-
-Una vez comprobado en el terreno que el filtro funcionaba, se introduce una segunda instancia del filtro de Kalman, esta será nombrada como 
-\textit{ekf\_global} y su salida solo será usada para realimentar al nodo de \textbf{NavSatTransform} como se ve en la 
-\textbf{figura \ref{fig:esquema_localizacion}}, esta instancia tendrá las mismas entradas que el otro ekf pero con el añadido de la posición del GPS 
-proporcionada mediante el mensaje de odometría proveniente de la transformación del nodo navsat transform y por otro lado este filtro publicará 
-también la transformación \textit{/map} a \textit{/odom} consiguiendo así un árbol de transformaciones completo.
-
 
 \begin{figure}[h]
     
-
 \begin{center}
 \begin{tikzpicture}[scale=0.2,node distance=0.5cm and 1cm,mynode/.style={draw, rectangle, rounded corners=5pt}]
     \node [mynode] (ekf_local) {EKF Local};
@@ -892,40 +879,74 @@ también la transformación \textit{/map} a \textit{/odom} consiguiendo así un 
 \end{center}
 \end{figure}
 
-Para el caso de las entradas de fuentes de odometría de este filtro serán las mismas con la misma configuración que para el 
-\textit{ekf\_local}, pero con la diferencia de que ahora añadiremos la salida del nodo \textit{navsat\_transform}, está es 
-\textit{/odometry/gps} como se explica en la \textbf{figura \ref{fig:esquema_localizacion}}, para está añadiremos si o si las 
-componentes X e Y ya que son las únicas que tiene este topic y a parte son las únicas que nos interesan,
- estás nos darán una localización que se mantenga en el tiempo pero con saltos discretos.
+Para el caso de las entradas de fuentes de odometría de este filtro se utilizarán las mismas con la misma configuración que para el 
+\textit{ekf\_local}, pero con la diferencia de que ahora se añadirá la salida del nodo \textbf{navsat\_transform}, está es 
+\textit{/odometry/gps} como se explica en la \textbf{figura \ref{fig:esquema_localizacion}}, para está se añadirá si o si las 
+componentes x e y ya que son las únicas que tiene este topic y a parte son las únicas de interés,
+ estás nos darán una localización que se mantenga en el tiempo pero con saltos discretos, por otro lado publicará 
+también la transformación \textit{/map} a \textit{/odom} consiguiendo así un árbol de transformaciones completo.
 
-Con estos tendríamos solucionado el problema de la localización y así se podría pasar a la realización e implementación del ''stack'' 
+
+\section{Mejoras en la localización para la orientación del sistema}
+
+Uno de los problemas más complejos que se tiene en cuento a localización es la orientación, así como se considera aceptable acumular un error de 1m al cabo de 
+algún tiempo si el mismo robot acumula 1 radian de error en \begin{math}\theta_{z}\end{math} resultaría inaceptable, también hay que imaginarse que un error en posición se acumulará solo en posición pero un error en orientación también 
+afectará a la posición, todo esto sumado a que las fuentes de orientación que se manejan con las IMU no son extremadamente precisas resultan en el problema principal de la localización.
+
+Para solucionar este problema se han tomado múltiples medidas, primero con el cálculo de las varianzas de manera que minimize los errores en el filtro de Kalman ya que este es extremadamente dependiente de la matriz de covarianzas como se explica en el aparatado 
+de \textbf{pruebas y resultados}, segundo haciendo uso de las dos IMU que se disponen en el sistema sensorial, para ello la IMU de 9 DoF se puede introducir de manera directa al filtro con la selección de variables que se indican en esta misma sección ya que el propio sensor posee un procesado de las señales, para el 
+caso de la IMU integrada en en Lidar de 6 DoF que a parte de tener una cantidad considerable de ruido no proporciona orientación por lo que para su uso en el proyecto se decidió 
+implementar otro filtro anterior a los dos EKF, este es el filtro ''complementario'' que se podría describir como una versión básica del filtro de Kalman sin el análisis estadístico 
+que este último tiene, considerándose como un filtro pasa baja para el acelerómetro y un filtro pasa alta para el giroscopio~\cite{sanchez2018algoritmo}, este filtro es capaz de suscribirse al mensaje de una IMU con giroscopio y acelerómetro y calcular en base a el su orientación, en el caso más básico su implementación 
+conlleva el cálculo de la orientación siguiendo la \textbf{ecuación \ref{filtro_complementario}}, esta lo calcula en base a 2 constantes (A y B) que son ajustadas de manera manual.
+
+\begin{equation}\label{filtro_complementario}
+  \theta = A * (\theta_{t - 1} + \theta_{gyro} ) + B * \theta_{accel}
+\end{equation}
+
+Para la implementación en el sistema actual se decidió usar una versión que calcula estás constantes de manera automática, a parte de calcular 
+también una estimación del llamado 'bias', esto se refiere a una desviación constante en las lecturas del sensor, siendo este causado por diversas razones, como la
+temperatura del sensor, imperfecciones en su construcción o las variaciones en el suministro eléctrico, este filtro asume un periodo de reposo al inicio de su ejecución donde se promedian las lecturas 
+y se saca una estimación inicial del 'bias'.
+
+Finalmente se hace pasar por el nodo \textit{generador de Datum} del que ya hemos hablado en este documento donde añadimos las varianzas 
+escogidas para el sensor, para después introducirlo como entrada en los filtros de Kalman. Como se están introduciendo 2 variables iguales si seguimos 
+la norma número 4, no se debe introducir directamente esta entrada ya que provocaría que el filtro cambiase su salida de manera oscilatoria 
+entre las 2 entradas de orientación (las 2 IMU), afortunadamente el nodo de implementación de los filtros de Kalman proporciona también una 
+configuración llamada ''modo diferencial'', esta lo que hace es transformar las entradas de orientación y posición para esa fuente de odometría en 
+concreto a velocidad de manera que no interfieran las unas con las otras. Hay que tener cuidado con este parámetro ya que, si mal utilizado, puedo provocar que el filtro 
+''explote'', por tanto la norma que se sigue es utilizarlo solo cuando hay más de una fuente que proporciona esa variable en concreto y activarlo para N-1 fuentes 
+donde la que se quede sin activar sea la entrada de mayor precisión (siendo esta la IMU de Xsens de 9 DoF).
+
+
+Con esto se tendría solucionado el problema de la localización y así se podría pasar a la realización e implementación del ''stack'' 
 de navegación.
 
 \section{Navegación Autónoma haciendo uso de Nav2}
 
-El stack de navegación de ROS2 esta diseñado principalmente para interiores donde ha sido probado y testado, este funciona en base a unas estructuras 
-lógicas llamadas \textit{behavior trees} \cite{colledanchise2018behavior} estas estructuras son muy versátiles por su manera de funcionar resulta muy 
+El stack de navegación de ROS2 esta diseñado principalmente para interiores donde ha sido probado y testado, pero con algunos ajustes y modificaciones se puede usar en cualquier entorno, este funciona en base a unas estructuras 
+lógicas llamadas \textit{behavior trees} \cite{colledanchise2018behavior}, estas estructuras son muy versátiles por su manera de funcionar de manera que resulta muy 
 sencillo modificar y ampliar el comportamiento del stack de navegación, los árboles de comportamiento están formados por nodos, formalmente llamados, 
-nodos internos (o de control) y nodos ''hoja'' (o de ejecución), para entender el funcionamiento debemos usar la terminología de nodo padre y nodo hijo. 
-Los nodos de control tienen al menos un nodo ''hijo'' y gráficamente como se puede ver en la \textbf{figura \ref{fig:bt_sencillo}}  estos aparecen por debajo de 
+nodos internos (o de control) y nodos ''hoja'' (o de ejecución), para entender el funcionamiento se deberá usar la terminología de nodo padre y nodo hijo. 
+Los nodos de control tienen al menos un nodo ''hijo'' y gráficamente se expresan como se ilustra en la \textbf{figura \ref{fig:bt_sencillo}}  estos aparecen por debajo de 
 los nodos ''padre''.
 
 \subsection{Conceptos básicos de Nav2}
 \subsubsection{Árboles de comportamiento}
 Un Árbol de comportamiento empieza su ejecución desde el nodo ''raiz'' y genera una señal que se propaga por sus nodos ''hijo'' a una frecuencia dada 
-esta señal se conoce como \textit{tick}, cuando un nodo recibe un \textit{tick} este puede devolver \textit{Running} y esta bajo una ejecución, 
+esta señal se conoce como \textit{tick}, cuando un nodo recibe un \textit{tick} este puede devolver \textit{Running} si está bajo una ejecución, 
 \textit{Success} si la ejecución ha resultado satisfactoria o \textit{Failure} si ha resultado en fallo, conocidos estos conceptos podemos pasar 
 a los tipos de nodos que existen y sus características de funcionamiento. Estos se agrupan en 4 categorías que se exponen a continuación.
 
 \begin{itemize}
     \item Acción: Estos nodos como su nombre indica ejecutan acciones determinadas sobre el stack de navegación o sobre el robot en cuestión, estas acciones pueden ser desde borrar la memoria interna de mapas de coste hasta hacer que el robot retroceda para recalcular su ruta.
-    \item Condición: Estos nodos se usan para decidir si ejecutar una acción o otra, se podría ver como condicionales \textit{if{} else{}} en programación, algunos ejemplos pueden ser detectar cuando se ha llegado al objetivo o si detectar si el objetivo ha cambiado.
+    \item Condición: Estos nodos se usan para decidir si ejecutar una acción u otra, se podría ver como condicionales \textit{if{} else{}} en programación, algunos ejemplos pueden ser detectar cuando se ha llegado al objetivo o detectar si el objetivo ha cambiado.
     \item Decoradores: Estos nodos modifican ciertos comportamientos internos de la lógica, como puede ser cambiar la frecuencia de ejecución de una determinada sección o forzar al actualización del objetivo.
     \item Control, Los nodos de control son los más importantes ya que proporcionan bucles y condicionales específicos para generar algoritmos, estos son 3 para el caso de Nav2:
     \begin{itemize}
         \item \textit{Pipeline}, este ''llamará'' sus nodos ''hijo'' uno por uno de izquierda a derecha esperando a que cada nodo devuelva \textit{Failure} o \textit{Success}, este nodo solo devolverá \textit{Success} cuando todos sus nodos devuelvan \textit{Success}, en el caso de que un nodo devuelva \textit{Failure} este parará su comportamiento y devolverá \textit{Failure}.
-        \item \textit{Recovery}, este es un nodo de control propio del stack, tendrá exclusivamente 2 nodos ''hijo'' como se puede observar en la \textbf{figura \ref{fig:bt_recovery}} y solo devolverá \textit{Success} si el primer nodo lo devuelve en caso de que el primer nodo devuelva \textit{Failure} ''llamará'' al segundo nodo y volverá a intentar ''llamar'' al primero en un bucle hasta el primer nodo devuelva \textit{Success} o se hallan ejecutado un nº determinado de intentos estipulados en el parámetros \textit{number\_of\_retries}.
-        \item \textit{Round Robin}, este nodo funciona en oposición a \textit{Pipeline} donde ''llamará'' en bucle a todos los nodos de izquierda a derecha hasta que alguno de ellos devuelva \textit{Success}, donde el también devolverá \textins*{Success} sin importar el resto de nodos ''hijo''.
+        \item \textit{Recovery}, este es un nodo de control propio del stack, tendrá exclusivamente 2 nodos ''hijo'' como se puede observar en la \textbf{figura \ref{fig:bt_recovery}} y solo devolverá \textit{Success} si el primer nodo lo devuelve, en caso de que el primer nodo devuelva \textit{Failure} ''llamará'' al segundo nodo y volverá a intentar ''llamar'' al primero en un bucle hasta que el primer nodo devuelva \textit{Success} o se hallan ejecutado un nº determinado de intentos estipulados en el parámetro \textit{number\_of\_retries}.
+        \item \textit{Round Robin}, este nodo funciona en oposición a \textit{Pipeline} donde ''llamará'' en bucle a todos los nodos de izquierda a derecha hasta que alguno de ellos devuelva \textit{Success}, donde el también devolverá \textit{Success} sin importar el resto de nodos ''hijo''.
     \end{itemize}
 \end{itemize}
 
@@ -951,8 +972,8 @@ a los tipos de nodos que existen y sus características de funcionamiento. Estos
 
 Otro concepto clave del stack son los servidores de acción o \textit{action servers} de ROS2, este concepto es fundamental para entender como funciona 
 Nav2, estos ''servidores de acción'' cuentan con un \textit{cliente} que hace la petición y con un \textit{servidor} que la realiza y la \textbf{controla}, que es 
-justo con lo que se diferencian de los servicios de ROS2, en los servicios de acción el servidor proporciona un flujo constante de mensajes sobre el \textit{feedback} 
-durante el proceso de ejecución y además tienen la capacidad de ser cancelados en cualquier momento, como se puede ver el la \textbf{figura \ref{fig:servicios_accion}} estos servidores 
+justo con lo que se diferencian de los servicios de ROS2, en los servidores de acción, el servidor proporciona un flujo constante de mensajes sobre el topic \textit{feedback} 
+durante el proceso de ejecución y además tienen la capacidad de ser cancelados en cualquier momento, como se puede ver en la \textbf{figura \ref{fig:servicios_accion}} estos servidores 
 generan 3 flujos de datos, el primero un servicio de petición que asegura la llegada de información al servidor, un topic de feedback que devuelve la información durante el proceso y 
 un tercero con un servicio de resultado que devuelve el resultado final de ejecución.
 
@@ -968,7 +989,7 @@ un tercero con un servicio de resultado que devuelve el resultado final de ejecu
 En Nav2 todas las funcionalidades están implementadas en forma de servidores de acción y funcionan con una lógica descrita en un árbol de 
 comportamiento totalmente modificable.
 
-Estos servidores son 5 \ref{fig:nav2_arch}, \textit{Navigator server} que es el encargado de ''leer'' el árbol de comportamiento proporcionado por el usuario y ejecutar las 
+Estos servidores son 5, \textbf{figura \ref{fig:nav2_arch}}, \textit{Navigator server} que es el encargado de ''leer'' el árbol de comportamiento proporcionado por el usuario y ejecutar las 
 diferentes acciones, \textit{Controller server} donde se configura el controlador o ''planificador local'', \textit{Planner server} para configurar 
 el planificador o ''planificador global'', \textit{Behavior server} para la selección y configuración de los comportamientos de recuperación 
 usados cuando el robot se queda ''atascado'' y por último el \textit{Smoother server} para procesar el camino generado y suavizarlo.
@@ -978,14 +999,14 @@ para que el controlador haga uso de una buena evitación de obstáculos  y el gl
 
 Finalmente se utilizan 2 plugins externos a la estructura de Nav2, \textit{Velocity smoother} que suaviza los comandos de velocidad para generar movimientos continuos y 
 \textit{Waypoint follower} que proporciona la funcionalidad de navegar un array de poses aunque estás estén a mayor distancia del alcance que tiene 
-el mapa global, llamando al algoritmo de navegación cada vez que llega al anterior, cabe mencionar que las poses deben tener una separación máxima igual al 
+el mapa global, llamando al algoritmo de navegación cada vez que llega al anterior, cabe mencionar que las poses deben tener una separación máxima igual o menor al 
 alcance del mapa global para que así Nav2 encuentre siempre un camino.
 
 
 \subsection{Servidores}
 \subsubsection{Navigator server}
-Para nuestro caso proporcionaremos un árbol que contiene la lógica para la navegación punto a punto, en la \textbf{figura \ref{fig:bt_ToPose}} observamos un ejemplo proporcionado por 
-los creadores del stack para la navegación punto a punto y en  \textbf{figura \ref{fig:bt_ToPose_script}} vemos el mismo ejemplo escrito y modificado en xml para ser usado en 
+Para el caso que aquí se expone proporcionaremos un árbol que contiene la lógica para la navegación punto a punto, en la \textbf{figura \ref{fig:bt_ToPose}} observamos un ejemplo proporcionado por 
+los creadores del stack para la navegación punto a punto y en la \textbf{figura \ref{fig:bt_ToPose_script}} vemos el mismo ejemplo escrito y modificado en xml para ser usado en 
 el proyecto.
 
 \begin{figure}[htbp]
@@ -1011,7 +1032,7 @@ y la segunda intenta salir de situaciones donde la navegación se imposibilita c
 se procede a borrar el mapa de coste global o local respectivamente.
 
 En el caso de que esto falle se procede al sub árbol de recuperación que incorpora en nuestro caso 2 comportamientos para intentar salir de esa situación de imposibilidad de acción, 
-primero borra los 2 mapas de coste y posteriormente con ayuda de nodo del tipo ''Round Robin'' procede a realizar una parada de 5 segundos (en el caso de que sea una persona andando soluciona el problema de manera rápida) y 
+primero borra los 2 mapas de coste y posteriormente con ayuda de un nodo del tipo ''Round Robin'' procede a realizar una parada de 5 segundos (en el caso de que sea una persona andando soluciona el problema de manera rápida) y 
 después se mueve hacia atrás 0.15 m, este procedimiento lo intenta 6 veces hasta que se cancela por completo la acción de navegación.
 
 \subsubsection{Behavior server}
@@ -1038,16 +1059,16 @@ nos proporciona varias implementaciones para controladores como se puede ver en 
     \label{fig:controllers_tabla}
 \end{figure}
 Lo primero que se hizo fue 
-seleccionar los controladores que fuesen compatibles con nuestro robot, estos son \textbf{TEB, Regulated Pure Pursuit y MPPI}, después de una exhaustiva investigación 
+seleccionar los controladores que fuesen compatibles con el robot, estos son \textbf{TEB, Regulated Pure Pursuit y MPPI}, después de una exhaustiva investigación 
 se llegó a la decisión de probar el MPPI (Model Predictive Path Integral) por su gran versatilidad en cuanto configuración, este es un modelo predictivo y una variante del algoritmo \textbf{MPC}, este algoritmo 
-es mayoritariamente usado en robots que funcionan a gran velocidad ya que predice la posición del robot en un ''futuro'', al probarlo lo que se descartó por dos 
-razones, la primera fue la gran cantidad de parámetros que necesitan para su configuración dado que se observaron ciertas situaciones en las que no era fiable usarlo, la predicción 
-de estados funciona muy bien para casos donde no hay obstáculos o estos se avistan a gran distancia pero en el proyecto resultaba poco fiable por lo tanto, la segunda razón 
+es mayoritariamente usado en robots que funcionan a gran velocidad ya que predice la posición del robot en un ''futuro'', al probarlo se descartó por dos 
+razones, la primera fue la gran cantidad de parámetros que necesitan ser retocados cuidadosamente para que su configuración lleve a un buen resultado, dado que se observaron ciertas situaciones en las que no era fiable usarlo, la predicción 
+de estados funciona muy bien para casos donde no hay obstáculos o estos se avistan a gran distancia pero en el proyecto resultaba poco fiable, la segunda razón 
 es que este algoritmo necesita de una capacidad de cálculo muy grande y se decidió que no compensaba para las muchas funcionalidades que este posee y las pocas 
-que se usaban en el robot. Por tanto se probó la segunda opción, el algoritmo \textbf{Regulated Pure Pursuit}, una solución mucho más simple pero 
-que daba solución al problema de manera estable, este algoritmo funciona siguiendo \textit{objetivos} virtuales, 
+que se usaban en el proyecto. Por tanto se probó la segunda opción, el algoritmo \textbf{Regulated Pure Pursuit}, una solución mucho más simple pero 
+que daba solución al problema de manera estable, este algoritmo funciona siguiendo unos \textit{objetivos virtuales}, 
 \textbf{figura \ref{fig:pure_pursui_teoria}}, pertenecientes a el trayecto a seguir que se van desplazando conforme el robot se acerca, 
-manteniendo un distancia o \textit{look ahead} que puede ser fija o recalculada dinámicamente. En la 
+manteniendo una distancia o \textit{look ahead} que puede ser fija o recalculada dinámicamente. En la 
 \textbf{figura \ref{fig:rpp_configuracion}} se pueden observar los parámetros escogidos para el algoritmo donde entre ellos se encuentran 
 los parámetros típicos de configuración como el \textit{lookahead\_distance} o el radio de giro para las ''incorporaciones'' al trayecto.
 \begin{figure}[h]
@@ -1065,9 +1086,9 @@ los parámetros típicos de configuración como el \textit{lookahead\_distance} 
 \end{figure}
 
 \subsubsection{Planner server} 
-Para escoger el planificador global se realizo de manera idéntica al controlador, según la \textbf{figura \ref{fig:planificadores_tabla}} podemos ver las únicas opciones que tenemos son 
+Para escoger el planificador global se realizo de manera idéntica al controlador, según la \textbf{figura \ref{fig:planificadores_tabla}} podemos ver que las únicas opciones que tenemos son 
 \textbf{Smac Planner Hybrid y Smac Planner Lattice}, se procedió a investigar sobre estos algoritmos y la actual implementación de ellos en Nav2, en este caso se escogió 
-el \textbf{Smac Planner Hybrid} ya la sencilla razón que este algoritmo esta especialmente diseñado para robots de tipo Ackermann y por tanto tiene la opción de habilitar 
+el \textbf{Smac Planner Hybrid} por la sencilla razón que este algoritmo esta especialmente diseñado para robots de tipo Ackermann y por tanto tiene la opción de habilitar 
 la implementación de modelo Reeds-Sheepp, este modelo a diferencia de su opuesto (Dubin) toma en consideración a la hora de generar 
 un trayecto la posibilidad de ir marcha atrás lo cual parecía interesante, el Smac Hybrid es una versión modificada 
 del conocido \textbf{A*}, un algoritmo de búsqueda recursiva~\cite{dolgov2008practical} que a su vez esta basado en el algoritmo Dijkstra junto con una matriz 
@@ -1096,7 +1117,7 @@ del conocido \textbf{A*}, un algoritmo de búsqueda recursiva~\cite{dolgov2008pr
     \label{fig:a_star}
   \end{minipage}
 \end{figure}
-
+\newpage
 Este algoritmo cuenta con múltiples configuraciones como la ya comentada selección del modelo \textit{Dubin o Reeds-Sheepp}, radio mínimo de giro 
 o la selección de las diferentes penalizaciones para los comportamientos del algoritmo como se puede observar en la \textbf{figura \ref{fig:configuracion_planner}}.
 
@@ -1125,27 +1146,13 @@ por el creador del algoritmo, Steve Macenski~\cite{steve_mc} las cuales se refle
 \end{table}
 
 A modo de comparación de los dos métodos, en las \textbf{figuras \ref{fig:dubin} y \ref{fig:reedshep}} se puede observar como generan el trayecto cada una de las configuraciones
-\begin{figure}[htbp]
-  \centering
-  \begin{minipage}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/dubin_test.png}
-    \caption{Ejemplo generación de camino para el algoritmo Smac Hybrid configurado con el modelo ''Dubin'' para la simulación del proyecto}
-    \label{fig:dubin}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/reed_sheep_test.png}
-    \caption{Ejemplo generación de camino para el algoritmo Smac Hybrid configurado con el modelo ''Reeds-Sheepp'' para la simulación del proyecto}
-    \label{fig:reedshep}
-  \end{minipage}
-\end{figure}
+
+-
 
 
 \subsubsection{Smoother server}
 Este servidor esta encargado de suavizar el camino que genera el planificador antes de mandarlo al controlador, así como su implementación es muy necesaria,  
-su configuración es muy básica, para sus parámetros escogimos un nodo de suavizado con sus parámetros por defecto como se ve en la \textbf{figura ~\ref{fig:parametros_smoother_server}}.
+su configuración es muy básica, para sus parámetros se escogió un nodo de suavizado con sus parámetros por defecto como se ve en la \textbf{figura ~\ref{fig:parametros_smoother_server}}.
 
 \begin{figure}[H]
     \centering
@@ -1158,13 +1165,13 @@ su configuración es muy básica, para sus parámetros escogimos un nodo de suav
 Como ya se ha comentado, otra parte importante de la configuración son los mapas de coste donde aquí reside uno de los problemas principales 
 a la hora de que Nav2 funcione en exteriores y es que en una configuración normal uno de los requerimientos básicos para funcionar es proporcionar 
 un mapa del entorno estático mapeado \textit{a priori}, tarea imposible para realizar en exteriores. Para solucionar este problema existen múltiples maneras 
-de proceder, la que se decidió llevar a cabo de eliminar la capa \textit{estática} en la configuración de los mapas de coste. Estos mapas guardan la 
+de proceder, la que se decidió llevar a cabo fue eliminar la capa \textit{estática} en la configuración de los mapas de coste. Estos mapas guardan la 
 información sobre los obstáculos actuales y los obstáculos que se han visto a lo largo de la navegación para así poder evitarlos de manera local (evasión de obstáculos) y 
 de manera global (generación de una trayectoria que tenga en cuanta esos obstáculos), el mapa de costes local existe en el sistema de referencia de \textit{odom} y se ejecuta 
 a una frecuencia más alta (5 Hz en nuestro caso ) y consta de 2 capas, la primera es una capa ''persistente'' en el tiempo, \textit{voxel}, con la información del Lidar 3D, creando así zonas de obstáculos por 
 las que el robot no puede navegar y otra capa no persistente, \textit{inflation}, que infla estos obstáculos de manera exponential creando zonas 
 de peligro por donde el robot no debe pasar o debe pasar muy despacio para así evitar choques laterales a causa de la forma del robot, \textbf{figura \ref{fig:mapa_local}}, este 
-mapa lo crearemos con un lado igual a 10 m y añadiremos un parámetro con las medidas exteriores del robot, esto es un rectángulo para que el controlador tenga en consideración 
+mapa fue creado con un lado igual a 10 m y se añadió un parámetro con las medidas exteriores del robot, esto es un rectángulo para que el controlador tenga en consideración 
 la forma del vehículo.
 
 \begin{figure}[H]
@@ -1174,10 +1181,10 @@ la forma del vehículo.
     \label{fig:mapa_local}
 \end{figure}
 
-Para el mapa global crearemos otra instancia idéntica pero con un lado igual a 50 m, el sistema de referencia de este mapa sera \textit{map} y cambiaremos 
-la capa de \textit{voxel} por \textit{Obstacle} que será idéntica a la anterior pero esta será una capa 2D, se 
+Para el mapa global se creo otra instancia idéntica pero con un lado igual a 50 m, el sistema de referencia de este mapa sera \textit{map} y se cambió 
+la capa de \textit{voxel} por la de \textit{Obstacle} que será idéntica a la anterior pero esta será una capa 2D, se 
 suscribirá a el topic de \textit{ouster/scan} ya que para el mapa global no necesitamos tanta información del Lidar así como tampoco tanta precisión para el 
-cálculo de la trayectoria según las dimensiones del vehículo por lo que asumiremos que el robot es circular para este mapa de costes, \textbf{figura \ref{fig:mapa_global}}.
+cálculo de la trayectoria según las dimensiones del vehículo por lo que se asumirá que el robot es circular para este mapa de costes, \textbf{figura \ref{fig:mapa_global}}.
 
 \begin{figure}[H]
     \centering
@@ -1187,7 +1194,7 @@ cálculo de la trayectoria según las dimensiones del vehículo por lo que asumi
 \end{figure}
 
 \subsection{Plugins}
-Los plugins que hemos usado son dos, el primero un suavizador final de velocidad donde hemos escogido controlar la velocidad en bucle cerrado de control y 
+Los plugins que se han usado son dos, el primero un suavizador final de velocidad donde hemos escogido controlar la velocidad en bucle cerrado y 
 hemos seleccionado los rangos de velocidad y aceleración que queremos usar en nuestra aplicación, estos están expresados por 4 vectores como se 
 puede apreciar en \textbf{figura \ref{fig:suavizado_vel}} donde los valores se refieren a \begin{math}[\dot{X},\dot{Y},\dot{\theta_{z}}]\end{math} 
  y \begin{math}[\ddot{X}, \ddot{Y}, \ddot{\theta_{z}}] \end{math} respectivamente.
@@ -1199,16 +1206,16 @@ puede apreciar en \textbf{figura \ref{fig:suavizado_vel}} donde los valores se r
     \label{fig:suavizado_vel}
 \end{figure}
 
-En el caso de el plugin de \textit{waypoint follower} tenemos solo un par de parámetros, seleccionar que queremos hacer en cada \textit{waypoint} o 
-objetivo (estos pueden esperar a recibir un mensaje por un topic, sacar una foto o pararse durante un tiempo), nosotros hemos escogido pararse y hemos seleccionado 0s de 
-duración para que se cree una trayectoria continua, este plugin nos ofrece la posibilidad de mandar objetivos que están más lejos que el rango del 
-mapa de costes global enviándole un array de poses que estén distanciadas en el espacio menos que el rango del mapa de costes global, esto es ya 
+En el caso del plugin de \textit{waypoint follower} se tienen solo un par de parámetros, seleccionar que se quiere hacer en cada \textit{waypoint} o 
+objetivo (estos pueden esperar a recibir un mensaje por un topic, sacar una foto o pararse durante un tiempo), en el presente proyecto se escogió pararse y se seleccionó 0s de 
+duración en la parada para que se cree una trayectoria continua, este plugin ofrece la posibilidad de mandar objetivos que están más lejos que el rango del 
+mapa de costes global enviándole un array de poses que estén distanciadas dos a dos menos que el rango del mapa de costes global, esto es a razón de 
 que este plugin controla el envío del siguiente objetivo del array conforme llega al anterior.
 
 \subsection{Nav2 commander}
-Como ya hemos comentado en la sección de procesamiento de mensajes necesitamos un procesamiento de las peticiones, estás se podrían clasificar en 3 situaciones, la primera 
-donde la distancia al marcador está a menor distancia de el rango de el mapa de costes global, en ese caso el procedimiento era sencillo, simplemente publicamos las pose por el topic 
-\textit{/commander/goal} que es de tipo \textit{/geometry\_msgs/Pose}, si el objetivo esta a más distancia entonces debemos calcular los puntos intermedios como podemos observar en la 
+Como ya se ha comentado en la sección de procesamiento de mensajes necesitamos un procesamiento de las peticiones, estás se podrían clasificar en 3 situaciones, la primera 
+donde la distancia al marcador está a menor distancia de el rango del mapa de costes global, en ese caso el procedimiento es sencillo, simplemente se publica la pose por el topic 
+\textit{/commander/goal} que es de tipo \textit{/geometry\_msgs/Pose}, si el objetivo esta a más distancia entonces se deberá calcular los puntos intermedios como se puede observar en la 
 \textbf{figura \ref{fig:puntos_intermedios}}, en este otro caso publicaremos por el topic \textit{/commander/goal\_array} de tipo \textit{/geometry\_msgs/PoseArray}.
 
 
@@ -1229,7 +1236,7 @@ se hará una petición al servicio propio de Nav2 para navegación punto a punto
 indicando un árbol de comportamiento específico para esta tarea como se observa en la \textbf{figura \ref{fig:follow_me}}.
 
 Este árbol indicará a Nav2 que debe hacer el procedimiento estándar para ir a un punto pero recortando el trayecto 1m para así quedarse siempre a una distancia de la persona, también para hacer más dinámica 
-la búsqueda de el objetivo las actualizaciones de el objetivo se actualizarán por el topic \textit{/goal\_update} del tipo \textit{/geometry\_msgs/PoseStamped}, por tanto 
+la búsqueda del objetivo las actualizaciones de este se actualizarán por el topic \textit{/goal\_update} del tipo \textit{/geometry\_msgs/PoseStamped}, por tanto 
 para el caso en el que esto suceda los nuevos objetivos enviados por la aplicación web se publicarán por este topic.
 
 \begin{figure}[H]
@@ -1245,13 +1252,286 @@ empleado y ya que los dispositivos móviles tienen una precisión bastante baja,
 \chapter{Pruebas y resultados}
 
 \section{Pruebas de precisión para el sistema sensorial}
+Para esta prueba se condujeron varios experimentos con la esperanza de encontrar tanto la combinación de entradas de sensores óptima para los filtros de 
+Kalman como unos valores adecuados para rellenar las varianzas de las IMU con valores constantes que aunque no exactamente precisos para todos los casos diesen una buena aproximación 
+que derivase en una buena localización como resultado.
 
-\section{Pruebas de funcionamiento en los algoritmos de adaptación}
+El primer sensor que se puso a prueba fue la IMU Xsens MTi ya que esta como se puede ver en la \textbf{figura \ref{fig:xsens_datasheet}} proporciona 
+unos valores de ruido que se pueden usar para inducir unos valores en la matriz de covarianza, por lo que de manera conservadora se tomarán 
+estos mismos valores en las diagonales de las matrices.
+
+\begin{itemize}
+  \item Orientación
+\end{itemize}
+
+$\begin{bmatrix}
+  0.475 & 0 & 0\\
+  0 & 0.475 & 0\\
+  0 & 0 & 0.475
+\end{bmatrix}$
+
+\begin{itemize}
+  \item Velocidad Angular
+\end{itemize}
+
+$\begin{bmatrix}
+  0.005 & 0 & 0\\
+  0 & 0.005 & 0\\
+  0 & 0 & 0.005
+\end{bmatrix}$
+
+
+\begin{itemize}
+  \item Aceleración Lineal
+\end{itemize}
+
+$\begin{bmatrix}
+  0.008 & 0 & 0\\
+  0 & 0.008 & 0\\
+  0 & 0 & 0.008
+\end{bmatrix}$
+
+Después de varias pruebas se ajustaron estos valores con los que actualmente están implementados en el código, para lo orientación se decidió dejar el valor de 0,475, para velocidad angular se bajó a 0.004 y para la aceleración lineal se subió hasta 
+el valor de 0.01. Como se pueden observar en las \textbf{figuras \ref{fig:mti_angular_cov} y \ref{fig:odometry_local_cov}} existe una mejora considerable en el error al tener en cuenta estos valores de varianza.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/mti_angular_covariances.png}
+    \caption{Velocidad angular en el eje z directamente del sensor.}
+    \label{fig:mti_angular_cov}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/odometry_local_angular_cov.png}
+    \caption{Velocidad angular en el eje z después de procesarse por el filtro de Kalman con las matrices de covarianza.}
+    \label{fig:odometry_local_cov}
+  \end{minipage}
+\end{figure}
+
+Para la IMU integrada del Ouster dado sus buenos resultados en IMU de Xsens se introdujeron los mismos valores de varianza y se implemento el filtro complementario 
+para mejorar el error, eliminar el ''bias'' del dispositivo y calcular la orientación en base a su giroscopio y acelerómetro. En la 
+\textbf{figura \ref{fig:complementariovsouster}} se puede observar la salida directa del sensor (gris) y la procesada por el filtro complementario (rojo) donde efectivamente 
+se ve claramente un suavizado en la salida junto con la eliminación de gran parte del \textit{offset} o 'bias' que posee la señal sin procesar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/ousterIMu_vscomplementary.png}
+    \caption{Comparación entre la salida directa del sensor y la salida del filtro complementario}
+    \label{fig:complementariovsouster}
+\end{figure}
+
+Para terminar se condujo una prueba de movimiento con el GPS y RTK conectado como experimento de control y más tarde una prueba en donde se forzó (tapando la visión del GPS) la desconexión a varios 
+satélites y por tanto se creo una bajada en la precisión, para comprobar este comportamiento se hace uso de uno de los apartados del mensaje tipo \textit{NavSatFix}, este es \textit{Status} de tipo entero,
+pudiendo ser -1 (cuando no se encuentra solución), 0 (cuando la solución es de tipo ''sencilla'', del orden de 4-5 m de error), 1 (cuando la solución es de tipo ''doble'', del orden de 10-50 cm de error) o 2 
+(cuando la solución es de tipo ''fija'', con el esperado 1 cm de error), para así poder ver como afecta una pérdida de señal al filtro de Kalman.
+
+En las siguientes figuras se puede observar el experimento de control donde tanto la salida del EKF, \textbf{figura \ref{fig:salida_ekf_rtk}},como la directa del sensor, \textbf{figura \ref{fig:salida_gps_rtk}} 
+permanecen estables, comentar que el offset que existe en la \textbf{figura \ref{fig:salida_ekf_rtk}} entre la señal de odometría del robot (rosa) y la salida del filtro de Kalman global(verde) es a causa de 
+el procedimiento para el cálculo del datum donde el robot se mueve una determinada distancia (en este caso se puede apreciar aproximadamente 1m), esto no afecta al filtro ya que esta variable se introduce como relativa (se le resta el valor inicial a todos los posteriores) de manera 
+que desde el punto de vista del filtro empieza en 0.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/longitude_gps.png}
+    \caption{Salida del GPS sin pérdida de señal.}
+    \label{fig:salida_gps_rtk}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/odom_global_rtk.png}
+    \caption{Salida del filtro de Kalman global sin pérdida de señal.}
+    \label{fig:salida_ekf_rtk}
+  \end{minipage}
+\end{figure}
+
+Para el el caso en el que forzamos la pérdida de señal podemos observar unas variaciones repentinas muy grandes en la salida del sensor, \textbf{figura \ref{fig:salida_gps_sinrtk}}, pero estas son controladas y mantenidas 
+por el filtro como se puede observar en la \textbf{figura \ref{fig:salida_ekf_sinrtk}}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Salida del GPS con pérdida de señal.}
+    \label{fig:salida_gps_sinrtk}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Salida del filtro de Kalman global con pérdida de señal.}
+    \label{fig:salida_ekf_sinrtk}
+  \end{minipage}
+\end{figure}
+
+\section{Pruebas de funcionamiento de los algoritmos de adaptación}
+El primer algoritmo de adaptación es el generador de Datum o \textit{DatumGen}, para esta prueba se quiso comprobar la repetibilidad del algoritmo y 
+la fiabilidad o precisión a la hora de calcular el ángulo para ello se condujeron 2 experimentos el primero con el robot mirando perfectamente al Oeste donde se testo la 
+repetibilidad del sistema y un segundo experimento donde se testo la precisión calculando el ángulo para varios valores de orientación.
+
+En el primer experimento se realizaron 6 pruebas desde la misma posición inicial, este se moverá a una velocidad constante de 0.8 m/s hacia delante 2 m.
+\begin{table}[h!]
+    \centering
+    \caption{Resultados de repetibilidad del algoritmo}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        Número de prueba     & ángulo de la IMU (rad) & ángulo del algoritmo (rad)     \\ \hline
+        1           & 0 & 0 \\ \hline
+        2           & 0 & 0  \\ \hline
+        3           & 0 & 0  \\ \hline
+        4           & 0 & 0  \\ \hline
+        5           & 0 & 0  \\ \hline
+        6            & 0 & 0  \\ \hline
+    \end{tabular}
+    \label{tab:repetibilidad_datumgen}
+\end{table}
+
+Como se puede ver en la \textbf{tabla \ref{tab:repetibilidad_datumgen}} se consigue una repetibilidad bastante buena con una desviación 
+típica de ..............
+
+Para el segundo caso se realizo el experimento para los 360º en intervalos de 45º con los mismos parámetros que en el anterior (0.8 m/s y 2 m de movimiento lineal).
+
+\begin{table}[h!]
+    \centering
+    \caption{Resultados de precisión del algoritmo}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        Dirección     & ángulo de la IMU (rad) & ángulo del algoritmo (rad)     \\ \hline
+        Este           & 0 & 0 \\ \hline
+        Noreste           & 0 & 0  \\ \hline
+        Norte           & 0 & 0  \\ \hline
+        Noroeste           & 0 & 0  \\ \hline
+        Oeste           & 0 & 0  \\ \hline
+        Suroeste            & 0 & 0  \\ \hline
+        Sur           & 0 & 0 \\ \hline
+        Sureste           & 0 & 0  \\ \hline
+    \end{tabular}
+    \label{tab:precisión_datumgen}
+\end{table}
+
+
+Como también se ve en la \textbf{tabla \ref{tab:precisión_datumgen}} se consigue una precisión de ............ radianes que equivale a ........... grados, siendo estos resultados más que aceptables 
+para el proyecto
+
+El segundo algoritmo a testar será el encargado de generar los arrays de poses en base a las peticiones de objetivo mandadas por el usuario por medio de 
+la web, para comprobar el correcto funcionamiento sencillamente haremos 2 peticiones, la primera a un punto más alejado de 50 m (rango del mapa de coste) y la segunda una ruta de una distancia considerable, el algoritmo deberá pintar en Rviz 
+todos los objetivos generados con sus orientaciones colocadas correctamente como se observa en las \textbf{figuras \ref{fig:puntos_intermedios_mas_50m} y \ref{fig:puntos_intermedios_camino}}.
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Array de poses objetivos por el algoritmo para una petición de objetivo a más distancia del rango del mapa de coste.}
+    \label{fig:puntos_intermedios_mas_50m}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Array de poses objetivos generadas por el algoritmo para una petición de camino.}
+    \label{fig:puntos_intermedios_camino}
+  \end{minipage}
+\end{figure}
+
+Como comparación en las siguientes figuras se observa la petición enviada por la web donde podemos ver el objetivo único a una distancia considerable y el 
+camino creado con la herramienta de linea de la API de google maps.
+
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Petición de navegación a objetivo más alejado que el rango del mapa de coste.}
+    \label{fig:peticion_punto_alejado}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Petición de navegación para un trayecto establecido.}
+    \label{fig:peticion_camino}
+  \end{minipage}
+\end{figure}
 
 \section{Pruebas de precisión en la localización}
 
-\section{Pruebas de navegación}
+Lo que en este apartado se quiere demostrar es la capacidad que tiene el sistema de localización para mantener una precisión aceptable a lo 
+largo del tiempo para ello se condujeron 2 experimentos donde el primero se implemento una localización con 1 sola IMU y se hizo un recorrido para ver como de preciso acaba siendo esa estimación 
+y posteriormente se realizo otro experimento donde se introdujeron las 2 IMU de las que se disponía en los filtros de Kalman y así comprobar si existe mejora al 
+utilizar estas 2 fuentes de orientación. Para llegar a una conclusión se utilizó la herramienta de ROS2 \textit{Rviz} que nos ayuda a 
+ilustrar todo tipo de mensajes de ROS, para esta prueba es necesario centrarse en 3, como se ve en las figuras existen 2 flechas, la verde indica la odometría local y la roja la odometría global, estás deben ser siempre 
+coincidentes, si en algún momento se separasen mucho esto indicaría una diferencia entre el GPS y la odometría, por otro lado también se han 
+ilustrado los sistemas de referencia de \textit{odom, map y base\_link}, una buena localización implicará que si el sistema de referencia fijo es \textit{map} 
+se verá como \textit{odom} da saltos discretos (en realidad el sistema que los esta dando es el \textit{map}, pero al estar este fijo se cambian las posiciones) pero 
+sin alejarse mucho de \textit{map}, cuento más se aleje, más ''deriva'' provocada por el sistema de odometría tendremos, por último nos fijaremos también en 
+composición de varianzas de los filtros fusionados, esto se representa como un ''óvalo'' morado alrededor del camino, si esta crece en tamaño significa que el sistema 
+esta perdiendo noción de donde se encuentra por lo que el comportamiento ideal que se busca es que el ''óvalo'' permanezca constante en tamaño o al menos que 
+crezca de manera muy lenta.
 
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Localización mediante el uso de 1 IMU.}
+    \label{fig:Localización_1imu}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/poner_foto.png}
+    \caption{Localización mediante el uso de 2 IMU.}
+    \label{fig:localizacion_2imu}
+  \end{minipage}
+\end{figure}
+
+\section{Pruebas de navegación autónoma}
+
+Para comprobar finalmente que se logró una navegación cumpliendo con los objetivos propuestos se desarrollaron 4 escenarios en los que se cubren todas 
+las posibilidades de navegación.
+\begin{itemize}
+  \item Navegación punto a punto.
+\end{itemize}
+A continuación en las \textbf{figuras \ref{} y \ref{}} se puede aprecian varios frames del movimiento real del robot para una naegación punto a punto, como referencia este se movió alrededor de 10 metros. En 
+las \textbf{figuras \ref{} y \ref{}} se comprueba el mismo movimiento ilustrado en Rviz junto al lado del comando pedido por la página web.
+
+\begin{itemize}
+  \item Navegación de trayecto complejo.
+\end{itemize}
+Para probar una navegación más compleja se comando un trayecto con múltiples objetivos consecutivos, igualmente en las \textbf{figuras \ref{} y \ref{}} se observan distintos frames 
+del video grabado durante las pruebas realizando este trayecto y en las \textbf{figuras \ref{} y \ref{}} se observa de nuevo la odometría en Rviz junto con el comando de navegación enviado por la 
+aplicación web.
+
+\begin{itemize}
+  \item Navegación de largo trayecto.
+\end{itemize}
+En esta prueba el concepto que se quiere demostrar es la capacidad que tiene el sistema de localización en conjunto con el de navegación para mantener un 
+buen conocimiento de la posición y orientación del robot, es decir, que al cabo de un trayecto largo con múltiples objetivos consecutivos la odometría no haya ''derivado'' en 
+exceso y llegue al objetivo con precisión.
+Igualmente que para las otras pruebas observamos en las \textbf{figuras \ref{} y \ref{}} partes del video y en las \textbf{figuras \ref{} y \ref{}} se observa 
+la representación de la odometría en Rviz junto con el camino propuesto por el usuario mediante la página web.
+\begin{itemize}
+  \item Navegación con evitación dinámica de obstáculos.
+\end{itemize}
+
+Por último se quiere demostrar que el robot es capaz de navegar de manera autónoma evitando obstáculos dinámicos en su camino, para ello se procedió a comandar al robot moverse 
+a un objetivo arbitrario y para simular un obstáculo se paso por delante del robot primero andando sin detenerse muy lentamente y después parándose en su camino.
+Este comportamiento se puede observar en los frames del video (\textbf{figuras \ref{}, \ref{} y \ref{}}) y también en la representación de Rviz (\textbf{figuras \ref{} y \ref{}}).
+
+
+Como se ha podido comprobar el vehículo autónomo consigue llegar a todos los objetivos de manera precisa y segura completando así todas las pruebas con éxito y por tanto 
+cumpliendo todos los objetivos propuestos en este trabajo.
+ 
 \chapter{Conclusiones}
 Durante el presente proyecto se ha desarrollado una interfaz de control que cumple con los objetivos propuestos, es funcional y fácil de usar, 
 se ha implementado el envió y procesamiento de todas las posibles funcionalidades propuestas.

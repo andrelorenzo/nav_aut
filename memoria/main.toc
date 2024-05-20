@@ -25,26 +25,27 @@
 \contentsline {section}{\numberline {3.2}Interfaz de usuario}{21}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Procesamiento de los mensajes MQTT a ROS2}{23}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Localización y odometría}{24}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Navegación Autónoma haciendo uso de Nav2}{29}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Conceptos básicos de Nav2}{30}{subsection.3.5.1}%
-\contentsline {subsubsection}{Árboles de comportamiento}{30}{subsection.3.5.1}%
-\contentsline {subsubsection}{Servidores de acción}{31}{figure.caption.27}%
-\contentsline {subsubsection}{Estructura para el control de navegación}{31}{figure.caption.28}%
-\contentsline {subsection}{\numberline {3.5.2}Servidores}{32}{subsection.3.5.2}%
-\contentsline {subsubsection}{Navigator server}{32}{subsection.3.5.2}%
-\contentsline {subsubsection}{Behavior server}{33}{figure.caption.29}%
-\contentsline {subsubsection}{Controller server}{33}{figure.caption.29}%
-\contentsline {subsubsection}{Planner server}{34}{figure.caption.32}%
-\contentsline {subsubsection}{Smoother server}{36}{figure.caption.37}%
-\contentsline {subsection}{\numberline {3.5.3}Mapas de coste}{36}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Plugins}{38}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}Nav2 commander}{39}{subsection.3.5.5}%
-\contentsline {chapter}{\numberline {4}Pruebas y resultados}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas de precisión para el sistema sensorial}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Pruebas de funcionamiento en los algoritmos de adaptación}{41}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{41}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Pruebas de navegación}{41}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{45}{chapter.6}%
-\contentsline {chapter}{Bibliografía}{47}{chapter.6}%
-\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{51}{appendix.1.Alph1}%
+\contentsline {section}{\numberline {3.5}Mejoras en la localización para la orientación del sistema}{30}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Navegación Autónoma haciendo uso de Nav2}{31}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Conceptos básicos de Nav2}{31}{subsection.3.6.1}%
+\contentsline {subsubsection}{Árboles de comportamiento}{31}{subsection.3.6.1}%
+\contentsline {subsubsection}{Servidores de acción}{33}{figure.caption.27}%
+\contentsline {subsubsection}{Estructura para el control de navegación}{33}{figure.caption.28}%
+\contentsline {subsection}{\numberline {3.6.2}Servidores}{34}{subsection.3.6.2}%
+\contentsline {subsubsection}{Navigator server}{34}{subsection.3.6.2}%
+\contentsline {subsubsection}{Behavior server}{34}{figure.caption.29}%
+\contentsline {subsubsection}{Controller server}{35}{figure.caption.29}%
+\contentsline {subsubsection}{Planner server}{36}{figure.caption.32}%
+\contentsline {subsubsection}{Smoother server}{38}{table.caption.36}%
+\contentsline {subsection}{\numberline {3.6.3}Mapas de coste}{38}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Plugins}{40}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Nav2 commander}{40}{subsection.3.6.5}%
+\contentsline {chapter}{\numberline {4}Pruebas y resultados}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pruebas de precisión para el sistema sensorial}{43}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Pruebas de funcionamiento de los algoritmos de adaptación}{45}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{46}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Pruebas de navegación autónoma}{48}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{51}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{53}{chapter.6}%
+\contentsline {chapter}{Bibliografía}{55}{chapter.6}%
+\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Hojas de datos}{59}{appendix.1.Alph1}%

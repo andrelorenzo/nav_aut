@@ -495,6 +495,37 @@
       \verb https://www.e-medida.es/numero-8/es-el-error-de-abbe/
       \endverb
     \endentry
+    \entry{sanchez2018algoritmo}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e25c033f2dc55499bea1be8b834acd81}{%
+           family={Sánchez},
+           familyi={S\bibinitperiod},
+           given={Ignacio\bibnamedelima JR},
+           giveni={I\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=2607956a13b9abd2a765179a4a0978e2}{%
+           family={Limache},
+           familyi={L\bibinitperiod},
+           given={Alejandro\bibnamedelima C},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{1259bbb2099d38f428b19bc943895920}
+      \strng{fullhash}{1259bbb2099d38f428b19bc943895920}
+      \strng{bibnamehash}{1259bbb2099d38f428b19bc943895920}
+      \strng{authorbibnamehash}{1259bbb2099d38f428b19bc943895920}
+      \strng{authornamehash}{1259bbb2099d38f428b19bc943895920}
+      \strng{authorfullhash}{1259bbb2099d38f428b19bc943895920}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mecánica Computacional}
+      \field{number}{46}
+      \field{title}{Un Algoritmo de Estimación de Orientación Espacial y su Implementación Embebida Utilizando Sensores Microelectromecánicos}
+      \field{volume}{36}
+      \field{year}{2018}
+      \field{pages}{2121\bibrangedash 2134}
+      \range{pages}{14}
+    \endentry
     \entry{dolgov2008practical}{article}{}
       \name{author}{4}{}{%
         {{hash=65e8d6cda2636f6f35dc4a17e63649d4}{%

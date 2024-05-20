@@ -2355,13 +2355,14 @@
     <bcf:citekey order="9">DARPA20</bcf:citekey>
     <bcf:citekey order="10">audirs715</bcf:citekey>
     <bcf:citekey order="11">waymo24</bcf:citekey>
-    <bcf:citekey order="13">ros2</bcf:citekey>
-    <bcf:citekey order="14">nav2</bcf:citekey>
-    <bcf:citekey order="15">sun2023path</bcf:citekey>
-    <bcf:citekey order="16">colledanchise2018behavior</bcf:citekey>
-    <bcf:citekey order="17">wikiLuenberg</bcf:citekey>
-    <bcf:citekey order="18">rigatos2007extended</bcf:citekey>
-    <bcf:citekey order="19">errorAbbe23</bcf:citekey>
+    <bcf:citekey order="12">ros2</bcf:citekey>
+    <bcf:citekey order="13">nav2</bcf:citekey>
+    <bcf:citekey order="14">sun2023path</bcf:citekey>
+    <bcf:citekey order="15">colledanchise2018behavior</bcf:citekey>
+    <bcf:citekey order="16">wikiLuenberg</bcf:citekey>
+    <bcf:citekey order="17">rigatos2007extended</bcf:citekey>
+    <bcf:citekey order="18">errorAbbe23</bcf:citekey>
+    <bcf:citekey order="19">sanchez2018algoritmo</bcf:citekey>
     <bcf:citekey order="20">colledanchise2018behavior</bcf:citekey>
     <bcf:citekey order="21">nav2</bcf:citekey>
     <bcf:citekey order="22">nav2</bcf:citekey>
@@ -2387,8 +2388,9 @@
     <bcf:citekey order="42">wikiLuenberg</bcf:citekey>
     <bcf:citekey order="43">rigatos2007extended</bcf:citekey>
     <bcf:citekey order="44">errorAbbe23</bcf:citekey>
-    <bcf:citekey order="45">dolgov2008practical</bcf:citekey>
-    <bcf:citekey order="46">steve_mc</bcf:citekey>
+    <bcf:citekey order="45">sanchez2018algoritmo</bcf:citekey>
+    <bcf:citekey order="46">dolgov2008practical</bcf:citekey>
+    <bcf:citekey order="47">steve_mc</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

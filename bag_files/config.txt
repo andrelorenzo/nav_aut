@@ -1,0 +1,589 @@
+# For parameter descriptions, please refer to the template parameter files for each node.
+
+ekf_filter_node_odom:
+  ros__parameters:
+    frequency: 30.0
+    two_d_mode: true # Recommended to use 2d mode for nav2 in mostly planar environments
+    print_diagnostics: true
+    debug: false
+    sensor_timeout: 0.1
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link 
+    world_frame: odom
+
+    odom0: hunter/odom
+    odom0_config: [false, false, false,
+                  false, false, false,
+                  true,  true,  false,
+                  false, false, true,
+                  false, false, false]
+    odom0_queue_size: 10
+    odom0_nodelay: true
+    odom0_differential: false
+    odom0_relative: false
+
+    imu0: /mti/imu
+    imu0_config: [false, false, false,
+                  false,  false,  true,
+                  false, false, false,
+                  false,  false,  true,
+                  true,  false,  true]
+    imu0_differential: false  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
+    imu0_nodelay: false
+    imu0_relative: true
+    imu0_queue_size: 10
+    imu0_remove_gravitational_acceleration: true
+
+    imu1: /odometry_imu
+    imu1_config: [false, false, false,
+                  false,  false,  true,
+                  false, false, false,
+                  false,  false,  true,
+                  true,  false,  false]
+    imu1_differential: true  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
+    imu1_nodelay: false
+    imu1_relative: false
+    imu1_queue_size: 10
+    imu1_remove_gravitational_acceleration: true
+    
+    use_control: False
+    stamped_control: False
+    control_config: [true,false,false,false,false,true]
+    acceleration_limits: [1.0,0.0,0.0,0.0,0.0,3.0]
+    deceleration_limits: [1.0,0.0,0.0,0.0,0.0,4.0]
+
+
+
+    process_noise_covariance: [1e-3, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    1e-3,  0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    1e-3,  0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.3,   0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.3,   0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.01,  0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.5,    0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.5,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.1,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.3,   0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.3,   0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.3,   0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.3,   0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.3,   0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.3]
+
+    initial_estimate_covariance: [1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    1.0,  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    1.0,  0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,  0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,  0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,  0.0,      0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,    0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     1.0,    0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     1.0,    0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     1.0,   0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    1.0,  0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    1.0]
+    dynamic_process_noise_covariance: true
+
+
+ekf_filter_node_map:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.2
+    two_d_mode: true
+    transform_time_offset: 0.1
+    transform_timeout: 0.0
+    print_diagnostics: true
+    debug: false
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link # the frame id used by the turtlebot's diff drive plugin
+    world_frame: map
+
+    #probar a quitar la Vy y añadir el giro en z o la velocidad de giro en z
+    odom0: hunter/odom
+    odom0_config: [false, false, false,
+                  false, false, false,
+                  true,  true,  false,
+                  false, false, true,
+                  false, false, false]
+    odom0_queue_size: 10
+    odom0_nodelay: true
+    odom0_differential: false
+    odom0_relative: false
+
+    odom1: odometry/gps
+    odom1_config: [true,  true,  false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]
+    odom1_queue_size: 10
+    odom1_nodelay: true
+    odom1_differential: false
+    odom1_relative: false
+
+    #probar a quitar el giro y solo poner velocidad y viceversa
+    imu0: /mti/imu
+    imu0_config: [false, false, false,
+                  false,  false,  true,
+                  false, false, false,
+                  false,  false,  true,
+                  true,  false,  true]
+    imu0_nodelay: false
+    imu0_differential: false
+    imu0_relative: true
+    imu0_queue_size: 10
+    imu0_remove_gravitational_acceleration: true
+
+    imu1: /odometry_imu
+    imu1_config: [false, false, false,
+                  false,  false,  true,
+                  false, false, false,
+                  false,  false,  true,
+                  true,  false,  false]
+    imu1_differential: true  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
+    imu1_nodelay: false
+    imu1_relative: false
+    imu1_queue_size: 10
+    imu1_remove_gravitational_acceleration: true
+
+    use_control: False
+    stamped_control: False
+    control_config: [true,false,false,false,false,true]
+    acceleration_limits: [1.0,0.0,0.0,0.0,0.0,3.0]
+    deceleration_limits: [1.0,0.0,0.0,0.0,0.0,4.0]
+
+    process_noise_covariance: [1.0,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    1.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    1e-3,   0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.3,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.3,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.01,   0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.5,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.5,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.1,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.3,    0.0,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.3,    0.0,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.3,    0.0,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.3,    0.0,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.3,    0.0,
+                              0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.3]
+
+    initial_estimate_covariance: [1.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    1.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    1e-9,   0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    1.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    1.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    1e-9,   0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     1.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     1.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     1.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    1.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    1.0]
+    dynamic_process_noise_covariance: true
+
+navsat_transform:
+  ros__parameters:
+    frequency: 30.0
+    delay: 1.0
+    use_sim_time: false
+    magnetic_declination_radians: 0.0611
+    yaw_offset: 0.0
+    zero_altitude: true
+    broadcast_cartesian_transform: true
+    broadcast_cartesian_transform_as_parent_frame: true
+    publish_filtered_gps: true
+    use_odometry_yaw: false      
+    wait_for_datum: true 
+    
+    
+    
+    #################################### navegacion
+    # GPS WPF CHANGES: 
+# - amcl params where removed. They are not needed because global localization is provided
+#   by an ekf node on robot_localization fusing gps data with local odometry sources
+# - static layer is removed from both costmaps, in this tutorial we assume there is no map
+#   of the environment
+# - global costmap is set to be rolling to allow the robot to traverse big environment by
+#   following successive relatively close waypoints that fit in a smaller rolling costmap
+
+bt_navigator:
+  ros__parameters:
+    use_sim_time: false
+    global_frame: map
+    robot_base_frame: base_link
+    odom_topic: /odometry/local
+    bt_loop_duration: 10
+    default_server_timeout: 20
+    navigators: ["navigate_to_pose", "navigate_through_poses"]
+    navigate_to_pose:
+      plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+    navigate_through_poses:
+      plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+    # 'default_nav_through_poses_bt_xml' and 'default_nav_to_pose_bt_xml' are use defaults:
+    # nav2_bt_navigator/navigate_to_pose_w_replanning_and_recovery.xml
+    # nav2_bt_navigator/navigate_through_poses_w_replanning_and_recovery.xml
+    # They can be set here or via a RewrittenYaml remap from a parent launch file to Nav2.
+    default_nav_to_pose_bt_xml: /home/mapir/mapir_ws/src/nav_aut/hunter_sim_pkg/config/navigate_to_pose_w_replanning_and_recovery.xml
+    default_nav_through_poses_bt_xml: /home/mapir/mapir_ws/src/nav_aut/hunter_sim_pkg/config/navigate_through_poses_w_replanning_and_recovery.xml
+    plugin_lib_names:
+    - nav2_compute_path_to_pose_action_bt_node
+    - nav2_compute_path_through_poses_action_bt_node
+    - nav2_smooth_path_action_bt_node
+    - nav2_follow_path_action_bt_node
+    - nav2_wait_action_bt_node
+    - nav2_assisted_teleop_action_bt_node
+    - nav2_back_up_action_bt_node
+    - nav2_drive_on_heading_bt_node
+    - nav2_clear_costmap_service_bt_node
+    - nav2_is_stuck_condition_bt_node
+    - nav2_goal_reached_condition_bt_node
+    - nav2_goal_updated_condition_bt_node
+    - nav2_globally_updated_goal_condition_bt_node
+    - nav2_is_path_valid_condition_bt_node
+    - nav2_initial_pose_received_condition_bt_node
+    - nav2_reinitialize_global_localization_service_bt_node
+    - nav2_rate_controller_bt_node
+    - nav2_distance_controller_bt_node
+    - nav2_speed_controller_bt_node
+    - nav2_truncate_path_action_bt_node
+    - nav2_truncate_path_local_action_bt_node
+    - nav2_goal_updater_node_bt_node
+    - nav2_recovery_node_bt_node
+    - nav2_pipeline_sequence_bt_node
+    - nav2_round_robin_node_bt_node
+    - nav2_transform_available_condition_bt_node
+    - nav2_time_expired_condition_bt_node
+    - nav2_path_expiring_timer_condition
+    - nav2_distance_traveled_condition_bt_node
+    - nav2_single_trigger_bt_node
+    - nav2_goal_updated_controller_bt_node
+    - nav2_is_battery_low_condition_bt_node
+    - nav2_navigate_through_poses_action_bt_node
+    - nav2_navigate_to_pose_action_bt_node
+    - nav2_remove_passed_goals_action_bt_node
+    - nav2_planner_selector_bt_node
+    - nav2_controller_selector_bt_node
+    - nav2_goal_checker_selector_bt_node
+    - nav2_controller_cancel_bt_node
+    - nav2_path_longer_on_approach_bt_node
+    - nav2_wait_cancel_bt_node
+    - nav2_back_up_cancel_bt_node
+    - nav2_assisted_teleop_cancel_bt_node
+    - nav2_drive_on_heading_cancel_bt_node
+    - nav2_is_battery_charging_condition_bt_node    
+    error_code_names:
+      - compute_path_error_code
+      - follow_path_error_code
+
+controller_server:
+  ros__parameters:
+    controller_frequency: 20.0
+    min_x_velocity_threshold: 0.001
+    min_y_velocity_threshold: 0.5
+    min_theta_velocity_threshold: 0.001
+    odom_topic: "hunter/odom"
+    failure_tolerance: 0.4
+    progress_checker_plugins: ["progress_checker"]
+    goal_checker_plugins: ["general_goal_checker"] # "precise_goal_checker"
+    controller_plugins: ["FollowPath"]
+    # Progress checker parameters
+    progress_checker:
+      plugin: "nav2_controller::SimpleProgressChecker"
+      required_movement_radius: 0.5
+      movement_time_allowance: 10.0
+    general_goal_checker:
+      stateful: False
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.4
+      yaw_goal_tolerance: 0.4
+    FollowPath:
+      plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+      desired_linear_vel: 0.60
+      lookahead_dist: 1.0
+      min_lookahead_dist: 0.5
+      max_lookahead_dist: 1.5
+      lookahead_time: 1.0
+      transform_tolerance: 0.4
+      use_velocity_scaled_lookahead_dist: false
+      min_approach_linear_velocity: 0.35
+      approach_velocity_scaling_dist: 1.0
+      use_collision_detection: false
+      max_allowed_time_to_collision_up_to_carrot: 3.0
+      use_regulated_linear_velocity_scaling: true
+      use_cost_regulated_linear_velocity_scaling: true
+      regulated_linear_scaling_min_radius: 2.0
+      regulated_linear_scaling_min_speed: 0.25
+      use_rotate_to_heading: false
+      allow_reversing: true
+      max_angular_accel: 1.4
+      max_robot_pose_search_dist: 3.0
+      use_interpolation: false
+
+
+# GPS WPF CHANGE: Remove static layer
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      update_frequency: 5.0
+      publish_frequency: 2.0
+      global_frame: odom
+      robot_base_frame: base_link
+      rolling_window: true
+      width: 10
+      height: 10
+      resolution: 0.05
+      footprint: "[ [0.49, 0.185], [0.49, -0.185], [-0.49, -0.185], [-0.49, 0.185] ]"
+      #robot_radius: 0.22
+      plugins: ["voxel_layer", "inflation_layer"]
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 2.0
+        inflation_radius: 1.0
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
+        enabled: True
+        publish_voxel_map: True
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 16
+        max_obstacle_height: 2.0
+        mark_threshold: 0
+        observation_sources: scan
+        scan:
+          topic: /ouster/scan
+          max_obstacle_height: 2.0
+          clearing: True
+          marking: True
+          data_type: "LaserScan"
+          raytrace_max_range: 20.0
+          raytrace_min_range: 0.8
+          obstacle_max_range: 10.0
+          obstacle_min_range: 0.8
+      always_send_full_costmap: True
+
+# GPS WPF CHANGE: Remove static layer
+# GPS WPF CHANGE: Set rolling global costmap with 50x50 size. See note below
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      update_frequency: 1.0
+      publish_frequency: 1.0
+      global_frame: map
+      robot_base_frame: base_link
+      robot_radius: 0.49
+      resolution: 0.1
+      # When using GPS navigation you will potentially traverse huge environments which are not practical to
+      # fit on a big static costmap. Thus it is recommended to use a rolling global costmap large enough to 
+      # contain each pair of successive waypoints. See: https://github.com/ros-planning/navigation2/issues/2174
+      rolling_window: True
+      width: 50
+      height: 50
+      track_unknown_space: true
+      # no static map
+      plugins: ["obstacle_layer", "inflation_layer"]
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: True
+        observation_sources: scan
+        scan:
+          topic: /ouster/scan
+          max_obstacle_height: 2.0
+          clearing: True
+          marking: True
+          data_type: "LaserScan"
+          raytrace_max_range: 20.0
+          raytrace_min_range: 0.8
+          obstacle_max_range: 10.0
+          obstacle_min_range: 0.8
+          # outdoors there will probably be more inf points
+          inf_is_valid: true
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 2.0
+        inflation_radius: 1.0
+      always_send_full_costmap: True
+
+# The yaml_filename does not need to be specified since it going to be set by defaults in launch.
+# If you'd rather set it in the yaml, remove the default "map" value in the tb3_simulation_launch.py
+# file & provide full path to map below. If CLI map configuration or launch default is provided, that will be used.
+# map_server:
+#   ros__parameters:
+#     yaml_filename: ""
+
+map_saver:
+  ros__parameters:
+    save_map_timeout: 5.0
+    free_thresh_default: 0.25
+    occupied_thresh_default: 0.65
+    map_subscribe_transient_local: True
+
+planner_server:
+  ros__parameters:
+    planner_plugins: ["GridBased"]
+    expected_planner_frequency: 5.0
+    use_sim_time: false
+    GridBased:
+      plugin: "nav2_smac_planner/SmacPlannerHybrid"
+      downsample_costmap: false           # whether or not to downsample the map
+      downsampling_factor: 3              # multiplier for the resolution of the costmap layer (e.g. 2 on a 5cm costmap would be 10cm)
+      allow_unknown: true                 # allow traveling in unknown space
+      max_iterations: 1000000             # maximum total iterations to search for before failing (in case unreachable), set to -1 to disable
+      max_planning_time: 5.0              # max time in s for planner to plan, smooth
+      motion_model_for_search: "REEDS_SHEPP"    # Hybrid-A* Dubin, Redds-Shepp
+      angle_quantization_bins: 64         # Number of angle bins for search
+      analytic_expansion_ratio: 3.5       # The ratio to attempt analytic expansions during search for final approach.
+      analytic_expansion_max_length: 3.0  # For Hybrid/Lattice nodes: The maximum length of the analytic expansion to be considered valid to prevent unsafe shortcutting
+      minimum_turning_radius: 1.6         # minimum turning radius in m of path / vehicle
+      reverse_penalty: 1.0                # Penalty to apply if motion is reversing, must be => 1
+      change_penalty: 0.0                 # Penalty to apply if motion is changing directions (L to R), must be >= 0
+      non_straight_penalty: 1.2           # Penalty to apply if motion is non-straight, must be => 1
+      cost_penalty: 2.0                   # Penalty to apply to higher cost areas when adding into the obstacle map dynamic programming distance expansion heuristic. This drives the robot more towards the center of passages. A value between 1.3 - 3.5 is reasonable.
+      retrospective_penalty: 0.015
+      lookup_table_size: 20.0             # Size of the dubin/reeds-sheep distance window to cache, in meters.
+      cache_obstacle_heuristic: false     # Cache the obstacle map dynamic programming distance expansion heuristic between subsiquent replannings of the same goal location. Dramatically speeds up replanning performance (40x) if costmap is largely static.
+      smooth_path: True                   # If true, does a simple and quick smoothing post-processing to the path
+
+      smoother:
+        max_iterations: 1000
+        w_smooth: 0.3
+        w_data: 0.2
+        tolerance: 1.0e-10
+        do_refinement: true
+
+
+smoother_server:
+  ros__parameters:
+    smoother_plugins: ["simple_smoother"]
+    simple_smoother:
+      plugin: "nav2_smoother::SimpleSmoother"
+      tolerance: 1.0e-10
+      max_its: 1000
+      do_refinement: True
+
+behavior_server:
+  ros__parameters:
+    costmap_topic: local_costmap/costmap_raw
+    footprint_topic: local_costmap/published_footprint
+    cycle_frequency: 10.0
+    behavior_plugins: ["backup", "drive_on_heading", "wait"]
+    backup:
+      plugin: "nav2_behaviors/BackUp"
+    drive_on_heading:
+      plugin: "nav2_behaviors/DriveOnHeading"
+    wait:
+      plugin: "nav2_behaviors/Wait"
+    global_frame: odom
+    robot_base_frame: base_link
+    transform_tolerance: 0.4
+    use_sim_time: false
+    simulate_ahead_time: 2.0
+    max_rotational_vel: 0.4
+    min_rotational_vel: 0.1
+    rotational_acc_lim: 1.2
+
+waypoint_follower:
+  ros__parameters:
+    loop_rate: 20
+    stop_on_failure: false
+    waypoint_task_executor_plugin: "wait_at_waypoint"
+    wait_at_waypoint:
+      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+      enabled: True
+      waypoint_pause_duration: 0
+
+velocity_smoother:
+  ros__parameters:
+    smoothing_frequency: 20.0
+    scale_velocities: false
+    feedback: "OPEN_LOOP"
+    max_velocity: [1.0, 0.0, 1.0]
+    min_velocity: [-1.0, 0.0, -1.0]
+    max_accel: [1.0, 0.0, 1.0]
+    max_decel: [-1.0, 0.0, -1.0]
+    odom_topic: "hunter/odom"
+    odom_duration: 0.1
+    deadband_velocity: [0.0, 0.0, 0.0]
+    velocity_timeout: 1.0
+    
+    #algortimos de adaptacion
+    
+    DatumGen:
+  ros__parameters:
+    #ALL SUBS/PUBS ARE SHUTDOWN WHENEVER NOT NEEDED       
+    odom_topic: /hunter/odom                       # Topic where to receive wheel odometry (for hunter = /hunter/odom)
+    gps_topic: /hunter/fix                     # Topic where to receive GPS coordinates in NavSatFix type (for hunter = /hunter/fix)
+    cmd_vel_topic: /cmd_vel                 # Topic where to send velocity commands (for hunter = /cmd_vel)
+    madgwick_imu_topic: /imu_complementary         # Topic for receiving local IMU from complementary filter (must be the same as that one)
+    global_imu_topic: /odometry_imu         # Topic for sending local orientation = complementary output modified (must be equal to one entry in the ekfs)
+    distance_to_move: 2                     # Recommended range: [ 1 -> 5 ] m
+    speed: 0.8                              # Speed in m/S
+    publish_global_imu: false               # Wheter to activate global IMU publishing
+    modified_gps_topic: /gps/modified       # Where to send filtered gps by NavSatStaus (must be equal to gps/fix remap inn dual_ekf_navsat_params.yaml)
+    send_datum: true
+
+mqtt_client:
+  ros__parameters:
+    broker:
+      host: mapir.ddns.net
+      port: 1883
+      user: ros
+      pass: ros2324
+    client:
+      id: ros123
+    bridge:
+      ros2mqtt:
+        ros_topics:
+        # This topic is where to publish the actual robot_position to be able to see it in the web page 
+          - /web/gt
+        /web/gt:
+          mqtt_topic: position
+          primitive: true
+      mqtt2ros:
+        mqtt_topics:
+          - desired_pos
+          - follow
+        desired_pos:
+          # /web/desired_pos is publish by the web and subscribe by String2ros Node to be converted to a valid path for Nav2
+          ros_topic:  /web/desired_pos
+          primitive: true
+        follow:
+          # /web/follow is a flag to know when to start treating /web/desired_pos as follow_me commands
+          ros_topic: /web/follow
+          primitive: true
+
+String2Ros:
+  ros__parameters:
+    odom_topic: /odometry/local                     # odometry where to receive the information
+    web_goal_topic: /web/desired_pos                # where to revceive goal pose from the MQTT bridge
+    gps_topic: /hunter/fix                          # where to receive gps coordinates
+    single_goal_topic: /commander/goal              # where to send goal, for the Nav2commander node to call Nav2
+    multiple_goals_topic: /commander/goal_array     # where to send multiple goals (Waypoint follower) to the Nav2commander node
+    publish_to_web_pose: /web/gt                    # where to send robot pose to the MQTT bridge, only if send_pose_to_web = true 
+    timer_to_web_send: 5                            # time in seconds at what rate the pose is send to the MQTT bridge (too low will crash the web)
+    send_pose_to_web: false                         # wether to send the robot pose to the MQTT bridge
+    error_to_send_actualizaton: 0.00001             # if the difference in poses is grater than this we send it to the MQTT server (too many petitions will lag the web)
+    step_area: 8.0                                  # what distance to create the paths in meters, 8 meters = generate points 8 meters apart
+
+Nav2Commander:
+  ros__parameters:
+    single_goal_topic: /commander/goal
+    array_goals_topic: /commander/goal_array
+    follow_flag_topic: /web/follow
+
+# this only matters when using sim_time as sometimes the gazebo clock doesn't let the ekfs to go at the desired frecuency
+# this parameter MUST NOT be change
+gazebo:
+  ros__parameters:
+    publish_rate: 400.0

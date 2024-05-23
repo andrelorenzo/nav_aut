@@ -480,8 +480,8 @@
       \strng{authorbibnamehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
       \strng{authornamehash}{ed6813ad854994f2f5f40a0f8cb46b9b}
       \strng{authorfullhash}{ed6813ad854994f2f5f40a0f8cb46b9b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Página Web}
@@ -493,6 +493,34 @@
       \endverb
       \verb{url}
       \verb https://www.e-medida.es/numero-8/es-el-error-de-abbe/
+      \endverb
+    \endentry
+    \entry{rep105}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=713628d6f65a2945c630970cc5a2c8de}{%
+           family={Meeussen},
+           familyi={M\bibinitperiod},
+           given={Wim},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{713628d6f65a2945c630970cc5a2c8de}
+      \strng{fullhash}{713628d6f65a2945c630970cc5a2c8de}
+      \strng{bibnamehash}{713628d6f65a2945c630970cc5a2c8de}
+      \strng{authorbibnamehash}{713628d6f65a2945c630970cc5a2c8de}
+      \strng{authornamehash}{713628d6f65a2945c630970cc5a2c8de}
+      \strng{authorfullhash}{713628d6f65a2945c630970cc5a2c8de}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Página Web}
+      \field{title}{Coordinate Frames for Mobile Platforms}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://www.ros.org/reps/rep-0105.html
+      \endverb
+      \verb{url}
+      \verb https://www.ros.org/reps/rep-0105.html
       \endverb
     \endentry
     \entry{sanchez2018algoritmo}{article}{}
@@ -514,8 +542,8 @@
       \strng{authorbibnamehash}{1259bbb2099d38f428b19bc943895920}
       \strng{authornamehash}{1259bbb2099d38f428b19bc943895920}
       \strng{authorfullhash}{1259bbb2099d38f428b19bc943895920}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Mecánica Computacional}
@@ -555,8 +583,8 @@
       \strng{authorbibnamehash}{44cf5d25ea6040226bc477b81bb099db}
       \strng{authornamehash}{44cf5d25ea6040226bc477b81bb099db}
       \strng{authorfullhash}{5d0a102ec2972a756508e2f9ccf1acc5}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Ann Arbor}
@@ -581,8 +609,8 @@
       \strng{authorbibnamehash}{32de857faf63cd1f724ac8acd558e91b}
       \strng{authornamehash}{32de857faf63cd1f724ac8acd558e91b}
       \strng{authorfullhash}{32de857faf63cd1f724ac8acd558e91b}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Git hub}

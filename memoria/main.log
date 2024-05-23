@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  24 MAY 2024 00:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.4)  24 MAY 2024 01:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1519,127 +1519,127 @@ LaTeX Info: Redefining \% on input line 1392.
 <images/punto_alejado.png, id=597, 734.745pt x 408.52625pt>
 File: images/punto_alejado.png Graphic file (type png)
 <use images/punto_alejado.png>
-Package pdftex.def Info: images/punto_alejado.png  used on input line 1440.
+Package pdftex.def Info: images/punto_alejado.png  used on input line 1438.
 (pdftex.def)             Requested size: 273.14923pt x 151.87544pt.
-LaTeX Info: Redefining \. on input line 1444.
-LaTeX Info: Redefining \% on input line 1444.
+LaTeX Info: Redefining \. on input line 1442.
+LaTeX Info: Redefining \% on input line 1442.
  [41]
 File: images/camino_punto_inter.png Graphic file (type png)
 <use images/camino_punto_inter.png>
-Package pdftex.def Info: images/camino_punto_inter.png  used on input line 1447.
+Package pdftex.def Info: images/camino_punto_inter.png  used on input line 1445.
 (pdftex.def)             Requested size: 364.19667pt x 71.51883pt.
 <images/punto_inter_web.jpeg, id=608, 1606.0pt x 729.72626pt>
 File: images/punto_inter_web.jpeg Graphic file (type jpg)
 <use images/punto_inter_web.jpeg>
-Package pdftex.def Info: images/punto_inter_web.jpeg  used on input line 1460.
+Package pdftex.def Info: images/punto_inter_web.jpeg  used on input line 1458.
 (pdftex.def)             Requested size: 204.85846pt x 93.07504pt.
 <images/camino_inter_web.jpeg, id=609, 1606.0pt x 729.72626pt>
 File: images/camino_inter_web.jpeg Graphic file (type jpg)
 <use images/camino_inter_web.jpeg>
-Package pdftex.def Info: images/camino_inter_web.jpeg  used on input line 1467.
+Package pdftex.def Info: images/camino_inter_web.jpeg  used on input line 1465.
 (pdftex.def)             Requested size: 204.85846pt x 93.07504pt.
-LaTeX Info: Redefining \. on input line 1480.
-LaTeX Info: Redefining \% on input line 1480.
+LaTeX Info: Redefining \. on input line 1488.
+LaTeX Info: Redefining \% on input line 1488.
  [42 <./images/punto_alejado.png> <./images/punto_inter_web.jpeg> <./images/camino_inter_web.jpeg>]
 <images/1_imu_final.png, id=620, 935.495pt x 791.95876pt>
 File: images/1_imu_final.png Graphic file (type png)
 <use images/1_imu_final.png>
-Package pdftex.def Info: images/1_imu_final.png  used on input line 1496.
+Package pdftex.def Info: images/1_imu_final.png  used on input line 1494.
 (pdftex.def)             Requested size: 204.85846pt x 173.42181pt.
 <images/2_imu_final.png, id=621, 800.9925pt x 770.88pt>
 File: images/2_imu_final.png Graphic file (type png)
 <use images/2_imu_final.png>
-Package pdftex.def Info: images/2_imu_final.png  used on input line 1503.
+Package pdftex.def Info: images/2_imu_final.png  used on input line 1501.
 (pdftex.def)             Requested size: 182.09486pt x 175.2402pt.
-LaTeX Info: Redefining \. on input line 1512.
-LaTeX Info: Redefining \% on input line 1512.
+LaTeX Info: Redefining \. on input line 1510.
+LaTeX Info: Redefining \% on input line 1510.
  [43 <./images/1_imu_final.png> <./images/2_imu_final.png>]
 <images/comando_punto.jpeg, id=635, 1606.0pt x 729.72626pt>
 File: images/comando_punto.jpeg Graphic file (type jpg)
 <use images/comando_punto.jpeg>
-Package pdftex.def Info: images/comando_punto.jpeg  used on input line 1527.
+Package pdftex.def Info: images/comando_punto.jpeg  used on input line 1525.
 (pdftex.def)             Requested size: 227.62206pt x 103.4192pt.
 <images/1_punto_naevegacion.png, id=636, 1162.3425pt x 608.2725pt>
 File: images/1_punto_naevegacion.png Graphic file (type png)
 <use images/1_punto_naevegacion.png>
-Package pdftex.def Info: images/1_punto_naevegacion.png  used on input line 1534.
+Package pdftex.def Info: images/1_punto_naevegacion.png  used on input line 1532.
 (pdftex.def)             Requested size: 204.85846pt x 107.20108pt.
 <images/video_principio_punto_nav.jpeg, id=638, 2055.68pt x 933.4875pt>
 File: images/video_principio_punto_nav.jpeg Graphic file (type jpg)
 <use images/video_principio_punto_nav.jpeg>
-Package pdftex.def Info: images/video_principio_punto_nav.jpeg  used on input line 1545.
+Package pdftex.def Info: images/video_principio_punto_nav.jpeg  used on input line 1543.
 (pdftex.def)             Requested size: 204.85846pt x 93.02661pt.
 <images/video_final_punto_nav.jpeg, id=639, 2055.68pt x 933.4875pt>
 File: images/video_final_punto_nav.jpeg Graphic file (type jpg)
 <use images/video_final_punto_nav.jpeg>
-Package pdftex.def Info: images/video_final_punto_nav.jpeg  used on input line 1552.
+Package pdftex.def Info: images/video_final_punto_nav.jpeg  used on input line 1550.
 (pdftex.def)             Requested size: 204.85846pt x 93.02661pt.
-LaTeX Info: Redefining \. on input line 1557.
-LaTeX Info: Redefining \% on input line 1557.
+LaTeX Info: Redefining \. on input line 1555.
+LaTeX Info: Redefining \% on input line 1555.
  [44 <./images/comando_punto.jpeg> <./images/1_punto_naevegacion.png> <./images/video_principio_punto_nav.jpeg> <./images/video_final_punto_nav.jpeg>]
 <images/triangulo_navegacion_captura.jpeg, id=651, 2055.68pt x 933.4875pt>
 File: images/triangulo_navegacion_captura.jpeg Graphic file (type jpg)
 <use images/triangulo_navegacion_captura.jpeg>
-Package pdftex.def Info: images/triangulo_navegacion_captura.jpeg  used on input line 1569.
+Package pdftex.def Info: images/triangulo_navegacion_captura.jpeg  used on input line 1567.
 (pdftex.def)             Requested size: 204.85846pt x 93.02661pt.
 <images/triangulo_nav.png, id=652, 841.1425pt x 584.1825pt>
 File: images/triangulo_nav.png Graphic file (type png)
 <use images/triangulo_nav.png>
-Package pdftex.def Info: images/triangulo_nav.png  used on input line 1576.
+Package pdftex.def Info: images/triangulo_nav.png  used on input line 1574.
 (pdftex.def)             Requested size: 227.62206pt x 158.08794pt.
 <images/triangulo_punto_2_nav_video.png, id=654, 382.7901pt x 207.4149pt>
 File: images/triangulo_punto_2_nav_video.png Graphic file (type png)
 <use images/triangulo_punto_2_nav_video.png>
-Package pdftex.def Info: images/triangulo_punto_2_nav_video.png  used on input line 1590.
+Package pdftex.def Info: images/triangulo_punto_2_nav_video.png  used on input line 1588.
 (pdftex.def)             Requested size: 204.85846pt x 111.00226pt.
 <images/triangulo_punto_3_nav.jpeg, id=655, 385.1991pt x 206.9331pt>
 File: images/triangulo_punto_3_nav.jpeg Graphic file (type jpg)
 <use images/triangulo_punto_3_nav.jpeg>
-Package pdftex.def Info: images/triangulo_punto_3_nav.jpeg  used on input line 1597.
+Package pdftex.def Info: images/triangulo_punto_3_nav.jpeg  used on input line 1595.
 (pdftex.def)             Requested size: 204.85846pt x 110.05292pt.
-LaTeX Info: Redefining \. on input line 1603.
-LaTeX Info: Redefining \% on input line 1603.
+LaTeX Info: Redefining \. on input line 1601.
+LaTeX Info: Redefining \% on input line 1601.
  [45 <./images/triangulo_navegacion_captura.jpeg> <./images/triangulo_nav.png> <./images/triangulo_punto_2_nav_video.png> <./images/triangulo_punto_3_nav.jpeg>]
 <images/navegacion_largo_trayecto_captura.jpeg, id=668, 2055.68pt x 933.4875pt>
 File: images/navegacion_largo_trayecto_captura.jpeg Graphic file (type jpg)
 <use images/navegacion_largo_trayecto_captura.jpeg>
-Package pdftex.def Info: images/navegacion_largo_trayecto_captura.jpeg  used on input line 1617.
+Package pdftex.def Info: images/navegacion_largo_trayecto_captura.jpeg  used on input line 1615.
 (pdftex.def)             Requested size: 204.85846pt x 93.02661pt.
 <images/nav_larga_2.png, id=669, 1677.26625pt x 671.50874pt>
 File: images/nav_larga_2.png Graphic file (type png)
 <use images/nav_larga_2.png>
-Package pdftex.def Info: images/nav_larga_2.png  used on input line 1624.
+Package pdftex.def Info: images/nav_larga_2.png  used on input line 1622.
 (pdftex.def)             Requested size: 204.85846pt x 82.01205pt.
 <images/inicio_nav_larga.png, id=671, 377.7312pt x 211.992pt>
 File: images/inicio_nav_larga.png Graphic file (type png)
 <use images/inicio_nav_larga.png>
-Package pdftex.def Info: images/inicio_nav_larga.png  used on input line 1636.
+Package pdftex.def Info: images/inicio_nav_larga.png  used on input line 1634.
 (pdftex.def)             Requested size: 204.85846pt x 114.9721pt.
 <images/final_nav_larga.png, id=672, 385.9218pt x 211.7511pt>
 File: images/final_nav_larga.png Graphic file (type png)
 <use images/final_nav_larga.png>
-Package pdftex.def Info: images/final_nav_larga.png  used on input line 1643.
+Package pdftex.def Info: images/final_nav_larga.png  used on input line 1641.
 (pdftex.def)             Requested size: 204.85846pt x 112.40524pt.
-LaTeX Info: Redefining \. on input line 1649.
-LaTeX Info: Redefining \% on input line 1649.
+LaTeX Info: Redefining \. on input line 1647.
+LaTeX Info: Redefining \% on input line 1647.
  [46 <./images/navegacion_largo_trayecto_captura.jpeg> <./images/nav_larga_2.png> <./images/inicio_nav_larga.png> <./images/final_nav_larga.png>]
 <images/esquivando_nav.png, id=685, 1349.04pt x 395.4775pt>
 File: images/esquivando_nav.png Graphic file (type png)
 <use images/esquivando_nav.png>
-Package pdftex.def Info: images/esquivando_nav.png  used on input line 1663.
+Package pdftex.def Info: images/esquivando_nav.png  used on input line 1661.
 (pdftex.def)             Requested size: 273.14923pt x 80.07169pt.
 <images/evitacion_video_inicio.jpeg, id=687, 279.9258pt x 126.4725pt>
 File: images/evitacion_video_inicio.jpeg Graphic file (type jpg)
 <use images/evitacion_video_inicio.jpeg>
-Package pdftex.def Info: images/evitacion_video_inicio.jpeg  used on input line 1676.
+Package pdftex.def Info: images/evitacion_video_inicio.jpeg  used on input line 1674.
 (pdftex.def)             Requested size: 204.85846pt x 92.55573pt.
 <images/evitacion_video_final.jpeg, id=688, 380.1402pt x 157.0668pt>
 File: images/evitacion_video_final.jpeg Graphic file (type jpg)
 <use images/evitacion_video_final.jpeg>
-Package pdftex.def Info: images/evitacion_video_final.jpeg  used on input line 1683.
+Package pdftex.def Info: images/evitacion_video_final.jpeg  used on input line 1681.
 (pdftex.def)             Requested size: 204.85846pt x 84.64464pt.
-LaTeX Info: Redefining \. on input line 1692.
-LaTeX Info: Redefining \% on input line 1692.
+LaTeX Info: Redefining \. on input line 1690.
+LaTeX Info: Redefining \% on input line 1690.
  [47 <./images/esquivando_nav.png> <./images/evitacion_video_inicio.jpeg> <./images/evitacion_video_final.jpeg>] [48
 
 ]
@@ -1677,7 +1677,7 @@ Here is how much of TeX's memory you used:
  85 hyphenation exceptions out of 8191
  89i,13n,83p,1170b,2239s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/andrelorent/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on main.pdf (67 pages, 16416107 bytes).
+Output written on main.pdf (67 pages, 16416152 bytes).
 PDF statistics:
  1011 PDF objects out of 1200 (max. 8388607)
  776 compressed objects within 8 object streams

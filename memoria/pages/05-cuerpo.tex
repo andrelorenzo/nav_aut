@@ -1396,19 +1396,17 @@ En el primer experimento se realizaron 6 pruebas desde la misma posición inicia
     \caption{Resultados de repetibilidad del algoritmo}
     \begin{tabular}{|l|c|c|}
         \hline
-        Número de prueba     & ángulo de la IMU (rad) & ángulo del algoritmo (rad)     \\ \hline
-        1           & 0 & 0 \\ \hline
-        2           & 0 & 0  \\ \hline
-        3           & 0 & 0  \\ \hline
-        4           & 0 & 0  \\ \hline
-        5           & 0 & 0  \\ \hline
-        6            & 0 & 0  \\ \hline
+        Número de prueba     & ángulo del algoritmo (rad) & ángulo de la IMU (rad)     \\ \hline
+        1           & 2.9631345 & -2.9277734 \\ \hline
+        2           & 2.9295575 & -2.9964118  \\ \hline
+        3           & 2.9349424 & -3.0181004  \\ \hline
+        4           & 2.9248358 & -3.0091396  \\ \hline
     \end{tabular}
     \label{tab:repetibilidad_datumgen}
 \end{table}
 
 Como se puede ver en la \textbf{tabla \ref{tab:repetibilidad_datumgen}} se consigue una repetibilidad buena con una desviación 
-típica de ..............
+típica de 0.01718 rad, que equivale a aproximadamente 0.98º.
 
 Para el segundo caso se realizó el experimento para los 360º en intervalos de 90º con los mismos parámetros que en el anterior (0.8 m/s y 2 m de movimiento lineal).
 
@@ -1417,17 +1415,17 @@ Para el segundo caso se realizó el experimento para los 360º en intervalos de 
     \caption{Resultados de precisión del algoritmo}
     \begin{tabular}{|l|c|c|}
         \hline
-        Dirección     & ángulo de la IMU (rad) & ángulo del algoritmo (rad)     \\ \hline
-        Este           & 0 & 0 \\ \hline
-        Norte           & 0 & 0  \\ \hline
-        Oeste           & 0 & 0  \\ \hline
-        Sur           & 0 & 0 \\ \hline
+        Dirección     & ángulo del algortimo (rad) & ángulo de la IMU (rad)     \\ \hline
+        Este           & 0.1175064 & 0.2226914 \\ \hline
+        Norte           & 1.4017609 & 1.8223669  \\ \hline
+        Oeste           & 2.9154884 & 3.0262419  \\ \hline
+        Sur           & 4.541442707 & 4.292687807 \\ \hline
     \end{tabular}
     \label{tab:precisión_datumgen}
 \end{table}
 
 
-Como también se ve en la \textbf{tabla \ref{tab:precisión_datumgen}} se consiguió una precisión de ............ radianes que equivale a ........... grados, siendo estos resultados más que aceptables 
+Como también se ve en la \textbf{tabla \ref{tab:precisión_datumgen}} se consiguió una precisión de 0.17089 radianes, siendo estos resultados aceptables 
 para el proyecto.
 
 El segundo algoritmo a testar será el encargado de generar los arrays de poses en base a las peticiones de objetivos solicitadas por el usuario por medio de 

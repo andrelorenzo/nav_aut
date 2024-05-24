@@ -1,11 +1,9 @@
 \textbf{Resumen}:
-Desde el auge de la navegación autónoma en los últimos años, esta ha empezado a tener un papel crucial en diversas industrias y aplicaciones, desde la logística y la agricultura hasta la exploración espacial. El dominio de la navegación autónoma se ha convertido en un aspecto fundamental para garantizar el éxito y la eficiencia de estas tecnologías.
+La navegación autónoma de robots ha cobrado gran relevancia en los últimos años y promete tener un impacto significativo en el futuro de diversas industrias, como la logística, la agricultura, o la exploración espacial. Este proyecto aborda el desafio de dotar a un robot móvil de tan valiosa capacidad, navegar de forma autónoma, particularizandolo para la navegación en exteriores a traves de una secuencia de puntos de control que debe visitar. 
 
-En el presente trabajo se aborda el desafío de permitir que un robot móvil dotado de un sistema sensorial navegue de manera autónoma en el exterior. Se han integrado y desarrollado componentes de software para conseguir una localización y una navegación precisas junto con un sistema de control y monitorización. Para ello, se han explorado diversas técnicas de localización y navegación. También se ha investigado en profundidad sobre el hardware de los sensores y la manera de interconectarlos a ROS2 mediante drivers, para el control adaptativo y robusto del trayecto.
+Se aborda tanto el diseño y configuración del sistema sensorial, el cual  incluye GPS+RTK, IMU, Lidar 3D y odometría, como el estudio, configuración  y adaptación de algoritmos de localización, detección y evitación de obstáculos., así como de navegación autónoma. El objetivo de la integración de todos estos componenetes   es lograr una navegación precisa, fiable y robusta que posibilite la realización de tareas de alto nivel. 
 
-Aunque el sistema también se ha probado en simulación, principalmente ha sido testado en los entornos de la Facultad de Telecomunicaciones de la Universidad de Málaga.
-
-Los resultados han mostrado una buena implementación de las herramientas disponibles, junto con un sistema robusto y fiable de navegación autónoma en exteriores.
+Un extenso abanico de pruebas reales con un robot móvil en configuración Ackerman, validan el corecto diseño y configuración de los módulos implicados en la navegación autónoma.
 
 \textbf{Palabras claves}: Robótica Móvil, ROS2, Navegación Autónoma, LIDAR, GPS RTK, Localización, EKF, Planificadores, árboles de comportamiento. 
 
@@ -15,12 +13,10 @@ Los resultados han mostrado una buena implementación de las herramientas dispon
 \end{center}
 \vspace{1cm}
 
-\textbf{Abstract}:Since the rise of autonomous navigation in recent years, it has begun to play a crucial role in various industries and applications, from logistics and agriculture to space exploration. Mastery of autonomous navigation has become a fundamental aspect to ensure the success and efficiency of these technologies.
+\textbf{Abstract}:Autonomous robot navigation has gained significant relevance in recent years and promises to have a substantial impact on the future of various industries, such as logistics, agriculture, and space exploration. This project addresses the challenge of endowing a mobile robot with such a valuable capability: autonomous navigation, specifically tailored for outdoor navigation through a sequence of control points it must visit.
 
-In this work, the challenge of enabling a mobile robot equipped with a sensory system to navigate autonomously outdoors is addressed. Software components have been integrated and developed to achieve precise localization and navigation, along with a control and monitoring system. To this end, various localization and navigation techniques have been explored. Additionally, an in-depth investigation into the sensor hardware and the way to interconnect them to ROS2 via drivers has been conducted, for the adaptive and robust control of the path.
+The project covers both the design and configuration of the sensory system, which includes GPS+RTK, IMU, 3D Lidar, and odometry, as well as the study, configuration, and adaptation of localization, obstacle detection and avoidance, and autonomous navigation algorithms. The goal of integrating all these components is to achieve precise, reliable, and robust navigation that enables the execution of high-level tasks.
 
-Although the system has also been tested in simulation, it has mainly been tested in the environments of the Faculty of Telecommunications at the University of Málaga.
-
-The results have shown a good implementation of the available tools, along with a robust and reliable outdoor autonomous navigation system.
+An extensive array of real-world tests with a mobile robot in Ackerman configuration validates the correct design and configuration of the modules involved in autonomous navigation.
 
 \textbf{Keywords}: Mobile Robotics, ROS2, Autonomous Navigation, LIDAR, GPS RTK, Localization, EKF, Planners, behavior trees.

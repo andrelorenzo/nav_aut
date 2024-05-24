@@ -1095,6 +1095,7 @@ INPUT ./main.aux
 INPUT main.aux
 INPUT main.aux
 OUTPUT main.aux
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1220,6 +1221,11 @@ INPUT ./images/marcauma.png
 INPUT images/marcauma.png
 INPUT ./images/marcauma.png
 INPUT ./images/marcauma.png
+INPUT ./images/Logo-EII-horizontal.png
+INPUT ./images/Logo-EII-horizontal.png
+INPUT images/Logo-EII-horizontal.png
+INPUT ./images/Logo-EII-horizontal.png
+INPUT ./images/Logo-EII-horizontal.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./pages/03-agradecimientos.tex

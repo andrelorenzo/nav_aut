@@ -19,30 +19,30 @@
 \contentsline {subsection}{\numberline {3.1.1}Lidar 3D Ouster}{14}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}GPS RTK Reach RS2+}{16}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}IMU Xsens MTi-3th}{16}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Implementación del sistema sensorial en ROS2}{17}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.4}Implementación del sistema sensorial en ROS2}{18}{subsection.3.1.4}%
 \contentsline {section}{\numberline {3.2}Interfaz de usuario}{19}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Procesamiento de los mensajes MQTT a ROS2}{21}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Localización y odometría}{22}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Mejoras en la localización para la orientación del sistema}{27}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Navegación Autónoma haciendo uso de Nav2}{28}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Conceptos básicos de Nav2}{29}{subsection.3.6.1}%
-\contentsline {subsubsection}{Árboles de comportamiento}{29}{subsection.3.6.1}%
-\contentsline {subsubsection}{Servidores de acción}{30}{figure.caption.25}%
-\contentsline {subsubsection}{Estructura para el control de navegación}{31}{figure.caption.26}%
-\contentsline {subsection}{\numberline {3.6.2}Servidores}{31}{subsection.3.6.2}%
-\contentsline {subsubsection}{Navigator server}{31}{subsection.3.6.2}%
-\contentsline {subsubsection}{Behavior server}{32}{figure.caption.27}%
-\contentsline {subsubsection}{Controller server}{32}{figure.caption.27}%
-\contentsline {subsubsection}{Planner server}{34}{figure.caption.30}%
-\contentsline {subsubsection}{Smoother server}{35}{table.caption.33}%
-\contentsline {subsection}{\numberline {3.6.3}Mapas de coste}{36}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Plugins}{37}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Nav2 commander}{38}{subsection.3.6.5}%
-\contentsline {chapter}{\numberline {4}Pruebas y resultados}{39}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pruebas de precisión para el sistema sensorial}{39}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Pruebas de funcionamiento de los algoritmos de adaptación}{41}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Pruebas de precisión en la localización}{42}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Pruebas de navegación autónoma}{44}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{49}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Futuras líneas de trabajo}{51}{chapter.6}%
-\contentsline {chapter}{Bibliografía}{53}{chapter.6}%
+\contentsline {section}{\numberline {3.3}Procesamiento de los mensajes MQTT a ROS2}{22}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Localización y odometría}{23}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Mejoras en la localización para la orientación del sistema}{28}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Navegación Autónoma haciendo uso de Nav2}{31}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Conceptos básicos de Nav2}{31}{subsection.4.0.1}%
+\contentsline {subsubsection}{Árboles de comportamiento}{31}{subsection.4.0.1}%
+\contentsline {subsubsection}{Servidores de acción}{32}{figure.caption.25}%
+\contentsline {subsubsection}{Estructura para el control de navegación}{32}{figure.caption.26}%
+\contentsline {subsection}{\numberline {4.0.2}Servidores}{33}{subsection.4.0.2}%
+\contentsline {subsubsection}{Navigator server}{33}{subsection.4.0.2}%
+\contentsline {subsubsection}{Behavior server}{34}{figure.caption.27}%
+\contentsline {subsubsection}{Controller server}{35}{figure.caption.27}%
+\contentsline {subsubsection}{Planner server}{36}{figure.caption.30}%
+\contentsline {subsubsection}{Smoother server}{38}{table.caption.33}%
+\contentsline {subsection}{\numberline {4.0.3}Mapas de coste}{38}{subsection.4.0.3}%
+\contentsline {subsection}{\numberline {4.0.4}Plugins}{39}{subsection.4.0.4}%
+\contentsline {subsection}{\numberline {4.0.5}Nav2 commander}{40}{subsection.4.0.5}%
+\contentsline {chapter}{\numberline {5}Pruebas y resultados}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Pruebas de precisión para el sistema sensorial}{43}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Pruebas de funcionamiento de los algoritmos de adaptación}{45}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Pruebas de precisión en la localización}{47}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Pruebas de navegación autónoma}{48}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{53}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Futuras líneas de trabajo}{55}{chapter.7}%
+\contentsline {chapter}{Bibliografía}{57}{chapter.7}%

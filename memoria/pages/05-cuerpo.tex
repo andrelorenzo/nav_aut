@@ -32,43 +32,35 @@ ser realizada en exteriores. También se han implementado algoritmos que intenta
 finalmente, algoritmos de planificación de trayectorias que se adecuen bien con el modelo del robot (Ackermann).
 
 \section{Objetivos del estudio}
-Para considerar como finalizada la realización de este trabajo se van a establecer unos objetivos a conseguir, estos son:
+El objetivo principal de este TFG es dotar a un robot móvil de la capacidad capacidad de navegar de forma autónoma, 
+particularizandolo para la navegación en exteriores a traves de una secuencia de puntos de control que debe visitar. 
+Este objetivo, dado su inherente complejidad, se divide en una serie de objetivos parciales que son detallados a continuación:
 \begin{itemize}
-  \item Sistema de sensorización, se dispondrá de un montaje en el chasis del robot de manera que asegure un buen uso de los dispositivos y 
-se realizará una implementación de drivers para su uso con el SDK ROS2. Se debe buscar una manera efectiva de montar, conexionar y conectar 
-con el software. 
-  \item Interfaz de usuario, se debe buscar una manera fiable, versátil e intuitiva para que un usuario pueda probar y controlar el robot de 
-manera rápida y sencilla, también se buscará la posibilidad de que la interfaz sea fácilmente modificable para futuras actualizaciones.
-  \item Localización, objetivo fundamental para la navegación, se abordará la fusión de datos sensoriales heterogéneos para obtener una 
+  \item \textbf{Sistema de sensorización:} Se analizarán y evaluaran distintas tecnologías sensoriales para la navegación en exteriores, atendiendo a la localización y detección de obstáculos. Se realizará la integración con el SDK ROS2, desarrollando drivers cuando sea necesario.
+  \item \textbf{Diseño e Implementación de la Interfaz de Usuario:} Se diseñará una interfaz de usuario que permita de forma rápida e intuitiva controlar el robot, permitiendo la creación y modificación de los puntos de control a visitar. Se tendrán en cuenta aspectos como la modularidad y correcta documentación, permitiendo así su fácil modificación y extensión en futuras iteraciones.
+  \item \textbf{Localización:} Objetivo fundamental para la navegación, se abordará la fusión de datos sensoriales heterogéneos para obtener una 
 localización precisa y fiable.
-  \item Evitación de obstáculos, se buscará una navegación segura, es decir, se configurarán sensores y algoritmos de navegación para 
+  \item \textbf{Evitación de obstáculos:} Se buscará una navegación segura, es decir, se configurarán sensores y algoritmos de navegación para 
 conseguir una evitación de obstáculos estáticos y dinámicos.
-  \item Navegación punto a punto y en trayectorias establecidas, se desarrollara un sistema de algoritmos que consigan una navegación 
+  \item \textbf{Navegación punto a punto y en trayectorias establecidas:} Se desarrollara un sistema de algoritmos que consigan una navegación 
 basada en waypoints. El robot deberá visitar estos puntos de manera consecutiva  y deberán estar basados en coordenadas GPS (latitud, 
 longitud, altitud).
+\item \textbf{Implementación de básico algortimo de seguimiento:} Se desarrollará un algoritmo de seguimiento dinámico de personas o ''follow me'', basado en un dispositivo móvil con GPS.
 \end{itemize}
 
 \section{Estructura del trabajo}
 
-Este proyecto ha sido dividido en 6 capítulos bien definidos:
+Este proyecto ha sido dividido en 7 capítulos bien definidos:
 
-Primero, una introducción donde se presenta el tema y se dejan claros los objetivos del proyecto y los antecedentes en relación al tema trabajado.
-
-Segundo, el estado del arte donde se desarrollan los temas que en el presente trabajo se exponen, sus antecedentes históricos y su base de 
-funcionamiento práctico
-
-Tercero, el desarrollo en si del trabajo donde se explican en detalle tanto el hardware utilizado, los métodos y herramientas, como la manera en la que 
+En el capítulo 1 se detalla una introducción donde se presenta el tema y se dejan claros los objetivos del proyecto y los antecedentes en relación al tema 
+trabajado. En el capítulo 2 se hace un estudio del estado del arte donde se desarrollan los temas que en el presente trabajo se exponen, sus antecedentes históricos y su base de 
+funcionamiento práctico. En el capítulo 3 se implemnta el desarrollo en si del trabajo donde se explican en detalle tanto el hardware utilizado, los métodos y herramientas, como la manera en la que 
 se ha procedido para completar el proyecto. Está parte ha sido escrita de manera cronológica en cuanto a los pasos que se han seguido junto 
-con las soluciones que se han ido dando a los diversos problemas que han aparecido durante el recorrido de este proyecto.
-
-Cuarto, las pruebas del proyecto que incluyen datos experimentales, gráficas y simulaciones donde se comparan tanto las ideas teóricas con 
+con las soluciones que se han ido dando a los diversos problemas que han aparecido durante el recorrido de este proyecto. En el capítulo 4 se habla sobre la implementación 
+del ''stack'' de navegación en ros2 y de como se ha implementado en el presente proyecto, comentado todas decisiones tomadas para cada una de sus muchas secciones.En el capítulo 5 se conducen las pruebas del proyecto que incluyen datos experimentales, gráficas y simulaciones donde se comparan tanto las ideas teóricas con 
 los resultados reales como las simuladas con las reales, se hace un estudio exhaustivo de donde hubo más complicaciones a la hora de llevar 
-el proyecto a la realidad y como se fueron solucionando cada uno de los problemas.
-
-Quinto, conclusiones finales del proyecto donde se reflexiona sobre las soluciones obtenidas y en cuanto son de fiables en un entorno tan 
-variable.
-
-Sexto, futuras lineas del trabajo donde se podría continuar este proyecto y mejorarlo.
+el proyecto a la realidad y como se fueron solucionando cada uno de los problemas. En el capítulo 6 se detallan las conclusiones finales del proyecto donde se reflexiona sobre las soluciones obtenidas y en cuanto son de fiables en un entorno tan 
+variable. Finalmente en el capítulo 7 se proporcionan las futuras lineas del trabajo donde se podría continuar este proyecto y mejorarlo.
 
 \chapter{Estado del arte}
 
@@ -283,7 +275,7 @@ barrido del entorno~\ref{fig:lidar3d}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{images/lidar3d_1.png}
-    \caption{Nube de puntos de un Lidar 3D. Fuente: propia}
+    \caption{Nube de puntos de un Lidar 3D.}
     \label{fig:lidar3d}
 \end{figure}
 
@@ -319,7 +311,6 @@ magnético, estas unidades aunque son muy necesarias tienen una gran desventaja 
 correcta localización por lo que al igual que comentamos anteriormente la fusión con otros sensores o técnicas de localización resulta muy necesaria.
 \cleardoublepage
 \titlespacing*{\chapter}{0pt}{-50pt}{40pt} % Ajusta los márgenes y espaciados
-% \titlespacing*{\section}{0pt}{-50pt}{40pt} % Ajusta los márgenes y espaciados
 
 \chapter{Desarrollo}
 
@@ -345,7 +336,7 @@ se podría adaptar a cualquier otro de similares características.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{images/hunter_v2.jpeg}
-    \caption{Chasis del vehículo autónomo. Fuente: propia}
+    \caption{Chasis del vehículo autónomo.}
     \label{fig:hunter}
 \end{figure}
 
@@ -371,7 +362,7 @@ para la implementación con ROS2 se usó el driver oficial de la empresa.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{images/ouster_hunter.jpeg}
-    \caption{Ouster montado en la torre del vehículo. Fuente: propia}
+    \caption{Ouster montado en la torre del vehículo.}
     \label{fig:ouster_hunter}
 \end{figure}
 
@@ -390,14 +381,14 @@ de la universidad donde para el mismo sitio se puede ver la diferencia entre las
   \begin{minipage}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/lidar3d_2.png}
-    \caption{Salida de Lidar 3D en el recinto de la facultad de Telecomunicaciones. Fuente: propia}
+    \caption{Salida de Lidar 3D en el recinto de la facultad de Telecomunicaciones.}
     \label{fig:lidar_2d_pruebas}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/lidar2d.png}
-    \caption{Salida de Lidar 2D en el recinto de la facultad de Telecomunicaciones. Fuente: propia}
+    \caption{Salida de Lidar 2D en el recinto de la facultad de Telecomunicaciones.}
     \label{fig:lidar_3d_pruebas}
   \end{minipage}
 \end{figure}
@@ -426,7 +417,7 @@ y se publica por el topic \textit{/hunter/fix}.
   \begin{minipage}[b]{0.35\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/reach_rs2.jpeg}
-    \caption{GPS Reach RS2+. Fuente: propia}
+    \caption{GPS Reach RS2+.}
     \label{fig:reach_rs2}
   \end{minipage}
   \hfill
@@ -452,7 +443,7 @@ con el resto de algortimos en el repositorio de GitHub creado para este trabajo.
   \begin{minipage}[b]{0.35\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/xsens.jpeg}
-    \caption{Xsens 3th gen MTI. Fuente: propia}
+    \caption{Xsens 3th gen MTI.}
     \label{fig:xsens_imu}
   \end{minipage}
   \hfill
@@ -474,21 +465,21 @@ y por tanto simplemente servirá como una redundancia en la odometría de la vel
 
 \begin{figure}[htbp]
   \centering
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/mti_angular_orientation.png}
-    \caption{Variaciones de orientación y de velocidad angular en el eje z. Fuente: propia}
+    \caption{Variaciones de orientación y de velocidad angular en el eje z.}
     \label{fig:mti_velocidad_orientacion}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/mti_Acceleration.png}
-    \caption{Variaciones de aceleración lineal en el eje x y el eje z. Fuente: propia}
+    \caption{Variaciones de aceleración lineal en el eje x y el eje z.}
     \label{fig:mti_aceleraciones}
   \end{minipage}
 \end{figure}
-
+\newpage
 \subsection{Implementación del sistema sensorial en ROS2}
 
 Una vez montados e instalados todos los dispositivos se hicieron pruebas para valorar su efectividad real en el terreno y la configuración 
@@ -516,10 +507,10 @@ los paquetes usados, \textit{robot\_localization}, del cual se hablará en profu
 En la  \textbf{figura\ref{fig:arbol_urdf}}, se puede observar el árbol completo del robot, desde las transformaciones dinámicas, 
 (map, odom y utm) hasta las estáticas (base\_link, gps\_frame, mti\_imu\_frame, etc...)
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/arbol_transformaciones_hunter.jpg}
-    \caption{Árbol de transformaciones, Fuente: propia}
+    \includegraphics[width=1\textwidth]{images/arbol_transformaciones_hunter.jpg}
+    \caption{Árbol de transformaciones,}
     \label{fig:arbol_urdf}
 \end{figure}
 
@@ -550,17 +541,17 @@ de ser enviado.
 
 \begin{figure}[htbp]
   \centering
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.8\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/interfaz_1.png}
-    \caption{primer estado de la interfaz. Fuente: propia}
+    \caption{primer estado de la interfaz.}
     \label{fig:interfaz_1}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.8\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/interfaz_2.png}
-    \caption{segundo estado de la interfaz. Fuente: propia}
+    \caption{segundo estado de la interfaz.}
     \label{fig:interfaz_2}
   \end{minipage}
 \end{figure}
@@ -957,7 +948,7 @@ donde la que se quede sin activar sea la entrada de mayor precisión (siendo est
 Con esto se tendría solucionado el problema de la localización y así se podría pasar a la realización e implementación del ''stack'' 
 de navegación.
 
-\section{Navegación Autónoma haciendo uso de Nav2}
+\chapter{Navegación Autónoma haciendo uso de Nav2}
 
 El stack de navegación de ROS2 esta diseñado principalmente para interiores donde ha sido probado y testado, pero con algunos ajustes y modificaciones se puede usar en cualquier entorno, este funciona en base a unas estructuras 
 lógicas llamadas \textit{behavior trees} \cite{colledanchise2018behavior}, estas estructuras son muy versátiles por su manera de funcionar dado que resulta muy 
@@ -1046,19 +1037,19 @@ Para el caso que aquí se expone proporcionaremos un árbol que contiene la lóg
 los creadores del stack para la navegación punto a punto y en la \textbf{figura \ref{fig:bt_ToPose_script}} vemos el mismo ejemplo escrito y modificado en xml para ser usado en 
 el proyecto.
 
-\begin{figure}[htbp]
+\begin{figure}[!tb!]
   \centering
-  \begin{minipage}[b]{0.7\textwidth}
+  \begin{minipage}[b]{1\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/bt_ToPose_wrec_rep.png}
     \caption{Esquema de navegación punto a punto. Fuente: \cite{nav2}}
     \label{fig:bt_ToPose}
   \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.7\textwidth}
+\hfill
+  \begin{minipage}[b]{1\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/arbol_punto_apunto.png}
-    \caption{Código del árbol de comportamiento para la navegación punto a punto. Fuente: propia}
+    \caption{Código del árbol de comportamiento para la navegación punto a punto.}
     \label{fig:bt_ToPose_script}
   \end{minipage}
 \end{figure}
@@ -1092,7 +1083,7 @@ que sea compatible con un robot Ackerman, esto quiere decir que tenga en conside
 Nav2 nos proporciona varias implementaciones para controladores como se puede ver en la \textbf{figura \ref{fig:controllers_tabla}}. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Controllers_tabla.png}
+    \includegraphics[width=0.8\textwidth]{images/Controllers_tabla.png}
     \caption{Tabla de controladores disponibles para Nav2. Fuente: \cite{nav2}}
     \label{fig:controllers_tabla}
 \end{figure}
@@ -1121,7 +1112,7 @@ los parámetros típicos de configuración como el \textit{lookahead\_distance} 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/rpp_configuracion.png}
+    \includegraphics[width=0.7\textwidth]{images/rpp_configuracion.png}
     \caption{Archivo de configuración del algoritmo RPP. Fuente: \cite{nav2}}
     \label{fig:rpp_configuracion}
 \end{figure}
@@ -1134,9 +1125,9 @@ la implementación de modelo Reeds-Sheepp, este modelo a diferencia de su opuest
 un trayecto la posibilidad de ir marcha atrás, lo que parecía interesante, el Smac Hybrid es una versión modificada 
 del conocido \textbf{A*}, un algoritmo de búsqueda recursiva~\cite{dolgov2008practical} que a su vez esta basado en el algoritmo Dijkstra junto con una matriz 
 \textit{heurística} para conseguir una solución con mayor rapidez y menor número de búsquedas o iteraciones 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/planificadores_table.png}
+    \includegraphics[width=0.8\textwidth]{images/planificadores_table.png}
     \caption{Tabla de planificadores disponibles para Nav2. Fuente: \cite{nav2}}
     \label{fig:planificadores_tabla}
 \end{figure}
@@ -1147,8 +1138,8 @@ o la selección de las diferentes penalizaciones para los comportamientos del al
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/smacplanner_configuracion.png}
-    \caption{Archivo de configuración para el planificador Smac Hybrid. Fuente: propia}
+    \includegraphics[width=0.6\textwidth]{images/smacplanner_configuracion.png}
+    \caption{Archivo de configuración para el planificador Smac Hybrid.}
     \label{fig:configuracion_planner}
 \end{figure}
 
@@ -1179,7 +1170,7 @@ su configuración es muy básica, para sus parámetros se escogió un nodo de su
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/smoother_configuracion.png}
-    \caption{Archivo de configuración para el suavizador de trayectorias. Fuente: propia}
+    \caption{Archivo de configuración para el suavizador de trayectorias.}
     \label{fig:parametros_smoother_server}
 \end{figure}
 
@@ -1201,7 +1192,7 @@ la forma del vehículo. En la \textbf{figura \ref{fig:mapa_local}} se distingue 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/mapa_coste_local.png}
-    \caption{Ilustración del mapa de coste local. Fuente: propia}
+    \caption{Ilustración del mapa de coste local.}
     \label{fig:mapa_local}
 \end{figure}
 
@@ -1213,7 +1204,7 @@ cálculo de la trayectoria según las dimensiones del vehículo por lo que se as
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/mapa_coste_global.png}
-    \caption{Ilustración del mapa de coste global en tonos morados transparentes. Fuente: propia}
+    \caption{Ilustración del mapa de coste global en tonos morados transparentes.}
     \label{fig:mapa_global}
 \end{figure}
 
@@ -1226,7 +1217,7 @@ puede apreciar en \textbf{figura \ref{fig:suavizado_vel}} donde los valores se r
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/velocity_smoother_configuracion.png}
-    \caption{Archivo de configuración para el plugin de suavizado de velocidades. Fuente: propia}
+    \caption{Archivo de configuración para el plugin de suavizado de velocidades.}
     \label{fig:suavizado_vel}
 \end{figure}
 
@@ -1245,8 +1236,8 @@ donde la distancia al marcador está a menor distancia que el rango del mapa de 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/camino_punto_inter.png}
-    \caption{Ejemplo de cálculo de puntos intermedios. Fuente: propia}
+    \includegraphics[width=0.8\textwidth]{images/camino_punto_inter.png}
+    \caption{Ejemplo de cálculo de puntos intermedios.}
     \label{fig:puntos_intermedios}
 \end{figure}
 
@@ -1265,7 +1256,7 @@ cuando el ''follow me'' esté activo, los nuevos objetivos enviados por la aplic
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/arbol_dynamic.png}
+    \includegraphics[width=0.8\textwidth]{images/arbol_dynamic.png}
     \caption{Programación en xml del árbol de comportamiento para seguimiento dinámico de una persona (''follow me'')}
     \label{fig:follow_me}
 \end{figure}
@@ -1276,7 +1267,8 @@ empleado y ya que los dispositivos móviles tienen una precisión bastante baja,
 \chapter{Pruebas y resultados}
 En el presente capítulo se trata de corroborar que la teoría funciona, poniendo a prueba los algortimo desarrollados. Es decir, que todos los 
 sistemas de abordo son efectivos en su trabajo cumpliendo con los requisítos establecidos, para así sacar conclusiones finales sobre las soluciones 
-dadas para este proyecto.
+dadas para este proyecto. Para la realización de este trabajo y en concreto para el desarrrollo del presente capítulo se han realizado más de
+80 horas en el terreno probando, cambiando y mejorando los algoritmos utilizados para que así, se consiguiese la mejor implementación posible en el terreno.
 
 \section{Pruebas de precisión para el sistema sensorial}
 Para esta prueba se condujeron varios experimentos con la esperanza de encontrar las varianzas de las IMU y así obtener una buena localización.
@@ -1368,15 +1360,14 @@ que desde el punto de vista del filtro comienza en 0.
 \begin{figure}[htbp]
   \centering
     \captionsetup{skip=0pt}  % Ajusta el espacio entre la figura y la leyenda
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.7\textwidth}
     \centering
-
     \includegraphics[width=\textwidth]{images/longitude_gps.png}
     \caption{Salida del GPS con RTK.}
     \label{fig:salida_gps_rtk}
   \end{minipage}
   \hfill
-  \begin{minipage}[b]{0.45\textwidth} 
+  \begin{minipage}[b]{0.7\textwidth} 
     \centering
     \includegraphics[width=\textwidth]{images/odom_global_rtk.png}
     \caption{Salida del filtro.}
@@ -1416,10 +1407,10 @@ Para el segundo caso se realizó el experimento para los 360º en intervalos de 
     \begin{tabular}{|l|c|c|}
         \hline
         Dirección     & ángulo del algortimo (rad) & ángulo de la IMU (rad)     \\ \hline
-        Este           & 0.1175064 & 0.2226914 \\ \hline
+        Este            & 0.1175064 & 0.2226914 \\ \hline
         Norte           & 1.4017609 & 1.8223669  \\ \hline
         Oeste           & 2.9154884 & 3.0262419  \\ \hline
-        Sur           & 4.541442707 & 4.292687807 \\ \hline
+        Sur             & 4.541442707 & 4.292687807 \\ \hline
     \end{tabular}
     \label{tab:precisión_datumgen}
 \end{table}
@@ -1456,7 +1447,7 @@ camino creado con la herramienta de linea de la API de google maps ya comentada 
   \begin{minipage}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{images/punto_inter_web.jpeg}
-    \caption{Petición de navegación a un objetivo más alejado que el rango del mapa de coste.}
+    \caption{Petición de navegación a un objetivo considerablemente alejado.}
     \label{fig:peticion_punto_alejado}
   \end{minipage}
   \hfill
@@ -1507,7 +1498,6 @@ crezca de manera paulatina.
 Como se puede apreciar en las \textbf{figuras \ref{fig:Localización_1imu} y \ref{fig:localizacion_2imu}} tanto el error de estimación como la diferencia entre las 
 2 odometrías es práctimante igual para los dos casos. Sin embargo, se puede apreciar una menor deriva en los sistemas de referencia al final del 
 trayecto realizado con 2 IMU, esto se observa en el 1 de ambas figuras.
-\newpage
 \section{Pruebas de navegación autónoma}
 
 Para comprobar finalmente la totalidad del trabajo, en concreto, una navegación cumpliendo con los objetivos propuestos, se desarrollaron 4 escenarios en los que se cubren todas 
@@ -1711,7 +1701,7 @@ una vía de trabajo que considero mejoraría enormemente este tema sería la car
 valores precisos de varianza para cada estado del sistema, dado que estas han sido impuestas de manera fija y escogidas con poco 
 razonamiento teórico.
 
-Otro campo que consideró mejoraría este proyecto sería el desarrollo de los comentados \textit{behavior} o comportamientos específicos para 
+Otro campo que considero, mejoraría este proyecto sería el desarrollo de los comentados \textit{behavior} o comportamientos específicos para 
 el modelo Ackermann ya que actualmente los únicos que existen son \textit{Wait} y \textit{Back up} y aunque suficientes para conseguir una navegación buena,
 la creación de un comportamiento que retroceda de manera más ''inteligente'' ayudaría en gran medida a la fluidez del sistema.
 
